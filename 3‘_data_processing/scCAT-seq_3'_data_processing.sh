@@ -3,7 +3,7 @@
 
 for i in `ls ~/zjw/fastq_5cap_2018ab`
 do
-a=$(grep "${i}" ~/zjw/20190105/script_and_log/sample_list_tag.txt|awk '{print $5}')
+a=$(grep "${i}" ~/zjw/20190105/script_and_log/sample_list_tag.txt|awk '{print $2}')
 b=${a#*4}
 echo ${b}
 echo "GTGGTATCAACGCAGAGT....${b%%TTTTTTTTTTTTTTTTTTTT*}"
