@@ -1,3 +1,5 @@
+########### the first agrs is tss_dominant_peak file
+
 options(stringsAsFactors = FALSE)
 options(scipen = 100)
 
