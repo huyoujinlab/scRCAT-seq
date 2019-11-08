@@ -61,9 +61,9 @@ done
 
 
 
-for i in `ls ~/zjw/20190105/3tail_read_with_tag_other_strand_withA10_trim/`
+for i in `ls ~/zjw/20190105/3tail_read_with_tag_other_strand_withA10_trim_remain_A5/`
 do
-STAR --runThreadN 24 --genomeDir ~/index/mm10_ERCC92trimpolyA_STAR/ --genomeLoad LoadAndKeep --readFilesIn ~/zjw/20190105/3tail_read_with_tag_other_strand_withA10_trim/${i} --outFileNamePrefix ~/zjw/20190105/mapping_output/${i}_ --outSAMtype SAM --outFilterMultimapNmax 1 --outFilterScoreMinOverLread 0.6 --outFilterMatchNminOverLread 0.6
+STAR --runThreadN 24 --genomeDir ~/index/mm10_ERCC92trimpolyA_STAR/ --genomeLoad LoadAndKeep --readFilesIn ~/zjw/20190105/3tail_read_with_tag_other_strand_withA10_remain_A5/${i} --outFileNamePrefix ~/zjw/20190105/mapping_output/${i}_ --outSAMtype SAM --outFilterMultimapNmax 1 --outFilterScoreMinOverLread 0.6 --outFilterMatchNminOverLread 0.6
 done
 
 
