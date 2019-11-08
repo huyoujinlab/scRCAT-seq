@@ -11,7 +11,7 @@ Cutadapt 1.18
 Minimap2 2.17   
 Cell ranger 2.1.1   
 
-
+ 
 Some packages used in this study on R was listed below:
 
 basicTrendline 2.0.3   
