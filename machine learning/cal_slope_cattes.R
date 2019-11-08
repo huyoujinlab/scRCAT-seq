@@ -1,4 +1,5 @@
 ###############the first args is tes_dominant_peak_file
+###############the second args is smart-seq2 read count file
 
 options(stringsAsFactors = FALSE)
 options(scipen = 100)
