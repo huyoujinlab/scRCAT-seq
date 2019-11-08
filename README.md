@@ -47,7 +47,13 @@ splines 3.5.1
 stringr 1.4.3   
 Seurat 3.0.2   
 
-
+Some packages used in this study on python 3.7.1 was listed below:
+pandas 0.25.1  
+numpy 1.17.2  
+matplotlib 3.1.1  
+seaborn 0.9.0
+sklearn 0.21.3  
+scikit-plot 0.3.7
 
 
 Here is a demo to call peak and machine learning
@@ -89,7 +95,23 @@ Rscript cal_slope_cattes2.R tc_D44_52_3tail_peak.csv  D_merge_standard_smart_seq
 Rscript cal_slope_cattss3.R tc_D44_52_5cap_peak.csvnew.csv
 Rscript cal_slope_cattes3.R tc_D44_52_3tail_peak.csvnew.csv
 
+
 ### "tc_D44_52_5cap_peak.csvnew.csv.csv" and "tc_D44_52_3tail_peak.csvnew.csv.csv" will be generated. In this sept, features were added and we can define the TRUE or FALSE of each peak.
+
+
+
+
+
+
+### Fifth, we run:
+
+mv tc_D44_52_5cap_peak.csvnew.csv.csv ../data/
+mv tc_D44_52_3tail_peak.csvnew.csv.csv ../data/
+cd ../
+python ./bin/demo.py
+
+### The new folder named "output" will be built after completion of the pipeline, which contains all the output files, including the "\*.csv" file. 
+### The last column in the .CSV files shows the predicted classification corresponding to each individual peaks in the input file. The value "1" indicates a true TSS/TES peak while value "o" indicates a false TSS/TES peak.
 
 
 ######### from sept 1 to sept 4, it takes about 10 minutes.
