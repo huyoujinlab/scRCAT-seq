@@ -21,7 +21,7 @@ for line in fq_i:
         seq_inf = next(fq_i).strip("\n")
         seq_qua = next(fq_i).strip("\n")
         if re.findall("A{10,30}",seq):
-                index =  [m.start() for m in re.finditer("A{10,150}", seq)][0]
+                index =  [m.start() for m in re.finditer("A{10,150}", seq)][0] + 5
                 seq = seq[:index]
                 seq_qua = seq_qua[:index]
                 if index != 0:
