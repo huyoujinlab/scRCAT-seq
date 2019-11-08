@@ -23,10 +23,12 @@ cd ~/zjw/20190105/script_and_log
 for i in `ls ~/zjw/fastq_5cap_2018ab`
 do
 a=$(grep "${i}" ~/zjw/20190105/script_and_log/sample_list_tag.txt|awk '{print $2}')
-b=${a#*4}
-echo ${b}
-echo "GTGGTATCAACGCAGAGT....${b%%TTTTTTTTTTTTTTTTTTTT*}"
-cat ~/zjw/fastq_5cap_2018ab/${i} | paste - - - - | grep "${b%%TTTTT*}TTTTT" | awk -v FS="\t" -v OFS="\n" '{print $1, $2, $3, $4}' > ~/zjw/20190105/3tail_read_with_tag/${i}_with_tag
+if [[ ${a} =~ "NNNN" ]]; then
+        b=${a#*4}
+        echo ${b}
+        echo "GTGGTATCAACGCAGAGT....${b%%TTTTTTTTTTTTTTTTTTTT*}"
+        cat ~/zjw/fastq_5cap_2018ab/${i} | paste - - - - | grep "${b%%TTTTT*}TTTTT" | awk -v FS="\t" -v OFS="\n" '{print $1, $2, $3, $4}' > ~/zjw/20190105/3tail_read_with_tag/${i}_with_tag
+fi
 done
 
 
