@@ -1,5 +1,19 @@
 #!/bin/bash
 
+mkdir ~/zjw/20190109
+mkdir ~/zjw/20190109/5cap_read_with_tag
+mkdir ~/zjw/20190109/trim_GTGGTATCAACGCAGAGTACAT
+mkdir ~/zjw/20190109/mapping_output
+mkdir ~/zjw/20190109/extract_uniquely_map
+mkdir ~/zjw/20190109/split_plus_minus
+mkdir ~/zjw/20190109/extract_mismatch
+mkdir ~/zjw/20190109/final_out
+mkdir ~/zjw/20190109/script_and_log
+
+############### make sure that extractmismatch_plus.py and extractmismatch_minus.py are in ~/zjw/20190109/script_and_log
+
+cd ~/zjw/20190109/script_and_log
+
 echo "###############read with tag"
 for i in `ls ~/zjw/fastq_5cap_2018ab/`
 do
