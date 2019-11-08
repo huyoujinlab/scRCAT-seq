@@ -1,19 +1,24 @@
 #!/bin/bash
 
-mkdir ~/zjw/20190109
-mkdir ~/zjw/20190109/5cap_read_with_tag
-mkdir ~/zjw/20190109/trim_GTGGTATCAACGCAGAGTACAT
-mkdir ~/zjw/20190109/mapping_output
-mkdir ~/zjw/20190109/extract_uniquely_map
-mkdir ~/zjw/20190109/split_plus_minus
-mkdir ~/zjw/20190109/extract_mismatch
-mkdir ~/zjw/20190109/final_out
-mkdir ~/zjw/20190109/script_and_log
+mkdir ~/zjw/20190105
+mkdir ~/zjw/20190105/3tail_read_with_tag
+mkdir ~/zjw/20190105/3tail_read_with_tag_other_strand
+mkdir ~/zjw/20190105/3tail_read_with_tag_other_strand_withA10_remain_A5
+mkdir ~/zjw/20190105/mapping_output
+mkdir ~/zjw/20190105/extract_uniquely_map
+mkdir ~/zjw/20190105/split_plus_minus
+mkdir ~/zjw/20190105/extract_mismatch
+mkdir ~/zjw/20190105/add_header
+mkdir ~/zjw/20190105/script_and_log
 
-############### make sure that extractmismatch_plus.py, extractmismatch_minus.py, and scCAT-seq_3'_data_processing.sh are in ~/zjw/20190109/script_and_log
+############### make sure that sample_list_tag.txt, extractmismatch_plus.py, extractmismatch_minus.py, and scCAT-seq_3'_data_processing.sh, cmpfastq_pe.pl, find_A10_and_remain_A5.py are in ~/zjw/20190105/script_and_log
 ############### make sure that fq files are list in ~/zjw/fastq_5cap_2018ab
+############### STAR index must be built before running this script
+############### reference genome fa file must be prepared in "add header" step
 
-cd ~/zjw/20190109/script_and_log
+cd ~/zjw/20190105/script_and_log
+
+
 
 for i in `ls ~/zjw/fastq_5cap_2018ab`
 do
@@ -23,6 +28,8 @@ echo ${b}
 echo "GTGGTATCAACGCAGAGT....${b%%TTTTTTTTTTTTTTTTTTTT*}"
 cat ~/zjw/fastq_5cap_2018ab/${i} | paste - - - - | grep "${b%%TTTTT*}TTTTT" | awk -v FS="\t" -v OFS="\n" '{print $1, $2, $3, $4}' > ~/zjw/20190105/3tail_read_with_tag/${i}_with_tag
 done
+
+
 
 for i in `cat ~/zjw/20190105/script_and_log/file_cmpfastq.txt | grep "_1"`
 do
@@ -40,15 +47,21 @@ rm ~/zjw/fastq_5cap_2018ab/*unique.out
 
 mv ~/zjw/fastq_5cap_2018ab/*out ~/zjw/20190105/3tail_read_with_tag_other_strand/
 
+
+
 for i in `ls ~/zjw/20190105/3tail_read_with_tag_other_strand`
 do
 python ~/zjw/20190105/script_and_log/find_A10_and_remain_A5.py  -i ~/zjw/20190105/3tail_read_with_tag_other_strand/${i} -o ~/zjw/20190105/3tail_read_with_tag_other_strand_withA10_remain_A5/${i}_withA10_remain_A5
 done
 
-for i in `cat ~/zjw/20190105/script_and_log/file_mapping.txt`
+
+
+for i in `ls ~/zjw/20190105/3tail_read_with_tag_other_strand_withA10_trim/`
 do
-STAR --runThreadN 24 --genomeDir ~/index/mm10_ERCC92trimpolyA_STAR/ --genomeLoad LoadAndKeep --readFilesIn ~/zjw/20190105/3tail_read_with_tag_other_strand_withA10_remain_A5/${i} --outFileNamePrefix ~/zjw/20190105/mapping_output/${i}_ --outSAMtype SAM --outFilterMultimapNmax 1 --outFilterScoreMinOverLread 0.6 --outFilterMatchNminOverLread 0.6
+STAR --runThreadN 24 --genomeDir ~/index/mm10_ERCC92trimpolyA_STAR/ --genomeLoad LoadAndKeep --readFilesIn ~/zjw/20190105/3tail_read_with_tag_other_strand_withA10_trim/${i} --outFileNamePrefix ~/zjw/20190105/mapping_output/${i}_ --outSAMtype SAM --outFilterMultimapNmax 1 --outFilterScoreMinOverLread 0.6 --outFilterMatchNminOverLread 0.6
 done
+
+
 
 for i in `ls ~/zjw/20190105/mapping_output/ |grep "sam"`
 do
