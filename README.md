@@ -50,5 +50,11 @@ Seurat 3.0.2
 
 
 
+Here is a demo to call peak and machine learning
+
+###after we generate bed file by scCAT-seq_5_data_processing.sh/scCAT-seq_3_data_processing.sh, we use them to call peak.
+
+
+
 
 WARNING: Initial version of code, still a work in progress.
