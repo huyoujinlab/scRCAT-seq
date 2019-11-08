@@ -12,6 +12,8 @@ mkdir ~/zjw/20190109/script_and_log
 
 ############### make sure that extractmismatch_plus.py, extractmismatch_minus.py, and scCAT-seq_5'_data_processing.sh are in ~/zjw/20190109/script_and_log
 ############### make sure that fq files are list in ~/zjw/fastq_5cap_2018ab
+############### STAR index must be built before running this script
+############### reference genome fa file must be prepared in "add header" step
 
 cd ~/zjw/20190109/script_and_log
 
