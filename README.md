@@ -1,3 +1,7 @@
+Code for our scCAT-seq project
+
+
+
 Some softwares used in this study on linux paltform was listed below:
 
 Software on linux:
@@ -46,6 +50,5 @@ Seurat 3.0.2
 
 
 
-Code for our scCAT-seq project
 
 WARNING: Initial version of code, still a work in progress.
