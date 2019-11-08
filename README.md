@@ -92,6 +92,6 @@ Rscript cal_slope_cattes3.R tc_D44_52_3tail_peak.csvnew.csv
 ### "tc_D44_52_5cap_peak.csvnew.csv.csv" and "tc_D44_52_3tail_peak.csvnew.csv.csv" will be generated. In this sept, features were added and we can define the TRUE or FALSE of each peak.
 
 
-
+######### from sept 1 to sept 4, it takes about 10 minutes.
 
 WARNING: Initial version of code, still a work in progress.
