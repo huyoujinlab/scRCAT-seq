@@ -1,4 +1,5 @@
 ########### the first agrs is tss_dominant_peak file
+########### the second agrs is smart-seq2 read count file
 
 options(stringsAsFactors = FALSE)
 options(scipen = 100)
