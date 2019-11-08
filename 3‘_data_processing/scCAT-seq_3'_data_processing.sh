@@ -33,21 +33,24 @@ done
 
 
 
-for i in `cat ~/zjw/20190105/script_and_log/file_cmpfastq.txt | grep "_1"`
+mkdir ~/zjw/20190914uploadCAT/tes_dir/other_strand_filter_yes/
+
+for i in `ls ~/zjw/20190105/3tail_read_with_tag/ | grep "L1_1.fq_with_tag$"`
 do
-perl ~/zjw/20190105/script_and_log/cmpfastq_pe.pl ~/zjw/20190105/3tail_read_with_tag/${i} ~/zjw/fastq_5cap_2018ab/${i%_1*}_2.fq
+perl cmpfastq_pe.pl ~/zjw/20190105/3tail_read_with_tag/${i} ~/zjw/fastq_5cap_2018ab/${i%_1*}_2.fq
 done
 
-for i in `cat ~/zjw/20190105/script_and_log/file_cmpfastq.txt | grep "_2"`
+for i in `ls ~/zjw/20190105/3tail_read_with_tag/ | grep "L1_2.fq_with_tag$"`
 do
-perl ~/zjw/20190105/script_and_log/cmpfastq_pe.pl ~/zjw/20190105/3tail_read_with_tag/${i} ~/zjw/fastq_5cap_2018ab/${i%_2*}_1.fq
+perl cmpfastq_pe.pl ~/zjw/20190105/3tail_read_with_tag/${i} ~/zjw/fastq_5cap_2018ab/${i%_2*}_1.fq
 done
 
 rm ~/zjw/20190105/3tail_read_with_tag/*out
-
 rm ~/zjw/fastq_5cap_2018ab/*unique.out
-
 mv ~/zjw/fastq_5cap_2018ab/*out ~/zjw/20190105/3tail_read_with_tag_other_strand/
+
+
+
 
 
 
