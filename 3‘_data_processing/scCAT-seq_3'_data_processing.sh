@@ -23,7 +23,7 @@ cd ~/zjw/20190105/script_and_log
 for i in `ls ~/zjw/fastq_5cap_2018ab`
 do
 a=$(grep "${i}" ~/zjw/20190105/script_and_log/sample_list_tag.txt|awk '{print $2}')
-if [[ ${a} =~ "NNNN" ]]; then
+if [[ ${a} =~ "4" ]]; then
         b=${a#*4}
         echo ${b}
         echo "GTGGTATCAACGCAGAGT....${b%%TTTTTTTTTTTTTTTTTTTT*}"
