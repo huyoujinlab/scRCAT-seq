@@ -10,7 +10,10 @@ mkdir ~/zjw/20190109/extract_mismatch
 mkdir ~/zjw/20190109/final_out
 mkdir ~/zjw/20190109/script_and_log
 
-############### make sure that extractmismatch_plus.py and extractmismatch_minus.py are in ~/zjw/20190109/script_and_log
+############### make sure that extractmismatch_plus.py, extractmismatch_minus.py, and scCAT-seq_5'_data_processing.sh are in ~/zjw/20190109/script_and_log
+############### make sure that fq files are list in ~/zjw/fastq_5cap_2018ab
+
+cd ~/zjw/20190109/script_and_log
 
 cd ~/zjw/20190109/script_and_log
 
