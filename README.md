@@ -14,7 +14,7 @@
  
 Some softwares required in this study on linux paltform was listed below:
  
-Software on linux:
+* Software on linux:
 1) Python 2.7.15   
 2) R 3.5.0   
 3) STAR 2.6.1a   
@@ -27,7 +27,7 @@ Software on linux:
  
  
  
-Some packages required in this study on R was listed below:
+* Some packages required in this study on R was listed below:
  
 1) basicTrendline 2.0.3   
 2) broom 0.5.2   
@@ -60,7 +60,7 @@ Some packages required in this study on R was listed below:
  
  
  
-Some packages required in this study on python 3.7.1 was listed below:
+* Some packages required in this study on python 3.7.1 was listed below:
  
 1) pandas 0.25.1  
 2) numpy 1.17.2  
