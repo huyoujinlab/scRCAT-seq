@@ -8,10 +8,10 @@
 * The first part is code used to data processing and mechine learning.
 
 * The second part is code used to analyse the data from scCAT-seq.
-  
- 
- 
- 
+  \
+\
+\
+\
 Some softwares required in this study on linux paltform was listed below:
  
 * Software on linux:
