@@ -11,7 +11,7 @@ mkdir ~/zjw/20190105/extract_mismatch
 mkdir ~/zjw/20190105/add_header
 mkdir ~/zjw/20190105/script_and_log
 
-############### make sure that sample_list_tag.txt, extractmismatch_plus.py, extractmismatch_minus.py, and scCAT-seq_3'_data_processing.sh, cmpfastq_pe.pl, find_A10_and_remain_A5.py are in ~/zjw/20190105/script_and_log
+############### make sure that sample_list_tag.txt, extractmismatch_plus_3'.py, extractmismatch_minus_3'.py, and scCAT-seq_3'_data_processing.sh, cmpfastq_pe.pl, find_A10_and_remain_A5.py are in ~/zjw/20190105/script_and_log
 ############### make sure that fq files are list in ~/zjw/fastq_5cap_2018ab
 ############### STAR index must be built before running this script
 ############### reference genome fa file must be prepared in "add header" step
@@ -82,8 +82,8 @@ done
 
 for i in `ls ~/zjw/20190105/split_plus_minus | grep "extract_uniquely_map.sam_plus"`
 do
-python ~/zjw/20190105/script_and_log/extractmismatch_plus.py -i ~/zjw/20190105/split_plus_minus/${i} -o ~/zjw/20190105/extract_mismatch/${i}_extractmismatch
-python ~/zjw/20190105/script_and_log/extractmismatch_minus.py -i ~/zjw/20190105/split_plus_minus/${i%_*}_minus -o ~/zjw/20190105/extract_mismatch/${i%_*}_minus_extractmismatch
+python ~/zjw/20190105/script_and_log/extractmismatch_plus_3'.py -i ~/zjw/20190105/split_plus_minus/${i} -o ~/zjw/20190105/extract_mismatch/${i}_extractmismatch
+python ~/zjw/20190105/script_and_log/extractmismatch_minus_3'.py -i ~/zjw/20190105/split_plus_minus/${i%_*}_minus -o ~/zjw/20190105/extract_mismatch/${i%_*}_minus_extractmismatch
 cat ~/zjw/20190105/extract_mismatch/${i}_extractmismatch ~/zjw/20190105/extract_mismatch/${i%_*}_minus_extractmismatch > ~/zjw/20190105/extract_mismatch/${i%_*}_extractmismatch
 done
 
