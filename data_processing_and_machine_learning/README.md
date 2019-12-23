@@ -2,7 +2,7 @@
 
 
 
-### Here is a demo to call peak and machine learning. After we generate bed file by scCAT-seq_5_data_processing.sh/scCAT-seq_3_data_processing.sh, we use them to call peak. We extract the reads on chr 3 for simplification
+#### Here is a demo to call peak and machine learning. After we generate bed file by scCAT-seq_5_data_processing.sh/scCAT-seq_3_data_processing.sh, we use them to call peak. We extract the reads on chr 3 for simplification
 
 
 
