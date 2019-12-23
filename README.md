@@ -4,9 +4,9 @@
 
 ### This project consists of two parts.
 
-*The first part is code used to data processing and mechine learning.
+* The first part is code used to data processing and mechine learning.
 
-*The second part is code used to analyse the data from scCAT-seq.
+* The second part is code used to analyse the data from scCAT-seq.
 
 
 
