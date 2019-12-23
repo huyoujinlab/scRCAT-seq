@@ -65,8 +65,7 @@
 3) matplotlib 3.1.1  
 4) seaborn 0.9.0
 5) sklearn 0.21.3  
-6) scikit-plot 0.3.7
+6) scikit-plot 0.3.7  
 
-\ 
-\ 
+
 ### WARNING: Initial version of code, still a work in progress.
