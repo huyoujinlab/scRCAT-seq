@@ -26,7 +26,7 @@ Some softwares required in this study on linux paltform was listed below:
  
  
 ---
-Some packages required in this study on R was listed below:
+Some packages required in this study on R 3.5.0 was listed below:
  
 1) basicTrendline 2.0.3   
 2) broom 0.5.2   
