@@ -6,7 +6,7 @@
 
 
 
-### First, we run:
+#### First, we run:
 
 ```
 bash CAGE_dominant.sh 
@@ -16,7 +16,7 @@ bash CAGE_dominant.sh
 
 
 
-### Second, we run:
+#### Second, we run:
 
 ```
 Rscript cal_slope_cattss.R D44_52_5cap_dominant_tss_upstream2k_and_genebody.bed D_merge_standard_smart_seq2.count
@@ -27,7 +27,7 @@ Rscript cal_slope_cattes.R D44_52_3tail_dominant_tes_genebody_downstream2k.bed D
 
 
 
-### Third, we run:
+#### Third, we run:
 
 ```
 Rscript cal_slope_cattss2.R tc_D44_52_5cap_peak.csv D_merge_standard_smart_seq2_sorted_chr3.wig
@@ -38,7 +38,7 @@ Rscript cal_slope_cattes2.R tc_D44_52_3tail_peak.csv  D_merge_standard_smart_seq
 
 
 
-### Fourth, we run:
+#### Fourth, we run:
 
 ```
 Rscript cal_slope_cattss3.R tc_D44_52_5cap_peak.csvnew.csv
@@ -51,7 +51,7 @@ Rscript cal_slope_cattes3.R tc_D44_52_3tail_peak.csvnew.csv
 
 
 
-### Fifth, we run:
+#### Fifth, we run:
 
 ```
 mv tc_D44_52_5cap_peak.csvnew.csv.csv ../data/
@@ -61,10 +61,11 @@ python ./bin/demo.py
 ```
 
 The new folder named "output" will be built after completion of the pipeline, which contains all the output files, including the "\*.csv" file. 
-### The last column in the .CSV files shows the predicted classification corresponding to each individual peaks in the input file. The value "1" indicates a true TSS/TES peak while value "o" indicates a false TSS/TES peak.
+
+The last column in the .CSV files shows the predicted classification corresponding to each individual peaks in the input file. The value "1" indicates a true TSS/TES peak while value "0" indicates a false TSS/TES peak.
 
 
-######### from sept 1 to sept 5, it takes about 10 minutes.
+from sept 1 to sept 5, it takes about 10 minutes.
 
 
 
