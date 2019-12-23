@@ -2,6 +2,7 @@
 
 
 
+#### WARNING: Initial version of code, still a work in progress.
 
 ### This project consists of two parts.
 
@@ -67,5 +68,4 @@
 5) sklearn 0.21.3  
 6) scikit-plot 0.3.7  
 
-***
-#### WARNING: Initial version of code, still a work in progress.
+
