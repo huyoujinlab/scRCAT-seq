@@ -7,17 +7,12 @@
 * The first part is code used to data processing and mechine learning.
 
 * The second part is code used to analyse the data from scCAT-seq.
-
-
-
-
-
-
-
-
-
+  
+ 
+ 
+ 
 Some softwares required in this study on linux paltform was listed below:
-
+ 
 Software on linux:
 1) Python 2.7.15   
 2) R 3.5.0   
@@ -28,10 +23,11 @@ Software on linux:
 7) Cutadapt 1.18   
 8) Minimap2 2.17   
 9) Cell ranger 2.1.1   
-
+ 
+ 
  
 Some packages required in this study on R was listed below:
-
+ 
 1) basicTrendline 2.0.3   
 2) broom 0.5.2   
 3) BuenColors 0.5.5   
@@ -60,9 +56,11 @@ Some packages required in this study on R was listed below:
 26) splines 3.5.1   
 27) stringr 1.4.3   
 28) Seurat 3.0.2   
-
+ 
+ 
+ 
 Some packages required in this study on python 3.7.1 was listed below:
-
+ 
 1) pandas 0.25.1  
 2) numpy 1.17.2  
 3) matplotlib 3.1.1  
