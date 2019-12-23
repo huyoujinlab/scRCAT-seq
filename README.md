@@ -10,7 +10,7 @@
 * The second part is code used to analyse the data from scCAT-seq.
 \
 \
-\
+\ 
 ---
 Some softwares required in this study on linux paltform was listed below:
 
