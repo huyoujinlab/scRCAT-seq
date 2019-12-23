@@ -11,7 +11,7 @@
 * The second part is code used to analyse the data from scCAT-seq.
 
 ---
-* Some softwares required in this study on linux paltform was listed below:
+Some softwares required in this study on linux paltform was listed below:
 
 
 1) Python 2.7.15   
@@ -26,7 +26,7 @@
  
  
 ---
-* Some packages required in this study on R was listed below:
+Some packages required in this study on R was listed below:
  
 1) basicTrendline 2.0.3   
 2) broom 0.5.2   
@@ -59,7 +59,7 @@
  
  
 ---
-* Some packages required in this study on python 3.7.1 was listed below:
+Some packages required in this study on python 3.7.1 was listed below:
  
 1) pandas 0.25.1  
 2) numpy 1.17.2  
