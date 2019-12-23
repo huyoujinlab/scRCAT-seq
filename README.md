@@ -16,58 +16,59 @@
 
 
 
-Some softwares used in this study on linux paltform was listed below:
+Some softwares required in this study on linux paltform was listed below:
 
 Software on linux:
-Python 2.7.15   
-R 3.5.0   
-STAR 2.6.1a   
-Samtools 1.3.1   
-Bedtools 2.27.1   
-cDNA_cupcake 8.0   
-Cutadapt 1.18   
-Minimap2 2.17   
-Cell ranger 2.1.1   
+1) Python 2.7.15   
+2) R 3.5.0   
+3) STAR 2.6.1a   
+4) Samtools 1.3.1   
+5) Bedtools 2.27.1   
+6) cDNA_cupcake 8.0   
+7) Cutadapt 1.18   
+8) Minimap2 2.17   
+9) Cell ranger 2.1.1   
 
  
-Some packages used in this study on R was listed below:
+Some packages required in this study on R was listed below:
 
-basicTrendline 2.0.3   
-broom 0.5.2   
-BuenColors 0.5.5   
-CAGEr 1.24.0   
-data.table 1.12.4   
-DESeq2 1.22.1   
-dplyr 0.8.3   
-ggalt 0.4.0   
-ggplot2 3.2.1   
-ggpubr 0.2.3   
-ggsignif 0.6.0   
-gplots 3.0.1.1   
-gridExtra 2.3   
-heatmap.plus 1.3   
-Monocle2 2.12.0   
-nlstools 1.0-2   
-pheatmap 1.0.12   
-purrr 0.3.2   
-RColorBrewer 1.1-2   
-reshape 0.8.8   
-rlist 0.4.6.1   
-Rmisc 1.5   
-rsample 0.0.5   
-rstatix 0.2.0   
-scales 1.0.0   
-splines 3.5.1   
-stringr 1.4.3   
-Seurat 3.0.2   
+1) basicTrendline 2.0.3   
+2) broom 0.5.2   
+3) BuenColors 0.5.5   
+4) CAGEr 1.24.0   
+5) data.table 1.12.4   
+6) DESeq2 1.22.1   
+7) dplyr 0.8.3   
+8) ggalt 0.4.0   
+9) ggplot2 3.2.1   
+10) ggpubr 0.2.3   
+11) ggsignif 0.6.0   
+12) gplots 3.0.1.1   
+13) gridExtra 2.3   
+14) heatmap.plus 1.3   
+15) Monocle2 2.12.0   
+16) nlstools 1.0-2   
+17) pheatmap 1.0.12   
+18) purrr 0.3.2   
+19) RColorBrewer 1.1-2   
+20) reshape 0.8.8   
+21) rlist 0.4.6.1   
+22) Rmisc 1.5   
+23) rsample 0.0.5   
+24) rstatix 0.2.0   
+25) scales 1.0.0   
+26) splines 3.5.1   
+27) stringr 1.4.3   
+28) Seurat 3.0.2   
 
-Some packages used in this study on python 3.7.1 was listed below:
-pandas 0.25.1  
-numpy 1.17.2  
-matplotlib 3.1.1  
-seaborn 0.9.0
-sklearn 0.21.3  
-scikit-plot 0.3.7
+Some packages required in this study on python 3.7.1 was listed below:
+
+1) pandas 0.25.1  
+2) numpy 1.17.2  
+3) matplotlib 3.1.1  
+4) seaborn 0.9.0
+5) sklearn 0.21.3  
+6) scikit-plot 0.3.7
 
 
 
