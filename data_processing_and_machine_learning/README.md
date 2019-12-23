@@ -18,6 +18,7 @@
 * Prediction:  
 1) Predicted each individual peaks in the input file. The value "1" indicates a true TSS/TES peak while value "0" indicates a false TSS/TES peak
 
+---
 #### First, we run:
 
 ```
