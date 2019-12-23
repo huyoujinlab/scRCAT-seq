@@ -78,7 +78,7 @@ python ./bin/demo.py
 * The last column in the .CSV files shows the predicted classification corresponding to each individual peaks in the input file. The value "1" indicates a true TSS/TES peak while value "0" indicates a false TSS/TES peak.
 
 
-* from sept 1 to sept 5, it takes about 10 minutes.
+* from step 1 to step 5, it takes about 10 minutes.
 
 
 
