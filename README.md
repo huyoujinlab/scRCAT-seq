@@ -13,7 +13,7 @@
 \
 \
 Some softwares required in this study on linux paltform was listed below:
- 
+\
 * Software on linux:
 1) Python 2.7.15   
 2) R 3.5.0   
