@@ -10,6 +10,8 @@
 
 * The second part is code used to analyse the data from scCAT-seq.
 
+You can switch to the subfolder to get detailed information.
+
 ---
 Some softwares required in this study on linux paltform was listed below:
 
