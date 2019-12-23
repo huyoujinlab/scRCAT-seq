@@ -67,5 +67,5 @@
 5) sklearn 0.21.3  
 6) scikit-plot 0.3.7  
 
-
+***
 #### WARNING: Initial version of code, still a work in progress.
