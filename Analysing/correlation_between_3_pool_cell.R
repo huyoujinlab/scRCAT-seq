@@ -75,10 +75,10 @@ ggplot(ctss_O_new[order(ctss_O_new$dens),], aes(x=V1, y=V2,col=col))+
   theme_set(theme_bw()) +
   theme(panel.grid.major=element_line(colour=NA),panel.grid.minor=element_line(colour=NA))+
   theme(panel.border = element_blank())+ #去除边框
-  theme(axis.line.x=element_line(linetype=1,color="black",size=1), #加上x轴
-        axis.line.y=element_line(linetype=1,color="black",size=1), #加上y轴
-        axis.text.x = element_text(face = "plain",size = 10.5), #改x轴字体
-        axis.text.y = element_text(face = "plain",size = 10.5), #改y轴字体
+  theme(axis.line.x=element_line(linetype=1,color="black",size=1), 
+        axis.line.y=element_line(linetype=1,color="black",size=1), 
+        axis.text.x = element_text(face = "plain",size = 10.5), 
+        axis.text.y = element_text(face = "plain",size = 10.5), 
         legend.position="none") +
   scale_x_continuous(limits = c(0,4.5)) +
   scale_y_continuous(limits = c(0,4.5)) +
@@ -139,7 +139,7 @@ x <- densCols(ctss_O_new[,1],ctss_O_new[,2], colramp=colorRampPalette(c("black",
 ctss_O_new$dens <- col2rgb(x)[1,] + 1L
 ## Map densities to colors
 cols <-  colorRampPalette(c("#000099", "#00FEFF", "#45FE4F", 
-                            "#FCFF00", "#FF9400", "#FF3100"))(256)  # 先是256
+                            "#FCFF00", "#FF9400", "#FF3100"))(256)  
 ctss_O_new$col <- cols[ctss_O_new$dens]
 ctss_O_new <- unique(ctss_O_new)
 
@@ -154,10 +154,10 @@ ggplot(ctss_O_new[order(ctss_O_new$dens),], aes(x=V1, y=V2,col=col))+
   
   theme(panel.grid.major=element_line(colour=NA),panel.grid.minor=element_line(colour=NA))+
   theme(panel.border = element_blank())+ #去除边框
-  theme(axis.line.x=element_line(linetype=1,color="black",size=1), #加上x轴
-        axis.line.y=element_line(linetype=1,color="black",size=1), #加上y轴
-        axis.text.x = element_text(face = "plain",size = 10.5), #改x轴字体
-        axis.text.y = element_text(face = "plain",size = 10.5), #改y轴字体
+  theme(axis.line.x=element_line(linetype=1,color="black",size=1), 
+        axis.line.y=element_line(linetype=1,color="black",size=1),
+        axis.text.x = element_text(face = "plain",size = 10.5), 
+        axis.text.y = element_text(face = "plain",size = 10.5), 
         legend.position="none") +
   scale_x_continuous(limits = c(0,4.5)) +
   scale_y_continuous(limits = c(0,4.5)) +
