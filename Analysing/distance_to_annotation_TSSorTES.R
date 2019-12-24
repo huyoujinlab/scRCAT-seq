@@ -191,8 +191,3 @@ ggplot(tss_df,aes(V1,V2,color=V3))+
 
 
 
-plot(c(1,1))
-legend("topright",                                    #图例位置为右上角
-       legend=c("Tokyo","NewYork","London","Berlin"),        #图例内容
-       col=c("blue","red","green","orange"),                 #图例颜色
-       lty=1,lwd=2)                                          #图例大小
