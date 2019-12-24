@@ -5,7 +5,7 @@ Then BED file as input is needed to call peak using CAGEr R package.
 
 ---
 
-The workflows of data of scCAT-seq 5', C1 CAGE, C1 STRT and Arguel et al. are similar. Here is the scCAT-seq 5' data processing workflow. To see detail imformation of other data processing, please see C1_CAGE_5_data_procrssing.sh, C1_STRT_5_data_procrssing.sh and Arguel_et_al_5_data_procrssing.sh.
+The workflows of data of scCAT-seq 5', C1 CAGE, C1 STRT and Arguel et al. are similar. Here is the scCAT-seq 5' data processing workflow. To see detail imformation of other data processing, please see C1_CAGE_5_data_processing.sh, C1_STRT_5_data_processing.sh and Arguel_et_al_5_data_processing.sh.
 
 1) Find reads with TSO primer: Reads with TSO primer sequence at 5' are considered to further processing.
 2) Trim TSO primer but retain GGG: TSO primer is trimmed. "GGG" was used to remove reads with strand invasion.
