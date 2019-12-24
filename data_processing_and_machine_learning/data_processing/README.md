@@ -5,7 +5,7 @@ Then BED file as input is needed to call peak using CAGEr R package.
 
 ---
 
-The workflows of data of scCAT-seq 5', C1 CAGE, C1 STRT and Arguel et al. are similar:
+The workflows of data of scCAT-seq 5', C1 CAGE, C1 STRT and Arguel et al. are similar. Here is the scCAT-seq 5' data processing workflow. To see detail imformation of other data processing, please see :
 1) Find reads with TSO primer: Reads with TSO primer sequence at 5' are considered to further processing.
 2) Trim TSO primer but retain GGG: TSO primer is trimmed. "GGG" was used to remove reads with strand invasion.
 3) Mapping: Reads are aligned to mouse genome (mm10) or human genome (hg38). We only select uniquely mapped reads.
@@ -16,7 +16,7 @@ The workflows of data of scCAT-seq 5', C1 CAGE, C1 STRT and Arguel et al. are si
 
 ---
 
-The workflows of data of scCAT-seq 3' and BAT-seq are similar:
+The workflows of data of scCAT-seq 3' and BAT-seq are similar. Here is the scCAT-seq 5' data processing workflow. To see detail imformation of BAT-seq data processing, please see :
 1) Find reads with oligo(dT) primer: Reads with oligo(dT) primer sequence at 5'. We define reads with oligo(dT) primer sequence at 5' as R1 reads.
 2) Find R2 reads: Perl script cmpfastq_pe.pl is used to find R2 reads which its corresponding R1 reads with oligo(dT) primes.
 3) Trim A10 but retain A5 at R2 reads: Poly A sequences in the end of R2 were further trimmed with 5 A bases left at the 3’ side. "AAAAA" was used to remove reads with internal priming.
