@@ -12,7 +12,8 @@ The workflow of data of scCAT-seq 5', C1 CAGE, C1 STRT and Arguel et al. are sim
 4) Split reads aligned to plus stand and minus strand: This step is to prepare for step 5.
 5) Extract reads with mismatch at 5': The template-switching (TS) oligonucleotide may hybridize to the first strand cDNA due to sequence complementarity before the RT has finished polymerizing. Artifact that introduced by incomplete reverse transcription process is called strand invasion. We suppose that if "GGG" aligned, reads are strand invasion drivern artifacts. if "GGG" don't aligned, reads are derived from complete reverse transcription.
 6) Convert SAM to BED: As BED format file can be used as input for CAGEr R package, we generate SAM to BED.
-7) Generate CAGEset object in R: See 
+7) Generate CAGEset object in R: See R script generate_CAGEset_5'.R 
+
 ---
 
 The workflow of data of scCAT-seq 3' and BAT-seq are similar:
@@ -23,4 +24,4 @@ The workflow of data of scCAT-seq 3' and BAT-seq are similar:
 5) Split reads aligned to plus stand and minus strand: This step is to prepare for step 6.
 6) Extract reads with mismatch at 3': Oligo(dT) primers can also anneal to internal A-rich sequences, a phenomenon called internal priming, leading to the generation of artifact. if "AAAAA" aligned, reads are internal priming drivern artifacts. if "GGG" don't aligned, reads are supposed to contain true polyA site.
 7) Convert SAM to BED: As BED format file can be used as input for CAGEr R package, we generate SAM to BED.
-8) Generate CAGEset object in R: See
+8) Generate CAGEset object in R: See R script generate_CAGEset_3'.R
