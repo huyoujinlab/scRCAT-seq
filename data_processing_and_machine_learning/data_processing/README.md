@@ -18,8 +18,8 @@ The workflow of data of scCAT-seq 5', C1 CAGE, C1 STRT and Arguel et al. are sim
 The workflow of data of scCAT-seq 3' and BAT-seq are similar:
 1) Find reads with oligo(dT) primer: Reads with oligo(dT) primer sequence at 5'. We define reads with oligo(dT) primer sequence at 5' as R1 reads.
 2) Find R2 reads: Perl script cmpfastq_pe.pl is used to find R2 reads which its corresponding R1 reads with oligo(dT) primes.
-3) Trim A10 but retain A5 at R2 reads: Poly A sequences in the end of R2 were further trimmed with 5 A bases left at the 3’ side. 5 As was used to remove reads with internal priming.
+3) Trim A10 but retain A5 at R2 reads: Poly A sequences in the end of R2 were further trimmed with 5 A bases left at the 3’ side. "AAAAA" was used to remove reads with internal priming.
 4) Mapping: Reads are aligned to mouse genome (mm10). We only select uniquely mapped reads.
 5) Split reads aligned to plus stand and minus strand: This step is to prepare for step 6.
-7) Extract reads with mismatch at 5': The template-switching (TS) oligonucleotide may hybridize to the first strand cDNA due to sequence complementarity before the RT has finished polymerizing. Artifact that introduced by incomplete reverse transcription process is called strand invasion. We suppose that if "GGG" aligned, reads are strand invasion drivern artifacts. if "GGG" don't aligned, reads are derived from complete reverse transcription.
-6) Convert SAM to BED: As BED format file can be used as input for CAGEr R package, we generate SAM to BED.
+6) Extract reads with mismatch at 3': Oligo(dT) primers can also anneal to internal A-rich sequences, a phenomenon called internal priming, leading to the generation of artifact. if "AAAAA" aligned, reads are internal priming drivern artifacts. if "GGG" don't aligned, reads are supposed to contain true polyA site.
+7) Convert SAM to BED: As BED format file can be used as input for CAGEr R package, we generate SAM to BED.
