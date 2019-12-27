@@ -11,7 +11,7 @@ The workflows of data of scCAT-seq 5', C1 CAGE, C1 STRT and Arguel et al. are si
 2) Trim TSO primer but retain GGG: TSO primer is trimmed. "GGG" was used to remove reads with strand invasion.
 3) Mapping: Reads are aligned to mouse genome (mm10) or human genome (hg38). We only select uniquely mapped reads.
 4) Split reads aligned to plus stand and minus strand: This step is to prepare for step 5.
-5) Extract reads with mismatch at 5': The template-switching (TS) oligonucleotide may hybridize to the first strand cDNA due to sequence complementarity before the RT has finished polymerizing. Artifact that introduced by incomplete reverse transcription process is called strand invasion. We suppose that if "GGG" aligned, reads are strand invasion drivern artifacts. if "GGG" don't aligned, reads are derived from complete reverse transcription.
+5) Extract reads with mismatch at 5': The template-switching (TS) oligonucleotide may hybridize to the first strand cDNA due to sequence complementarity before the RT has finished polymerizing. Artifact that introduced by incomplete reverse transcription process is called strand invasion. We suppose that if "GGG" aligned, reads are strand invasion drivern artifacts. If "GGG" don't aligned, reads are derived from complete reverse transcription.
 6) Convert SAM to BED: As BED format file can be used as input for CAGEr R package, we generate SAM to BED.
 7) Generate CAGEset object in R: See R script generate_CAGEset_5'.R 
 
@@ -24,6 +24,6 @@ The workflows of data of scCAT-seq 3' and BAT-seq are similar. Here is the scCAT
 3) Trim A10 but retain A5 at R2 reads: Poly A sequences in the end of R2 were further trimmed with 5 A bases left at the 3’ side. "AAAAA" was used to remove reads with internal priming.
 4) Mapping: Reads are aligned to mouse genome (mm10). We only select uniquely mapped reads.
 5) Split reads aligned to plus stand and minus strand: This step is to prepare for step 6.
-6) Extract reads with mismatch at 3': Oligo(dT) primers can also anneal to internal A-rich sequences, a phenomenon called internal priming, leading to the generation of artifact. if "AAAAA" aligned, reads are internal priming drivern artifacts. if "GGG" don't aligned, reads are supposed to contain true polyA site.
+6) Extract reads with mismatch at 3': Oligo(dT) primers can also anneal to internal A-rich sequences, a phenomenon called internal priming, leading to the generation of artifact. If "AAAAA" aligned, reads are internal priming drivern artifacts. If "GGG" don't aligned, reads are supposed to contain true polyA site.
 7) Convert SAM to BED: As BED format file can be used as input for CAGEr R package, we generate SAM to BED.
 8) Generate CAGEset object in R: See R script generate_CAGEset_3'.R
