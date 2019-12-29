@@ -6,55 +6,55 @@ library(CAGEr)
 library(rstatix)
 
 
-##--------------形成CAGEset
-for(i in grep("CTRL",list.files(),value = T)) {
-  tes <- read.table(i, header = FALSE, sep = "\t")
-  tes_plus <- tes[tes[,6]=="+",]
-  tes_minus <- tes[tes[,6]=="-",]
-  tes_plus <- tes_plus[,c(1,3,6)]
-  tes_minus <- data.frame(V1=tes_minus[,1],V3=tes_minus[,2]+1,V6=tes_minus[,6])
-  tes <- rbind(tes_plus,tes_minus)
-  tes <- data.frame(tes[,1],tes[,2]-1,tes[,2],rep(1,nrow(tes)),rep(1,nrow(tes)),tes[,3])
-  write.table(tes,file = "tes.bed",quote = FALSE,col.names = FALSE,row.names = FALSE,sep = "\t")
-  a <- paste('myCAGEset',strsplit(i,split = "[.]")[[1]][1],'_3tail <- new("CAGEset", genomeName = "BSgenome.Macfas.ZJW.1",inputFiles = "tes.bed",inputFilesType = "bed",sampleLabels = "',strsplit(i,split = "[.]")[[1]][1],'")',sep = "")
-  print(a)
-  eval(parse(text=a))
-  a <- paste('getCTSS(','myCAGEset',strsplit(i,split = "[.]")[[1]][1],'_3tail,removeFirstG = FALSE,correctSystematicG = FALSE)',sep = "")
-  print(a)
-  eval(parse(text=a))
-}
+##--------------generate CAGEset
+#for(i in grep("CTRL",list.files(),value = T)) {
+#  tes <- read.table(i, header = FALSE, sep = "\t")
+#  tes_plus <- tes[tes[,6]=="+",]
+#  tes_minus <- tes[tes[,6]=="-",]
+#  tes_plus <- tes_plus[,c(1,3,6)]
+#  tes_minus <- data.frame(V1=tes_minus[,1],V3=tes_minus[,2]+1,V6=tes_minus[,6])
+#  tes <- rbind(tes_plus,tes_minus)
+#  tes <- data.frame(tes[,1],tes[,2]-1,tes[,2],rep(1,nrow(tes)),rep(1,nrow(tes)),tes[,3])
+#  write.table(tes,file = "tes.bed",quote = FALSE,col.names = FALSE,row.names = FALSE,sep = "\t")
+#  a <- paste('myCAGEset',strsplit(i,split = "[.]")[[1]][1],'_3tail <- new("CAGEset", genomeName = "BSgenome.Macfas.ZJW.1",inputFiles = "tes.bed",inputFilesType = "bed",sampleLabels = "',strsplit(i,split = "[.]")[[1]][1],'")',sep = "")
+#  print(a)
+#  eval(parse(text=a))
+#  a <- paste('getCTSS(','myCAGEset',strsplit(i,split = "[.]")[[1]][1],'_3tail,removeFirstG = FALSE,correctSystematicG = FALSE)',sep = "")
+#  print(a)
+#  eval(parse(text=a))
+#}
 
 
 
 ##########call peak
 
-for(i in grep("myCAGEset",objects(),value = T)) {
-  a <- paste('normalizeTagCount(',i,', method = "simpleTpm")',sep = "")
-  print(a)
-  eval(parse(text=a))
-  a <- paste('clusterCTSS(object = ',i,', method = "distclu", threshold = 5, nrPassThreshold = 1, thresholdIsTpm = TRUE,removeSingletons = FALSE,keepSingletonsAbove = 1, maxDist = 20,useMulticore = FALSE, nrCores = 8)',sep = "")
-  print(a)
-  eval(parse(text=a))
-}
+#for(i in grep("myCAGEset",objects(),value = T)) {
+#  a <- paste('normalizeTagCount(',i,', method = "simpleTpm")',sep = "")
+#  print(a)
+#  eval(parse(text=a))
+#  a <- paste('clusterCTSS(object = ',i,', method = "distclu", threshold = 5, nrPassThreshold = 1, thresholdIsTpm = TRUE,removeSingletons = FALSE,keepSingletonsAbove = 1, maxDist = 20,useMulticore = FALSE, nrCores = 8)',sep = "")
+#  print(a)
+#  eval(parse(text=a))
+#}
 
 
 
-for(i in grep("myCAGEset",objects(),value = T)) {
-  a <- paste('tc_',strsplit(i,split = "set")[[1]][2],' <- tagClusters(',i,')[[1]]',sep = "")
-  print(a)
-  eval(parse(text=a))
-}
+#for(i in grep("myCAGEset",objects(),value = T)) {
+#  a <- paste('tc_',strsplit(i,split = "set")[[1]][2],' <- tagClusters(',i,')[[1]]',sep = "")
+#  print(a)
+#  eval(parse(text=a))
+#}
 
-for(i in grep("tc",objects(),value = TRUE)) {
-  a <- paste(paste(strsplit(i,split = "c_")[[1]][2],'_dominant_tes',sep = ""),' <- data.frame(',i,'[,2],',i,'[,8]-1,',i,'[,c(8,6,6,5)],stringsAsFactors = FALSE)',sep = "")
-  eval(parse(text=a))
-  print(a)
-}
+#for(i in grep("tc",objects(),value = TRUE)) {
+#  a <- paste(paste(strsplit(i,split = "c_")[[1]][2],'_dominant_tes',sep = ""),' <- data.frame(',i,'[,2],',i,'[,8]-1,',i,'[,c(8,6,6,5)],stringsAsFactors = FALSE)',sep = "")
+#  eval(parse(text=a))
+#  print(a)
+#}
 
-for(i in grep("dominant",objects(),value = TRUE)) {
-  a <- paste('write.table(',i,',"',paste(i,'.bed',sep = ""),'",quote = FALSE,row.names = FALSE,col.names = FALSE,sep = "\t")',sep = "")
-  eval(parse(text=a))
-}
+#for(i in grep("dominant",objects(),value = TRUE)) {
+#  a <- paste('write.table(',i,',"',paste(i,'.bed',sep = ""),'",quote = FALSE,row.names = FALSE,col.names = FALSE,sep = "\t")',sep = "")
+#  eval(parse(text=a))
+#}
 
 
 
@@ -103,20 +103,16 @@ for(i in grep("dominant",objects(),value = TRUE)) {
 
 
 
-for i in `ls|grep "tes.bed"`; do bedtools intersect -s -a ${i} -b revref_Macfas_gene_downstream2k.bed -wa -wb > ${i%%.*}_genebody_downstream2k.bed; done
+#for i in `ls|grep "tes.bed"`; do bedtools intersect -s -a ${i} -b revref_Macfas_gene_downstream2k.bed -wa -wb > ${i%%.*}_genebody_downstream2k.bed; done
 
 
-rm(list = ls())
+#rm(list = ls())
 
 
 
 ##### CEC and TAC
-CTRL_0_3tail_dominant_tes_in_gene <- read.table("CTRL_0_3tail_dominant_tes_genebody_downstream2k.bed",header = FALSE)
-CTRL_2_3tail_dominant_tes_in_gene <- read.table("CTRL_2_3tail_dominant_tes_genebody_downstream2k.bed",header = FALSE)
-
-
-CTRL_0_3tail_dominant_tes_in_gene <- CTRL_0_3tail_dominant_tes_in_gene[,c(1,2,3,10,5,6)]
-CTRL_2_3tail_dominant_tes_in_gene <- CTRL_2_3tail_dominant_tes_in_gene[,c(1,2,3,10,5,6)]
+load("compare_cornea.RData")
+rm(CTRL_1_3tail_dominant_tes_in_gene)
 
 
 
@@ -381,12 +377,8 @@ ggboxplot(temp_2,x="group",y="V5",fill = "group",palette = "jco",  line.size = 0
 
 ##### LEC and TAC
 
-CTRL_1_3tail_dominant_tes_in_gene <- read.table("CTRL_1_3tail_dominant_tes_genebody_downstream2k.bed",header = FALSE)
-CTRL_2_3tail_dominant_tes_in_gene <- read.table("CTRL_2_3tail_dominant_tes_genebody_downstream2k.bed",header = FALSE)
-
-
-CTRL_1_3tail_dominant_tes_in_gene <- CTRL_1_3tail_dominant_tes_in_gene[,c(1,2,3,10,5,6)]
-CTRL_2_3tail_dominant_tes_in_gene <- CTRL_2_3tail_dominant_tes_in_gene[,c(1,2,3,10,5,6)]
+load("compare_cornea.RData")
+rm(CTRL_0_3tail_dominant_tes_in_gene)
 
 
 
