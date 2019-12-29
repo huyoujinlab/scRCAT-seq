@@ -109,6 +109,8 @@ library(rstatix)
 #rm(list = ls())
 
 
+# 1 2 LEC TAC
+# 0 2 CEC TAC
 
 ##### CEC and TAC
 load("compare_cornea.RData")
@@ -116,7 +118,7 @@ rm(CTRL_1_3tail_dominant_tes_in_gene)
 
 
 
-#取最高峰
+#choose highest peak in each gene
 for(i in grep("_3tail_dominant_tes_in_gene",objects(),value = T)) {
   a <- paste(strsplit(i,split = "_3tail")[[1]][1],'_major <- data.frame()',sep = "")
   eval(parse(text=a))
@@ -145,9 +147,7 @@ CTRL_2_major[,7] <- rep("CTRL_2",nrow(CTRL_2_major))
 
 
 
-############联合 CRTL0和CTRL1         从这里到下面的，把它们复制到一个新的是script里，然后改CTRL_0,CTRL_1等
-# 1 2 LEC TAC
-# 0 2 CEC TAC
+
 union <- rbind(CTRL_2_major,CTRL_0_major)
 
 union_2_diff <- data.frame()
@@ -292,11 +292,11 @@ ggplot(a,aes(x=TES_long_iso_later_devide_former,y=TES_short_iso_later_devide_for
   theme(panel.grid.major=element_blank(),
         panel.grid.minor=element_blank(),
         legend.title = element_blank(),
-        panel.border = element_rect(size = 1.1,linetype = 1), #改外边框
-        axis.text.x = element_text(face = "plain",size = 10.5), #改x轴字体
-        axis.text.y = element_text(face = "plain",size = 10.5)) +#改y轴字体 
+        panel.border = element_rect(size = 1.1,linetype = 1), 
+        axis.text.x = element_text(face = "plain",size = 10.5), 
+        axis.text.y = element_text(face = "plain",size = 10.5)) +
   geom_abline(slope = 1, intercept=0, na.rm = FALSE, show.legend = NA,linetype="dashed",size=1)+
-  theme(legend.position=c(10,10))+   ##去除图例
+  theme(legend.position=c(10,10))+   
   xlim(c(-3.5,3.5))+
   ylim(c(-3.5,3.5))
 
@@ -312,7 +312,7 @@ CTRL_2_3tail_dominant_tes_in_gene <- CTRL_2_3tail_dominant_tes_in_gene[,c(1,2,3,
 
 
 
-#取总和峰
+# combine all peak within a gene
 for(i in grep("_3tail_dominant_tes_in_gene",objects(),value = T)) {
   a <- paste(strsplit(i,split = "_3tail")[[1]][1],'_major <- data.frame()',sep = "")
   eval(parse(text=a))
@@ -382,7 +382,7 @@ rm(CTRL_0_3tail_dominant_tes_in_gene)
 
 
 
-#取最高峰
+#choose hiahest in each gene
 for(i in grep("_3tail_dominant_tes_in_gene",objects(),value = T)) {
   a <- paste(strsplit(i,split = "_3tail")[[1]][1],'_major <- data.frame()',sep = "")
   eval(parse(text=a))
@@ -553,11 +553,11 @@ ggplot(a,aes(x=TES_long_iso_later_devide_former,y=TES_short_iso_later_devide_for
   theme(panel.grid.major=element_blank(),
         panel.grid.minor=element_blank(),
         legend.title = element_blank(),
-        panel.border = element_rect(size = 1.1,linetype = 1), #改外边框
-        axis.text.x = element_text(face = "plain",size = 10.5), #改x轴字体
-        axis.text.y = element_text(face = "plain",size = 10.5)) +#改y轴字体 
+        panel.border = element_rect(size = 1.1,linetype = 1), 
+        axis.text.x = element_text(face = "plain",size = 10.5), 
+        axis.text.y = element_text(face = "plain",size = 10.5)) + 
   geom_abline(slope = 1, intercept=0, na.rm = FALSE, show.legend = NA,linetype="dashed",size=1)+
-  theme(legend.position=c(10,10))+   ##去除图例
+  theme(legend.position=c(10,10))+   
   xlim(c(-3.5,3.5))+
   ylim(c(-3.5,3.5))
 
@@ -598,7 +598,7 @@ CTRL_2_3tail_dominant_tes_in_gene <- CTRL_2_3tail_dominant_tes_in_gene[,c(1,2,3,
 
 
 
-#取总和峰
+#combine all peak within a gene
 for(i in grep("_3tail_dominant_tes_in_gene",objects(),value = T)) {
   a <- paste(strsplit(i,split = "_3tail")[[1]][1],'_major <- data.frame()',sep = "")
   eval(parse(text=a))
