@@ -5,7 +5,6 @@ setwd("G:/CAGEr/CAGEr20190719LEC_APA/")
 library(CAGEr)
 library(rstatix)
 
-???????????????0，1，2分别代表什么
 
 ##--------------形成CAGEset
 for(i in grep("CTRL",list.files(),value = T)) {
@@ -109,13 +108,14 @@ for i in `ls|grep "tes.bed"`; do bedtools intersect -s -a ${i} -b revref_Macfas_
 
 rm(list = ls())
 
+
+
+##### CEC and TAC
 CTRL_0_3tail_dominant_tes_in_gene <- read.table("CTRL_0_3tail_dominant_tes_genebody_downstream2k.bed",header = FALSE)
-CTRL_1_3tail_dominant_tes_in_gene <- read.table("CTRL_1_3tail_dominant_tes_genebody_downstream2k.bed",header = FALSE)
 CTRL_2_3tail_dominant_tes_in_gene <- read.table("CTRL_2_3tail_dominant_tes_genebody_downstream2k.bed",header = FALSE)
 
 
 CTRL_0_3tail_dominant_tes_in_gene <- CTRL_0_3tail_dominant_tes_in_gene[,c(1,2,3,10,5,6)]
-CTRL_1_3tail_dominant_tes_in_gene <- CTRL_1_3tail_dominant_tes_in_gene[,c(1,2,3,10,5,6)]
 CTRL_2_3tail_dominant_tes_in_gene <- CTRL_2_3tail_dominant_tes_in_gene[,c(1,2,3,10,5,6)]
 
 
@@ -140,7 +140,6 @@ for(i in grep("_3tail_dominant_tes_in_gene",objects(),value = T)) {
 
 
 CTRL_0_major[,7] <- rep("CTRL_0",nrow(CTRL_0_major))
-CTRL_1_major[,7] <- rep("CTRL_1",nrow(CTRL_1_major))
 CTRL_2_major[,7] <- rep("CTRL_2",nrow(CTRL_2_major))
 
 
@@ -151,6 +150,273 @@ CTRL_2_major[,7] <- rep("CTRL_2",nrow(CTRL_2_major))
 
 
 ############联合 CRTL0和CTRL1         从这里到下面的，把它们复制到一个新的是script里，然后改CTRL_0,CTRL_1等
+# 1 2 LEC TAC
+# 0 2 CEC TAC
+union <- rbind(CTRL_2_major,CTRL_0_major)
+
+union_2_diff <- data.frame()
+union_2_same <- data.frame()
+union_1 <- data.frame()
+
+for(i in unique(union[,4])) {
+  a <- union[union[,4] %in% i,]
+  if(nrow(a)==2) {
+    if(abs(a[1,3]-a[2,3])<21) union_2_same <- rbind(union_2_same,a)
+    else union_2_diff <- rbind(union_2_diff,a)
+  }
+  if(nrow(a)==1) union_1 <- rbind(union_1,a)
+}
+
+
+union_2_diff_true <- data.frame()
+for(i in 1:(nrow(union_2_diff)/2)) {
+  one <- union_2_diff[2*i-1,]
+  three <- union_2_diff[2*i,]
+  two_tes <- CTRL_0_3tail_dominant_tes_in_gene[CTRL_0_3tail_dominant_tes_in_gene[,4]==one[1,4],]
+  two_tes <- two_tes[order(two_tes[,5],decreasing = TRUE),]
+  d <- two_tes[abs(two_tes[,3]-one[1,3])<21,]
+  two <- data.frame(V1=one[1,1],V2=d[1,2],V3=d[1,3],V10=d[1,4],
+                    V5=d[1,5],V6=one[1,6],V7="CTRL_0")
+  four_tes <- CTRL_2_3tail_dominant_tes_in_gene[CTRL_2_3tail_dominant_tes_in_gene[,4]==three[1,4],]
+  four_tes <- four_tes[order(four_tes[,5],decreasing = TRUE),]
+  d <- four_tes[abs(four_tes[,3]-three[1,3])<21,]
+  four <- data.frame(V1=three[1,1],V2=d[1,2],V3=d[1,3],V10=d[1,4],
+                     V5=d[1,5],V6=three[1,6],V7="CTRL_2")
+  
+  union_2_diff_true <- rbind(union_2_diff_true,one,two,three,four)
+}
+
+
+
+
+
+for(i in 1:(nrow(union_2_diff_true)/4)) {
+  if(is.na(union_2_diff_true[4*i-2,3])) {
+    union_2_diff_true[4*i-2,2] <- union_2_diff_true[4*i-3,2]
+    union_2_diff_true[4*i-2,3] <- union_2_diff_true[4*i-3,3]
+    union_2_diff_true[4*i-2,4] <- union_2_diff_true[4*i-3,4]
+    union_2_diff_true[4*i-2,5] <- 1
+  }
+  if(is.na(union_2_diff_true[4*i,3])) {
+    union_2_diff_true[4*i,2] <- union_2_diff_true[4*i-1,2]
+    union_2_diff_true[4*i,3] <- union_2_diff_true[4*i-1,3]
+    union_2_diff_true[4*i,4] <- union_2_diff_true[4*i-1,4]
+    union_2_diff_true[4*i,5] <- 1
+  }
+}
+
+
+
+
+for(i in 1:(nrow(union_2_diff_true)/4)) {
+  if(union_2_diff_true[4*i-3,6]=="+") {
+    if(union_2_diff_true[4*i-3,3]>union_2_diff_true[4*i-1,3]) {
+      union_2_diff_true[4*i-3,8] <- "long"
+      union_2_diff_true[4*i-2,8] <- "long"
+      union_2_diff_true[4*i-1,8] <- "short"
+      union_2_diff_true[4*i,8] <- "short"
+    }
+    if(union_2_diff_true[4*i-3,3]<union_2_diff_true[4*i-1,3]) {
+      union_2_diff_true[4*i-3,8] <- "short"
+      union_2_diff_true[4*i-2,8] <- "short"
+      union_2_diff_true[4*i-1,8] <- "long"
+      union_2_diff_true[4*i,8] <- "long"
+    }
+  }
+  if(union_2_diff_true[4*i-3,6]=="-") {
+    if(union_2_diff_true[4*i-3,3]>union_2_diff_true[4*i-1,3]) {
+      union_2_diff_true[4*i-3,8] <- "short"
+      union_2_diff_true[4*i-2,8] <- "short"
+      union_2_diff_true[4*i-1,8] <- "long"
+      union_2_diff_true[4*i,8] <- "long"
+    }
+    if(union_2_diff_true[4*i-3,3]<union_2_diff_true[4*i-1,3]) {
+      union_2_diff_true[4*i-3,8] <- "long"
+      union_2_diff_true[4*i-2,8] <- "long"
+      union_2_diff_true[4*i-1,8] <- "short"
+      union_2_diff_true[4*i,8] <- "short"
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+for(i in 1:(nrow(union_2_diff_true)/4)) {
+  a <- union_2_diff_true[(4*i-3):(4*i),]
+  union_2_diff_true[(4*i-3):(4*i),9] <- fisher.test(matrix(c(ceiling(a[a[,7]=="CTRL_2" & a[,8]=="long",5]),
+                                                             ceiling(a[a[,7]=="CTRL_2" & a[,8]=="short",5]),
+                                                             ceiling(a[a[,7]=="CTRL_0" & a[,8]=="long",5]),
+                                                             ceiling(a[a[,7]=="CTRL_0" & a[,8]=="short",5])),byrow = T,nrow = 2))$p.value
+  if(ceiling(a[a[,7]=="CTRL_0" & a[,8]=="long",5])/ceiling(a[a[,7]=="CTRL_0" & a[,8]=="short",5])>ceiling(a[a[,7]=="CTRL_2" & a[,8]=="long",5])/ceiling(a[a[,7]=="CTRL_2" & a[,8]=="short",5])) {
+    union_2_diff_true[(4*i-3):(4*i),10] <- "longer"
+  }
+  if(ceiling(a[a[,7]=="CTRL_0" & a[,8]=="long",5])/ceiling(a[a[,7]=="CTRL_0" & a[,8]=="short",5])<ceiling(a[a[,7]=="CTRL_2" & a[,8]=="long",5])/ceiling(a[a[,7]=="CTRL_2" & a[,8]=="short",5])) {
+    union_2_diff_true[(4*i-3):(4*i),10] <- "shorter"
+  }
+  union_2_diff_true[(4*i-3),11] <- log10(ceiling(a[a[,7]=="CTRL_0" & a[,8]=="long",5])/ceiling(a[a[,7]=="CTRL_2" & a[,8]=="long",5]))
+  union_2_diff_true[(4*i-3),12] <- log10(ceiling(a[a[,7]=="CTRL_0" & a[,8]=="short",5])/ceiling(a[a[,7]=="CTRL_2" & a[,8]=="short",5]))
+}
+
+
+
+for(i in 1:(nrow(union_2_diff_true)/4)) {
+  if(union_2_diff_true[4*i-3,9]<0.05) {
+    if(union_2_diff_true[4*i-3,10]=="longer") {
+      union_2_diff_true[4*i-3,13] <- "Longer"
+    }
+    else union_2_diff_true[4*i-3,13] <- "Shorter"
+  }
+  else union_2_diff_true[4*i-3,13] <- "No change"
+}
+
+
+
+colnames(union_2_diff_true)[9:13] <- c("TES_pvalue","TES_choose_longer?","TES_long_iso_later_devide_former","TES_short_iso_later_devide_former","TES_event")
+
+a <- na.omit(union_2_diff_true)
+
+
+nrow(a[a[,13]=="Longer",])
+nrow(a[a[,13]=="Shorter",])
+nrow(a[a[,13]=="No change",])
+a[,13] <- factor(a[,13],levels = c("No change","Longer","Shorter"))
+
+ggplot(a,aes(x=TES_long_iso_later_devide_former,y=TES_short_iso_later_devide_former,color=TES_event))+
+  geom_point()+
+  labs(x="Fold change of abundance of isoforms with distal TES (log10)",
+       y="Fold change of abundance of isoforms with proximal TESs (log10)") +
+  scale_color_manual(values = c("#BEBEBE","#00CDCD","#FF4500"))+
+  theme_bw()+
+  theme(panel.grid.major=element_blank(),
+        panel.grid.minor=element_blank(),
+        legend.title = element_blank(),
+        panel.border = element_rect(size = 1.1,linetype = 1), #改外边框
+        axis.text.x = element_text(face = "plain",size = 10.5), #改x轴字体
+        axis.text.y = element_text(face = "plain",size = 10.5)) +#改y轴字体 
+  geom_abline(slope = 1, intercept=0, na.rm = FALSE, show.legend = NA,linetype="dashed",size=1)+
+  theme(legend.position=c(10,10))+   ##去除图例
+  xlim(c(-3.5,3.5))+
+  ylim(c(-3.5,3.5))
+
+
+
+
+CTRL_0_3tail_dominant_tes_in_gene <- read.table("CTRL_0_3tail_dominant_tes_genebody_downstream2k.bed",header = FALSE)
+CTRL_2_3tail_dominant_tes_in_gene <- read.table("CTRL_2_3tail_dominant_tes_genebody_downstream2k.bed",header = FALSE)
+
+
+CTRL_0_3tail_dominant_tes_in_gene <- CTRL_0_3tail_dominant_tes_in_gene[,c(1,2,3,10,5,6)]
+CTRL_2_3tail_dominant_tes_in_gene <- CTRL_2_3tail_dominant_tes_in_gene[,c(1,2,3,10,5,6)]
+
+
+
+#取总和峰
+for(i in grep("_3tail_dominant_tes_in_gene",objects(),value = T)) {
+  a <- paste(strsplit(i,split = "_3tail")[[1]][1],'_major <- data.frame()',sep = "")
+  eval(parse(text=a))
+  print(a)
+  a <- paste('temp <- ',i,sep = "")
+  eval(parse(text=a))
+  print(a)
+  for(j in unique(temp[,4])) {
+    b <- temp[temp[,4]==j,]
+    b <- b[order(b[,5],decreasing = T),]
+    b[1,5] <- sum(b[,5])
+    a <- paste(strsplit(i,split = "_3tail")[[1]][1],'_major <- rbind(',strsplit(i,split = "_3tail")[[1]][1],'_major,b[1,])',sep = "")
+    eval(parse(text=a))
+  }
+}
+
+
+a <- na.omit(union_2_diff_true)
+
+longer_gene_RPM_CTRL_2 <- CTRL_2_major[CTRL_2_major[,4] %in% a[a[,13]=="Longer",4],]
+
+longer_gene_RPM_CTRL_0 <- CTRL_0_major[CTRL_0_major[,4] %in% a[a[,13]=="Longer",4],]
+
+temp_1 <- rbind(data.frame(longer_gene_RPM_CTRL_2[,c(4,5)],group="TAC"),   #1
+                data.frame(longer_gene_RPM_CTRL_0[,c(4,5)],group="CEC"))   #1
+
+temp_1[,2] <- log10(temp_1[,2]+1)  #1
+
+
+
+shorter_gene_RPM_CTRL_2 <- CTRL_2_major[CTRL_2_major[,4] %in% a[a[,13]=="Shorter",4],]   
+
+shorter_gene_RPM_CTRL_0 <- CTRL_0_major[CTRL_0_major[,4] %in% a[a[,13]=="Shorter",4],]   
+
+temp_2 <- rbind(data.frame(shorter_gene_RPM_CTRL_2[,c(4,5)],group="TAC"),   #1
+                data.frame(shorter_gene_RPM_CTRL_0[,c(4,5)],group="CEC"))   #1
+
+temp_2[,2] <- log10(temp_2[,2]+1)   #1
+
+
+
+
+
+
+my_comparisons <- list(c("TAC", "CEC"))
+
+
+ggboxplot(temp_1,x="group",y="V5",fill = "group",palette = "jco",  line.size = 0) +
+  stat_compare_means(comparisons = my_comparisons,paired = T, label = "p-value",label.y = 3.5)+
+  scale_y_continuous(breaks = seq(0,3.5,0.5))
+
+ggboxplot(temp_2,x="group",y="V5",fill = "group",palette = "jco",  line.size = 0) +
+  stat_compare_means(comparisons = my_comparisons,paired = T, label = "p-value",label.y = 3.5)+
+  scale_y_continuous(breaks = seq(0,3.5,0.5))
+
+
+
+
+
+
+
+
+##### LEC and TAC
+
+CTRL_1_3tail_dominant_tes_in_gene <- read.table("CTRL_1_3tail_dominant_tes_genebody_downstream2k.bed",header = FALSE)
+CTRL_2_3tail_dominant_tes_in_gene <- read.table("CTRL_2_3tail_dominant_tes_genebody_downstream2k.bed",header = FALSE)
+
+
+CTRL_1_3tail_dominant_tes_in_gene <- CTRL_1_3tail_dominant_tes_in_gene[,c(1,2,3,10,5,6)]
+CTRL_2_3tail_dominant_tes_in_gene <- CTRL_2_3tail_dominant_tes_in_gene[,c(1,2,3,10,5,6)]
+
+
+
+#取最高峰
+for(i in grep("_3tail_dominant_tes_in_gene",objects(),value = T)) {
+  a <- paste(strsplit(i,split = "_3tail")[[1]][1],'_major <- data.frame()',sep = "")
+  eval(parse(text=a))
+  print(a)
+  a <- paste('temp <- ',i,sep = "")
+  eval(parse(text=a))
+  print(a)
+  for(j in unique(temp[,4])) {
+    b <- temp[temp[,4]==j,]
+    b <- b[order(b[,5],decreasing = T),]
+    a <- paste(strsplit(i,split = "_3tail")[[1]][1],'_major <- rbind(',strsplit(i,split = "_3tail")[[1]][1],'_major,b[1,])',sep = "")
+    eval(parse(text=a))
+  }
+}
+
+
+
+
+CTRL_1_major[,7] <- rep("CTRL_1",nrow(CTRL_1_major))
+CTRL_2_major[,7] <- rep("CTRL_2",nrow(CTRL_2_major))
+
+
+
+
+
+
 union <- rbind(CTRL_2_major,CTRL_1_major)
 
 union_2_diff <- data.frame()
@@ -331,12 +597,10 @@ ggplot(a,aes(x=TES_long_iso_later_devide_former,y=TES_short_iso_later_devide_for
 
 
 
-CTRL_0_3tail_dominant_tes_in_gene <- read.table("CTRL_0_3tail_dominant_tes_genebody_downstream2k.bed",header = FALSE)
 CTRL_1_3tail_dominant_tes_in_gene <- read.table("CTRL_1_3tail_dominant_tes_genebody_downstream2k.bed",header = FALSE)
 CTRL_2_3tail_dominant_tes_in_gene <- read.table("CTRL_2_3tail_dominant_tes_genebody_downstream2k.bed",header = FALSE)
 
 
-CTRL_0_3tail_dominant_tes_in_gene <- CTRL_0_3tail_dominant_tes_in_gene[,c(1,2,3,10,5,6)]
 CTRL_1_3tail_dominant_tes_in_gene <- CTRL_1_3tail_dominant_tes_in_gene[,c(1,2,3,10,5,6)]
 CTRL_2_3tail_dominant_tes_in_gene <- CTRL_2_3tail_dominant_tes_in_gene[,c(1,2,3,10,5,6)]
 
@@ -364,10 +628,10 @@ a <- na.omit(union_2_diff_true)
 
 longer_gene_RPM_CTRL_2 <- CTRL_2_major[CTRL_2_major[,4] %in% a[a[,13]=="Longer",4],]
 
-longer_gene_RPM_CTRL_0 <- CTRL_0_major[CTRL_0_major[,4] %in% a[a[,13]=="Longer",4],]
+longer_gene_RPM_CTRL_1 <- CTRL_1_major[CTRL_1_major[,4] %in% a[a[,13]=="Longer",4],]
 
 temp_1 <- rbind(data.frame(longer_gene_RPM_CTRL_2[,c(4,5)],group="TAC"),   #1
-                data.frame(longer_gene_RPM_CTRL_0[,c(4,5)],group="CE"))   #1
+                data.frame(longer_gene_RPM_CTRL_1[,c(4,5)],group="LEC"))   #1
 
 temp_1[,2] <- log10(temp_1[,2]+1)  #1
 
@@ -375,10 +639,10 @@ temp_1[,2] <- log10(temp_1[,2]+1)  #1
 
 shorter_gene_RPM_CTRL_2 <- CTRL_2_major[CTRL_2_major[,4] %in% a[a[,13]=="Shorter",4],]   
 
-shorter_gene_RPM_CTRL_0 <- CTRL_0_major[CTRL_0_major[,4] %in% a[a[,13]=="Shorter",4],]   
+shorter_gene_RPM_CTRL_1 <- CTRL_1_major[CTRL_1_major[,4] %in% a[a[,13]=="Shorter",4],]   
 
 temp_2 <- rbind(data.frame(shorter_gene_RPM_CTRL_2[,c(4,5)],group="TAC"),   #1
-                data.frame(shorter_gene_RPM_CTRL_0[,c(4,5)],group="CE"))   #1
+                data.frame(shorter_gene_RPM_CTRL_1[,c(4,5)],group="LEC"))   #1
 
 temp_2[,2] <- log10(temp_2[,2]+1)   #1
 
@@ -387,20 +651,15 @@ temp_2[,2] <- log10(temp_2[,2]+1)   #1
 
 
 
-my_comparisons <- list(c("TAC", "CE"))
+my_comparisons <- list(c("TAC", "LEC"))
 
-ggpaired(temp_1,x="group",y="V5",fill = "group",palette = "jco", line.color = "grey", line.size = 0) +
-  stat_compare_means(comparisons = my_comparisons,paired = TRUE, label = "p-value",label.y = 3.5)+
+ggboxplot(temp_1,x="group",y="V5",fill = "group",palette = "jco",  line.size = 0) +
+  stat_compare_means(comparisons = my_comparisons,paired = T, label = "p-value",label.y = 3.5)+
   scale_y_continuous(breaks = seq(0,3.5,0.5))
 
 ggboxplot(temp_2,x="group",y="V5",fill = "group",palette = "jco",  line.size = 0) +
   stat_compare_means(comparisons = my_comparisons,paired = T, label = "p-value",label.y = 3.5)+
   scale_y_continuous(breaks = seq(0,3.5,0.5))
-
-
-
-
-#wilcox.test(temp_1[temp_1[,3]=="TAC",2],temp_1[temp_1[,3]=="LE",2],paired = T,alternative = "greater")
 
 
 
