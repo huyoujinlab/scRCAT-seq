@@ -7,7 +7,7 @@ DRG_tes <- read.table("C:/Users/zhong/Desktop/D_dominant_tes_in_gene_1.bed")
 DRG_tss_region <- read.table("C:/Users/zhong/Desktop/D_dominant_tss_in_gene_1_region.bed",sep = "\t")
 DRG_tes_region <- read.table("C:/Users/zhong/Desktop/D_dominant_tes_in_gene_1_region.bed",sep = "\t")
 
-save.image("pie_plot.RData")
+load("pie_plot.RData")
 
 for(i in 1:nrow(DRG_tss)) {
   a <- DRG_tss_region[DRG_tss_region[,1]==DRG_tss[i,1] & DRG_tss_region[,3]==DRG_tss[i,3] & DRG_tss_region[,6]==DRG_tss[i,6],]
