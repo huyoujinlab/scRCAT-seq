@@ -1,27 +1,27 @@
 options(stringsAsFactors = FALSE)
 options(scipen = 100)
 library(CAGEr)
-setwd("G:/CAGEr/CAGEr20190727CAGEr/")
+#setwd("G:/CAGEr/CAGEr20190727CAGEr/")
 
-load("20190727.RData")
-
-
-rm(myCAGEsetC1_CAGE_chr)
-rm(myCAGEsetSTRT_chr)
-rm(myCAGEsetBAT_chr)
-rm(myCAGEsetNAR_chr)
+#load("20190727.RData")
 
 
-myCAGEsetERCC_5cap_filteryes <- new("CAGEset", genomeName = "BSgenome.Ercc92.ZJW.1",
-                                    inputFiles = "G:/CAGEr/CAGEr20190326ERCC/ERCC_5cap_filter_yes.bed", inputFilesType = "bed",
-                                    sampleLabels = "ERCC_5cap_filter_yes")
+#rm(myCAGEsetC1_CAGE_chr)
+#rm(myCAGEsetSTRT_chr)
+#rm(myCAGEsetBAT_chr)
+#rm(myCAGEsetNAR_chr)
 
 
-getCTSS(myCAGEsetERCC_5cap_filteryes,removeFirstG = FALSE,correctSystematicG = FALSE)
+#myCAGEsetERCC_5cap_filteryes <- new("CAGEset", genomeName = "BSgenome.Ercc92.ZJW.1",
+#                                    inputFiles = "G:/CAGEr/CAGEr20190326ERCC/ERCC_5cap_filter_yes.bed", inputFilesType = "bed",
+#                                    sampleLabels = "ERCC_5cap_filter_yes")
+
+
+#getCTSS(myCAGEsetERCC_5cap_filteryes,removeFirstG = FALSE,correctSystematicG = FALSE)
 
 
 
-
+load("sufig1c.RData")
 
 
 #########call peak
