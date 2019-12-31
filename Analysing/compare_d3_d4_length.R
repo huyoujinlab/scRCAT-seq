@@ -12,44 +12,7 @@ library(ggpubr)
 
 
 
-setwd("C:/Users/zhong/Desktop/201907211815")
-
-
-O_dominant_tss_in_gene_1 <- cbind(read.csv("20190717D4_tss_peak_new.csv"),
-                                  read.csv("majority_vote_tss_test_D4.csv")[,c(12,13)])
-O_dominant_tss_in_gene_1 <- O_dominant_tss_in_gene_1[O_dominant_tss_in_gene_1[,17]==1,]
-O_dominant_tss_in_gene_1 <- data.frame(V1=O_dominant_tss_in_gene_1[,2],V2=O_dominant_tss_in_gene_1[,7]-1,V3=O_dominant_tss_in_gene_1[,7],
-                                       V10=O_dominant_tss_in_gene_1[,1],V5=O_dominant_tss_in_gene_1[,6],V6=O_dominant_tss_in_gene_1[,5])
-
-
-P_dominant_tss_in_gene_1 <- cbind(read.csv("20190711D3tss_peak_new.csv"),
-                                  read.csv("majority_vote_tss_test_D3.csv")[,c(12,13)])
-P_dominant_tss_in_gene_1 <- P_dominant_tss_in_gene_1[P_dominant_tss_in_gene_1[,17]==1,]
-P_dominant_tss_in_gene_1 <- data.frame(V1=P_dominant_tss_in_gene_1[,2],V2=P_dominant_tss_in_gene_1[,7]-1,V3=P_dominant_tss_in_gene_1[,7],
-                                       V10=P_dominant_tss_in_gene_1[,1],V5=P_dominant_tss_in_gene_1[,6],V6=P_dominant_tss_in_gene_1[,5])
-
-
-
-
-
-
-
-
-
-O_dominant_tes_in_gene_1 <- cbind(read.csv("20190717D4tes_peak_new.csv"),
-                                  read.csv("majority_vote_tes_test_D4.csv")[,c(12,13)])
-O_dominant_tes_in_gene_1 <- O_dominant_tes_in_gene_1[O_dominant_tes_in_gene_1[,17]==1,]
-O_dominant_tes_in_gene_1 <- data.frame(V1=O_dominant_tes_in_gene_1[,2],V2=O_dominant_tes_in_gene_1[,7]-1,V3=O_dominant_tes_in_gene_1[,7],
-                                       V10=O_dominant_tes_in_gene_1[,1],V5=O_dominant_tes_in_gene_1[,6],V6=O_dominant_tes_in_gene_1[,5])
-
-
-P_dominant_tes_in_gene_1 <- cbind(read.csv("20190711D3tes_peak_new.csv"),
-                                  read.csv("majority_vote_tes_test_D3.csv")[,c(12,13)])
-P_dominant_tes_in_gene_1 <- P_dominant_tes_in_gene_1[P_dominant_tes_in_gene_1[,17]==1,]
-P_dominant_tes_in_gene_1 <- data.frame(V1=P_dominant_tes_in_gene_1[,2],V2=P_dominant_tes_in_gene_1[,7]-1,V3=P_dominant_tes_in_gene_1[,7],
-                                       V10=P_dominant_tes_in_gene_1[,1],V5=P_dominant_tes_in_gene_1[,6],V6=P_dominant_tes_in_gene_1[,5])
-
-
+load("compare_d3_d4_length.RData")
 
 
 
