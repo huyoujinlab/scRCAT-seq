@@ -1,7 +1,7 @@
 options(stringsAsFactors = FALSE)
 options(scipen = 100)
 
-load("data.RData")
+load("ERCC.RData")
 
 tss_rpm <- CTSStagCount(myCAGEsetERCC_5cap_filteryes)
 tss_rpm <- tss_rpm[tss_rpm[,3]=="+",]
@@ -34,7 +34,7 @@ tes_rpm_new[,2] <- tes_rpm_new[,2]/sum(tes_rpm_new[,2])*10^6
 
 
 
-df <- merge(concentration[,c(1,3)],tss_rpm_new,by = "ERCC",all = T)   ########chahge tes or tes
+df <- merge(concentration[,c(1,3)],tss_rpm_new,by = "ERCC",all = T)   ########change tes or tes
 df[is.na(df)] <- 0
 
 df[,2] <- log10(df[,2]+1)
