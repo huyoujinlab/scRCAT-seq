@@ -2,7 +2,6 @@
 
 
 
-#### WARNING: Initial version of code, still a work in progress.
 
 ### This project consists of two parts.
 
