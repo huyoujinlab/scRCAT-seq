@@ -1,5 +1,4 @@
-##注：这里面基本上是最终版的象限图的脚本，这里面只要跑_1的就行了，但这个_1虽然标注是阈值1，但其实是阈值5，
-##阈值10的文件基本不用跑。
+
 
 options(stringsAsFactors = FALSE)
 options(scipen = 100)
@@ -13,7 +12,6 @@ library(ggpubr)
 
 
 
-#------------若用majority vote的数据，运行下面这个
 setwd("C:/Users/zhong/Desktop/201907211815")
 
 
@@ -51,7 +49,6 @@ P_dominant_tes_in_gene_1 <- P_dominant_tes_in_gene_1[P_dominant_tes_in_gene_1[,1
 P_dominant_tes_in_gene_1 <- data.frame(V1=P_dominant_tes_in_gene_1[,2],V2=P_dominant_tes_in_gene_1[,7]-1,V3=P_dominant_tes_in_gene_1[,7],
                                        V10=P_dominant_tes_in_gene_1[,1],V5=P_dominant_tes_in_gene_1[,6],V6=P_dominant_tes_in_gene_1[,5])
 
-#------------若用majority vote的数据，运行上面这个
 
 
 
@@ -125,10 +122,8 @@ for(i in unique(P_merge_1[,1])) {
 }
 
 
-###########20190425注：下面的DOP样本处理还有major isoform不用跑了，因为上面已经跑完
 
 
-##### 联合！O和P#####
 
 O_major_isoform[,8] <- rep("O",nrow(O_major_isoform))
 P_major_isoform[,8] <- rep("P",nrow(P_major_isoform))
@@ -500,11 +495,11 @@ ggplot(a[a[,23]=="no significance",],aes(x=TSS_long_iso_O_devide_P,y=TSS_short_i
   theme(panel.grid.major=element_blank(),
         panel.grid.minor=element_blank(),
         legend.title = element_blank(),
-        panel.border = element_rect(size = 1.1,linetype = 1), #改外边框
-        axis.text.x = element_text(face = "plain",size = 10.5), #改x轴字体
-        axis.text.y = element_text(face = "plain",size = 10.5)) +#改y轴字体 
+        panel.border = element_rect(size = 1.1,linetype = 1), 
+        axis.text.x = element_text(face = "plain",size = 10.5), 
+        axis.text.y = element_text(face = "plain",size = 10.5)) +
   geom_abline(slope = 1, intercept=0, na.rm = FALSE, show.legend = NA,linetype="dashed",size=1)+
-  theme(legend.position=c(10,10))+   ##去除图例
+  theme(legend.position=c(10,10))+   
   xlim(c(-3.5,3.5))+
   ylim(c(-3.5,3.5))
 
@@ -517,11 +512,11 @@ ggplot(a[a[,18]=="no significance",],aes(x=TES_long_iso_O_devide_P,y=TES_short_i
   theme(panel.grid.major=element_blank(),
         panel.grid.minor=element_blank(),
         legend.title = element_blank(),
-        panel.border = element_rect(size = 1.1,linetype = 1), #改外边框
-        axis.text.x = element_text(face = "plain",size = 10.5), #改x轴字体
-        axis.text.y = element_text(face = "plain",size = 10.5)) +#改y轴字体 
+        panel.border = element_rect(size = 1.1,linetype = 1), 
+        axis.text.x = element_text(face = "plain",size = 10.5), 
+        axis.text.y = element_text(face = "plain",size = 10.5)) +
   geom_abline(slope = 1, intercept=0, na.rm = FALSE, show.legend = NA,linetype="dashed",size=1)+
-  theme(legend.position=c(10,10))+   ##去除图例
+  theme(legend.position=c(10,10))+   
   xlim(c(-3.5,3.5))+
   ylim(c(-3.5,3.5))
 
