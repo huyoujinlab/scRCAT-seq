@@ -44,7 +44,7 @@ df[,3] <- log10(df[,3]+1)
 
 
 cor(df[,2:3],method = "spearman")
-ggplot(df, aes(x=Mix1, y=tes_rpm1))+
+ggplot(df, aes(x=Mix1, y=tss_rpm1))+
   geom_point(size=0.9,color="blue")+
   labs(x="log10(ERCC+1)",y="Obversed level")+
   theme_set(theme_bw()) +
