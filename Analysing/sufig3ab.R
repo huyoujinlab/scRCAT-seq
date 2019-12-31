@@ -68,26 +68,6 @@ load("sufig3a.RData")
 load("sufig3b.RData")
 
 
-##############求两端都有的
-#for(i in grep("tss$",grep("CAT_TSS",objects(),value = T),value = T)) {
-#  for(j in grep("tes$",grep("CAT_TES",objects(),value = T),value = T)) {
-#    if(strsplit(strsplit(i,split = "CAT_TSS")[[1]][2],split = "tss")[[1]][1]==strsplit(strsplit(j,split = "CAT_TES")[[1]][2],split = "tes")[[1]][1]) {
-#      a <- paste('CAT_seq',strsplit(strsplit(i,split = "CAT_TSS")[[1]][2],split = "tss")[[1]][1],'simultaneous <- merge(',i,',',j,',by="V2")',sep = "")
-#      print(a)
-#      eval(parse(text=a))
-#    }
-#  }
-#}
-
-#for(i in grep("tss$",grep("SMART_TSS",objects(),value = T),value = T)) {
-#  for(j in grep("tes$",grep("SMART_TES",objects(),value = T),value = T)) {
-#    if(strsplit(strsplit(i,split = "SMART_TSS")[[1]][2],split = "tss")[[1]][1]==strsplit(strsplit(j,split = "SMART_TES")[[1]][2],split = "tes")[[1]][1]) {
-#      a <- paste('SMART_seq',strsplit(strsplit(i,split = "SMART_TSS")[[1]][2],split = "tss")[[1]][1],'simultaneous <- merge(',i,',',j,',by="V2")',sep = "")
-#      print(a)
-#      eval(parse(text=a))
-#    }
-#  }
-#}
 
 
 
@@ -111,7 +91,6 @@ for(i in grep("_sample_",objects(),value = T)) {
                             methods=paste(strsplit(i,split = "_sample_")[[1]][1],strsplit(i,split = "00_")[[1]][2],sep = "_")
   ))
 }
-#  df <- df[df[,3]=="CAT_seq_simultaneous",] #######求cat-seq成本时候用
 
 
 
@@ -124,7 +103,6 @@ df[,2] <- log2(df[,2])
 
 dfc <- summarySE(df, measurevar="number", groupvars=c("size","methods"))
 dfc[,2] <- as.character(dfc[,2])
-#dfc <- dfc[41:80,]
 
 dfc <- dfc[dfc[,2] %in% c("CAT_TSS_tss","STRT_tss","SMART_TSS_tss","C1_CAGE_tss","NAR_tss"),]
 dfc[,2] <- factor(dfc[,2],levels = c("CAT_TSS_tss","STRT_tss","SMART_TSS_tss","C1_CAGE_tss","NAR_tss"),ordered = T)
@@ -160,7 +138,6 @@ ggplot(dfc, aes(x=size, y=number, colour=methods)) +
 
 dfc <- summarySE(df, measurevar="number", groupvars=c("size","methods"))
 dfc[,2] <- as.character(dfc[,2])
-#dfc <- dfc[41:80,]
 #dfc <- dfc[dfc[,2] %in% c("BAT_ESC_tes","CAT_TES_tes","SMART_TES_tes"),]
 #dfc[,2] <- factor(dfc[,2],levels = c("CAT_TES_tes","BAT_ESC_tes","SMART_TES_tes"),ordered = T)
 
