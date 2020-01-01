@@ -12,7 +12,7 @@
 You can switch to the subfolder to get detailed information.
 
 ---
-Some softwares required in this study on linux paltform was listed below:
+on linux:
 
 
 1) Python 2.7.15   
@@ -27,7 +27,9 @@ Some softwares required in this study on linux paltform was listed below:
  
  
 ---
-Some packages required in this study on R 3.5.0 was listed below:
+### Here are some sofewares and packages used in this publication.
+
+on R 3.5.0:
  
 1) basicTrendline 2.0.3   
 2) broom 0.5.2   
@@ -60,7 +62,7 @@ Some packages required in this study on R 3.5.0 was listed below:
  
  
 ---
-Some packages required in this study on python 3.7.1 was listed below:
+on python 3.7.1:
  
 1) pandas 0.25.1  
 2) numpy 1.17.2  
