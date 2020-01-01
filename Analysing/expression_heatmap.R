@@ -286,7 +286,7 @@ no_sign <- as.data.frame(no_sign)
 
 
 
-#########单细胞 read count  这里可以计算nlrp5、tet3、dnmt1
+#########single cell read count  这里可以计算nlrp5、tet3、dnmt1
 for(i in grep("TKD",grep("count",list.files(),value = T),value = T)) {
   a <- paste(strsplit(i,split = "_TKD")[[1]][1],'_count <- read.table("',i,'")',sep = "")
   eval(parse(text=a))
