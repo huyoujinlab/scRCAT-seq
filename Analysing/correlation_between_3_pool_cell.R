@@ -153,7 +153,7 @@ ggplot(ctss_O_new[order(ctss_O_new$dens),], aes(x=V1, y=V2,col=col))+
   theme_set(theme_bw()) +
   
   theme(panel.grid.major=element_line(colour=NA),panel.grid.minor=element_line(colour=NA))+
-  theme(panel.border = element_blank())+ #去除边框
+  theme(panel.border = element_blank())+
   theme(axis.line.x=element_line(linetype=1,color="black",size=1), 
         axis.line.y=element_line(linetype=1,color="black",size=1),
         axis.text.x = element_text(face = "plain",size = 10.5), 
