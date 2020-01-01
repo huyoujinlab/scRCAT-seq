@@ -10,99 +10,9 @@ library(ggalt)
 library(ggsignif)
 library(gridExtra)
 
-
-setwd("C:/Users/zhong/Desktop/20190712peak/")
-a <- read.csv("C:/Users/zhong/Desktop/20190712peak/20190711DRGtss_peak_new.csv")
-a <- data.frame(a[,c(1,5,6,8,11)],peak_length=(a[,4]-a[,3]),dominant_tss_RPM.smart2_seq_RPM=a[,8]/a[,10],a[,c(14,15,13,2,3,4)])
-a[is.na(a)] <- 0
-a[,7][is.infinite(a[,7])] <- 0
-
-logistic_DRG_tss <- read.csv("logistic_tss_test_DRG.csv")
-rf_DRG_tss <- read.csv("rf_tss_test_DRG.csv")
-svm_DRG_tss <- read.csv("SVM_tss_test_DRG.csv")
-
-a <- cbind(a,logistic_DRG_tss[,12],rf_DRG_tss[,12],svm_DRG_tss[,12])
-
-write.table(a[a[,14]==1,c(11,12,13,1,1,2)],"logistic_DRG_tss.bed",quote = FALSE,row.names = FALSE,col.names = FALSE,sep = "\t")
-write.table(a[a[,15]==1,c(11,12,13,1,1,2)],"rf_DRG_tss.bed",quote = FALSE,row.names = FALSE,col.names = FALSE,sep = "\t")
-write.table(a[a[,16]==1,c(11,12,13,1,1,2)],"svm_DRG_tss.bed",quote = FALSE,row.names = FALSE,col.names = FALSE,sep = "\t")
-write.table(a[,c(11,12,13,1,1,2)],"origin_DRG_tss.bed",quote = FALSE,row.names = FALSE,col.names = FALSE,sep = "\t")
-logistic_DRG_tss <- a[a[,14]==1,c(11,12,13,1,1,2)]
-rf_DRG_tss <- a[a[,15]==1,c(11,12,13,1,1,2)]
-svm_DRG_tss <- a[a[,16]==1,c(11,12,13,1,1,2)]
-origin_DRG_tss <- a[,c(11,12,13,1,1,2)]
+load("distance_to_annotation_TSSorTES.RData")
 
 
-
-a <- read.csv("C:/Users/zhong/Desktop/20190712peak/20190711D3tss_peak_new.csv")
-a <- data.frame(a[,c(1,5,6,8,11)],peak_length=(a[,4]-a[,3]),dominant_tss_RPM.smart2_seq_RPM=a[,8]/a[,10],a[,c(14,15,13,2,3,4)])
-a[is.na(a)] <- 0
-a[,7][is.infinite(a[,7])] <- 0
-
-logistic_D3_tss <- read.csv("logistic_tss_test_D3.csv")
-rf_D3_tss <- read.csv("rf_tss_test_D3.csv")
-svm_D3_tss <- read.csv("SVM_tss_test_D3.csv")
-
-a <- cbind(a,logistic_D3_tss[,12],rf_D3_tss[,12],svm_D3_tss[,12])
-
-write.table(a[a[,14]==1,c(11,12,13,1,1,2)],"logistic_D3_tss.bed",quote = FALSE,row.names = FALSE,col.names = FALSE,sep = "\t")
-write.table(a[a[,15]==1,c(11,12,13,1,1,2)],"rf_D3_tss.bed",quote = FALSE,row.names = FALSE,col.names = FALSE,sep = "\t")
-write.table(a[a[,16]==1,c(11,12,13,1,1,2)],"svm_D3_tss.bed",quote = FALSE,row.names = FALSE,col.names = FALSE,sep = "\t")
-write.table(a[,c(11,12,13,1,1,2)],"origin_D3_tss.bed",quote = FALSE,row.names = FALSE,col.names = FALSE,sep = "\t")
-logistic_D3_tss <- a[a[,14]==1,c(11,12,13,1,1,2)]
-rf_D3_tss <- a[a[,15]==1,c(11,12,13,1,1,2)]
-svm_D3_tss <- a[a[,16]==1,c(11,12,13,1,1,2)]
-origin_D3_tss <- a[,c(11,12,13,1,1,2)]
-
-
-
-a <- read.csv("C:/Users/zhong/Desktop/20190712peak/20190711DRGtes_peak_new.csv")
-a <- data.frame(a[,c(1,5,6,8,11)],peak_length=(a[,4]-a[,3]),dominant_tes_RPM.smart2_seq_RPM=a[,8]/a[,10],a[,c(14,15,13,2,3,4)])
-a[is.na(a)] <- 0
-a[,7][is.infinite(a[,7])] <- 0
-
-logistic_DRG_tes <- read.csv("logistic_tes_test_DRG.csv")
-rf_DRG_tes <- read.csv("rf_tes_test_DRG.csv")
-svm_DRG_tes <- read.csv("SVM_tes_test_DRG.csv")
-
-a <- cbind(a,logistic_DRG_tes[,12],rf_DRG_tes[,12],svm_DRG_tes[,12])
-
-write.table(a[a[,14]==1,c(11,12,13,1,1,2)],"logistic_DRG_tes.bed",quote = FALSE,row.names = FALSE,col.names = FALSE,sep = "\t")
-write.table(a[a[,15]==1,c(11,12,13,1,1,2)],"rf_DRG_tes.bed",quote = FALSE,row.names = FALSE,col.names = FALSE,sep = "\t")
-write.table(a[a[,16]==1,c(11,12,13,1,1,2)],"svm_DRG_tes.bed",quote = FALSE,row.names = FALSE,col.names = FALSE,sep = "\t")
-write.table(a[,c(11,12,13,1,1,2)],"origin_DRG_tes.bed",quote = FALSE,row.names = FALSE,col.names = FALSE,sep = "\t")
-logistic_DRG_tes <- a[a[,14]==1,c(11,12,13,1,1,2)]
-rf_DRG_tes <- a[a[,15]==1,c(11,12,13,1,1,2)]
-svm_DRG_tes <- a[a[,16]==1,c(11,12,13,1,1,2)]
-origin_DRG_tes <- a[,c(11,12,13,1,1,2)]
-
-
-
-a <- read.csv("C:/Users/zhong/Desktop/20190712peak/20190711D3tes_peak_new.csv")
-a <- data.frame(a[,c(1,5,6,8,11)],peak_length=(a[,4]-a[,3]),dominant_tes_RPM.smart2_seq_RPM=a[,8]/a[,10],a[,c(14,15,13,2,3,4)])
-a[is.na(a)] <- 0
-a[,7][is.infinite(a[,7])] <- 0
-
-logistic_D3_tes <- read.csv("logistic_tes_test_D3.csv")
-rf_D3_tes <- read.csv("rf_tes_test_D3.csv")
-svm_D3_tes <- read.csv("SVM_tes_test_D3.csv")
-
-a <- cbind(a,logistic_D3_tes[,12],rf_D3_tes[,12],svm_D3_tes[,12])
-
-write.table(a[a[,14]==1,c(11,12,13,1,1,2)],"logistic_D3_tes.bed",quote = FALSE,row.names = FALSE,col.names = FALSE,sep = "\t")
-write.table(a[a[,15]==1,c(11,12,13,1,1,2)],"rf_D3_tes.bed",quote = FALSE,row.names = FALSE,col.names = FALSE,sep = "\t")
-write.table(a[a[,16]==1,c(11,12,13,1,1,2)],"svm_D3_tes.bed",quote = FALSE,row.names = FALSE,col.names = FALSE,sep = "\t")
-write.table(a[,c(11,12,13,1,1,2)],"origin_D3_tes.bed",quote = FALSE,row.names = FALSE,col.names = FALSE,sep = "\t")
-logistic_D3_tes <- a[a[,14]==1,c(11,12,13,1,1,2)]
-rf_D3_tes <- a[a[,15]==1,c(11,12,13,1,1,2)]
-svm_D3_tes <- a[a[,16]==1,c(11,12,13,1,1,2)]
-origin_D3_tes <- a[,c(11,12,13,1,1,2)]
-
-
-
-
-
-gencode <- read.table("G:/CAGEr/CAGEr20190318tata_new/gencode_mm10_all_gene_all_transcript.bed",header = FALSE,sep = "\t")
 gencode_plus <- gencode[gencode[,6]=="+",]
 gencode_minus <- gencode[gencode[,6]=="-",]
 
@@ -162,7 +72,7 @@ ggplot(tss_df,aes(V1,V2,color=V3))+
   
   scale_colour_manual(values=c("red", "blue"),
                       breaks=c("tes","tss"),
-                      labels=c("tes","tss"))+ #改折线颜色  
+                      labels=c("tes","tss"))+ 
   
   geom_xspline(data = tss_df,spline_shape = 1,size=1)+
   
@@ -176,18 +86,15 @@ ggplot(tss_df,aes(V1,V2,color=V3))+
   
   theme(panel.grid.major=element_line(colour=NA),panel.grid.minor=element_line(colour=NA))+
   
-  theme(panel.border = element_blank())+ #去除边框
+  theme(panel.border = element_blank())+
   
-  theme(axis.line.x=element_line(linetype=1,color="black",size=1), #加上x轴
-        axis.line.y=element_line(linetype=1,color="black",size=1), #加上y轴
-        axis.text.x = element_text(face = "plain",size = 10.5,angle=0,hjust = 0.5,vjust = 0.5), #改x轴字体
-        axis.text.y = element_text(face = "plain",size = 10.5), #改y轴字体
+  theme(axis.line.x=element_line(linetype=1,color="black",size=1), 
+        axis.line.y=element_line(linetype=1,color="black",size=1), 
+        axis.text.x = element_text(face = "plain",size = 10.5,angle=0,hjust = 0.5,vjust = 0.5), 
+        axis.text.y = element_text(face = "plain",size = 10.5), 
         axis.title.x = element_text(size = 12),
         axis.title.y = element_text(size = 12),
         legend.position = c(0.8,0.7),
         legend.title = element_blank(),
         legend.text = element_text(size = 9))
-
-
-
 
