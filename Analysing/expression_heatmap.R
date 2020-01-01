@@ -140,7 +140,7 @@ tc_Ptes_minus_upstream_downstream_2k <- tc_Ptes_minus_upstream_downstream_2k[,c(
 
 
 
-########取最高的峰
+######## select hihgest peak
 for(i in objects()[grep("upstream_downstream_2k",objects())]) {
   b <- data.frame()
   d <- paste('for(j in unique(',i,'[,4])) {',
@@ -153,7 +153,7 @@ for(i in objects()[grep("upstream_downstream_2k",objects())]) {
 }
 
 
-##########分水岭 DP
+########## DP
 
 tc_Dtss_plus_upstream_downstream_2k_intersect <- tc_Dtss_plus_upstream_downstream_2k[tc_Dtss_plus_upstream_downstream_2k[,4] %in% tc_Ptss_plus_upstream_downstream_2k[,4],]
 tc_Ptss_plus_upstream_downstream_2k_intersect <- tc_Ptss_plus_upstream_downstream_2k[tc_Ptss_plus_upstream_downstream_2k[,4] %in% tc_Dtss_plus_upstream_downstream_2k[,4],]
@@ -227,10 +227,10 @@ intersect(rownames(no_sign),a[,1])
 
 
 
-#--------------------------------------------20190619前  单细胞输入deseq2
+#--------------------------------------------single cell smart-seq2 DEseq2
 
 
-#########单细胞 read count
+#########single cell read count
 for(i in grep("TKD",grep("count",list.files(),value = T),value = T)) {
   a <- paste(strsplit(i,split = "_TKD")[[1]][1],'_count <- read.table("',i,'")',sep = "")
   eval(parse(text=a))
@@ -244,7 +244,7 @@ for(i in grep("_count",objects(),value = T)) {
   print(a)
 }
 
-df <- df[,c(1:20,25:36)]    ############DP
+df <- df[,c(1:20,25:36)]    ############ DP
 
 
 
@@ -276,11 +276,10 @@ no_sign <- subset(res, padj >= 0.05)
 
 no_sign <- as.data.frame(no_sign)
 
-#no_sign <- no_sign[abs(no_sign[,2])<=2 & no_sign[,6]>=0.05,]    #####可不运行
 
 
 
-#--------------------------------------------20190619后  单细胞输入deseq2
+#--------------------------------------------
 
 
 
@@ -349,7 +348,7 @@ ggboxplot(boxplot, x="variable", y="value", fill = "variable", palette = "jco",x
   #labs(y="log10 (absolute gene expression +1)")+
   stat_compare_means(comparisons = my_comparison,aes(label=p.sign..),label = "p-value", method = "wilcox.test")
 
-#####################smart-seq2定量结束
+#####################smart-seq2 end
 
 
 
