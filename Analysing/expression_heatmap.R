@@ -469,7 +469,7 @@ for(i in grep("CTSS",objects(),value = T)) {
 }
 
 
-############改基因名字
+############change gene name
 for(i in grep("_D$",objects(),value = T)) {
   a <- paste(i,'[,4] <- paste(',i,'[,4],"_D")',sep = "")
   print(a)
@@ -484,7 +484,7 @@ for(i in grep("_P$",objects(),value = T)) {
 }
 
 
-####in_D和in_P合并
+####combne in_D and in_P
 for(i in grep("_D$",objects(),value = T)) {
   a <- paste(strsplit(i,split="_in_")[[1]][1],' <- rbind(',i,',',strsplit(i,split="_in_")[[1]][1],'_in_P)',sep = "")
   print(a)
@@ -498,7 +498,7 @@ for(i in grep("_D$",objects(),value = T)) {
 }
 
 
-########改列名
+########change col name
 for(i in grep("CTSS",objects(),value = T)) {
   a <- paste('colnames(',i,')[5] <- "',strsplit(strsplit(i,split="CTSS_")[[1]][2],split="_5cap")[[1]],'"',sep = "")
   print(a)
@@ -523,7 +523,7 @@ hm_df_5cap <- as.matrix(hm_df_5cap)
 
 write.table(hm_df_5cap,"hm_df_5cap.bed",quote = FALSE,row.names = T,col.names = T,sep = "\t")
 
-##########上面形成heatmap的过程可以不运行，直接就read.table
+##########directely load RData is okay
 hm_df_5cap <- read.table("hm_df_5cap.bed",sep = "\t")
 
 hm_df_5cap <- log10(hm_df_5cap+1)
@@ -531,13 +531,13 @@ hm_df_5cap <- log10(hm_df_5cap+1)
 
 
 
-################选择没有差异的基因
+################choose genes with no significance between group
 rowname <- unlist(lapply(strsplit(rownames(hm_df_5cap),split = " _"), function(x) x[1]))
 
 hm_df_5cap <- hm_df_5cap[rowname %in% rownames(no_sign),]
 
 
-################选择没有差异的基因hou
+
 
 
 
@@ -550,7 +550,6 @@ double <- as.data.frame(table(rowname <- unlist(lapply(strsplit(rownames(hm_df_5
 double <- as.character(double[double[,2]==2,1])
 hm_df_5cap <- hm_df_5cap[unlist(lapply(strsplit(rownames(hm_df_5cap),split = " _"), function(x) x[1])) %in% double,]
 
-##############去除只有一处的基因 hou
 
 
 
@@ -614,11 +613,11 @@ rownames(annotation_col) <- a$tree_col$labels[a$tree_col$order]
 
 
 
-temp <- unlist(lapply(strsplit(rownames(hm_df_5cap),split = "_"), function(x) x[2]))  ###根据isoform分开
+temp <- unlist(lapply(strsplit(rownames(hm_df_5cap),split = "_"), function(x) x[2]))  
 
-temp[temp=="D"] <- "isoform_1"  ###根据isoform分开
+temp[temp=="D"] <- "isoform_1"  
 
-temp[temp=="P"] <- "isoform_2"  ###根据isoform分开
+temp[temp=="P"] <- "isoform_2"  
 
 
 
@@ -630,7 +629,7 @@ ann_colors <- list(celltype = c(Oocyte_D3 = "#1C1C1C", DRG = "#0000CD"),
 
 
 
-rownames(annotation_row) <- rownames(hm_df_5cap)   ###根据iso分开
+rownames(annotation_row) <- rownames(hm_df_5cap)   
 
 
 
@@ -653,7 +652,7 @@ pheatmap(hm_df_5cap,
 #-------------------------------------------------------------------usage heatmap后----------------------------------------------------#
 
 
-################normal heatmap################前
+################normal heatmap################
 
 for(i in grep("CTSS",objects(),value = T)) {
   a <- paste('rm(',i,')',sep = "")
@@ -670,7 +669,7 @@ for(i in grep("upstream",grep("CTSS",list.files(),value = T),value = T)) {
 }
 
 
-###########正负合并及去掉无用对象
+###########combine plus and minus 
 
 for(i in grep("plus",objects(),value = T)) {
   a <- paste(strsplit(i,split="_plus")[[1]][1],strsplit(i,split="_plus")[[1]][2],' <- rbind(',i,',',strsplit(i,split="_plus")[[1]][1],'_minus',strsplit(i,split="_plus")[[1]][2],')',sep = "")
@@ -684,7 +683,7 @@ for(i in grep("plus",objects(),value = T)) {
   eval(parse(text=a))
 }
 
-###########取合并峰
+###########combine all peak
 for(i in grep("CTSS",objects(),value = T)) {
   b <- data.frame()
   d <- paste('for(j in unique(',i,'[,4])) {',
@@ -700,7 +699,7 @@ for(i in grep("CTSS",objects(),value = T)) {
 }
 
 
-########改列名
+########change col name
 for(i in grep("CTSS",objects(),value = T)) {
   a <- paste('colnames(',i,')[5] <- "',strsplit(strsplit(i,split="CTSS_")[[1]][2],split="_5cap")[[1]][1],'"',sep = "")
   print(a)
