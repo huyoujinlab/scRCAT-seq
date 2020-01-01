@@ -1161,3 +1161,387 @@ pheatmap(hm_df_5cap_normal,
 
 
 ################normal heatmap################后
+
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+
+ 
+                      
+#you can direstively load the RData to fastly reproduct the results
+
+
+load("expression_heatmap.RData")
+
+condition <- factor(c(rep("D",19),rep("P",12)))
+
+dds <- DESeqDataSetFromMatrix(smart_seq2_readcount, DataFrame(condition), design= ~ condition )
+
+dds <- DESeq(dds)
+
+res <- results(dds)
+
+mcols(res)
+
+summary(res)
+
+a <- as.data.frame(res)
+
+no_sign <- subset(res, padj >= 0.05)
+
+no_sign <- as.data.frame(no_sign)
+
+
+
+
+
+boxplot <- melt(smart_seq2_RPM[rownames(smart_seq2_RPM) %in% "Grpel1",])
+boxplot[,1] <- as.character(boxplot[,1])
+boxplot[1:19,1] <- "DRG"
+boxplot[20:31,1] <- "oocyte D3"
+boxplot[,2] <- log10(boxplot[,2]+1)
+
+my_comparison <- list(c("DRG","oocyte D3"))
+ggboxplot(boxplot, x="variable", y="value", fill = "variable", palette = "jco",xlab="",legend = "right") + 
+  theme(axis.text.x = element_text(face = "plain",size = 11,angle=45,hjust = 1,vjust = 1),
+        axis.ticks.x = element_blank(),
+        legend.title = element_blank(),
+        axis.text.y = element_text(face = "plain",size = 11),
+        axis.title.x = element_text(face = "plain",size = 13),
+        axis.title.y = element_text(face = "plain",size = 13))+
+  labs(y="log10 (RPM+1)")+
+  #labs(y="log10 (absolute gene expression +1)")+
+  stat_compare_means(comparisons = my_comparison,aes(label=p.sign..),label = "p-value", method = "wilcox.test")
+
+
+
+
+
+
+
+
+
+hm_df_5cap <- log10(hm_df_5cap+1)
+
+
+
+
+################选择没有差异的基因
+rowname <- unlist(lapply(strsplit(rownames(hm_df_5cap),split = " _"), function(x) x[1]))
+
+hm_df_5cap <- hm_df_5cap[rowname %in% rownames(no_sign),]
+
+
+################选择没有差异的基因hou
+
+
+
+
+
+
+################去除只有一处的基因
+
+double <- as.data.frame(table(rowname <- unlist(lapply(strsplit(rownames(hm_df_5cap),split = " _"), function(x) x[1]))))
+double <- as.character(double[double[,2]==2,1])
+hm_df_5cap <- hm_df_5cap[unlist(lapply(strsplit(rownames(hm_df_5cap),split = " _"), function(x) x[1])) %in% double,]
+
+##############去除只有一处的基因 hou
+
+
+
+
+
+
+
+boxplot3 <- melt(hm_df_5cap[rownames(hm_df_5cap) %in% "Grpel1 _D",])
+boxplot4 <- melt(hm_df_5cap[rownames(hm_df_5cap) %in% "Grpel1 _P",])
+
+boxplot <- data.frame(variable=rownames(boxplot),value=boxplot[,1])
+boxplot3[,1] <- as.character(boxplot3[,1])
+boxplot3[1:25,1] <- "DRG"
+boxplot3[26:47,1] <- "oocyte D3"
+
+boxplot4[,1] <- as.character(boxplot4[,1])
+boxplot4[1:25,1] <- "DRG"
+boxplot4[26:47,1] <- "oocyte D3"
+
+
+my_comparison <- list(c("DRG","oocyte D3"))
+ggboxplot(boxplot3, x="variable", y="value", fill = "variable", palette = "jco",xlab="",legend = "right") + 
+  theme(axis.text.x = element_text(face = "plain",size = 11,angle=45,hjust = 1,vjust = 1),
+        axis.ticks.x = element_blank(),
+        legend.title = element_blank(),
+        axis.text.y = element_text(face = "plain",size = 11),
+        axis.title.x = element_text(face = "plain",size = 13),
+        axis.title.y = element_text(face = "plain",size = 13))+
+  labs(y="log10 (RPM+1)")+
+  stat_compare_means(comparisons = my_comparison,aes(label=p.sign..),label = "p-value", method = "wilcox.test")
+
+ggboxplot(boxplot4, x="variable", y="value", fill = "variable", palette = "jco",xlab="",legend = "right") + 
+  theme(axis.text.x = element_text(face = "plain",size = 11,angle=45,hjust = 1,vjust = 1),
+        axis.ticks.x = element_blank(),
+        legend.title = element_blank(),
+        axis.text.y = element_text(face = "plain",size = 11),
+        axis.title.x = element_text(face = "plain",size = 13),
+        axis.title.y = element_text(face = "plain",size = 13))+
+  labs(y="log10 (RPM+1)")+
+  stat_compare_means(comparisons = my_comparison,aes(label=p.sign..),label = "p-value", method = "wilcox.test")
+
+
+
+
+
+
+
+a <- pheatmap(hm_df_5cap,scale="row",col=rev(colorRampPalette(brewer.pal(11, "RdYlGn"))(250)),border_color = F)
+a <- pheatmap(hm_df_5cap)
+
+summary(a)
+
+
+
+order_row= c(seq(1,nrow(hm_df_5cap),2),seq(2,nrow(hm_df_5cap),2))
+hm_df_5cap <- hm_df_5cap[order_row,]
+
+annotation_col = data.frame(celltype=factor(rep(c("Oocyte_D3", "DRG"), c(22,25))))
+
+rownames(annotation_col) <- a$tree_col$labels[a$tree_col$order]
+
+
+
+temp <- unlist(lapply(strsplit(rownames(hm_df_5cap),split = "_"), function(x) x[2]))  ###根据isoform分开
+
+temp[temp=="D"] <- "isoform_1"  ###根据isoform分开
+
+temp[temp=="P"] <- "isoform_2"  ###根据isoform分开
+
+
+
+
+annotation_row = data.frame(isoform=factor(temp))
+
+ann_colors <- list(celltype = c(Oocyte_D3 = "#1C1C1C", DRG = "#0000CD"),
+                   isoform = c(isoform_1 = "#1B9E77", isoform_2 = "#D95F02"))
+
+
+
+rownames(annotation_row) <- rownames(hm_df_5cap)   ###根据iso分开
+
+
+
+pheatmap(hm_df_5cap,
+         scale="row",
+         col=rev(colorRampPalette(brewer.pal(11, "RdYlGn"))(200)),
+         cluster_rows = F,
+         fontsize_row = 5,
+         annotation_colors = ann_colors,
+         annotation_col = annotation_col,
+         annotation_row = annotation_row,
+         show_rownames = F,
+         show_colnames = F,
+         border_color = F)
+
+
+
+hm_df_5cap_normal <- as.matrix(hm_df_5cap_normal)
+hm_df_5cap_normal <- log10(hm_df_5cap_normal+1)
+
+
+##############为了跟usage heatmap一样的gene
+
+hm_df_5cap_normal <- hm_df_5cap_normal[rownames(hm_df_5cap_normal) %in% as.character(as.data.frame(table(unlist(strsplit(rownames(hm_df_5cap),split = " _"))))[,1]),]
+
+##############为了跟usage heatmap一样的gene后
+
+a <- pheatmap(hm_df_5cap_normal,scale="row",col=rev(colorRampPalette(brewer.pal(11, "RdYlGn"))(250)),border_color = F)
+a <- pheatmap(hm_df_5cap_normal)
+summary(a)
+order_row = a$tree_row$order
+hm_df_5cap_normal <- hm_df_5cap_normal[order_row,]
+
+
+annotation_col = data.frame(
+  celltype=factor(rep(c("DRG","Oocyte_D3", "DRG","Oocyte_D3"), c(13,1,12,21))))
+
+ann_colors <- list(celltype = c(Oocyte_D3 = "#1C1C1C", DRG = "#0000CD"))
+
+rownames(annotation_col) <- a$tree_col$labels[a$tree_col$order]
+
+
+pheatmap(hm_df_5cap_normal,
+         scale="row",
+         #color = colorRampPalette(colors = c("blue","white","red"))(100),
+         col=rev(colorRampPalette(brewer.pal(11, "RdYlGn"))(250)),
+         cluster_rows = F,
+         fontsize_row = 5,
+         annotation_colors = ann_colors,
+         annotation_col = annotation_col,
+         show_rownames = F,
+         show_colnames = F,
+         border_color = F)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#3'
+
+
+
+
+
+
+hm_df_3tail <- log10(hm_df_3tail+1)
+
+
+
+
+################选择没有差异的基因
+rowname <- unlist(lapply(strsplit(rownames(hm_df_3tail),split = " _"), function(x) x[1]))
+
+hm_df_3tail <- hm_df_3tail[rowname %in% rownames(no_sign),]
+
+
+################选择没有差异的基因hou
+
+##############去除只有一处的基因
+
+double <- as.data.frame(table(rowname <- unlist(lapply(strsplit(rownames(hm_df_3tail),split = " _"), function(x) x[1]))))
+double <- as.character(double[double[,2]==2,1])
+
+hm_df_3tail <- hm_df_3tail[unlist(lapply(strsplit(rownames(hm_df_3tail),split = " _"), function(x) x[1])) %in% double,]
+
+##############去除只有一处的基因 hou
+
+
+
+
+
+a <- pheatmap(hm_df_3tail,scale="row",col=rev(colorRampPalette(brewer.pal(11, "RdYlGn"))(250)),border_color = F)
+
+summary(a)
+
+
+
+order_row= c(seq(1,nrow(hm_df_3tail),2),seq(2,nrow(hm_df_3tail),2))
+hm_df_3tail <- hm_df_3tail[order_row,]
+
+
+
+annotation_col = data.frame(celltype=factor(rep(c("DRG", "Oocyte_D3"), c(25,22))))
+
+rownames(annotation_col) <- a$tree_col$labels[a$tree_col$order]
+
+
+temp <- unlist(lapply(strsplit(rownames(hm_df_3tail),split = "_"), function(x) x[2]))
+
+temp[temp=="D"] <- "isoform_1"
+
+temp[temp=="P"] <- "isoform_2"
+
+
+
+annotation_row = data.frame(isoform=factor(temp))
+
+
+
+rownames(annotation_row) <- rownames(hm_df_3tail)
+
+
+ann_colors <- list(celltype = c(Oocyte_D3 = "#1C1C1C", DRG = "#0000CD"),
+isoform = c(isoform_1 = "#1B9E77", isoform_2 = "#D95F02"))
+
+
+
+pheatmap(hm_df_3tail,
+  scale="row",
+  col=rev(colorRampPalette(brewer.pal(11, "RdYlGn"))(250)),
+  cluster_rows = F,
+  fontsize_row = 5,
+  annotation_colors = ann_colors,
+  annotation_col = annotation_col,
+  annotation_row = annotation_row,
+  show_rownames = F,
+  show_colnames = F,
+  border_color = F)
+
+
+
+
+##############为了跟usage heatmap一样的gene
+
+hm_df_3tail_normal <- hm_df_3tail_normal[hm_df_3tail_normal[,1] %in% as.character(as.data.frame(table(unlist(strsplit(rownames(hm_df_3tail),split = " _"))))[,1]),]
+
+##############为了跟usage heatmap一样的gene后
+
+rownames(hm_df_3tail_normal) <- hm_df_3tail_normal[,1]
+hm_df_3tail_normal <- hm_df_3tail_normal[,-1]
+hm_df_3tail_normal <- as.matrix(hm_df_3tail_normal)
+hm_df_3tail_normal <- log10(hm_df_3tail_normal+1)
+
+a <- pheatmap(hm_df_3tail_normal,scale="row",col=rev(colorRampPalette(brewer.pal(11, "RdYlGn"))(250)),border_color = F)
+summary(a)
+order_row = a$tree_row$order
+hm_df_3tail_normal <- hm_df_3tail_normal[order_row,]
+
+
+annotation_col = data.frame(celltype=factor(rep(c("Oocyte_D3","DRG"), c(22,25))))
+
+ann_colors <- list(celltype = c(Oocyte_D3 = "#1C1C1C", DRG = "#0000CD"))
+
+rownames(annotation_col) <- a$tree_col$labels[a$tree_col$order]
+
+
+pheatmap(hm_df_3tail_normal,
+  scale="row",
+  col=rev(colorRampPalette(brewer.pal(11, "RdYlGn"))(250)),
+  cluster_rows = F,
+  fontsize_row = 5,
+  annotation_colors = ann_colors,
+  annotation_col = annotation_col,
+  show_rownames = F,
+  show_colnames = F,
+  border_color = F)
+
+
+
+
