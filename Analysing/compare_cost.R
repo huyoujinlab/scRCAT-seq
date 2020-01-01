@@ -22,8 +22,6 @@ library(nlstools)
 
 
 
-catseq <- data.frame(number=c(56.0,125.2,280.1,588.2,749.5,1133.4,1377.7,1926.2,2031.2,2413.1,2829.3,3204.7,3344.3,3542.1,3859.4,4143.5,4408.2,5033.1),
-                     money=c(0.01,0.02,0.04,0.08,0.10,0.16,0.20,0.30,0.32,0.40,0.50,0.60,0.64,0.70,0.80,0.90,1.00,1.28)/0.02*1.82) ##count 2
 
 catseq <- data.frame(number=c(647.5,1225.5,1647.0,2020.5,2365.0,2650.5,2941.5,3191.5,3400.0,3577.0,3790.5,3982.0,4148.0,4374.5,4486.5,4690.5,4794.0,4973.0,5117.5,5194.5,5395.5,5488.5,5609.5,5726.0,5762.5,5912.0,6065.5,6185.5,6261.0,6352.5,6422.0,6509.5,6567.5,6644.0),
                      money=c(0.1,0.2,0.3,0.4,0.5,0.6,0.7,0.8,0.9,1.0,1.1,1.2,1.3,1.4,1.5,1.6,1.7,1.8,1.9,2.0,2.1,2.2,2.3,2.4,2.5,2.6,2.7,2.8,2.9,3.0,3.1,3.2,3.3,3.4)/0.04384678*1.82)   #######新一批测序 0.04384678的转化率
@@ -40,7 +38,7 @@ x1 <- catseq[,2]
 
 ###############pacbio
 know_isoform <- read.table("G:/三代测序数据/单细胞三代测序/result_一致性分析/result/know_venn/trans_know.stat.xls",sep="\t",header=T)
-#know_isoform <- know_isoform[-1,c(-2,-3)]
+
 
 know_isoform <- know_isoform[-1,]
 
@@ -57,7 +55,7 @@ for(i in 2:9) {
 money <- c(0.32,0.35,0.89,0.24,1.03,3.52,0.22,1.31)*7200/8/6.87
 
 
-pacbio <- data.frame(number=c(798,423,785,282,811,1200,356,958),  ######已知转录本，1ccs支持就算
+pacbio <- data.frame(number=c(798,423,785,282,811,1200,356,958), 
                      money=c(0.32,0.35,0.89,0.24,1.03,3.52,0.22,1.31)*7200/8/6.87)
 
 y2 <- pacbio[,1]
@@ -69,8 +67,7 @@ x2 <- pacbio[,2]
 
 
 smartseq <- data.frame(number=c(5.5,10,19.5,45,146,313,478.5,653.5,800.5,966.5,1087.5,1213),
-                       money=c(0.64,1.28,2.56,5,10,20,30,40,50,60,70,80)/0.36*1.82)  #######2 count
-
+                       money=c(0.64,1.28,2.56,5,10,20,30,40,50,60,70,80)/0.36*1.82)  
 
 
 y3 <- smartseq[,1]
@@ -103,9 +100,7 @@ trendline(x3, y3, model="power2P", ePos.x = "topleft", summary=TRUE,
 
 
 
-我们的数据
 
-wt是自变量，mpg是因变量
 
 
 
@@ -234,16 +229,14 @@ quantile(df[,3],probs = seq(0,1,0.025))
 
 
 
-我们的数据
 
-wt是自变量，mpg是因变量
 
 
 library(ggplot2)
 
 
-###去掉一个离群点
-pacbio <- data.frame(wt=c(423,785,282,811,1200,356,958),  ######已知转录本，1ccs支持就算
+###remove 1 outlier
+pacbio <- data.frame(wt=c(423,785,282,811,1200,356,958),  
                      mpg=c(0.35,0.89,0.24,1.03,3.52,0.22,1.31)*7200/8/6.87)
 
 y2 <- pacbio[,1]
@@ -374,14 +367,14 @@ ggplot(a,aes(x=V2,y=V1,fill=V2)) +
   theme_set(theme_bw()) +
   theme(panel.grid.major=element_line(colour=NA),panel.grid.minor=element_line(colour=NA))+
   theme(panel.border = element_blank())+ #去除边框
-  theme(axis.line.x=element_line(linetype=1,color="black",size=1), #加上x轴
-        axis.line.y=element_line(linetype=1,color="black",size=1), #加上y轴
+  theme(axis.line.x=element_line(linetype=1,color="black",size=1), 
+        axis.line.y=element_line(linetype=1,color="black",size=1),
         axis.title.y = element_text(size = 12),
-        axis.text.x = element_text(face = "plain",size = 11,angle=0,hjust = 0.5,vjust = 0.5), #改x轴字体
+        axis.text.x = element_text(face = "plain",size = 11,angle=0,hjust = 0.5,vjust = 0.5),
         axis.text.y = element_text(face = "plain",size = 11),
         axis.ticks.x = element_blank(),
         legend.title = element_blank(),
-        legend.position="none") +  ######去除图例
+        legend.position="none") +  
   #labs(x=element_blank(),y="Number of transcriptst")+
   labs(x=element_blank(),y="Cost") +
   scale_y_continuous(breaks = seq(0,300,50),limits = c(0,300),expand=c(0,0),labels = c("0","50","100","150","200","250","300"))
