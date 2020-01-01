@@ -12,7 +12,7 @@
 You can switch to the subfolder to get detailed information.
 
 ---
-### Here are some sofewares and packages used in this publication.
+### Here are some softwares and packages used in this publication.
 
 on linux:
 
