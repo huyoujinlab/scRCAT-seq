@@ -6,30 +6,25 @@ library(CAGEr)
 
 
 
-load("20190316Dpool,Opool,Ppool,single-cell.RData")
-load("20190310.RData")
-ctss <- CTSStagCount(myCAGEsetSC5cap)
 
-ctss_56 <- ctss[,c(-1,-2,-3)]
-ctss_O <- ctss_56[,grep("O",colnames(ctss_56))]
 
-ctss <- CTSStagCount(myCAGEsetSC5cap)
-ctss_56 <- ctss[,c(-1,-2,-3)]
-ctss_O <- ctss_56[,grep("O",colnames(ctss_56))]
+load("correlation_between_3_pool_cell.RData")
+
+
 
 set.seed(15)
 a <- sample(1:8,size = 3)
 a
-ctss_O_1 <- ctss_O[,a]
+ctss_O_1 <- ctss_O_tss[,a]
 
 
 a <- sample(setdiff(1:8,a),size = 3)
 a
-ctss_O_2 <- ctss_O[,a]
+ctss_O_2 <- ctss_O_tss[,a]
 
 
-ctss_O_1 <- data.frame(ctss[,c(1,2,3)],as.numeric(rowSums(ctss_O_1)))
-ctss_O_2 <- data.frame(ctss[,c(1,2,3)],as.numeric(rowSums(ctss_O_2)))
+ctss_O_1 <- data.frame(ctss_O_tss_first3col[,c(1,2,3)],as.numeric(rowSums(ctss_O_1)))
+ctss_O_2 <- data.frame(ctss_O_tss_first3col[,c(1,2,3)],as.numeric(rowSums(ctss_O_2)))
 
 ctss_O_1 <- ctss_O_1[!ctss_O_1[,4]==0,]
 ctss_O_2 <- ctss_O_2[!ctss_O_2[,4]==0,]
@@ -66,15 +61,15 @@ ctss_O_new$col <- cols[ctss_O_new$dens]
 ctss_O_new <- unique(ctss_O_new)
 
 cols <-  colorRampPalette(c("#000099", "#00FEFF", "#45FE4F", 
-                            "#FCFF00", "#FF9400", "#FF3100"))(15) 
+                            "#FCFF00", "#FF9400", "#FF3100"))(15)  
 
-###20190428
+
 ggplot(ctss_O_new[order(ctss_O_new$dens),], aes(x=V1, y=V2,col=col))+
   geom_point(size=0.9)+
-  labs(x="log10(RPM+1,12 cells pooled)",y="log10(RPM+1,12 cells pooled)")+
+  labs(x="log10(RPM+1,3 cells pooled)",y="log10(RPM+1,3 cells pooled)")+
   theme_set(theme_bw()) +
   theme(panel.grid.major=element_line(colour=NA),panel.grid.minor=element_line(colour=NA))+
-  theme(panel.border = element_blank())+ #去除边框
+  theme(panel.border = element_blank())+ 
   theme(axis.line.x=element_line(linetype=1,color="black",size=1), 
         axis.line.y=element_line(linetype=1,color="black",size=1), 
         axis.text.x = element_text(face = "plain",size = 10.5), 
@@ -91,23 +86,21 @@ ggplot(ctss_O_new[order(ctss_O_new$dens),], aes(x=V1, y=V2,col=col))+
 
 
 
-ctss <- CTSStagCount(myCAGEsetSC3tail)
-ctss_56 <- ctss[,c(-1,-2,-3)]
-ctss_O <- ctss_56[,grep("O",colnames(ctss_56))]
+
 
 set.seed(14)
 a <- sample(1:8,size = 3)
 a
-ctss_O_1 <- ctss_O[,a]
+ctss_O_1 <- ctss_O_tes[,a]
 
 
 a <- sample(setdiff(1:8,a),size = 3)
 a
-ctss_O_2 <- ctss_O[,a]
+ctss_O_2 <- ctss_O_tes[,a]
 
 
-ctss_O_1 <- data.frame(ctss[,c(1,2,3)],as.numeric(rowSums(ctss_O_1)))
-ctss_O_2 <- data.frame(ctss[,c(1,2,3)],as.numeric(rowSums(ctss_O_2)))
+ctss_O_1 <- data.frame(ctss_O_tes_first3col[,c(1,2,3)],as.numeric(rowSums(ctss_O_1)))
+ctss_O_2 <- data.frame(ctss_O_tes_first3col[,c(1,2,3)],as.numeric(rowSums(ctss_O_2)))
 
 ctss_O_1 <- ctss_O_1[!ctss_O_1[,4]==0,]
 ctss_O_2 <- ctss_O_2[!ctss_O_2[,4]==0,]
@@ -145,17 +138,16 @@ ctss_O_new <- unique(ctss_O_new)
 
 cols <-  colorRampPalette(c("#000099", "#00FEFF", "#45FE4F", 
                             "#FCFF00", "#FF9400", "#FF3100"))(17)  
-                            
-                            
+
+
 ggplot(ctss_O_new[order(ctss_O_new$dens),], aes(x=V1, y=V2,col=col))+
   geom_point(size=0.9)+
-  labs(x="log10(RPM+1,12 cells pooled)",y="log10(RPM+1,12 cells pooled)")+
+  labs(x="log10(RPM+1,3 cells pooled)",y="log10(RPM+1,3 cells pooled)")+
   theme_set(theme_bw()) +
-  
   theme(panel.grid.major=element_line(colour=NA),panel.grid.minor=element_line(colour=NA))+
-  theme(panel.border = element_blank())+
-  theme(axis.line.x=element_line(linetype=1,color="black",size=1), 
-        axis.line.y=element_line(linetype=1,color="black",size=1),
+  theme(panel.border = element_blank())+ 
+  theme(axis.line.x=element_line(linetype=1,color="black",size=1),
+        axis.line.y=element_line(linetype=1,color="black",size=1), 
         axis.text.x = element_text(face = "plain",size = 10.5), 
         axis.text.y = element_text(face = "plain",size = 10.5), 
         legend.position="none") +
