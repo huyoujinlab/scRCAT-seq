@@ -90,7 +90,7 @@ write.table(tc_Ptes_minus,file = "tc_Ptes_minus.bed",quote = FALSE,row.names = F
 
 
 
-##########bedtools intersect
+########## bedtools intersect
 
 #bedtools intersect -a tc_Dtss_plus.bed -b gencode_mm10_all_gene_upstream_downstream_2k_plus.bed -wa -wb > tc_Dtss_plus_upstream_downstream_2k.bed
 #bedtools intersect -a tc_Otss_plus.bed -b gencode_mm10_all_gene_upstream_downstream_2k_plus.bed -wa -wb > tc_Otss_plus_upstream_downstream_2k.bed
@@ -438,7 +438,7 @@ for(i in grep("_in_",grep("CTSS",list.files(),value = T),value = T)) {
 
 
 
-###########正负合并及去掉无用对象
+###########combine plus and minus
 
 for(i in grep("plus",objects(),value = T)) {
   a <- paste(strsplit(i,split="_plus")[[1]][1],strsplit(i,split="_plus")[[1]][2],' <- rbind(',i,',',strsplit(i,split="_plus")[[1]][1],'_minus',strsplit(i,split="_plus")[[1]][2],')',sep = "")
@@ -453,7 +453,7 @@ for(i in grep("plus",objects(),value = T)) {
 }
 
 
-###########取合并峰
+###########combine all peaks within a gene
 for(i in grep("CTSS",objects(),value = T)) {
   b <- data.frame()
   d <- paste('for(j in unique(',i,'[,4])) {',
@@ -544,7 +544,7 @@ hm_df_5cap <- hm_df_5cap[rowname %in% rownames(no_sign),]
 
 
 
-##############去除只有一处的基因
+##############
 
 double <- as.data.frame(table(rowname <- unlist(lapply(strsplit(rownames(hm_df_5cap),split = " _"), function(x) x[1]))))
 double <- as.character(double[double[,2]==2,1])
@@ -728,17 +728,16 @@ hm_df_5cap_normal <- as.matrix(hm_df_5cap_normal)
 #write.table(hm_df_5cap_normal,"hm_df_5cap_normal.bed",quote = FALSE,row.names = T,col.names = T,sep = "\t")
 
 
-############可以直接运行read.table()
+############directely read.table()
 hm_df_5cap_normal <- read.table("hm_df_5cap_normal.bed",sep = "\t")
 hm_df_5cap_normal <- as.matrix(hm_df_5cap_normal)
 hm_df_5cap_normal <- log10(hm_df_5cap_normal+1)
 
 
-##############为了跟usage heatmap一样的gene
-
+##############
 hm_df_5cap_normal <- hm_df_5cap_normal[rownames(hm_df_5cap_normal) %in% as.character(as.data.frame(table(unlist(strsplit(rownames(hm_df_5cap),split = " _"))))[,1]),]
 
-##############为了跟usage heatmap一样的gene后
+
 
 a <- pheatmap(hm_df_5cap_normal,scale="row",col=rev(colorRampPalette(brewer.pal(11, "RdYlGn"))(250)),border_color = F)
 a <- pheatmap(hm_df_5cap_normal)
@@ -770,8 +769,8 @@ pheatmap(hm_df_5cap_normal,
 
 
 
-################normal heatmap################后
 
+                      
 
 
 
@@ -811,8 +810,8 @@ pheatmap(hm_df_5cap_normal,
 ###3'
 
 
-load("G:/CAGEr/CAGEr20190506usageheatmap/20190316Dpool,Opool,Ppool,single-cell.RData")
 
+                      
 
 
 
@@ -875,7 +874,7 @@ for i in `ls|grep "^CTES_"|grep "minus.bed$"`; do bedtools intersect -a ${i} -b 
 
 
 
-#-------------------------------------------------------------------usage heatmap前----------------------------------------------------#
+#----------------------------------------------------------------------------------------------------------------------#
 for(i in grep("CTES",objects(),value = T)) {
   a <- paste('rm(',i,')',sep = "")
   print(a)
@@ -894,7 +893,7 @@ for(i in grep("_in_",grep("CTES",list.files(),value = T),value = T)) {
 
 
 
-###########正负合并及去掉无用对象
+###########combine plus and minus
 
 for(i in grep("plus",objects(),value = T)) {
   a <- paste(strsplit(i,split="_plus")[[1]][1],strsplit(i,split="_plus")[[1]][2],' <- rbind(',i,',',strsplit(i,split="_plus")[[1]][1],'_minus',strsplit(i,split="_plus")[[1]][2],')',sep = "")
@@ -909,7 +908,7 @@ for(i in grep("plus",objects(),value = T)) {
 }
 
 
-###########取合并峰
+###########combine all peak within a gene
 for(i in grep("CTES",objects(),value = T)) {
   b <- data.frame()
   d <- paste('for(j in unique(',i,'[,4])) {',
@@ -925,7 +924,7 @@ for(i in grep("CTES",objects(),value = T)) {
 }
 
 
-############改基因名字
+############change gene name
 for(i in grep("_D$",objects(),value = T)) {
   a <- paste(i,'[,4] <- paste(',i,'[,4],"_D")',sep = "")
   print(a)
@@ -940,7 +939,7 @@ for(i in grep("_P$",objects(),value = T)) {
 }
 
 
-####in_D和in_P合并
+####combine in_D and in_P
 for(i in grep("_D$",objects(),value = T)) {
   a <- paste(strsplit(i,split="_in_")[[1]][1],' <- rbind(',i,',',strsplit(i,split="_in_")[[1]][1],'_in_P)',sep = "")
   print(a)
@@ -954,7 +953,7 @@ for(i in grep("_D$",objects(),value = T)) {
 }
 
 
-########改列名
+########change col name
 for(i in grep("CTES",objects(),value = T)) {
   a <- paste('colnames(',i,')[5] <- "',strsplit(strsplit(i,split="CTES_")[[1]][2],split="_5cap")[[1]],'"',sep = "")
   print(a)
@@ -981,21 +980,20 @@ hm_df_5cap <- log10(hm_df_5cap+1)
 
 
 
-################选择没有差异的基因
+################
 rowname <- unlist(lapply(strsplit(rownames(hm_df_5cap),split = " _"), function(x) x[1]))
 
 hm_df_5cap <- hm_df_5cap[rowname %in% rownames(no_sign),]
 
 
-################选择没有差异的基因hou
 
-##############去除只有一处的基因
+
+##############
 
 double <- as.data.frame(table(rowname <- unlist(lapply(strsplit(rownames(hm_df_5cap),split = " _"), function(x) x[1]))))
 double <- as.character(double[double[,2]==2,1])
 hm_df_5cap <- hm_df_5cap[unlist(lapply(strsplit(rownames(hm_df_5cap),split = " _"), function(x) x[1])) %in% double,]
 
-##############去除只有一处的基因 hou
 
 
 
@@ -1029,7 +1027,7 @@ annotation_row = data.frame(isoform=factor(temp))
 
 
 
-################下面2条命令，2选1！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+###############
 rownames(annotation_row) <- rownames(hm_df_5cap)
 
 
@@ -1052,12 +1050,12 @@ pheatmap(hm_df_5cap,
          border_color = F)
 
 
-#-------------------------------------------------------------------usage heatmap后----------------------------------------------------#
+#---------------------------------------------------------------------------------------------------------------------#
 
 
 
-################normal heatmap################前
 
+                      
 for(i in grep("CTES",objects(),value = T)) {
   a <- paste('rm(',i,')',sep = "")
   print(a)
@@ -1073,7 +1071,7 @@ for(i in grep("upstream",grep("CTES",list.files(),value = T),value = T)) {
 }
 
 
-###########正负合并及去掉无用对象
+###########combine plus and minus
 
 for(i in grep("plus",objects(),value = T)) {
   a <- paste(strsplit(i,split="_plus")[[1]][1],strsplit(i,split="_plus")[[1]][2],' <- rbind(',i,',',strsplit(i,split="_plus")[[1]][1],'_minus',strsplit(i,split="_plus")[[1]][2],')',sep = "")
@@ -1087,7 +1085,7 @@ for(i in grep("plus",objects(),value = T)) {
   eval(parse(text=a))
 }
 
-###########取合并峰
+###########combine all peak within a gene
 for(i in grep("CTES",objects(),value = T)) {
   b <- data.frame()
   d <- paste('for(j in unique(',i,'[,4])) {',
@@ -1103,7 +1101,7 @@ for(i in grep("CTES",objects(),value = T)) {
 }
 
 
-########改列名
+########change col name
 for(i in grep("CTES",objects(),value = T)) {
   a <- paste('colnames(',i,')[5] <- "',strsplit(strsplit(i,split="CTES_")[[1]][2],split="_3tail")[[1]][1],'"',sep = "")
   print(a)
@@ -1121,11 +1119,11 @@ for(i in 2:length(objects()[grep("CTES",objects())])) {
 hm_df_5cap_normal[is.na(hm_df_5cap_normal)] <- 0
 
 
-##############为了跟usage heatmap一样的gene
+##############
 
 hm_df_5cap_normal <- hm_df_5cap_normal[hm_df_5cap_normal[,1] %in% as.character(as.data.frame(table(unlist(strsplit(rownames(hm_df_5cap),split = " _"))))[,1]),]
 
-##############为了跟usage heatmap一样的gene后
+
 
 rownames(hm_df_5cap_normal) <- hm_df_5cap_normal[,1]
 hm_df_5cap_normal <- hm_df_5cap_normal[,-1]
@@ -1160,7 +1158,6 @@ pheatmap(hm_df_5cap_normal,
 
 
 
-################normal heatmap################后
 
                       
                       
@@ -1196,6 +1193,9 @@ pheatmap(hm_df_5cap_normal,
                       
 
  
+        
+                      
+                      
                       
 #you can direstively load the RData to fastly reproduct the results
 
