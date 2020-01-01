@@ -18,7 +18,7 @@ library(heatmap.plus)
 #rm(myCAGEsetD47_71_5cap)
 
 
-####5' 单细胞callpeak
+####5' single cell callpeak
 #for(i in objects()[grep("5cap",objects())]) {
 #  a <- paste('normalizeTagCount(',i,', method = "simpleTpm", fitInRange = c(10,1000),alpha = 1.19, T = 10^6)',sep = "\t")
 #  eval(parse(text=a))
@@ -27,7 +27,7 @@ library(heatmap.plus)
 #}
 
 
-####3' 单细胞callpeak
+####3' single cell callpeak
 #for(i in objects()[grep("3tail",objects())]) {
 #  a <- paste('normalizeTagCount(',i,', method = "simpleTpm", fitInRange = c(10,1000),alpha = 1.19, T = 10^6)',sep = "\t")
 #  eval(parse(text=a))
@@ -75,13 +75,13 @@ library(heatmap.plus)
 #  eval(parse(text=a))
 #}
 
-##输出dominant plus
+##output dominant plus
 #for(i in grep("plus",objects(),value = TRUE)) {
 #  a <- paste('write.table(',i,',"',paste(i,'.bed',sep = ""),'",quote = FALSE,row.names = FALSE,col.names = FALSE,sep = "\t")',sep = "")
 #  eval(parse(text=a))
 #}
 
-##输出dominant minus
+##output dominant minus
 #for(i in grep("minus",objects(),value = TRUE)) {
 #  a <- paste('write.table(',i,',"',paste(i,'.bed',sep = ""),'",quote = FALSE,row.names = FALSE,col.names = FALSE,sep = "\t")',sep = "")
 #  eval(parse(text=a))
@@ -125,14 +125,13 @@ for(i in grep("stream",objects(),value = T)) {
 
 
 
-###正负合并
+###combine plus and minus
 for(i in grep("plus",grep("stream",objects(),value = T),value = T)) {
   a <- paste(strsplit(i,split = "plus")[[1]][1],strsplit(i,split = "plus_")[[1]][2],' <- rbind(',i,',',strsplit(i,split = "plus")[[1]][1],'minus',strsplit(i,split = "plus")[[1]][2],')',sep = "")
   eval(parse(text=a))
   print(a)
 }
 
-#找回原来的值
 
 
 for(i in grep("cap",grep("myCAGEset",objects(),value = T),value = T)) {
@@ -159,7 +158,7 @@ for(i in grep("tail",grep("myCAGEset",objects(),value = T),value = T)) {
 
 
 
-##输出
+##output
 for(i in grep("tss_gene",objects(),value = T)) {
   a <- paste('write.table(',i,',"',paste(i,'.ctss',sep = ""),'",quote = FALSE,row.names = FALSE,col.names = FALSE,sep = "\t")',sep = "")
   eval(parse(text=a))
@@ -235,11 +234,10 @@ for(i in 1:nrow(cor_tes_df)) {
 
 pdf(file=paste("heat_cor_5cap.pdf", sep=""), height = 10, width = 10)
 
-heatmap.2(cor_tss_df, ##对象
-          Rowv=TRUE, Colv="Rowv", dendrogram='row', ##聚类对象，要保持一致
-          trace='none', # trace可以给每个色块中添加一条线，与行平行或者与列平行。其与色块中心的距离代表了这个值被显示的比例
-          scale = "none", # 标准化
-          # 调整热图大小比例
+heatmap.2(cor_tss_df, 
+          Rowv=TRUE, Colv="Rowv", dendrogram='row',
+          trace='none',
+          scale = "none", 
           col=rev(colorRampPalette(brewer.pal(11, "RdYlGn"))(250)),
           symbreaks = FALSE,
           breaks = seq(0,1,0.004),
@@ -253,17 +251,14 @@ heatmap.2(cor_tss_df, ##对象
           density.info="none") 
 legend("topright",      # location of the legend on the heatmap plot
        legend = c("DRG", "Oocyte D3", "Oocyte D4"), # category labels
-       #col = c("#0000CD", "#1C1C1C", "#A52A2A"),  # color key
        fill = c("#0000CD", "#1C1C1C", "#A52A2A"),  # color key
        border = c("#0000CD", "#1C1C1C", "#A52A2A"))
-dev.off() ##这个在图形出不来时有用
-
+dev.off() 
 pdf(file=paste("heat_cor_3tail.pdf", sep=""), height = 10, width = 10)
-heatmap.2(cor_tes_df, ##对象
-          Rowv=TRUE, Colv="Rowv", dendrogram='row', ##聚类对象，要保持一致
-          trace='none', # trace可以给每个色块中添加一条线，与行平行或者与列平行。其与色块中心的距离代表了这个值被显示的比例
-          scale = "none", # 标准化
-          # 调整热图大小比例
+heatmap.2(cor_tes_df, 
+          Rowv=TRUE, Colv="Rowv", dendrogram='row',
+          trace='none',
+          scale = "none",
           col=rev(colorRampPalette(brewer.pal(11, "RdYlGn"))(250)),
           symbreaks = FALSE,
           breaks = seq(0,1,0.004),
@@ -276,8 +271,7 @@ heatmap.2(cor_tes_df, ##对象
           labRow = "",
           density.info="none") 
 
-dev.off() ##这个在图形出不来时有用
-
+dev.off() 
 
 
 
