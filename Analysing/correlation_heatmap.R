@@ -1,21 +1,13 @@
 options(stringsAsFactors = FALSE)
 options(scipen = 100)
-setwd("G:/CAGEr/CAGEr20190318isoform_heatmap/")
 library(CAGEr)
 library(pheatmap)
 library(gplots)
 library(RColorBrewer)
 library(heatmap.plus)
-#load("20190316Dpool,Opool,Ppool,single-cell.RData")
 
-#rm(myCAGEsetDtss)
-#rm(myCAGEsetOtss)
-#rm(myCAGEsetPtss)
-#rm(myCAGEsetDtes)
-#rm(myCAGEsetOtes)
-#rm(myCAGEsetPtes)
-#rm(myCAGEsetD47_71_3tail)
-#rm(myCAGEsetD47_71_5cap)
+
+#make sure that no *ctss files are in working directory
 
 
 ####5' single cell callpeak
@@ -103,13 +95,15 @@ library(heatmap.plus)
 rm(list = ls())
 
 
-for(i in grep("bed",grep("stream",list.files(),value = T),value = T)) {
-  a <- paste(strsplit(i,split = "[.]")[[1]][1],' <- read.table("',i,'",header = FALSE)',sep = "")
-  eval(parse(text=a))
-  print(a)
-}
+#for(i in grep("bed",grep("stream",list.files(),value = T),value = T)) {
+#  a <- paste(strsplit(i,split = "[.]")[[1]][1],' <- read.table("',i,'",header = FALSE)',sep = "")
+#  eval(parse(text=a))
+#  print(a)
+#}
 
-save.image("correlation_heatmap.RData")
+load("correlation_heatmap.RData")
+load("correlation_heatmap1.RData")
+load("correlation_heatmap2.RData")
 
 for(i in grep("stream",objects(),value = T)) {
   a <- paste(i,' <- ',i,'[,c(1,3,6,4)]',sep = "")
@@ -137,20 +131,26 @@ for(i in grep("plus",grep("stream",objects(),value = T),value = T)) {
 for(i in grep("cap",grep("myCAGEset",objects(),value = T),value = T)) {
   a <- paste('b <- CTSStagCount(',i,')',sep = "")
   eval(parse(text=a))
+  print(a)
   a <- 'b <- sum(b[,4])'
   eval(parse(text=a))
+  print(a)
   a <- paste(strsplit(i,split = "myCAGEset")[[1]][2],'_dominant_tss_upstream2k_and_genebody[,4] <- round(',strsplit(i,split = "myCAGEset")[[1]][2],'_dominant_tss_upstream2k_and_genebody[,4]/1000000*',b,')',sep = "")
   eval(parse(text=a))
+  print(a)
 }
 
 
 for(i in grep("tail",grep("myCAGEset",objects(),value = T),value = T)) {
   a <- paste('b <- CTSStagCount(',i,')',sep = "")
   eval(parse(text=a))
+  print(a)
   a <- 'b <- sum(b[,4])'
   eval(parse(text=a))
+  print(a)
   a <- paste(strsplit(i,split = "myCAGEset")[[1]][2],'_dominant_tss_gene_genebody_and_downstream20k[,4] <- round(',strsplit(i,split = "myCAGEset")[[1]][2],'_dominant_tss_gene_genebody_and_downstream20k[,4]/1000000*',b,')',sep = "")
   eval(parse(text=a))
+  print(a)
 }
 
 
@@ -254,6 +254,7 @@ legend("topright",      # location of the legend on the heatmap plot
        fill = c("#0000CD", "#1C1C1C", "#A52A2A"),  # color key
        border = c("#0000CD", "#1C1C1C", "#A52A2A"))
 dev.off() 
+
 pdf(file=paste("heat_cor_3tail.pdf", sep=""), height = 10, width = 10)
 heatmap.2(cor_tes_df, 
           Rowv=TRUE, Colv="Rowv", dendrogram='row',
