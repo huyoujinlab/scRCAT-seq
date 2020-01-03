@@ -1,8 +1,12 @@
 options(stringsAsFactors = FALSE)
 options(scipen = 100)
 library(reshape)
+library(ggpubr)
+library(pheatmap)
+library(RColorBrewer)
+library(DESeq2)
 
-setwd("G:/CAGEr/CAGEr20190616/")
+#you can direstively switch to 1200 row  to fastly reproduct the results
 
 load("G:/CAGEr/CAGEr20190506usageheatmap/20190316Dpool,Opool,Ppool,single-cell.RData")
 
@@ -1192,11 +1196,7 @@ pheatmap(hm_df_5cap_normal,
                       
                       
 
- 
-        
-                      
-                      
-                      
+                    
 #you can direstively load the RData to fastly reproduct the results
 
 
