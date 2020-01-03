@@ -6,7 +6,7 @@ library(statmod)
 library(BuenColors)
 library(DESeq2)
 
-load("calculate_CV.RData")
+load("calculate_cv.RData")
 
 
 
