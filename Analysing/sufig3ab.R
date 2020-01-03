@@ -10,7 +10,7 @@ library(broom)
 library(dplyr)
 library(nlstools)
 
-setwd("G:/CAGEr/CAGEr20190704sensitivity_new/")   #####做对比图就选这个
+#setwd("G:/CAGEr/CAGEr20190704sensitivity_new/")   #####做对比图就选这个
 
 
 ##############一般从这里开始
@@ -172,30 +172,3 @@ ggplot(dfc, aes(x=size, y=number, colour=methods)) +
         legend.text = element_text(size = 9))
 
 
-#dfc <- summarySE(df, measurevar="number", groupvars=c("size","methods"))
-#dfc[,2] <- as.character(dfc[,2])
-dfc <- dfc[41:80,]
-dfc <- dfc[dfc[,2] %in% c("CAT-seq simultaneous","Smart-seq2 simultaneous"),]
-ggplot(dfc, aes(x=size, y=number, colour=methods)) +
-  geom_errorbar(aes(ymin=number-se, ymax=number+se), width=0.1,size=0.8) +
-  geom_line(size=1) +
-  #geom_point()+
-  scale_x_continuous(breaks = seq(log2(5000*2^1),log2(5000*2^8),1),
-                     labels = c("0.01M","0.02M","0.04M","0.08M","0.16M","0.32M","0.64M","1.28M"))+
-  #scale_y_continuous(limits = c(0,7000))+
-  scale_colour_manual(values=c("#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"))+ #改折线颜色
-  labs(x="reads of uniquely map",y="number of end detected")+
-  guides(fill=guide_legend(title=NULL))+
-  theme_set(theme_bw()) +
-  theme(panel.grid.major=element_line(colour=NA),panel.grid.minor=element_line(colour=NA))+
-  #theme(panel.background = element_blank())+
-  theme(panel.border = element_blank())+ #去除边框
-  theme(axis.line.x=element_line(linetype=1,color="black",size=1), #加上x轴
-        axis.line.y=element_line(linetype=1,color="black",size=1), #加上y轴
-        axis.text.x = element_text(face = "plain",size = 10.5,angle=45,hjust = 1,vjust = 1), #改x轴字体
-        axis.text.y = element_text(face = "plain",size = 10.5), #改y轴字体
-        axis.title.x = element_text(size = 12),
-        axis.title.y = element_text(size = 12),
-        legend.position = c(0.75,0.25),
-        legend.title = element_blank(),
-        legend.text = element_text(size = 9))
