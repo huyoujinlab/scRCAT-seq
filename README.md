@@ -14,7 +14,7 @@ You can switch to the subfolder to get detailed information.
 ---
 ### Here are some softwares and packages used in this publication.
 
-on linux:
+On linux:
 
 
 1) Python 2.7.15   
@@ -30,7 +30,7 @@ on linux:
  
 ---
 
-on R 3.5.0:
+On R 3.5.0:
  
 1) basicTrendline 2.0.3   
 2) broom 0.5.2   
@@ -63,7 +63,7 @@ on R 3.5.0:
  
  
 ---
-on python 3.7.1:
+On python 3.7.1:
  
 1) pandas 0.25.1  
 2) numpy 1.17.2  
