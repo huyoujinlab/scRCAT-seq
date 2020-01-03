@@ -590,14 +590,6 @@ load("compare_cornea.RData")
 rm(CTRL_0_3tail_dominant_tes_in_gene)
 
 
-CTRL_1_3tail_dominant_tes_in_gene <- read.table("CTRL_1_3tail_dominant_tes_genebody_downstream2k.bed",header = FALSE)
-CTRL_2_3tail_dominant_tes_in_gene <- read.table("CTRL_2_3tail_dominant_tes_genebody_downstream2k.bed",header = FALSE)
-
-
-CTRL_1_3tail_dominant_tes_in_gene <- CTRL_1_3tail_dominant_tes_in_gene[,c(1,2,3,10,5,6)]
-CTRL_2_3tail_dominant_tes_in_gene <- CTRL_2_3tail_dominant_tes_in_gene[,c(1,2,3,10,5,6)]
-
-
 
 #combine all peak within a gene
 for(i in grep("_3tail_dominant_tes_in_gene",objects(),value = T)) {
