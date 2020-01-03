@@ -1,7 +1,6 @@
 options(stringsAsFactors = FALSE)
 options(scipen = 100)
 
-setwd("G:/CAGEr/CAGEr20190719LEC_APA/")
 library(CAGEr)
 library(rstatix)
 library(ggpubr)
