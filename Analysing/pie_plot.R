@@ -1,11 +1,15 @@
-setwd("C:/Users/zhong/Desktop/20190712peak/")
+options(stringsAsFactors = FALSE)
+options(scipen = 100)
+
+library(ggplot2)
+#setwd("C:/Users/zhong/Desktop/20190712peak/")
 
 #DRG_tss <- read.table("C:/Users/zhong/Desktop/D_dominant_tss_in_gene_1.bed")
 #DRG_tes <- read.table("C:/Users/zhong/Desktop/D_dominant_tes_in_gene_1.bed")
 
 
-DRG_tss_region <- read.table("C:/Users/zhong/Desktop/D_dominant_tss_in_gene_1_region.bed",sep = "\t")
-DRG_tes_region <- read.table("C:/Users/zhong/Desktop/D_dominant_tes_in_gene_1_region.bed",sep = "\t")
+#DRG_tss_region <- read.table("C:/Users/zhong/Desktop/D_dominant_tss_in_gene_1_region.bed",sep = "\t")
+#DRG_tes_region <- read.table("C:/Users/zhong/Desktop/D_dominant_tes_in_gene_1_region.bed",sep = "\t")
 
 load("pie_plot.RData")
 
