@@ -1,6 +1,7 @@
 options(stringsAsFactors = FALSE)
 options(scipen = 100)
 library(CAGEr)
+library(ggplot2)
 #setwd("G:/CAGEr/CAGEr20190727CAGEr/")
 
 #load("20190727.RData")
