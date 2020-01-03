@@ -10,6 +10,10 @@ library(basicTrendline)
 library(broom)
 library(dplyr)
 library(nlstools)
+library(ggplot2)
+library(rsample)
+library(broom)
+library(purrr)
 
 #############成本
 
@@ -37,19 +41,19 @@ x1 <- catseq[,2]
 
 
 ###############pacbio
-know_isoform <- read.table("G:/三代测序数据/单细胞三代测序/result_一致性分析/result/know_venn/trans_know.stat.xls",sep="\t",header=T)
+#know_isoform <- read.table("G:/三代测序数据/单细胞三代测序/result_一致性分析/result/know_venn/trans_know.stat.xls",sep="\t",header=T)
 
 
-know_isoform <- know_isoform[-1,]
+#know_isoform <- know_isoform[-1,]
 
 
-union(know_isoform[know_isoform[,2]==!"o",])
+#union(know_isoform[know_isoform[,2]==!"o",])
 
-number <- c()
+#number <- c()
 
-for(i in 2:9) {
-  number <- c(number,length(unique(know_isoform[!know_isoform[,i]=="-",1])))
-}
+#for(i in 2:9) {
+#  number <- c(number,length(unique(know_isoform[!know_isoform[,i]=="-",1])))
+#}
 
 
 money <- c(0.32,0.35,0.89,0.24,1.03,3.52,0.22,1.31)*7200/8/6.87
@@ -129,10 +133,7 @@ ggplot(mtcars, aes(wt, mpg)) +
   geom_line(aes(y = predict(nlsfit)))
 
 
-library(dplyr)
-library(rsample)
-library(broom)
-library(purrr)
+
 
 set.seed(15)
 
@@ -232,7 +233,6 @@ quantile(df[,3],probs = seq(0,1,0.025))
 
 
 
-library(ggplot2)
 
 
 ###remove 1 outlier
@@ -257,10 +257,7 @@ ggplot(mtcars, aes(wt, mpg)) +
   geom_line(aes(y = predict(nlsfit)))
 
 
-library(dplyr)
-library(rsample)
-library(broom)
-library(purrr)
+
 
 set.seed(15)
 
@@ -322,16 +319,16 @@ fit_spline_on_bootstrap <- function(split) {
   smooth.spline(data$wt, data$mpg, df = 4)
 }
 
-boot_splines <- boots %>% 
-  mutate(spline = map(splits, fit_spline_on_bootstrap),
-         aug_train = map(spline, augment))
+#boot_splines <- boots %>% 
+#  mutate(spline = map(splits, fit_spline_on_bootstrap),
+#         aug_train = map(spline, augment))
 
-splines_aug <- boot_splines %>% 
-  unnest(aug_train)
+#splines_aug <- boot_splines %>% 
+#  unnest(aug_train)
 
-ggplot(splines_aug, aes(x, y)) +
-  geom_point() +
-  geom_line(aes(y = .fitted, group = id), alpha = 0.2)
+#ggplot(splines_aug, aes(x, y)) +
+#  geom_point() +
+#  geom_line(aes(y = .fitted, group = id), alpha = 0.2)
 
 
 y=ax^2
