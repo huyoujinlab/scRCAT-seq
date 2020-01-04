@@ -6,6 +6,6 @@ BS.genome packages were needed for CAGEr. However, BS.genome packages for ERCC a
 
 BS.genome packages for ERCC package is in this directory.
 
-BS.genome packages for crab-eating monkey is available at :
+BS.genome packages for crab-eating monkey is available at : https://drive.google.com/open?id=1ZvdSOCV5AbwcqYPZ_SYX42egSRKUGBrC
 
 
