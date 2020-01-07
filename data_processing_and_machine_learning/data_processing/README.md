@@ -6,7 +6,7 @@ Then BED file as input is needed to call peak using CAGEr R package.
 
 ---
 
-# data processing for 5' data
+# Data processing for 5' data
 The workflows of data of scCAT-seq 5', C1 CAGE, C1 STRT and Arguel et al. are similar. Here is the scCAT-seq 5' data processing workflow. To see detail imformation of other data processing, please see C1_CAGE_5_data_processing.sh, C1_STRT_5_data_processing.sh and Arguel_et_al_5_data_processing.sh.
 
 ## Prepare
@@ -28,8 +28,20 @@ mv extractmismatch_plus_3'.py ~/zjw/20190109/script_and_log
 cd ~/zjw/20190109/script_and_log
 ```
 
+Please make sure that fq files are list in ~/zjw/fastq_5cap_2018ab. STAR index must be prepared before running this workflow.
+
 ## Find reads with TSO primer
 
+Reads with TSO primer sequence at 5' are considered to further processing. TSO primer in scCAT-seq data is "GTGGTATCAACGCAGAGTACATGGG".
+
+```
+for i in `ls ~/zjw/fastq_5cap_2018ab/`
+do
+  cat ~/zjw/fastq_5cap_2018ab/${i} | paste - - - - | grep $'\t'"${a}" | awk -v FS="\t" -v OFS="\n" '{print $1, $2, $3, $4}' > ~/zjw/20190109/5cap_read_with_tag/${i}_with_tag.fq
+done
+```
+
+Output files are stored in ~/zjw/20190109/5cap_read_with_tag.
 
 ## Trim TSO primer but retain GGG
 
