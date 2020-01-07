@@ -10,7 +10,7 @@ Then BED file as input is needed to call peak using CAGEr R package.
 
 The workflows of data of scCAT-seq 5', C1 CAGE, C1 STRT and Arguel et al. are similar. Here is the scCAT-seq 5' data processing workflow. To see detail imformation of other data processing, please see C1_CAGE_5_data_processing.sh, C1_STRT_5_data_processing.sh and Arguel_et_al_5_data_processing.sh.
 
-## Prepare
+## Preparation
 
 Before process the data, we bulid some directory and move the script to "script_and_log" directory: 
 
@@ -126,7 +126,7 @@ Output files are stored in `~/zjw/20190109/extract_mismatch/`
 
 ## Convert SAM to BED
 
-As BED format file can be used as input for CAGEr R package, we generate SAM to BED:
+As BED format file can be used as input for CAGEr R package, we convert SAM to BED:
 
 ```
 for i in `ls ~/zjw/20190109/extract_mismatch | grep "sam_extractmismatch"`
@@ -164,36 +164,183 @@ done
 
 ---
 
+
+
+
 # Data processing for 3' data
 
 The workflows of data of scCAT-seq 3' and BAT-seq are similar. Here is the scCAT-seq 5' data processing workflow. To see detail imformation of BAT-seq data processing, please see BAT-seq_3_data_processing.sh.
 
 ## Preparation
 
+Before process the data, we bulid some directory and move the script to "script_and_log" directory:
+
+```
+mkdir ~/zjw/20190105
+mkdir ~/zjw/20190105/3tail_read_with_tag
+mkdir ~/zjw/20190105/3tail_read_with_tag_other_strand
+mkdir ~/zjw/20190105/3tail_read_with_tag_other_strand_withA10_remain_A5
+mkdir ~/zjw/20190105/mapping_output
+mkdir ~/zjw/20190105/extract_uniquely_map
+mkdir ~/zjw/20190105/split_plus_minus
+mkdir ~/zjw/20190105/extract_mismatch
+mkdir ~/zjw/20190105/add_header
+mkdir ~/zjw/20190105/script_and_log
+mv extractmismatch_plus_3'.py ~/zjw/20190105/script_and_log
+mv extractmismatch_minus_3'.py ~/zjw/20190105/script_and_log
+mv sample_list_tag.txt ~/zjw/20190105/script_and_log
+mv cmpfastq_pe.pl ~/zjw/20190105/script_and_log
+cd ~/zjw/20190105/script_and_log
+```
+
 ## Find reads with oligo(dT) primer
+
+Reads with oligo(dT) primer sequence at 5'. We define reads with oligo(dT) primer sequence at 5' as R1 reads:
+
+```
+for i in `ls ~/zjw/fastq_5cap_2018ab`
+do
+a=$(grep "${i}" ~/zjw/20190105/script_and_log/sample_list_tag.txt|awk '{print $2}')
+if [[ ${a} =~ "4" ]]; then
+        b=${a#*4}
+        echo ${b}
+        echo "GTGGTATCAACGCAGAGT....${b%%TTTTTTTTTTTTTTTTTTTT*}"
+        cat ~/zjw/fastq_5cap_2018ab/${i} | paste - - - - | grep "${b%%TTTTT*}TTTTT" | awk -v FS="\t" -v OFS="\n" '{print $1, $2, $3, $4}' > ~/zjw/20190105/3tail_read_with_tag/${i}_with_tag
+fi
+done
+```
+
+Output files are stored in `~/zjw/20190105/3tail_read_with_tag/`.
 
 ## Find R2 reads
 
+Perl script cmpfastq_pe.pl is used to find R2 reads which its corresponding R1 reads with oligo(dT) primes:
+
+```
+for i in `ls ~/zjw/20190105/3tail_read_with_tag/ | grep "L1_1.fq_with_tag$"`
+do
+        perl cmpfastq_pe.pl ~/zjw/20190105/3tail_read_with_tag/${i} ~/zjw/fastq_5cap_2018ab/${i%_1*}_2.fq
+done
+
+for i in `ls ~/zjw/20190105/3tail_read_with_tag/ | grep "L1_2.fq_with_tag$"`
+do
+        perl cmpfastq_pe.pl ~/zjw/20190105/3tail_read_with_tag/${i} ~/zjw/fastq_5cap_2018ab/${i%_2*}_1.fq
+done
+
+rm ~/zjw/20190105/3tail_read_with_tag/*out
+rm ~/zjw/fastq_5cap_2018ab/*unique.out
+mv ~/zjw/fastq_5cap_2018ab/*out ~/zjw/20190105/3tail_read_with_tag_other_strand/
+```
+
+Output files are stored in `~/zjw/20190105/3tail_read_with_tag_other_strand/`.
+
 ## Trim A10 but retain A5 at R2 reads
+
+To trim oligo(dT) primer, we run:
+
+```
+for i in `ls ~/zjw/20190105/3tail_read_with_tag_other_strand`
+do
+        python ~/zjw/20190105/script_and_log/find_A10_and_remain_A5.py  -i ~/zjw/20190105/3tail_read_with_tag_other_strand/${i} -o ~/zjw/20190105/3tail_read_with_tag_other_strand_withA10_remain_A5/${i}_withA10_remain_A5
+done
+```
+
+Output files are stored in `~/zjw/20190105/3tail_read_with_tag_other_strand_withA10_remain_A5/`.
 
 ## Alignment
 
+For alignment, we run:
+
+```
+for i in `ls ~/zjw/20190105/3tail_read_with_tag_other_strand_withA10_remain_A5/`
+do
+        STAR --runThreadN 24 --genomeDir ~/index/mm10_ERCC92trimpolyA_STAR/ --genomeLoad LoadAndKeep --readFilesIn ~/zjw/20190105/3tail_read_with_tag_other_strand_withA10_remain_A5/${i} --outFileNamePrefix ~/zjw/20190105/mapping_output/${i}_ --outSAMtype SAM --outFilterMultimapNmax 1 --outFilterScoreMinOverLread 0.6 --outFilterMatchNminOverLread 0.6
+done
+```
+
+Output files are stored in `~/zjw/20190105/mapping_output/`.
+
+
 ## Extract uniquely mapped reads
+
+We only select uniquely mapped reads, so we run:
+
+```
+for i in `ls ~/zjw/20190105/mapping_output/ |grep "sam"`
+do
+        samtools view ~/zjw/20190105/mapping_output/${i} | grep 'NH:i:1'$'\t''' > ~/zjw/20190105/extract_uniquely_map/${i}_extract_uniquely_map.sam
+done
+```
+
+Output files are stored in `~/zjw/20190105/extract_uniquely_map/`.
+
 
 ## Split reads aligned to plus stand and minus strand
 
-## Extract reads with mismatch at 5'
+For further filter, we run:
+
+```
+for i in `ls ~/zjw/20190105/extract_uniquely_map | grep "sam"`
+do
+        cat ~/zjw/20190105/extract_uniquely_map/${i} | awk '{FS=" "}{if ($2==0 || $2==256){print $1"\t"$2"\t"$3"\t"$4"\t"$5"\t"$6"\t"$7"\t"$8"\t"$9"\t"$10"\t"$11"\t"$12"\t"$13"\t"$14"\t"$15}}' > ~/zjw/20190105/split_plus_minus/${i}_plus
+        cat ~/zjw/20190105/extract_uniquely_map/${i} | awk '{FS=" "}{if ($2==16 || $2==272){print $1"\t"$2"\t"$3"\t"$4"\t"$5"\t"$6"\t"$7"\t"$8"\t"$9"\t"$10"\t"$11"\t"$12"\t"$13"\t"$14"\t"$15}}' > ~/zjw/20190105/split_plus_minus/${i}_minus
+done
+```
+
+Output files are stored in `~/zjw/20190105/split_plus_minus/`.
+
+## Extract reads with mismatch at 3'
+
+We run:
+
+```
+for i in `ls ~/zjw/20190105/split_plus_minus | grep "extract_uniquely_map.sam_plus"`
+do
+        python ~/zjw/20190105/script_and_log/extractmismatch_plus_3'.py -i ~/zjw/20190105/split_plus_minus/${i} -o ~/zjw/20190105/extract_mismatch/${i}_extractmismatch
+        python ~/zjw/20190105/script_and_log/extractmismatch_minus_3'.py -i ~/zjw/20190105/split_plus_minus/${i%_*}_minus -o ~/zjw/20190105/extract_mismatch/${i%_*}_minus_extractmismatch
+        cat ~/zjw/20190105/extract_mismatch/${i}_extractmismatch ~/zjw/20190105/extract_mismatch/${i%_*}_minus_extractmismatch > ~/zjw/20190105/extract_mismatch/${i%_*}_extractmismatch
+done
+```
+
+Oligo(dT) primers can also anneal to internal A-rich sequences, a phenomenon called internal priming, leading to the generation of artifact. If "AAAAA" aligned, reads are internal priming drivern artifacts. If "GGG" don't aligned, reads are supposed to contain true polyA site.
+
+Output files are stored in `~/zjw/20190105/extract_mismatch/`.
+
 
 ## Convert SAM to BED
 
+As BED format file can be used as input for CAGEr R package, we generate SAM to BED:
+
+```
+for i in `ls ~/zjw/20190105/extract_mismatch | grep "sam_extractmismatch"`
+do
+        samtools view -b -T ~/index/mm10_ERCC92/mm10_ERCC92trimpolyA.fa ~/zjw/20190105/extract_mismatch/${i} | samtools view -b >  ~/zjw/20190105/add_header/${i}.bam
+        samtools sort ~/zjw/20190105/add_header/${i}.bam -o ~/zjw/20190105/add_header/${i}_sorted.bam
+        samtools index ~/zjw/20190105/add_header/${i}_sorted.bam
+        bedtools bamtobed -i ~/zjw/20190105/add_header/${i}_sorted.bam > ~/zjw/20190105/add_header/${i}.bed
+done
+```
+
+Output files are stored in `~/zjw/20190105/add_header/`.
+
 ## Remove useless end
 
-1) Find reads with oligo(dT) primer: Reads with oligo(dT) primer sequence at 5'. We define reads with oligo(dT) primer sequence at 5' as R1 reads.
-2) Find R2 reads: Perl script cmpfastq_pe.pl is used to find R2 reads which its corresponding R1 reads with oligo(dT) primes.
-3) Trim A10 but retain A5 at R2 reads: Poly A sequences in the end of R2 were further trimmed with 5 A bases left at the 3’ side. "AAAAA" was used to remove reads with internal priming.
-4) Mapping: Reads are aligned to mouse genome (mm10). We only select uniquely mapped reads.
-5) Split reads aligned to plus stand and minus strand: This step is to prepare for step 6.
-6) Extract reads with mismatch at 3': Oligo(dT) primers can also anneal to internal A-rich sequences, a phenomenon called internal priming, leading to the generation of artifact. If "AAAAA" aligned, reads are internal priming drivern artifacts. If "GGG" don't aligned, reads are supposed to contain true polyA site.
-7) Convert SAM to BED: As BED format file can be used as input for CAGEr R package, we generate SAM to BED.
-8) Generate CAGEset object in R: See R script generate_CAGEset_3'.R
+As the library is pair-end reads, we remove one side which doesn't contain TES information.
+
+```
+for i in `ls  ~/zjw/20190105/add_header |grep "TKD"|grep "bed"|grep "L1_1"`
+do
+        a=$(wc -l ~/zjw/20190105/add_header/${i}|awk '{print $1}')
+        b=$(wc -l ~/zjw/20190105/add_header/${i%%L1_1*}L1_2.fq-common.out_withA10_remain_A5_Aligned.out.sam_extract_uniquely_map.sam_extractmismatch.bed|awk '{print $1}')
+        echo ${a}
+        echo ${b}
+        if [ ${a} -gt ${b} ]; then
+                rm ~/zjw/20190105/add_header/${i%%L1_1*}L1_2*
+        else
+                rm ~/zjw/20190105/add_header/${i%%L1_1*}L1_1*
+        fi
+done
+```
+
+
 
