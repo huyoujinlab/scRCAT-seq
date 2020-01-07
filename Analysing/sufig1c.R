@@ -88,14 +88,14 @@ temp <- rbind(temp,data.frame(position=21,peaknumber=length(tc_CAT_ERCC[tc_CAT_E
 ggplot(temp,aes(x=position,y=peaknumber)) +
   geom_bar(position=position_dodge(0.8),width=0.8,stat="identity") +
   theme(panel.grid.major=element_line(colour=NA),panel.grid.minor=element_line(colour=NA))+
-  theme(panel.border = element_blank())+ #去除边框)+
+  theme(panel.border = element_blank())+ 
   theme_set(theme_bw()) +
   theme(panel.grid.major=element_line(colour=NA),panel.grid.minor=element_line(colour=NA))+
-  theme(panel.border = element_blank())+ #去除边框
-  theme(axis.line.x=element_line(linetype=1,color="black",size=1), #加上x轴
-        axis.line.y=element_line(linetype=1,color="black",size=1), #加上y轴
+  theme(panel.border = element_blank())+ 
+  theme(axis.line.x=element_line(linetype=1,color="black",size=1), 
+        axis.line.y=element_line(linetype=1,color="black",size=1), 
         axis.title.y = element_text(size = 13),
-        axis.text.x = element_text(face = "plain",size = 13,angle=90,hjust = 1,vjust = 0.5), #改x轴字体
+        axis.text.x = element_text(face = "plain",size = 13,angle=90,hjust = 1,vjust = 0.5), 
         axis.text.y = element_text(face = "plain",size = 12),
         legend.title = element_blank()) +
   scale_x_continuous(breaks = seq(1,21),
@@ -123,14 +123,14 @@ temp <- rbind(temp,data.frame(position=21,peaknumber=length(tc_NAR_ERCC[tc_NAR_E
 ggplot(temp,aes(x=position,y=peaknumber)) +
   geom_bar(position=position_dodge(0.8),width=0.8,stat="identity") +
   theme(panel.grid.major=element_line(colour=NA),panel.grid.minor=element_line(colour=NA))+
-  theme(panel.border = element_blank())+ #去除边框)+
+  theme(panel.border = element_blank())+ 
   theme_set(theme_bw()) +
   theme(panel.grid.major=element_line(colour=NA),panel.grid.minor=element_line(colour=NA))+
-  theme(panel.border = element_blank())+ #去除边框
-  theme(axis.line.x=element_line(linetype=1,color="black",size=1), #加上x轴
-        axis.line.y=element_line(linetype=1,color="black",size=1), #加上y轴
+  theme(panel.border = element_blank())+ 
+  theme(axis.line.x=element_line(linetype=1,color="black",size=1), 
+        axis.line.y=element_line(linetype=1,color="black",size=1), 
         axis.title.y = element_text(size = 13),
-        axis.text.x = element_text(face = "plain",size = 13,angle=90,hjust = 1,vjust = 0.5), #改x轴字体
+        axis.text.x = element_text(face = "plain",size = 13,angle=90,hjust = 1,vjust = 0.5), 
         axis.text.y = element_text(face = "plain",size = 12),
         legend.title = element_blank()) +
   scale_x_continuous(breaks = seq(1,21),
@@ -156,14 +156,14 @@ temp <- rbind(temp,data.frame(position=21,peaknumber=length(tc_C1_CAGE_ERCC[tc_C
 ggplot(temp,aes(x=position,y=peaknumber)) +
   geom_bar(position=position_dodge(0.8),width=0.8,stat="identity") +
   theme(panel.grid.major=element_line(colour=NA),panel.grid.minor=element_line(colour=NA))+
-  theme(panel.border = element_blank())+ #去除边框)+
+  theme(panel.border = element_blank())+ 
   theme_set(theme_bw()) +
   theme(panel.grid.major=element_line(colour=NA),panel.grid.minor=element_line(colour=NA))+
-  theme(panel.border = element_blank())+ #去除边框
-  theme(axis.line.x=element_line(linetype=1,color="black",size=1), #加上x轴
-        axis.line.y=element_line(linetype=1,color="black",size=1), #加上y轴
+  theme(panel.border = element_blank())+ 
+  theme(axis.line.x=element_line(linetype=1,color="black",size=1), 
+        axis.line.y=element_line(linetype=1,color="black",size=1), 
         axis.title.y = element_text(size = 13),
-        axis.text.x = element_text(face = "plain",size = 13,angle=90,hjust = 1,vjust = 0.5), #改x轴字体
+        axis.text.x = element_text(face = "plain",size = 13,angle=90,hjust = 1,vjust = 0.5), 
         axis.text.y = element_text(face = "plain",size = 12),
         legend.title = element_blank()) +
   scale_x_continuous(breaks = seq(1,21),
@@ -189,14 +189,14 @@ temp <- rbind(temp,data.frame(position=21,peaknumber=length(tc_NAR_ERCC[tc_NAR_E
 ggplot(temp,aes(x=position,y=peaknumber)) +
   geom_bar(position=position_dodge(0.8),width=0.8,stat="identity") +
   theme(panel.grid.major=element_line(colour=NA),panel.grid.minor=element_line(colour=NA))+
-  theme(panel.border = element_blank())+ #去除边框)+
+  theme(panel.border = element_blank())+ 
   theme_set(theme_bw()) +
   theme(panel.grid.major=element_line(colour=NA),panel.grid.minor=element_line(colour=NA))+
-  theme(panel.border = element_blank())+ #去除边框
-  theme(axis.line.x=element_line(linetype=1,color="black",size=1), #加上x轴
-        axis.line.y=element_line(linetype=1,color="black",size=1), #加上y轴
+  theme(panel.border = element_blank())+ 
+  theme(axis.line.x=element_line(linetype=1,color="black",size=1), 
+        axis.line.y=element_line(linetype=1,color="black",size=1), 
         axis.title.y = element_text(size = 13),
-        axis.text.x = element_text(face = "plain",size = 13,angle=90,hjust = 1,vjust = 0.5), #改x轴字体
+        axis.text.x = element_text(face = "plain",size = 13,angle=90,hjust = 1,vjust = 0.5), 
         axis.text.y = element_text(face = "plain",size = 12),
         legend.title = element_blank()) +
   scale_x_continuous(breaks = seq(1,21),
