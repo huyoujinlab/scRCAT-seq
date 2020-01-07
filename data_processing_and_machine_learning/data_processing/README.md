@@ -37,7 +37,6 @@ STAR --runThreadN 24 --runMode genomeGenerate \
 --genomeFastaFiles ~/index/mm10_chr/mm10.fa \
 --sjdbGTFfile ~/index/mm10_chr/gencode.vM18.annotation.gtf \
 --sjdbOverhang 150
-
 ```
 
 ## Find reads with TSO primer
