@@ -38,7 +38,7 @@ Reads with TSO primer sequence at 5' are considered to further processing. TSO p
 ```
 for i in `ls ~/zjw/fastq_5cap_2018ab/`
 do
-cat ~/zjw/fastq_5cap_2018ab/${i} | paste - - - - | grep $'\t'"${a}" | awk -v FS="\t" -v OFS="\n" '{print $1, $2, $3, $4}' > ~/zjw/20190109/5cap_read_with_tag/${i}_with_tag.fq
+        cat ~/zjw/fastq_5cap_2018ab/${i} | paste - - - - | grep $'\t'"${a}" | awk -v FS="\t" -v OFS="\n" '{print $1, $2, $3, $4}' > ~/zjw/20190109/5cap_read_with_tag/${i}_with_tag.fq
 done
 ```
 
@@ -51,7 +51,7 @@ To trim TSO primer, we run:
 ```
 for i in `ls ~/zjw/20190109/5cap_read_with_tag`
 do
-cutadapt -g GTGGTATCAACGCAGAGTACAT -o ~/zjw/20190109/trim_GTGGTATCAACGCAGAGTACAT/${i}.trimed.remainGGG ~/zjw/20190109/5cap_read_with_tag/${i}
+        cutadapt -g GTGGTATCAACGCAGAGTACAT -o ~/zjw/20190109/trim_GTGGTATCAACGCAGAGTACAT/${i}.trimed.remainGGG ~/zjw/20190109/5cap_read_with_tag/${i}
 done
 ```
 
@@ -66,11 +66,24 @@ For alignment, we run:
 ```
 for i in `ls ~/zjw/20190109/trim_GTGGTATCAACGCAGAGTACAT/`
 do
-STAR --runThreadN 24 --genomeDir ~/index/mm10_ERCC92trimpolyA_STAR/ --genomeLoad LoadAndKeep --readFilesIn ~/zjw/20190109/trim_GTGGTATCAACGCAGAGTACAT/${i} --outFileNamePrefix ~/zjw/20190109/mapping_output/${i}_ --outSAMtype SAM --outFilterMultimapNmax 1 --outFilterScoreMinOverLread 0.6 --outFilterMatchNminOverLread 0.6
+        STAR --runThreadN 24 --genomeDir ~/index/mm10_ERCC92trimpolyA_STAR/ --genomeLoad LoadAndKeep --readFilesIn ~/zjw/20190109/trim_GTGGTATCAACGCAGAGTACAT/${i} --outFileNamePrefix ~/zjw/20190109/mapping_output/${i}_ --outSAMtype SAM --outFilterMultimapNmax 1 --outFilterScoreMinOverLread 0.6 --outFilterMatchNminOverLread 0.6
 done
 ```
 
 Output files are stored in `~/zjw/20190109/mapping_output/`
+
+## Extract uniquely mapped reads
+
+We run:
+
+```
+for i in `ls ~/zjw/20190109/mapping_output|grep "sam"`
+do
+        samtools view ~/zjw/20190109/mapping_output/${i} |grep 'NH:i:1'$'\t''' > ~/zjw/20190109/extract_uniquely_map/${i}_extract_uniquely_map.sam
+done
+```
+
+Output files are stored in `~/zjw/20190109/extract_uniquely_map/`
 
 ## Split reads aligned to plus stand and minus strand
 
@@ -79,8 +92,8 @@ For further filter, we run:
 ```
 for i in `ls ~/zjw/20190109/extract_uniquely_map | grep "sam"`
 do
-cat ~/zjw/20190109/extract_uniquely_map/${i} | awk '{FS=" "}{if ($2==0 || $2==256){print $1"\t"$2"\t"$3"\t"$4"\t"$5"\t"$6"\t"$7"\t"$8"\t"$9"\t"$10"\t"$11"\t"$12"\t"$13"\t"$14"\t"$15}}' > ~/zjw/20190109/split_plus_minus/${i}_plus
-cat ~/zjw/20190109/extract_uniquely_map/${i} | awk '{FS=" "}{if ($2==16 || $2==272){print $1"\t"$2"\t"$3"\t"$4"\t"$5"\t"$6"\t"$7"\t"$8"\t"$9"\t"$10"\t"$11"\t"$12"\t"$13"\t"$14"\t"$15}}' > ~/zjw/20190109/split_plus_minus/${i}_minus
+        cat ~/zjw/20190109/extract_uniquely_map/${i} | awk '{FS=" "}{if ($2==0 || $2==256){print $1"\t"$2"\t"$3"\t"$4"\t"$5"\t"$6"\t"$7"\t"$8"\t"$9"\t"$10"\t"$11"\t"$12"\t"$13"\t"$14"\t"$15}}' >                         ~/zjw/20190109/split_plus_minus/${i}_plus
+        cat ~/zjw/20190109/extract_uniquely_map/${i} | awk '{FS=" "}{if ($2==16 || $2==272){print $1"\t"$2"\t"$3"\t"$4"\t"$5"\t"$6"\t"$7"\t"$8"\t"$9"\t"$10"\t"$11"\t"$12"\t"$13"\t"$14"\t"$15}}' > ~/zjw/20190109/split_plus_minus/${i}_minus
 done
 ```
 
@@ -93,9 +106,9 @@ We run:
 ```
 for i in `ls ~/zjw/20190109/split_plus_minus | grep "extract_uniquely_map.sam_plus"`
 do
-python ~/zjw/20190109/script_and_log/extractmismatch_plus_5'.py -i ~/zjw/20190109/split_plus_minus/${i} -o ~/zjw/20190109/extract_mismatch/${i}_extractmismatch
-python ~/zjw/20190109/script_and_log/extractmismatch_minus_5'.py -i ~/zjw/20190109/split_plus_minus/${i%_*}_minus -o ~/zjw/20190109/extract_mismatch/${i%_*}_minus_extractmismatch
-cat ~/zjw/20190109/extract_mismatch/${i}_extractmismatch ~/zjw/20190109/extract_mismatch/${i%_*}_minus_extractmismatch > ~/zjw/20190109/extract_mismatch/${i%_*}_extractmismatch
+        python ~/zjw/20190109/script_and_log/extractmismatch_plus_5'.py -i ~/zjw/20190109/split_plus_minus/${i} -o ~/zjw/20190109/extract_mismatch/${i}_extractmismatch
+        python ~/zjw/20190109/script_and_log/extractmismatch_minus_5'.py -i ~/zjw/20190109/split_plus_minus/${i%_*}_minus -o ~/zjw/20190109/extract_mismatch/${i%_*}_minus_extractmismatch
+        cat ~/zjw/20190109/extract_mismatch/${i}_extractmismatch ~/zjw/20190109/extract_mismatch/${i%_*}_minus_extractmismatch > ~/zjw/20190109/extract_mismatch/${i%_*}_extractmismatch
 done
 ```
 
@@ -110,10 +123,10 @@ BED files are needed for CAGEr, so we run:
 ```
 for i in `ls ~/zjw/20190109/extract_mismatch | grep "sam_extractmismatch"`
 do
-samtools view -b -T ~/index/mm10_ERCC92/mm10_ERCC92trimpolyA.fa ~/zjw/20190109/extract_mismatch/${i} | samtools view -b >  ~/zjw/20190109/final_out/${i}_add_header.bam
-samtools sort ~/zjw/20190109/final_out/${i}_add_header.bam -o ~/zjw/20190109/final_out/${i}_add_header_sorted.bam
-samtools index ~/zjw/20190109/final_out/${i}_add_header_sorted.bam
-bedtools bamtobed -i ~/zjw/20190109/final_out/${i}_add_header_sorted.bam > ~/zjw/20190109/final_out/${i}_add_header_sorted.bed
+        samtools view -b -T ~/index/mm10_ERCC92/mm10_ERCC92trimpolyA.fa ~/zjw/20190109/extract_mismatch/${i} | samtools view -b >  ~/zjw/20190109/final_out/${i}_add_header.bam
+        samtools sort ~/zjw/20190109/final_out/${i}_add_header.bam -o ~/zjw/20190109/final_out/${i}_add_header_sorted.bam
+        samtools index ~/zjw/20190109/final_out/${i}_add_header_sorted.bam
+        bedtools bamtobed -i ~/zjw/20190109/final_out/${i}_add_header_sorted.bam > ~/zjw/20190109/final_out/${i}_add_header_sorted.bed
 done
 ```
 
