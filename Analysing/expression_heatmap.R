@@ -290,7 +290,7 @@ no_sign <- as.data.frame(no_sign)
 
 
 
-#########single cell read count  这里可以计算nlrp5、tet3、dnmt1
+#########single cell read count  
 for(i in grep("TKD",grep("count",list.files(),value = T),value = T)) {
   a <- paste(strsplit(i,split = "_TKD")[[1]][1],'_count <- read.table("',i,'")',sep = "")
   eval(parse(text=a))
@@ -421,7 +421,7 @@ for i in `ls|grep "^CTSS_"|grep "minus.bed$"`; do bedtools intersect -a ${i} -b 
 
 
 
-#-------------------------------------------------------------------usage heatmap前----------------------------------------------------#
+#-------------------------------------------------------------------usage heatmap----------------------------------------------------#
 
 for(i in grep("CTSS",objects(),value = T)) {
   a <- paste('rm(',i,')',sep = "")
@@ -653,7 +653,7 @@ pheatmap(hm_df_5cap,
          border_color = F)
 
 
-#-------------------------------------------------------------------usage heatmap后----------------------------------------------------#
+#-------------------------------------------------------------------usage heatmap----------------------------------------------------#
 
 
 ################normal heatmap################
@@ -1255,26 +1255,26 @@ hm_df_5cap <- log10(hm_df_5cap+1)
 
 
 
-################选择没有差异的基因
+################
 rowname <- unlist(lapply(strsplit(rownames(hm_df_5cap),split = " _"), function(x) x[1]))
 
 hm_df_5cap <- hm_df_5cap[rowname %in% rownames(no_sign),]
 
 
-################选择没有差异的基因hou
+################
 
 
 
 
 
 
-################去除只有一处的基因
+###############
 
 double <- as.data.frame(table(rowname <- unlist(lapply(strsplit(rownames(hm_df_5cap),split = " _"), function(x) x[1]))))
 double <- as.character(double[double[,2]==2,1])
 hm_df_5cap <- hm_df_5cap[unlist(lapply(strsplit(rownames(hm_df_5cap),split = " _"), function(x) x[1])) %in% double,]
 
-##############去除只有一处的基因 hou
+##############
 
 
 
@@ -1340,9 +1340,9 @@ rownames(annotation_col) <- a$tree_col$labels[a$tree_col$order]
 
 temp <- unlist(lapply(strsplit(rownames(hm_df_5cap),split = "_"), function(x) x[2]))  ###根据isoform分开
 
-temp[temp=="D"] <- "isoform_1"  ###根据isoform分开
+temp[temp=="D"] <- "isoform_1"  ###
 
-temp[temp=="P"] <- "isoform_2"  ###根据isoform分开
+temp[temp=="P"] <- "isoform_2"  ###
 
 
 
@@ -1354,7 +1354,7 @@ ann_colors <- list(celltype = c(Oocyte_D3 = "#1C1C1C", DRG = "#0000CD"),
 
 
 
-rownames(annotation_row) <- rownames(hm_df_5cap)   ###根据iso分开
+rownames(annotation_row) <- rownames(hm_df_5cap)   ###
 
 
 
@@ -1376,11 +1376,11 @@ hm_df_5cap_normal <- as.matrix(hm_df_5cap_normal)
 hm_df_5cap_normal <- log10(hm_df_5cap_normal+1)
 
 
-##############为了跟usage heatmap一样的gene
+##############
 
 hm_df_5cap_normal <- hm_df_5cap_normal[rownames(hm_df_5cap_normal) %in% as.character(as.data.frame(table(unlist(strsplit(rownames(hm_df_5cap),split = " _"))))[,1]),]
 
-##############为了跟usage heatmap一样的gene后
+##############
 
 a <- pheatmap(hm_df_5cap_normal,scale="row",col=rev(colorRampPalette(brewer.pal(11, "RdYlGn"))(250)),border_color = F)
 a <- pheatmap(hm_df_5cap_normal)
@@ -1435,22 +1435,22 @@ hm_df_3tail <- log10(hm_df_3tail+1)
 
 
 
-################选择没有差异的基因
+################
 rowname <- unlist(lapply(strsplit(rownames(hm_df_3tail),split = " _"), function(x) x[1]))
 
 hm_df_3tail <- hm_df_3tail[rowname %in% rownames(no_sign),]
 
 
-################选择没有差异的基因hou
+################
 
-##############去除只有一处的基因
+##############
 
 double <- as.data.frame(table(rowname <- unlist(lapply(strsplit(rownames(hm_df_3tail),split = " _"), function(x) x[1]))))
 double <- as.character(double[double[,2]==2,1])
 
 hm_df_3tail <- hm_df_3tail[unlist(lapply(strsplit(rownames(hm_df_3tail),split = " _"), function(x) x[1])) %in% double,]
 
-##############去除只有一处的基因 hou
+##############
 
 
 
@@ -1507,11 +1507,11 @@ pheatmap(hm_df_3tail,
 
 
 
-##############为了跟usage heatmap一样的gene
+##############
 
 hm_df_3tail_normal <- hm_df_3tail_normal[hm_df_3tail_normal[,1] %in% as.character(as.data.frame(table(unlist(strsplit(rownames(hm_df_3tail),split = " _"))))[,1]),]
 
-##############为了跟usage heatmap一样的gene后
+##############
 
 rownames(hm_df_3tail_normal) <- hm_df_3tail_normal[,1]
 hm_df_3tail_normal <- hm_df_3tail_normal[,-1]
