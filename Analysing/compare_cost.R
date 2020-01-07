@@ -15,12 +15,10 @@ library(rsample)
 library(broom)
 library(purrr)
 
-#############成本
+#############cost
 
 
 
-############cat-seq，  1M read=1.82美元   cat-seq的转化率是0.0054，这是DRG_deep从raw read到最后bed文件read来的。5000人民币=400M
-############现在LEC的数据，是达到了0.197的转化率,但猴子的数据没有不是cat-seq，意味着它基本上不用考虑5' 3'有多少tag的问题，按照以前的算，3’带tag的占10%，所以转化率是2%
 
 
 
@@ -360,10 +358,10 @@ ggplot(a,aes(x=V2,y=V1,fill=V2)) +
   geom_bar(position=position_dodge(0.7),width=0.5,stat="identity") +
   geom_errorbar(aes(ymin=V1-se, ymax=V1+se), width=0.1,size=0.8) +
   theme(panel.grid.major=element_line(colour=NA),panel.grid.minor=element_line(colour=NA))+
-  theme(panel.border = element_blank())+ #去除边框)+
+  theme(panel.border = element_blank())+ 
   theme_set(theme_bw()) +
   theme(panel.grid.major=element_line(colour=NA),panel.grid.minor=element_line(colour=NA))+
-  theme(panel.border = element_blank())+ #去除边框
+  theme(panel.border = element_blank())+
   theme(axis.line.x=element_line(linetype=1,color="black",size=1), 
         axis.line.y=element_line(linetype=1,color="black",size=1),
         axis.title.y = element_text(size = 12),
