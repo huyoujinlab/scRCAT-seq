@@ -98,14 +98,14 @@ DRG_tes_df <- DRG_tes_df[order(DRG_tes_df[,1]),]
 
 ggplot(DRG_tss_df, aes(x = 1, weight = Freq, fill = Var1)) +
   geom_bar(width = 1, position = "stack") +
-  coord_polar(theta = "y")+ ## 以y轴建立极坐标
+  coord_polar(theta = "y")+ 
   guides(fill=guide_legend(title=NULL))+
   theme_set(theme_bw()) +
   theme(panel.grid.major=element_line(colour=NA),panel.grid.minor=element_line(colour=NA))+
   theme(panel.background = element_blank())+
-  theme(panel.border = element_blank()) +#去除边框
-  theme(axis.text.x = element_blank(), #改x轴字体
-        axis.text.y = element_blank(), #改y轴字体
+  theme(panel.border = element_blank()) +
+  theme(axis.text.x = element_blank(), 
+        axis.text.y = element_blank(), 
         legend.title = element_blank(),
         legend.text = element_text(size = 9))+
   labs(x=NULL,y=NULL) +
@@ -113,14 +113,14 @@ ggplot(DRG_tss_df, aes(x = 1, weight = Freq, fill = Var1)) +
 
 ggplot(DRG_tes_df, aes(x = 1, weight = Freq, fill = Var1)) +
   geom_bar(width = 1, position = "stack") +
-  coord_polar(theta = "y")+ ## 以y轴建立极坐标
+  coord_polar(theta = "y")+ ## 
   guides(fill=guide_legend(title=NULL))+
   theme_set(theme_bw()) +
   theme(panel.grid.major=element_line(colour=NA),panel.grid.minor=element_line(colour=NA))+
   theme(panel.background = element_blank())+
-  theme(panel.border = element_blank()) +#去除边框
-  theme(axis.text.x = element_blank(), #改x轴字体
-        axis.text.y = element_blank(), #改y轴字体
+  theme(panel.border = element_blank()) +
+  theme(axis.text.x = element_blank(), 
+        axis.text.y = element_blank(), 
         legend.title = element_blank(),
         legend.text = element_text(size = 9))+
   labs(x=NULL,y=NULL) +
