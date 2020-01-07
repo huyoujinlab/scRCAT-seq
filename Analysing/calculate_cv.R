@@ -38,13 +38,9 @@ counts_tss <- counts_tss[,-1]
 
 
 
-sfHeLa <- estimateSizeFactorsForMatrix( counts )  #选择1 size factor
-
-#sfHeLa <- colSums(counts)/10^6  #选择2 RPM
+sfHeLa <- estimateSizeFactorsForMatrix( counts )  size factor
 
 
-#sfHeLa <- data.frame(oc1_1=c(1,0),oc1_2=c(1,0),oc1_3=c(1,0),oc10_1=c(1,0),oc10_2=c(1,0),oc10_3=c(1,0)) #选择3  单纯read count
-#sfHeLa <- colSums(sfHeLa)  #选择3
 
 
 nCountsHeLa <- t( t(counts) / sfHeLa )
@@ -121,13 +117,9 @@ lines( xg, ( (xi+a1)/xg + a0 ) * qchisq( .025, df ) / df,
 
 ##
 
-sfHeLa_tss <- estimateSizeFactorsForMatrix( counts_tss )  #选择1 size factor
-
-#sfHeLa <- colSums(counts)/10^6  #选择2 RPM
+sfHeLa_tss <- estimateSizeFactorsForMatrix( counts_tss )  # size factor
 
 
-#sfHeLa <- data.frame(oc1_1=c(1,0),oc1_2=c(1,0),oc1_3=c(1,0),oc10_1=c(1,0),oc10_2=c(1,0),oc10_3=c(1,0)) #选择3  单纯read count
-#sfHeLa <- colSums(sfHeLa)  #选择3
 
 
 nCountsHeLa_tss <- t( t(counts_tss) / sfHeLa_tss )
