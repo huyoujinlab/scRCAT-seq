@@ -1,7 +1,7 @@
 
 # scCAT-seq project  
 
-Here is the code for our scCAT-seq project as described in the paper [scCAT-seq:single-cell identification and quantification of mRNA isoforms by cost-effective short-read sequencing of cap and tail](https://www.biorxiv.org/content/10.1101/2019.12.11.873505v1). scCAT-seq is designed to simultaneously capture transcript start sites(TSS) and transcript end sites(TES) on single-cell level.
+Here is the code for our scCAT-seq project as described in the paper [scCAT-seq: single-cell identification and quantification of mRNA isoforms by cost-effective short-read sequencing of cap and tail](https://www.biorxiv.org/content/10.1101/2019.12.11.873505v1). scCAT-seq is designed to simultaneously capture transcript start sites(TSS) and transcript end sites(TES) on single-cell level.
 
 
 ### This project consists of two parts.
