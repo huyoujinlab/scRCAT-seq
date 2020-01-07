@@ -100,7 +100,7 @@ For further filter, we run:
 ```
 for i in `ls ~/zjw/20190109/extract_uniquely_map | grep "sam"`
 do
-        cat ~/zjw/20190109/extract_uniquely_map/${i} | awk '{FS=" "}{if ($2==0 || $2==256){print $1"\t"$2"\t"$3"\t"$4"\t"$5"\t"$6"\t"$7"\t"$8"\t"$9"\t"$10"\t"$11"\t"$12"\t"$13"\t"$14"\t"$15}}' >                         ~/zjw/20190109/split_plus_minus/${i}_plus
+        cat ~/zjw/20190109/extract_uniquely_map/${i} | awk '{FS=" "}{if ($2==0 || $2==256){print $1"\t"$2"\t"$3"\t"$4"\t"$5"\t"$6"\t"$7"\t"$8"\t"$9"\t"$10"\t"$11"\t"$12"\t"$13"\t"$14"\t"$15}}' > ~/zjw/20190109/split_plus_minus/${i}_plus
         cat ~/zjw/20190109/extract_uniquely_map/${i} | awk '{FS=" "}{if ($2==16 || $2==272){print $1"\t"$2"\t"$3"\t"$4"\t"$5"\t"$6"\t"$7"\t"$8"\t"$9"\t"$10"\t"$11"\t"$12"\t"$13"\t"$14"\t"$15}}' > ~/zjw/20190109/split_plus_minus/${i}_minus
 done
 ```
