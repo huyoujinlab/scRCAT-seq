@@ -83,7 +83,7 @@ Output files are stored in `~/zjw/20190109/mapping_output/`
 
 ## Extract uniquely mapped reads
 
-We run:
+We only select uniquely mapped reads, so we run:
 
 ```
 for i in `ls ~/zjw/20190109/mapping_output|grep "sam"`
@@ -127,7 +127,7 @@ Output files are stored in `~/zjw/20190109/extract_mismatch/`
 
 ## Convert SAM to BED
 
-BED files are needed for CAGEr, so we run:
+As BED format file can be used as input for CAGEr R package, we generate SAM to BED:
 
 ```
 for i in `ls ~/zjw/20190109/extract_mismatch | grep "sam_extractmismatch"`
@@ -161,17 +161,33 @@ do
 done
 ```
 
-1) Find reads with TSO primer: Reads with TSO primer sequence at 5' are considered to further processing.
-2) Trim TSO primer but retain GGG: TSO primer is trimmed. "GGG" was used to remove reads with strand invasion.
-3) Mapping: Reads are aligned to mouse genome (mm10) or human genome (hg38). We only select uniquely mapped reads.
-4) Split reads aligned to plus stand and minus strand: This step is to prepare for step 5.
-5) Extract reads with mismatch at 5': The template-switching (TS) oligonucleotide may hybridize to the first strand cDNA due to sequence complementarity before the RT has finished polymerizing. Artifact that introduced by incomplete reverse transcription process is called strand invasion. We suppose that if "GGG" aligned, reads are strand invasion drivern artifacts. If "GGG" don't aligned, reads are derived from complete reverse transcription.
-6) Convert SAM to BED: As BED format file can be used as input for CAGEr R package, we generate SAM to BED.
-7) Generate CAGEset object in R: See R script generate_CAGEset_5'.R 
+
 
 ---
 
+# Data processing for 3' data
+
 The workflows of data of scCAT-seq 3' and BAT-seq are similar. Here is the scCAT-seq 5' data processing workflow. To see detail imformation of BAT-seq data processing, please see BAT-seq_3_data_processing.sh.
+
+## Preparation
+
+## Find reads with oligo(dT) primer
+
+## Find R2 reads
+
+## Trim A10 but retain A5 at R2 reads
+
+## Alignment
+
+## Extract uniquely mapped reads
+
+## Split reads aligned to plus stand and minus strand
+
+## Extract reads with mismatch at 5'
+
+## Convert SAM to BED
+
+## Remove useless end
 
 1) Find reads with oligo(dT) primer: Reads with oligo(dT) primer sequence at 5'. We define reads with oligo(dT) primer sequence at 5' as R1 reads.
 2) Find R2 reads: Perl script cmpfastq_pe.pl is used to find R2 reads which its corresponding R1 reads with oligo(dT) primes.
