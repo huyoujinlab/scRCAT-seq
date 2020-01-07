@@ -55,9 +55,13 @@ cutadapt -g GTGGTATCAACGCAGAGTACAT -o ~/zjw/20190109/trim_GTGGTATCAACGCAGAGTACAT
 done
 ```
 
-In this step, we trim TSO primer. However `GGG` at the end of TSO primer was retained for further filter. Output files are stored in `~/zjw/20190109/trim_GTGGTATCAACGCAGAGTACAT/`.
+In this step, we trim TSO primer. However `GGG` at the end of TSO primer was retained for further filter. 
 
-## Mapping
+Output files are stored in `~/zjw/20190109/trim_GTGGTATCAACGCAGAGTACAT/`.
+
+## Alignment
+
+For alignment, we run:
 
 ```
 for i in `ls ~/zjw/20190109/trim_GTGGTATCAACGCAGAGTACAT/`
@@ -70,6 +74,8 @@ Output files are stored in `~/zjw/20190109/mapping_output/`
 
 ## Split reads aligned to plus stand and minus strand
 
+For further filter, we run:
+
 ```
 for i in `ls ~/zjw/20190109/extract_uniquely_map | grep "sam"`
 do
@@ -80,8 +86,9 @@ done
 
 Output files are stored in `~/zjw/20190109/split_plus_minus/`
 
-
 ## Extract reads with mismatch at 5'
+
+We run:
 
 ```
 for i in `ls ~/zjw/20190109/split_plus_minus | grep "extract_uniquely_map.sam_plus"`
@@ -93,11 +100,44 @@ done
 ```
 
 The template-switching (TS) oligonucleotide may hybridize to the first strand cDNA due to sequence complementarity before the RT has finished polymerizing. Artifact that introduced by incomplete reverse transcription process is called strand invasion. We suppose that if "GGG" aligned, reads are strand invasion drivern artifacts. If "GGG" don't aligned, reads are derived from complete reverse transcription.
+
 Output files are stored in `~/zjw/20190109/extract_mismatch/`
 
 ## Convert SAM to BED
 
+BED files are needed for CAGEr, so we run:
+
+```
+for i in `ls ~/zjw/20190109/extract_mismatch | grep "sam_extractmismatch"`
+do
+samtools view -b -T ~/index/mm10_ERCC92/mm10_ERCC92trimpolyA.fa ~/zjw/20190109/extract_mismatch/${i} | samtools view -b >  ~/zjw/20190109/final_out/${i}_add_header.bam
+samtools sort ~/zjw/20190109/final_out/${i}_add_header.bam -o ~/zjw/20190109/final_out/${i}_add_header_sorted.bam
+samtools index ~/zjw/20190109/final_out/${i}_add_header_sorted.bam
+bedtools bamtobed -i ~/zjw/20190109/final_out/${i}_add_header_sorted.bam > ~/zjw/20190109/final_out/${i}_add_header_sorted.bed
+done
+```
+
+Output files are stored in `~/zjw/20190109/final_out/`
+
+
 ## Remove useless end
+
+As the library is pair-end reads, we remove one side which doesn't contain TSS information.
+
+```
+for i in `ls  ~/zjw/20190109/final_out |grep "bed"|grep "L1_1"`
+do
+        a=$(wc -l ~/zjw/20190109/final_out/${i}|awk '{print $1}')
+        b=$(wc -l ~/zjw/20190109/final_out/${i%%L1_1*}L1_2.fq_with_tag.fq.trimed.remainGGG_Aligned.out.sam_extract_uniquely_map.sam_extractmismatch_add_header_sorted.bed|awk '{print $1}')
+        echo ${a}
+        echo ${b}
+        if [ ${a} -gt ${b} ]; then
+                rm ~/zjw/20190109/final_out/${i%%L1_1*}L1_2*
+        else
+                rm ~/zjw/20190109/final_out/${i%%L1_1*}L1_1*
+        fi
+done
+```
 
 1) Find reads with TSO primer: Reads with TSO primer sequence at 5' are considered to further processing.
 2) Trim TSO primer but retain GGG: TSO primer is trimmed. "GGG" was used to remove reads with strand invasion.
