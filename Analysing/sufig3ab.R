@@ -10,10 +10,10 @@ library(broom)
 library(dplyr)
 library(nlstools)
 
-#setwd("G:/CAGEr/CAGEr20190704sensitivity_new/")   #####做对比图就选这个
+#setwd("G:/CAGEr/CAGEr20190704sensitivity_new/")   
 
 
-##############一般从这里开始
+##############
 
 rm(list = ls())
 
@@ -34,7 +34,7 @@ rm(list = ls())
 
 
 
-###############这一步很重要，把转录本信息和基因信息加在一起
+###############
 #for(i in grep("seed",objects(),value = T)) {
 #  a <- paste(i,'[,2] <- paste(',i,'[,2],',i,'[,3])',sep = "")
 #  print(a)
@@ -44,7 +44,7 @@ rm(list = ls())
 #  eval(parse(text=a))
 #}
 
-#####正负合并
+####
 #for(i in grep("plus",objects(),value = T)) {
 #  for(j in grep("minus",objects(),value = T)) {
 #    if(strsplit(i,split = "plus_")[[1]][2]==strsplit(j,split = "minus_")[[1]][2] & strsplit(i,split = "plus")[[1]][1]==strsplit(j,split = "minus")[[1]][1]) {
@@ -72,7 +72,7 @@ load("sufig3b.RData")
 
 
 
-###############对单端处理求方便
+###############
 for(i in grep("tss|tes",objects(),value = T)) {
   a <- paste(i,' <- ',i,'[,c(2,1,1)]',sep = "")
   print(a)
@@ -117,17 +117,17 @@ ggplot(dfc, aes(x=size, y=number, colour=methods)) +
                      labels = c("0","5,000","10,000","15,000","20,000"))+
   scale_colour_manual(values=c("#E69F00", "#999999", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"),
                       breaks=c("CAT_TSS_tss","STRT_tss","SMART_TSS_tss","C1_CAGE_tss","NAR_tss"),
-                      labels=c("CAT-seq","C1 STRT","Smart-seq2","C1 CAGE","NAR"))+ #改折线颜色
+                      labels=c("CAT-seq","C1 STRT","Smart-seq2","C1 CAGE","NAR"))+ 
   labs(x="Number of reads uniquely mapped",y="Number of transcripts")+
   guides(fill=guide_legend(title=NULL))+
   theme_set(theme_bw()) +
   theme(panel.grid.major=element_line(colour=NA),panel.grid.minor=element_line(colour=NA))+
   #theme(panel.background = element_blank())+
-  theme(panel.border = element_blank())+ #去除边框
-  theme(axis.line.x=element_line(linetype=1,color="black",size=1), #加上x轴
-        axis.line.y=element_line(linetype=1,color="black",size=1), #加上y轴
-        axis.text.x = element_text(face = "plain",size = 10.5,angle=0,hjust = 0.5,vjust = 0.5), #改x轴字体
-        axis.text.y = element_text(face = "plain",size = 10.5), #改y轴字体
+  theme(panel.border = element_blank())+ 
+  theme(axis.line.x=element_line(linetype=1,color="black",size=1), 
+        axis.line.y=element_line(linetype=1,color="black",size=1), 
+        axis.text.x = element_text(face = "plain",size = 10.5,angle=0,hjust = 0.5,vjust = 0.5),
+        axis.text.y = element_text(face = "plain",size = 10.5), 
         axis.title.x = element_text(size = 12),
         axis.title.y = element_text(size = 12),
         legend.position = c(0.2,0.8),
@@ -154,17 +154,17 @@ ggplot(dfc, aes(x=size, y=number, colour=methods)) +
                      labels = c("0","5,000","10,000","15,000","20,000"))+
   scale_colour_manual(values=c("#E69F00", "#999999", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7"),
                       breaks=c("CAT_TES_tes","BAT_tes","SMART_TES_tes"),
-                      labels=c("CAT-seq","BAT-seq","Smart-seq2"))+ #改折线颜色  
+                      labels=c("CAT-seq","BAT-seq","Smart-seq2"))+ 
   labs(x="Number of reads uniquely mapped",y="Number of transcripts")+
   guides(fill=guide_legend(title=NULL))+
   theme_set(theme_bw()) +
   theme(panel.grid.major=element_line(colour=NA),panel.grid.minor=element_line(colour=NA))+
   #theme(panel.background = element_blank())+
-  theme(panel.border = element_blank())+ #去除边框
-  theme(axis.line.x=element_line(linetype=1,color="black",size=1), #加上x轴
-        axis.line.y=element_line(linetype=1,color="black",size=1), #加上y轴
-        axis.text.x = element_text(face = "plain",size = 10.5,angle=0,hjust = 0.5,vjust = 0.5), #改x轴字体
-        axis.text.y = element_text(face = "plain",size = 10.5), #改y轴字体
+  theme(panel.border = element_blank())+ 
+  theme(axis.line.x=element_line(linetype=1,color="black",size=1), 
+        axis.line.y=element_line(linetype=1,color="black",size=1), 
+        axis.text.x = element_text(face = "plain",size = 10.5,angle=0,hjust = 0.5,vjust = 0.5), 
+        axis.text.y = element_text(face = "plain",size = 10.5), 
         axis.title.x = element_text(size = 12),
         axis.title.y = element_text(size = 12),
         legend.position = c(0.2,0.8),
