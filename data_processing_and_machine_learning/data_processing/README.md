@@ -7,6 +7,7 @@ Then BED file as input is needed to call peak using CAGEr R package.
 ---
 
 # Data processing for 5' data
+
 The workflows of data of scCAT-seq 5', C1 CAGE, C1 STRT and Arguel et al. are similar. Here is the scCAT-seq 5' data processing workflow. To see detail imformation of other data processing, please see C1_CAGE_5_data_processing.sh, C1_STRT_5_data_processing.sh and Arguel_et_al_5_data_processing.sh.
 
 ## Prepare
@@ -41,11 +42,26 @@ do
 done
 ```
 
-Output files are stored in ~/zjw/20190109/5cap_read_with_tag.
+Output files are stored in `~/zjw/20190109/5cap_read_with_tag`.
 
 ## Trim TSO primer but retain GGG
 
+To trim TSO primer, we run:
+
+```
+for i in `ls ~/zjw/20190109/5cap_read_with_tag`
+do
+cutadapt -g GTGGTATCAACGCAGAGTACAT -o ~/zjw/20190109/trim_GTGGTATCAACGCAGAGTACAT/${i}.trimed.remainGGG ~/zjw/20190109/5cap_read_with_tag/${i}
+done
+```
+
+In this step, we trim TSO primer. However `GGG` at the end of TSO primer was retained for further filter. Output files are stored in `~/zjw/20190109/trim_GTGGTATCAACGCAGAGTACAT`.
+
 ## Mapping
+
+```
+To
+```
 
 ## Split reads aligned to plus stand and minus strand
 
