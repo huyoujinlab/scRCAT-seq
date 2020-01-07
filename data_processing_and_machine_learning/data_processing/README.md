@@ -38,7 +38,7 @@ Reads with TSO primer sequence at 5' are considered to further processing. TSO p
 ```
 for i in `ls ~/zjw/fastq_5cap_2018ab/`
 do
- cat ~/zjw/fastq_5cap_2018ab/${i} | paste - - - - | grep $'\t'"${a}" | awk -v FS="\t" -v OFS="\n" '{print $1, $2, $3, $4}' > ~/zjw/20190109/5cap_read_with_tag/${i}_with_tag.fq
+cat ~/zjw/fastq_5cap_2018ab/${i} | paste - - - - | grep $'\t'"${a}" | awk -v FS="\t" -v OFS="\n" '{print $1, $2, $3, $4}' > ~/zjw/20190109/5cap_read_with_tag/${i}_with_tag.fq
 done
 ```
 
