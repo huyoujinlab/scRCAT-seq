@@ -105,7 +105,7 @@ We run:
 mv tc_D44_52_5cap_peak_final.csv ../data/
 mv tc_D44_52_3tail_peak_final.csv ../data/
 cd ../
-python ./bin/demo.py
+python ./bin/Demo_DRG.py
 ```
 
 The new folder named "output" will be built after completion of the pipeline, which contains all the output files, including the "\*.csv" file. 
