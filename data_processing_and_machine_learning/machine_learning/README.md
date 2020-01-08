@@ -39,11 +39,11 @@ do
 done 
 ```
 
-"D44_52_3tail_dominant_tes.bed" and "D44_52_5cap_dominant_tss.bed" file will be generated. These file is peak calling output.
+`D44_52_3tail_dominant_tes.bed` and `D44_52_5cap_dominant_tss.bed` are generated. These file is peak calling output. `temp.RData` is for next step.
 
 
 
-## 2. Calculate TPM_of_peak, TPM_of_Dominant_Site, Peak_width and Dominant_TPM_to_Smart2
+## 2. Calculate TPM_of_peak, TPM_of_Dominant_Site, Peak_width and Gene_length
 
 We run:
 
@@ -52,7 +52,7 @@ Rscript cal_slope_cattss.R D44_52_5cap_dominant_tss_upstream2k_and_genebody.bed 
 Rscript cal_slope_cattes.R D44_52_3tail_dominant_tes_genebody_downstream2k.bed D_merge_standard_smart_seq2.count
 ```
 
-"tc_D44_52_5cap_peak.csv" and "tc_D44_52_3tail_peak.csv" will be generated. In this step, we added some features for machine learning.
+`tc_D44_52_5cap_peak.csv` and `tc_D44_52_3tail_peak.csv` are generated. In this step, we added some features for machine learning.
 
 
 
@@ -65,11 +65,11 @@ Rscript cal_slope_cattss2.R tc_D44_52_5cap_peak.csv D_merge_standard_smart_seq2_
 Rscript cal_slope_cattes2.R tc_D44_52_3tail_peak.csv  D_merge_standard_smart_seq2_sorted_chr3.wig
 ```
 
-"tc_D44_52_5cap_peak.csvnew.csv" and "tc_D44_52_3tail_peak.csvnew.csv" will be generated. In this step, we calculate the slope of Smart-seq2 coverage curve around the peaks.
+`tc_D44_52_5cap_peak.csvnew.csv` and `tc_D44_52_3tail_peak.csvnew.csv` are generated. In this step, we calculate the slope of Smart-seq2 coverage curve around the peaks and correlation.
 
 
 
-## 4. Change feature name
+## 4. Calculate percentage and Dominant_TPM_to_Smart2
 
 We run:
 
@@ -78,7 +78,7 @@ Rscript cal_slope_cattss3.R tc_D44_52_5cap_peak.csvnew.csv
 Rscript cal_slope_cattes3.R tc_D44_52_3tail_peak.csvnew.csv
 ```
 
-"tc_D44_52_5cap_peak.csvnew.csv.csv" and "tc_D44_52_3tail_peak.csvnew.csv.csv" will be generated. In this step, features were added and we can define the TRUE or FALSE of each peak.
+`tc_D44_52_5cap_peak.csvnew.csv.csv` and `tc_D44_52_3tail_peak.csvnew.csv.csv` are generated. In this step, Percentage and Dominant_TPM_to_Smart2 are added..
 
 
 ## 5. Add motif information
@@ -94,7 +94,7 @@ python find_motif_re_TSS_version2.py /BIGDATA1/gzzoc_yjhu_3/index/mm10_chr/mm10.
 #### Find polyA singal around TES.
 python find_motif_re_TES.py /BIGDATA1/gzzoc_yjhu_3/index/mm10_chr/mm10.fa tc_D44_52_3tail_peak.csvnew.csv.csv tc_D44_52_3tail_peak_final.csv
 ```
-We search motif form upstream 40 bp to 0 bp, relatived to dominant TSS/TES position. `NA` represents there is no motif in this region. `Number` means motif is in this position. `;` means more than 1 motif in this position. 
+In this step, `tc_D44_52_5cap_peak_final.csv` and `tc_D44_52_3tail_peak_final.csv` are generated. We search motif form upstream 40 bp to 0 bp, relatived to dominant TSS/TES position. `NA` represents there is no motif in this region. `Number` means motif is in this position. `;` means more than 1 motif in this position. 
 
 
 ## 6. Prediction and correction
