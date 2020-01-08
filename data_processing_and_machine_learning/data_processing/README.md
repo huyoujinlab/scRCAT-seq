@@ -10,7 +10,7 @@ Then BED file as input is needed to call peak using CAGEr R package.
 
 The workflows of data of scCAT-seq 5', C1 CAGE, C1 STRT and Arguel et al. are similar. Here is the scCAT-seq 5' data processing workflow. To see detail imformation of other data processing, please see C1_CAGE_5_data_processing.sh, C1_STRT_5_data_processing.sh and Arguel_et_al_5_data_processing.sh.
 
-## Preparation
+## 0. Preparation
 
 Before process the data, we bulid some directory and move the script to "script_and_log" directory: 
 
@@ -39,7 +39,7 @@ STAR --runThreadN 24 --runMode genomeGenerate \
 --sjdbOverhang 150
 ```
 
-## Find reads with TSO primer
+## 1. Find reads with TSO primer
 
 Reads with TSO primer sequence at 5' are considered to further processing. TSO primer in scCAT-seq data is `GTGGTATCAACGCAGAGTACATGGG`.
 
@@ -52,7 +52,7 @@ done
 
 Output files are stored in `~/zjw/20190109/5cap_read_with_tag/`.
 
-## Trim TSO primer but retain GGG
+## 2. Trim TSO primer but retain GGG
 
 To trim TSO primer, we run:
 
@@ -67,7 +67,7 @@ In this step, we trim TSO primer. However `GGG` at the end of TSO primer was ret
 
 Output files are stored in `~/zjw/20190109/trim_GTGGTATCAACGCAGAGTACAT/`.
 
-## Alignment
+## 3. Alignment
 
 For alignment, we run:
 
@@ -80,7 +80,7 @@ done
 
 Output files are stored in `~/zjw/20190109/mapping_output/`
 
-## Extract uniquely mapped reads
+## 4. Extract uniquely mapped reads
 
 We only select uniquely mapped reads, so we run:
 
@@ -93,7 +93,7 @@ done
 
 Output files are stored in `~/zjw/20190109/extract_uniquely_map/`
 
-## Split reads aligned to plus stand and minus strand
+## 5. Split reads aligned to plus stand and minus strand
 
 For further filter, we run:
 
@@ -110,7 +110,7 @@ done
 
 Output files are stored in `~/zjw/20190109/split_plus_minus/`
 
-## Extract reads with mismatch at 5'
+## 6. Extract reads with mismatch at 5'
 
 We run:
 
@@ -132,7 +132,7 @@ The template-switching (TS) oligonucleotide may hybridize to the first strand cD
 
 Output files are stored in `~/zjw/20190109/extract_mismatch/`
 
-## Convert SAM to BED
+## 7. Convert SAM to BED
 
 As BED format file can be used as input for CAGEr R package, we convert SAM to BED:
 
@@ -156,7 +156,7 @@ done
 Output files are stored in `~/zjw/20190109/final_out/`
 
 
-## Remove useless end
+## 8. Remove useless end
 
 As the library is pair-end reads, we remove one side which doesn't contain TSS information.
 
@@ -191,7 +191,7 @@ done
 
 The workflows of data of scCAT-seq 3' and BAT-seq are similar. Here is the scCAT-seq 5' data processing workflow. To see detail imformation of BAT-seq data processing, please see BAT-seq_3_data_processing.sh.
 
-## Preparation
+## 0. Preparation
 
 Before process the data, we bulid some directory and move the script to "script_and_log" directory:
 
@@ -213,7 +213,7 @@ mv cmpfastq_pe.pl ~/zjw/20190105/script_and_log
 cd ~/zjw/20190105/script_and_log
 ```
 
-## Find reads with oligo(dT) primer
+## 1. Find reads with oligo(dT) primer
 
 Reads with oligo(dT) primer sequence at 5'. We define reads with oligo(dT) primer sequence at 5' as R1 reads. Oligo(dT) primers in scCAT-seq data are listed in sample_list_tag.txt:
 
@@ -232,7 +232,7 @@ done
 
 Output files are stored in `~/zjw/20190105/3tail_read_with_tag/`.
 
-## Find R2 reads
+## 2. Find R2 reads
 
 Perl script cmpfastq_pe.pl is used to find R2 reads which its corresponding R1 reads with oligo(dT) primes:
 
@@ -254,7 +254,7 @@ mv ~/zjw/fastq_5cap_2018ab/*out ~/zjw/20190105/3tail_read_with_tag_other_strand/
 
 Output files are stored in `~/zjw/20190105/3tail_read_with_tag_other_strand/`.
 
-## Trim A10 but retain A5 at R2 reads
+## 3. Trim A10 but retain A5 at R2 reads
 
 To trim oligo(dT) primer, we run:
 
@@ -267,7 +267,7 @@ done
 
 Output files are stored in `~/zjw/20190105/3tail_read_with_tag_other_strand_withA10_remain_A5/`.
 
-## Alignment
+## 4. Alignment
 
 For alignment, we run:
 
@@ -281,7 +281,7 @@ done
 Output files are stored in `~/zjw/20190105/mapping_output/`.
 
 
-## Extract uniquely mapped reads
+## 5. Extract uniquely mapped reads
 
 We only select uniquely mapped reads, so we run:
 
@@ -295,7 +295,7 @@ done
 Output files are stored in `~/zjw/20190105/extract_uniquely_map/`.
 
 
-## Split reads aligned to plus stand and minus strand
+## 6. Split reads aligned to plus stand and minus strand
 
 For further filter, we run:
 
@@ -309,7 +309,7 @@ done
 
 Output files are stored in `~/zjw/20190105/split_plus_minus/`.
 
-## Extract reads with mismatch at 3'
+## 7. Extract reads with mismatch at 3'
 
 We run:
 
@@ -327,7 +327,7 @@ Oligo(dT) primers can also anneal to internal A-rich sequences, a phenomenon cal
 Output files are stored in `~/zjw/20190105/extract_mismatch/`.
 
 
-## Convert SAM to BED
+## 8. Convert SAM to BED
 
 As BED format file can be used as input for CAGEr R package, we generate SAM to BED:
 
@@ -343,7 +343,7 @@ done
 
 Output files are stored in `~/zjw/20190105/add_header/`.
 
-## Remove useless end
+## 9. Remove useless end
 
 As the library is pair-end reads, we remove one side which doesn't contain TES information.
 
