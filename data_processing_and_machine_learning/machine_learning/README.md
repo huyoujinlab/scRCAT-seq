@@ -94,6 +94,8 @@ python find_motif_re_TSS_version2.py /BIGDATA1/gzzoc_yjhu_3/index/mm10_chr/mm10.
 #### Find polyA singal around TES.
 python find_motif_re_TES.py /BIGDATA1/gzzoc_yjhu_3/index/mm10_chr/mm10.fa tc_D44_52_3tail_peak.csvnew.csv.csv tc_D44_52_3tail_peak_final.csv
 ```
+We search motif form upstream 40 bp to 0 bp, relatived to dominant TSS/TES position. `NA` represents there is no motif in this region. `Number` means motif is in this position. `;` means more than 1 motif in this position. 
+
 
 ## 6. Prediction and correction
 
