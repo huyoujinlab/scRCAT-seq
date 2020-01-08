@@ -158,7 +158,7 @@ Output files are stored in `~/zjw/20190109/final_out/`
 
 ## 8. Remove useless end
 
-As the library is pair-end reads, we remove one side which doesn't contain TSS information.
+As the library is pair-end reads, we remove one side which doesn't contain TSS information: 
 
 ```
 for i in `ls  ~/zjw/20190109/final_out |grep "bed"|grep "L1_1"`
@@ -365,7 +365,7 @@ Output files are stored in `~/zjw/20190105/add_header/`.
 
 ## 9. Remove useless end
 
-As the library is pair-end reads, we remove one side which doesn't contain TES information.
+As the library is pair-end reads, we remove one side which doesn't contain TES information:
 
 ```
 for i in `ls  ~/zjw/20190105/add_header |grep "TKD"|grep "bed"|grep "L1_1"`
