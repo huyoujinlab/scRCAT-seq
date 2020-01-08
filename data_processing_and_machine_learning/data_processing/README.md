@@ -29,6 +29,7 @@ mkdir ~/zjw/20190109/script_and_log
 #### Move scripts to direct position
 mv extractmismatch_plus_5'.py ~/zjw/20190109/script_and_log
 mv extractmismatch_plus_3'.py ~/zjw/20190109/script_and_log
+mv gencode_mm10_tRNA_rRNA_gene.bed ~/zjw/20190109/script_and_log
 
 #### Change directory
 cd ~/zjw/20190109/script_and_log
@@ -225,6 +226,7 @@ mkdir ~/zjw/20190105/script_and_log
 #### Move scripts to direct position
 mv extractmismatch_plus_3'.py ~/zjw/20190105/script_and_log
 mv extractmismatch_minus_3'.py ~/zjw/20190105/script_and_log
+mv gencode_mm10_tRNA_rRNA_gene.bed ~/zjw/20190105/script_and_log
 mv sample_list_tag.txt ~/zjw/20190105/script_and_log
 mv cmpfastq_pe.pl ~/zjw/20190105/script_and_log
 
