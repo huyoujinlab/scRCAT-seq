@@ -22,6 +22,8 @@
 ---
 ## 1. Call peak
 
+We run:
+
 ```
 cd call_peak
 Rscript CAGE_dominant.R
@@ -43,6 +45,8 @@ done
 
 ## 2. Calculate TPM_of_peak, TPM_of_Dominant_Site, Peak_width and Dominant_TPM_to_Smart2
 
+We run:
+
 ```
 Rscript cal_slope_cattss.R D44_52_5cap_dominant_tss_upstream2k_and_genebody.bed D_merge_standard_smart_seq2.count
 Rscript cal_slope_cattes.R D44_52_3tail_dominant_tes_genebody_downstream2k.bed D_merge_standard_smart_seq2.count
@@ -54,6 +58,8 @@ Rscript cal_slope_cattes.R D44_52_3tail_dominant_tes_genebody_downstream2k.bed D
 
 ## 3. Calculate TPM_of_peak, TPM_of_Dominant_Site and Peak_width
 
+We run:
+
 ```
 Rscript cal_slope_cattss2.R tc_D44_52_5cap_peak.csv D_merge_standard_smart_seq2_sorted_chr3.wig
 Rscript cal_slope_cattes2.R tc_D44_52_3tail_peak.csv  D_merge_standard_smart_seq2_sorted_chr3.wig
@@ -64,6 +70,8 @@ Rscript cal_slope_cattes2.R tc_D44_52_3tail_peak.csv  D_merge_standard_smart_seq
 
 
 ## 4. Change feature name
+
+We run:
 
 ```
 Rscript cal_slope_cattss3.R tc_D44_52_5cap_peak.csvnew.csv
@@ -77,6 +85,8 @@ Rscript cal_slope_cattes3.R tc_D44_52_3tail_peak.csvnew.csv
 
 In this step, mm10.fa genome file is needed. 
 
+We run:
+
 ```
 #### Find TATA-box, BREu, BREd around TSS.
 python find_motif_re_TSS_version2.py /BIGDATA1/gzzoc_yjhu_3/index/mm10_chr/mm10.fa tc_D44_52_5cap_peak.csvnew.csv.csv tc_D44_52_5cap_peak_final.csv
@@ -86,6 +96,8 @@ python find_motif_re_TES.py /BIGDATA1/gzzoc_yjhu_3/index/mm10_chr/mm10.fa tc_D44
 ```
 
 ## 6. Prediction and correction
+
+We run:
 
 ```
 mv tc_D44_52_5cap_peak_final.csv ../data/
