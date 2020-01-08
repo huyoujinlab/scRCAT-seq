@@ -14,6 +14,7 @@
 6) Slope_smart2_curve: The slope of Smart-seq2 coverage curve around the peaks.
 7) Trend_of_smart2_reads: Calculated by dividing the number of reads increased/decreased within 50bp distance by 50.
 8) Percentage: The percentage of read counts of a peak to the total counts of a transcript.
+9) Motif: Motif information around TSS/TES peak
 
 * Prediction:  
 1) Predicted each individual peaks in the input file. The value "1" indicates a true TSS/TES peak while value "0" indicates a false TSS/TES peak
@@ -61,10 +62,10 @@ Rscript cal_slope_cattes3.R tc_D44_52_3tail_peak.csvnew.csv
 * "tc_D44_52_5cap_peak.csvnew.csv.csv" and "tc_D44_52_3tail_peak.csvnew.csv.csv" will be generated. In this step, features were added and we can define the TRUE or FALSE of each peak.
 
 
+## 5. Add motif information
 
 
-
-## 5. Prediction and correction
+## 6. Prediction and correction
 
 ```
 mv tc_D44_52_5cap_peak.csvnew.csv.csv ../data/
