@@ -236,7 +236,7 @@ cd ~/zjw/20190105/script_and_log
 
 ## 1. Find reads with oligo(dT) primer
 
-Reads with oligo(dT) primer sequence at 5'. We define reads with oligo(dT) primer sequence at 5' as R1 reads. Oligo(dT) primers in scCAT-seq data are listed in sample_list_tag.txt:
+Reads with oligo(dT) primer sequence at 5'. We define reads with oligo(dT) primer sequence at 5' as R1 reads. Oligo(dT) primers in scCAT-seq data are listed in `sample_list_tag.txt`:
 
 ```
 for i in `ls ~/zjw/fastq_5cap_2018ab`
