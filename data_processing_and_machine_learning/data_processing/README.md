@@ -237,16 +237,19 @@ Output files are stored in `~/zjw/20190105/3tail_read_with_tag/`.
 Perl script cmpfastq_pe.pl is used to find R2 reads which its corresponding R1 reads with oligo(dT) primes:
 
 ```
+#### Compare R1_with_tag to R2
 for i in `ls ~/zjw/20190105/3tail_read_with_tag/ | grep "L1_1.fq_with_tag$"`
 do
         perl cmpfastq_pe.pl ~/zjw/20190105/3tail_read_with_tag/${i} ~/zjw/fastq_5cap_2018ab/${i%_1*}_2.fq
 done
 
+#### Compare R2_with_tag to R1
 for i in `ls ~/zjw/20190105/3tail_read_with_tag/ | grep "L1_2.fq_with_tag$"`
 do
         perl cmpfastq_pe.pl ~/zjw/20190105/3tail_read_with_tag/${i} ~/zjw/fastq_5cap_2018ab/${i%_2*}_1.fq
 done
 
+#### Remove useless files 
 rm ~/zjw/20190105/3tail_read_with_tag/*out
 rm ~/zjw/fastq_5cap_2018ab/*unique.out
 mv ~/zjw/fastq_5cap_2018ab/*out ~/zjw/20190105/3tail_read_with_tag_other_strand/
@@ -302,7 +305,10 @@ For further filter, we run:
 ```
 for i in `ls ~/zjw/20190105/extract_uniquely_map | grep "sam"`
 do
+#### Extract plus strand reads
         cat ~/zjw/20190105/extract_uniquely_map/${i} | awk '{FS=" "}{if ($2==0 || $2==256){print $1"\t"$2"\t"$3"\t"$4"\t"$5"\t"$6"\t"$7"\t"$8"\t"$9"\t"$10"\t"$11"\t"$12"\t"$13"\t"$14"\t"$15}}' > ~/zjw/20190105/split_plus_minus/${i}_plus
+
+#### Extract minus strand reads
         cat ~/zjw/20190105/extract_uniquely_map/${i} | awk '{FS=" "}{if ($2==16 || $2==272){print $1"\t"$2"\t"$3"\t"$4"\t"$5"\t"$6"\t"$7"\t"$8"\t"$9"\t"$10"\t"$11"\t"$12"\t"$13"\t"$14"\t"$15}}' > ~/zjw/20190105/split_plus_minus/${i}_minus
 done
 ```
@@ -316,8 +322,13 @@ We run:
 ```
 for i in `ls ~/zjw/20190105/split_plus_minus | grep "extract_uniquely_map.sam_plus"`
 do
+#### Extract plus strand reads
         python ~/zjw/20190105/script_and_log/extractmismatch_plus_3'.py -i ~/zjw/20190105/split_plus_minus/${i} -o ~/zjw/20190105/extract_mismatch/${i}_extractmismatch
+
+#### Extract minus strand reads
         python ~/zjw/20190105/script_and_log/extractmismatch_minus_3'.py -i ~/zjw/20190105/split_plus_minus/${i%_*}_minus -o ~/zjw/20190105/extract_mismatch/${i%_*}_minus_extractmismatch
+
+#### Combine plus strand reads and minus strand reads
         cat ~/zjw/20190105/extract_mismatch/${i}_extractmismatch ~/zjw/20190105/extract_mismatch/${i%_*}_minus_extractmismatch > ~/zjw/20190105/extract_mismatch/${i%_*}_extractmismatch
 done
 ```
@@ -334,14 +345,23 @@ As BED format file can be used as input for CAGEr R package, we generate SAM to 
 ```
 for i in `ls ~/zjw/20190105/extract_mismatch | grep "sam_extractmismatch"`
 do
+#### Add header and convert to bam
         samtools view -b -T ~/index/mm10_ERCC92/mm10_ERCC92trimpolyA.fa ~/zjw/20190105/extract_mismatch/${i} | samtools view -b >  ~/zjw/20190105/add_header/${i}.bam
+
+#### Sort
         samtools sort ~/zjw/20190105/add_header/${i}.bam -o ~/zjw/20190105/add_header/${i}_sorted.bam
+        
+#### Build bam index for visualization 
         samtools index ~/zjw/20190105/add_header/${i}_sorted.bam
+        
+#### Convert bam into bed
         bedtools bamtobed -i ~/zjw/20190105/add_header/${i}_sorted.bam > ~/zjw/20190105/add_header/${i}.bed
 done
 ```
 
 Output files are stored in `~/zjw/20190105/add_header/`.
+
+
 
 ## 9. Remove useless end
 
@@ -350,10 +370,15 @@ As the library is pair-end reads, we remove one side which doesn't contain TES i
 ```
 for i in `ls  ~/zjw/20190105/add_header |grep "TKD"|grep "bed"|grep "L1_1"`
 do
+#### The first read count
         a=$(wc -l ~/zjw/20190105/add_header/${i}|awk '{print $1}')
-        b=$(wc -l ~/zjw/20190105/add_header/${i%%L1_1*}L1_2.fq-common.out_withA10_remain_A5_Aligned.out.sam_extract_uniquely_map.sam_extractmismatch.bed|awk '{print $1}')
         echo ${a}
+        
+#### The second read count
+        b=$(wc -l ~/zjw/20190105/add_header/${i%%L1_1*}L1_2.fq-common.out_withA10_remain_A5_Aligned.out.sam_extract_uniquely_map.sam_extractmismatch.bed|awk '{print $1}')
         echo ${b}
+        
+#### Remove useless files
         if [ ${a} -gt ${b} ]; then
                 rm ~/zjw/20190105/add_header/${i%%L1_1*}L1_2*
         else
