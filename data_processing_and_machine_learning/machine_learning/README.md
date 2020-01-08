@@ -39,7 +39,7 @@ do
 done 
 ```
 
-`D44_52_3tail_dominant_tes.bed` and `D44_52_5cap_dominant_tss.bed` are generated. These file is peak calling output. `temp.RData` is for next step.
+`D44_52_3tail_dominant_tes.bed` and `D44_52_5cap_dominant_tss.bed` are generated. These file is peak calling output. `temp.RData` is used for next step.
 
 
 
