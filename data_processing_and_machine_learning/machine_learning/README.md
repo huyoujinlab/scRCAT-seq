@@ -99,7 +99,7 @@ The new folder named "output" will be built after completion of the pipeline, wh
 The last column in the .CSV files shows the predicted classification corresponding to each individual peaks in the input file. The value "1" indicates a true TSS/TES peak while value "0" indicates a false TSS/TES peak.
 
 
-* from step 1 to step 6, it takes about 15 minutes.
+* From step 1 to step 6, it takes about 15 minutes.
 
 
 
