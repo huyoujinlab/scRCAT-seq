@@ -29,7 +29,7 @@ mv extractmismatch_plus_3'.py ~/zjw/20190109/script_and_log
 cd ~/zjw/20190109/script_and_log
 ```
 
-Please make sure that fq files are list in `~/zjw/fastq_5cap_2018ab`. STAR index must be prepared before running this workflow. For build index, you can run:
+Please make sure that original fastq files are list in `~/zjw/fastq_5cap_2018ab`. STAR index must be prepared before running this workflow. For build index, you can run:
 
 ```
 STAR --runThreadN 24 --runMode genomeGenerate \
