@@ -161,7 +161,7 @@ done
 Output files are stored in `~/zjw/20190109/final_out/`
 
 
-## 8. Remove useless end
+## 8. Remove useless reads
 
 As the library is pair-end reads, we remove one side which doesn't contain TSS information: 
 
@@ -373,7 +373,7 @@ Output files are stored in `~/zjw/20190105/add_header/`.
 
 
 
-## 9. Remove useless end
+## 9. Remove useless reads
 
 As the library is pair-end reads, we remove one side which doesn't contain TES information:
 
