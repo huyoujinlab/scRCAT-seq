@@ -66,7 +66,7 @@ On R 3.5.0:
  
  
 ---
-On python 3.7.1:
+On python 2.7.15:
  
 1) pandas 0.25.1  
 2) numpy 1.17.2  
