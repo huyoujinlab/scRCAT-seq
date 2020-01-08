@@ -259,7 +259,7 @@ Output files are stored in `~/zjw/20190105/3tail_read_with_tag_other_strand/`.
 
 ## 3. Trim A10 but retain A5 at R2 reads
 
-To trim oligo(dT) primer, we run:
+To trim polyA at 3', we run:
 
 ```
 for i in `ls ~/zjw/20190105/3tail_read_with_tag_other_strand`
