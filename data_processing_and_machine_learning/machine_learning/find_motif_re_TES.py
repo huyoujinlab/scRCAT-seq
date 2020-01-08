@@ -36,17 +36,17 @@ def reverse_complement(seq):
 def find_motif(row):
     motif_dict = {}
     if row["strand"] == "+":
-        seq = genome[row["chr"]][row["dominant_tes_position"] - 40:row["dominant_tes_position"]].upper()
+        seq = genome[row["chr"]][row["dominant_tes_position"] - 50:row["dominant_tes_position"]].upper()
 
     if row["strand"] == "-":
-        seq = genome[row["chr"]][row["dominant_tes_position"]:row["dominant_tes_position"] + 40].upper()
+        seq = genome[row["chr"]][row["dominant_tes_position"]:row["dominant_tes_position"] + 50].upper()
     #    print(seq)
         seq = reverse_complement(seq)
     #    print(seq)
     for motif in motif_info:
         if re.findall(motif, seq):
             #print( [ i.start() for i in re.finditer(motif, seq)] )
-            index = [ i.start() - 40 for i in re.finditer(motif, seq) ]  # motif start position, -40 bp
+            index = [ i.start() - 50 for i in re.finditer(motif, seq) ]  # motif start position, -50 bp
             #print index
             index = ';'.join(map(str, index))
         else:  # no motif result
