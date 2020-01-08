@@ -185,6 +185,15 @@ do
 done
 ```
 
+## 8. Remove reads mapped to tRNA and rRNA
+
+We run:
+```
+for i in `ls  ~/zjw/20190109/final_out |grep "bed$"`
+do
+        bedtools subtract -a ~/zjw/20190109/final_out/${i}.bed -b gencode_mm10_tRNA_rRNA_gene.bed > ~/zjw/20190109/final_out/${i%.*}_remove_trRNA.bed
+done
+```
 
 
 ---
