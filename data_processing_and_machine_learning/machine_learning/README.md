@@ -63,10 +63,14 @@ Rscript cal_slope_cattes3.R tc_D44_52_3tail_peak.csvnew.csv
 
 
 ## 5. Add motif information
- 
- ```
- 
- ```
+In this step, mm10.fa genome file is needed. 
+```
+#### Find TATA-box、BREu、BREd around TSS.
+python find_motif_re_TSS_version2.py /BIGDATA1/gzzoc_yjhu_3/index/mm10_chr/mm10.fa 20190711D3tss_peak_new.csv.csv.csv 20190908D3tss_peak_new_new.csv
+
+#### Find polyA singal around TES.
+python find_motif_re_TES.py /BIGDATA1/gzzoc_yjhu_3/index/mm10_chr/mm10.fa 20190711D3tes_peak_new.csv.csv.csv 20190908D3tes_peak_new_new.csv
+```
 
 ## 6. Prediction and correction
 
