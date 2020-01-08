@@ -15,6 +15,7 @@ The workflows of data of scCAT-seq 5', C1 CAGE, C1 STRT and Arguel et al. are si
 Before process the data, we bulid some directory and move the script to "script_and_log" directory: 
 
 ```
+#### Create directory
 mkdir ~/zjw/20190109
 mkdir ~/zjw/20190109/5cap_read_with_tag
 mkdir ~/zjw/20190109/trim_GTGGTATCAACGCAGAGTACAT
@@ -24,8 +25,12 @@ mkdir ~/zjw/20190109/split_plus_minus
 mkdir ~/zjw/20190109/extract_mismatch
 mkdir ~/zjw/20190109/final_out
 mkdir ~/zjw/20190109/script_and_log
+
+#### Move scripts to direct position
 mv extractmismatch_plus_5'.py ~/zjw/20190109/script_and_log
 mv extractmismatch_plus_3'.py ~/zjw/20190109/script_and_log
+
+#### Change directory
 cd ~/zjw/20190109/script_and_log
 ```
 
@@ -196,6 +201,7 @@ The workflows of data of scCAT-seq 3' and BAT-seq are similar. Here is the scCAT
 Before process the data, we bulid some directory and move the script to "script_and_log" directory:
 
 ```
+#### Create directory
 mkdir ~/zjw/20190105
 mkdir ~/zjw/20190105/3tail_read_with_tag
 mkdir ~/zjw/20190105/3tail_read_with_tag_other_strand
@@ -206,10 +212,14 @@ mkdir ~/zjw/20190105/split_plus_minus
 mkdir ~/zjw/20190105/extract_mismatch
 mkdir ~/zjw/20190105/add_header
 mkdir ~/zjw/20190105/script_and_log
+
+#### Move scripts to direct position
 mv extractmismatch_plus_3'.py ~/zjw/20190105/script_and_log
 mv extractmismatch_minus_3'.py ~/zjw/20190105/script_and_log
 mv sample_list_tag.txt ~/zjw/20190105/script_and_log
 mv cmpfastq_pe.pl ~/zjw/20190105/script_and_log
+
+#### Change directory
 cd ~/zjw/20190105/script_and_log
 ```
 
