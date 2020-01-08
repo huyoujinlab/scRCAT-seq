@@ -24,7 +24,15 @@
 
 ```
 cd call_peak
-bash CAGE_dominant.sh 
+Rscript CAGE_dominant.R
+for i in `ls|grep "_dominant_tes.bed"`
+do
+bedtools intersect -s -a ${i} -b gencode_mm10_all_gene_genebody_and_downstream2k.bed -wa -wb > ${i%%.*}_genebody_downstream2k.bed
+done
+
+for i in `ls|grep "_dominant_tss.bed"`
+do bedtools intersect -s -a ${i} -b gencode_mm10_all_gene_ustream2k_and_genebody.bed -wa -wb > ${i%%.*}_upstream2k_and_genebody.bed
+done 
 ```
 
 * "D44_52_3tail_dominant_tes.bed" and "D44_52_5cap_dominant_tss.bed" file will be generated. These file is peak calling output.
