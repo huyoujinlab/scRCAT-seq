@@ -23,6 +23,7 @@
 ## 1. Call peak
 
 ```
+cd call_peak
 bash CAGE_dominant.sh 
 ```
 
@@ -63,20 +64,22 @@ Rscript cal_slope_cattes3.R tc_D44_52_3tail_peak.csvnew.csv
 
 
 ## 5. Add motif information
+
 In this step, mm10.fa genome file is needed. 
+
 ```
-#### Find TATA-box、BREu、BREd around TSS.
-python find_motif_re_TSS_version2.py /BIGDATA1/gzzoc_yjhu_3/index/mm10_chr/mm10.fa 20190711D3tss_peak_new.csv.csv.csv 20190908D3tss_peak_new_new.csv
+#### Find TATA-box, BREu, BREd around TSS.
+python find_motif_re_TSS_version2.py /BIGDATA1/gzzoc_yjhu_3/index/mm10_chr/mm10.fa tc_D44_52_5cap_peak.csvnew.csv.csv tc_D44_52_5cap_peak_final.csv
 
 #### Find polyA singal around TES.
-python find_motif_re_TES.py /BIGDATA1/gzzoc_yjhu_3/index/mm10_chr/mm10.fa 20190711D3tes_peak_new.csv.csv.csv 20190908D3tes_peak_new_new.csv
+python find_motif_re_TES.py /BIGDATA1/gzzoc_yjhu_3/index/mm10_chr/mm10.fa tc_D44_52_3tail_peak.csvnew.csv.csv tc_D44_52_3tail_peak_final.csv
 ```
 
 ## 6. Prediction and correction
 
 ```
-mv tc_D44_52_5cap_peak.csvnew.csv.csv ../data/
-mv tc_D44_52_3tail_peak.csvnew.csv.csv ../data/
+mv tc_D44_52_5cap_peak_final.csv ../data/
+mv tc_D44_52_3tail_peak_final.csv ../data/
 cd ../
 python ./bin/demo.py
 ```
