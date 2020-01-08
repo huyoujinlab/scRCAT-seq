@@ -25,13 +25,15 @@
 ```
 cd call_peak
 Rscript CAGE_dominant.R
+
 for i in `ls|grep "_dominant_tes.bed"`
 do
-bedtools intersect -s -a ${i} -b gencode_mm10_all_gene_genebody_and_downstream2k.bed -wa -wb > ${i%%.*}_genebody_downstream2k.bed
+        bedtools intersect -s -a ${i} -b gencode_mm10_all_gene_genebody_and_downstream2k.bed -wa -wb > ${i%%.*}_genebody_downstream2k.bed
 done
 
 for i in `ls|grep "_dominant_tss.bed"`
-do bedtools intersect -s -a ${i} -b gencode_mm10_all_gene_ustream2k_and_genebody.bed -wa -wb > ${i%%.*}_upstream2k_and_genebody.bed
+do 
+        bedtools intersect -s -a ${i} -b gencode_mm10_all_gene_ustream2k_and_genebody.bed -wa -wb > ${i%%.*}_upstream2k_and_genebody.bed
 done 
 ```
 
@@ -97,7 +99,7 @@ python ./bin/demo.py
 * The last column in the .CSV files shows the predicted classification corresponding to each individual peaks in the input file. The value "1" indicates a true TSS/TES peak while value "0" indicates a false TSS/TES peak.
 
 
-* from step 1 to step 5, it takes about 10 minutes.
+* from step 1 to step 6, it takes about 15 minutes.
 
 
 
