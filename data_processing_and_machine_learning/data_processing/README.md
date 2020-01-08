@@ -73,9 +73,9 @@ In this step, we trim TSO primer. However `GGG` at the end of TSO primer was ret
 
 Output files are stored in `~/zjw/20190109/trim_GTGGTATCAACGCAGAGTACAT/`.
 
-## 3. Alignment
+## 3. Mapping
 
-For alignment, we run:
+For mapping, we run:
 
 ```
 for i in `ls ~/zjw/20190109/trim_GTGGTATCAACGCAGAGTACAT/`
@@ -188,7 +188,7 @@ done
 
 ## 9. Remove reads mapped to tRNA and rRNA
 
-We run:
+Reads that mapped at tRNA and rRNA position are discarded:
 ```
 for i in `ls  ~/zjw/20190109/final_out |grep "bed$"`
 do
@@ -291,9 +291,9 @@ done
 
 Output files are stored in `~/zjw/20190105/3tail_read_with_tag_other_strand_withA10_remain_A5/`.
 
-## 4. Alignment
+## 4. Mapping
 
-For alignment, we run:
+For Mapping, we run:
 
 ```
 for i in `ls ~/zjw/20190105/3tail_read_with_tag_other_strand_withA10_remain_A5/`
@@ -410,7 +410,7 @@ done
 
 ## 10. Remove reads mapped to tRNA and rRNA
 
-We run:
+Reads that mapped at tRNA and rRNA position are discarded:
 ```
 for i in `ls  ~/zjw/20190105/add_header |grep "bed$"`
 do
