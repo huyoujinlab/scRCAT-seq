@@ -368,7 +368,7 @@ Output files are stored in `~/zjw/20190105/add_header/`.
 As the library is pair-end reads, we remove one side which doesn't contain TES information:
 
 ```
-for i in `ls  ~/zjw/20190105/add_header |grep "TKD"|grep "bed"|grep "L1_1"`
+for i in `ls  ~/zjw/20190105/add_header |grep "bed"|grep "L1_1"`
 do
 #### The first read count
         a=$(wc -l ~/zjw/20190105/add_header/${i}|awk '{print $1}')
