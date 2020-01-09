@@ -192,7 +192,7 @@ Reads that mapped at tRNA and rRNA position are discarded:
 ```
 for i in `ls  ~/zjw/20190109/final_out |grep "bed$"`
 do
-        bedtools subtract -a ~/zjw/20190109/final_out/${i}.bed -b gencode_mm10_tRNA_rRNA_gene.bed > ~/zjw/20190109/final_out/${i%.*}_remove_trRNA.bed
+        bedtools subtract -a ~/zjw/20190109/final_out/${i} -b gencode_mm10_tRNA_rRNA_gene.bed > ~/zjw/20190109/final_out/${i%.*}_remove_trRNA.bed
 done
 ```
 
@@ -414,7 +414,7 @@ Reads that mapped at tRNA and rRNA position are discarded:
 ```
 for i in `ls  ~/zjw/20190105/add_header |grep "bed$"`
 do
-        bedtools subtract -a ~/zjw/20190105/add_header/${i}.bed -b gencode_mm10_tRNA_rRNA_gene.bed > ~/zjw/20190105/add_header/${i%.*}_remove_trRNA.bed
+        bedtools subtract -a ~/zjw/20190105/add_header/${i} -b gencode_mm10_tRNA_rRNA_gene.bed > ~/zjw/20190105/add_header/${i%.*}_remove_trRNA.bed
 done
 ```
 
