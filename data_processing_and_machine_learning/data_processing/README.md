@@ -124,10 +124,10 @@ We run:
 for i in `ls ~/zjw/20190109/split_plus_minus | grep "extract_uniquely_map.sam_plus"`
 do
 #### Extract plus strand reads
-        python ~/zjw/20190109/script_and_log/extractmismatch_plus_5'.py -i ~/zjw/20190109/split_plus_minus/${i} -o ~/zjw/20190109/extract_mismatch/${i}_extractmismatch
+        python ~/zjw/20190109/script_and_log/extractmismatch_plus_5.py -i ~/zjw/20190109/split_plus_minus/${i} -o ~/zjw/20190109/extract_mismatch/${i}_extractmismatch
         
 #### Extract plus strand reads
-        python ~/zjw/20190109/script_and_log/extractmismatch_minus_5'.py -i ~/zjw/20190109/split_plus_minus/${i%_*}_minus -o ~/zjw/20190109/extract_mismatch/${i%_*}_minus_extractmismatch
+        python ~/zjw/20190109/script_and_log/extractmismatch_minus_5.py -i ~/zjw/20190109/split_plus_minus/${i%_*}_minus -o ~/zjw/20190109/extract_mismatch/${i%_*}_minus_extractmismatch
         
 #### Combine together
         cat ~/zjw/20190109/extract_mismatch/${i}_extractmismatch ~/zjw/20190109/extract_mismatch/${i%_*}_minus_extractmismatch > ~/zjw/20190109/extract_mismatch/${i%_*}_extractmismatch
@@ -344,10 +344,10 @@ We run:
 for i in `ls ~/zjw/20190105/split_plus_minus | grep "extract_uniquely_map.sam_plus"`
 do
 #### Extract plus strand reads
-        python ~/zjw/20190105/script_and_log/extractmismatch_plus_3'.py -i ~/zjw/20190105/split_plus_minus/${i} -o ~/zjw/20190105/extract_mismatch/${i}_extractmismatch
+        python ~/zjw/20190105/script_and_log/extractmismatch_plus_3.py -i ~/zjw/20190105/split_plus_minus/${i} -o ~/zjw/20190105/extract_mismatch/${i}_extractmismatch
 
 #### Extract minus strand reads
-        python ~/zjw/20190105/script_and_log/extractmismatch_minus_3'.py -i ~/zjw/20190105/split_plus_minus/${i%_*}_minus -o ~/zjw/20190105/extract_mismatch/${i%_*}_minus_extractmismatch
+        python ~/zjw/20190105/script_and_log/extractmismatch_minus_3.py -i ~/zjw/20190105/split_plus_minus/${i%_*}_minus -o ~/zjw/20190105/extract_mismatch/${i%_*}_minus_extractmismatch
 
 #### Combine plus strand reads and minus strand reads
         cat ~/zjw/20190105/extract_mismatch/${i}_extractmismatch ~/zjw/20190105/extract_mismatch/${i%_*}_minus_extractmismatch > ~/zjw/20190105/extract_mismatch/${i%_*}_extractmismatch
