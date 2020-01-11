@@ -111,7 +111,7 @@ python find_motif_re_TSS.py ~/index/mm10/mm10.fa tc_D44_52_5cap_peak.csv.csv.csv
 python find_motif_re_TES.py ~/index/mm10/mm10.fa tc_D44_52_3tail_peak.csv.csv.csv.csv tc_D44_52_3tail_peak.csv.csv.csv.csv.csv
 ```
 
-In this step, `tc_D44_52_5cap_peak.csv.csv.csv.csv.csv` and `tc_D44_52_3tail_peak.csv.csv.csv.csv.csv` are generated. We search motif form upstream 40 bp to 0 bp, relatived to dominant TSS/TES position. `NA` represents there is no motif in this region. `Number` means motif is in this position. `;` means more than 1 motif in this position. 
+In this step, `tc_D44_52_5cap_peak.csv.csv.csv.csv.csv` and `tc_D44_52_3tail_peak.csv.csv.csv.csv.csv` are generated. We search motif form upstream 40 bp to 0 bp, relatived to dominant TSS/TES position. `NA` represents there is no motif in this region. `Number` means motif is in this position. `;` means more than 1 motif in this area. 
 
 
 ## 7. Unfold motif and change gene length to mean transcript length
