@@ -120,7 +120,7 @@ Rscript unfold_tss.R tc_D44_52_5cap_peak.csv.csv.csv.csv.csv
 Rscript unfold_tes.R tc_D44_52_3tail_peak.csv.csv.csv.csv.csv
 ```
 
-In this step, `tc_D44_52_5cap_peak.csv.csv.csv.csv.csv.csv` and `tc_D44_52_3tail_peak.csv.csv.csv.csv.csv.csv` are generated.
+In this step, `tc_D44_52_5cap_peak.csv.csv.csv.csv.csv.csv` and `tc_D44_52_3tail_peak.csv.csv.csv.csv.csv.csv` are generated. The value `1` indicates that there is motif in this position while value `0` indicates no motif enrichment.
 
 ## 8. Prediction and correction
 
@@ -137,7 +137,7 @@ python ./bin/Demo_DRG.py
 
 The new folder named "output" will be built after completion of the pipeline, which contains all the output files, including the "\*.csv" file. 
 
-The last column in the .CSV files shows the predicted classification corresponding to each individual peaks in the input file. The value "1" indicates a true TSS/TES peak while value "0" indicates a false TSS/TES peak.
+The last column in the .CSV files shows the predicted classification corresponding to each individual peaks in the input file. The value `1` indicates a true TSS/TES peak while value `0` indicates a false TSS/TES peak.
 
 
 * From step 1 to step 6, it takes about 15 minutes.
