@@ -94,3 +94,4 @@ colnames(tc)[c(12,13)] <- c("major_peak","annotated_peak")
 tc <- unique(tc)
 
 write.csv(tc,paste('tc_',strsplit(args[1],split = '_do')[[1]][1],'_peak.csv',sep = ''),row.names = F,quote = F)
+
