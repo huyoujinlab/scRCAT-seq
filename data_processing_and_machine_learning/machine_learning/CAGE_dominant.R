@@ -38,7 +38,7 @@ for(i in grep("A10",list.files(),value = T)) {
 
 }
 
-save.image("20191008lanecdef_CAT.RData")
+save.image("temp.RData")
 
 ####5' single cell call peak
 for(i in objects()[grep("5cap",objects())]) {
