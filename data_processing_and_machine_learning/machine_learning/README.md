@@ -89,10 +89,10 @@ We run:
 
 ```
 #### Find TATA-box, BREu, BREd around TSS.
-python find_motif_re_TSS.py /BIGDATA1/gzzoc_yjhu_3/index/mm10_chr/mm10.fa tc_D44_52_5cap_peak.csvnew.csv.csv tc_D44_52_5cap_peak_final.csv
+python find_motif_re_TSS.py ~/index/mm10/mm10.fa tc_D44_52_5cap_peak.csvnew.csv.csv tc_D44_52_5cap_peak_final.csv
 
 #### Find polyA singal around TES.
-python find_motif_re_TES.py /BIGDATA1/gzzoc_yjhu_3/index/mm10_chr/mm10.fa tc_D44_52_3tail_peak.csvnew.csv.csv tc_D44_52_3tail_peak_final.csv
+python find_motif_re_TES.py ~/index/mm10/mm10.fa tc_D44_52_3tail_peak.csvnew.csv.csv tc_D44_52_3tail_peak_final.csv
 ```
 In this step, `tc_D44_52_5cap_peak_final.csv` and `tc_D44_52_3tail_peak_final.csv` are generated. We search motif form upstream 40 bp to 0 bp, relatived to dominant TSS/TES position. `NA` represents there is no motif in this region. `Number` means motif is in this position. `;` means more than 1 motif in this position. 
 
