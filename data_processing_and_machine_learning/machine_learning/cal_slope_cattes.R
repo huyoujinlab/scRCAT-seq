@@ -1,6 +1,3 @@
-###############the first args is tes_dominant_peak_file
-###############the second args is smart-seq2 read count file
-
 options(stringsAsFactors = FALSE)
 options(scipen = 100)
 
@@ -84,7 +81,7 @@ all_gene_all_transcript_tes <- read.table("gencode_mm10_all_gene_all_transcript_
 
 
 for(j in 1:nrow(tc)) {
-  temp <- all_gene_all_transcript_tes[all_gene_all_transcript_tes[,1]==tc[j,2] & all_gene_all_transcript_tes[,6]==tc[j,5] & abs(all_gene_all_transcript_tes[,3]-tc[j,7])<=100,]
+  temp <- all_gene_all_transcript_tes[all_gene_all_transcript_tes[,1]==tc[j,2] & all_gene_all_transcript_tes[,6]==tc[j,5] & abs(all_gene_all_transcript_tes[,3]-tc[j,7])<=100,] 
   ifelse(nrow(temp)==0,tc[j,13] <- 0,tc[j,13] <- 1)
 }
 
@@ -94,4 +91,3 @@ colnames(tc)[c(12,13)] <- c("major_peak","annotated_peak")
 tc <- unique(tc)
 
 write.csv(tc,paste('tc_',strsplit(args[1],split = '_do')[[1]][1],'_peak.csv',sep = ''),row.names = F,quote = F)
-

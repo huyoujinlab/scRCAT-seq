@@ -74,3 +74,4 @@ if __name__ == "__main__":
 
     result = df.apply(find_motif, axis =  1)
     result.to_csv(out, sep=",", index=False)
+

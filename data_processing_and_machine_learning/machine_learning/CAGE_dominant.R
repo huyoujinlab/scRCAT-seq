@@ -96,9 +96,4 @@ for(i in grep("dominant",objects(),value = TRUE)) {
 
 
 
-############the next step is to use bedtools to find peaks that locate in genes
-######### on linux:
-for i in `ls|grep "_dominant_tes.bed"`; do bedtools intersect -s -a ${i} -b gencode_mm10_all_gene_genebody_and_downstream2k.bed -wa -wb > ${i%%.*}_genebody_downstream2k.bed; done
-for i in `ls|grep "_dominant_tss.bed"`; do bedtools intersect -s -a ${i} -b gencode_mm10_all_gene_ustream2k_and_genebody.bed -wa -wb > ${i%%.*}_upstream2k_and_genebody.bed; done
-
 
