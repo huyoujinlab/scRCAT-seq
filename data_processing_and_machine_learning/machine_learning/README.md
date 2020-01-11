@@ -80,6 +80,11 @@ Rscript cal_slope_cattes3.R tc_D44_52_3tail_peak.csvnew.csv
 
 `tc_D44_52_5cap_peak.csvnew.csv.csv` and `tc_D44_52_3tail_peak.csvnew.csv.csv` are generated. In this step, Percentage and Dominant_TPM_to_Smart2 are added..
 
+## 5. Add Fantom5 and poly_DB
+
+```
+bedtools intersect -s -a D44_52_5cap_dominant_tss_in_gene.bed -b tc_dsc.bed -wa -wb > D44_52_5cap_dominant_tss_upstream2k_and_genebody_1_dsc.bed
+```
 
 ## 5. Add motif information
 
