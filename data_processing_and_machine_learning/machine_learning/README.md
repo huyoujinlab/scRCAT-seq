@@ -88,6 +88,7 @@ In this step, mm10.fa genome file is needed.
 We run:
 
 ```
+conda activate py2.7
 #### Find TATA-box, BREu, BREd around TSS.
 python find_motif_re_TSS.py ~/index/mm10/mm10.fa tc_D44_52_5cap_peak.csvnew.csv.csv tc_D44_52_5cap_peak_final.csv
 
