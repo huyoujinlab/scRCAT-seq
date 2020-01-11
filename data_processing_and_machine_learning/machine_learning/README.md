@@ -89,7 +89,7 @@ We run:
 
 ```
 #### Find TATA-box, BREu, BREd around TSS.
-python find_motif_re_TSS_version2.py /BIGDATA1/gzzoc_yjhu_3/index/mm10_chr/mm10.fa tc_D44_52_5cap_peak.csvnew.csv.csv tc_D44_52_5cap_peak_final.csv
+python find_motif_re_TSS.py /BIGDATA1/gzzoc_yjhu_3/index/mm10_chr/mm10.fa tc_D44_52_5cap_peak.csvnew.csv.csv tc_D44_52_5cap_peak_final.csv
 
 #### Find polyA singal around TES.
 python find_motif_re_TES.py /BIGDATA1/gzzoc_yjhu_3/index/mm10_chr/mm10.fa tc_D44_52_3tail_peak.csvnew.csv.csv tc_D44_52_3tail_peak_final.csv
