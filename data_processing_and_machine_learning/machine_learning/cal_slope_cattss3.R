@@ -18,4 +18,4 @@ a[,c(13,14)] <- a[,c(14,13)]
 colnames(a)[c(13,14)] <- c("percentage","annotated_peak")
 write.csv(a,paste(args[1],'.csv',sep = ""),quote = F,row.names = F)
 
-write.table(tc[,c(2,3,4,1,6,5)],"temp.bed",quote = FALSE,row.names = FALSE,col.names = FALSE,sep = "\t")
+write.table(a[,c(2,3,4,1,6,5)],"temp.bed",quote = FALSE,row.names = FALSE,col.names = FALSE,sep = "\t")
