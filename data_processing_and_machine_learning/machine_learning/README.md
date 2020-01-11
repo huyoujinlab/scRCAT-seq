@@ -130,8 +130,8 @@ To be added
 We run:
 
 ```
-mv tc_D44_52_5cap_peak_final.csv ../data/
-mv tc_D44_52_3tail_peak_final.csv ../data/
+mv tc_D44_52_5cap_peak.csv.csv.csv.csv.csv.csv ../data/
+mv tc_D44_52_3tail_peak.csv.csv.csv.csv.csv.csv ../data/
 cd ../
 python ./bin/Demo_DRG.py
 ```
@@ -141,7 +141,6 @@ The new folder named "output" will be built after completion of the pipeline, wh
 The last column in the .CSV files shows the predicted classification corresponding to each individual peaks in the input file. The value `1` indicates a true TSS/TES peak while value `0` indicates a false TSS/TES peak.
 
 
-* From step 1 to step 6, it takes about 15 minutes.
 
 
 
