@@ -65,7 +65,7 @@ Rscript cal_slope_cattss2.R tc_D44_52_5cap_peak.csv D_merge_standard_smart_seq2_
 Rscript cal_slope_cattes2.R tc_D44_52_3tail_peak.csv  D_merge_standard_smart_seq2_sorted_chr3.wig
 ```
 
-`tc_D44_52_5cap_peak.csvnew.csv` and `tc_D44_52_3tail_peak.csvnew.csv` are generated. In this step, we calculate the slope of Smart-seq2 coverage curve around the peaks and correlation.
+`tc_D44_52_5cap_peak.csv.csv` and `tc_D44_52_3tail_peak.csv.csv` are generated. In this step, we calculate the slope of Smart-seq2 coverage curve around the peaks and correlation.
 
 
 
@@ -74,36 +74,54 @@ Rscript cal_slope_cattes2.R tc_D44_52_3tail_peak.csv  D_merge_standard_smart_seq
 We run:
 
 ```
-Rscript cal_slope_cattss3.R tc_D44_52_5cap_peak.csvnew.csv
-Rscript cal_slope_cattes3.R tc_D44_52_3tail_peak.csvnew.csv
+Rscript cal_slope_cattss3.R tc_D44_52_5cap_peak.csv.csv
+Rscript cal_slope_cattes3.R tc_D44_52_3tail_peak.csv.csv
 ```
 
-`tc_D44_52_5cap_peak.csvnew.csv.csv` and `tc_D44_52_3tail_peak.csvnew.csv.csv` are generated. In this step, Percentage and Dominant_TPM_to_Smart2 are added..
+`tc_D44_52_5cap_peak.csv.csv.csv` and `tc_D44_52_3tail_peak.csv.csv.csv` are generated. In this step, Percentage and Dominant_TPM_to_Smart2 are added.
 
 ## 5. Add Fantom5 and poly_DB
 
+We run:
+
 ```
-bedtools intersect -s -a D44_52_5cap_dominant_tss_in_gene.bed -b tc_dsc.bed -wa -wb > D44_52_5cap_dominant_tss_upstream2k_and_genebody_1_dsc.bed
+#### TSS
+bedtools intersect -s -a temp_tss.bed -b tc_dsc.bed -wa -wb > temp_tss_in_FANTOM.bed
+Rscript FANTOM.R tc_D44_52_5cap_peak.csv.csv.csv
+
+#### TES
+bedtools intersect -s -a temp_tes.bed -b mouse.PAS100_mm10.bed -wa -wb > temp_tes_in_polydb.bed
+Rscript polydb.R tc_D44_52_3tail_peak.csv.csv.csv
 ```
 
-## 5. Add motif information
+`tc_D44_52_5cap_peak.csv.csv.csv.csv` and `tc_D44_52_3tail_peak.csv.csv.csv.csv` are generated. In this step, comparison to Fantom5 and poly_DB are added.
+
+## 6. Add motif information
 
 In this step, mm10.fa genome file is needed. 
 
 We run:
 
 ```
-conda activate py2.7
+
 #### Find TATA-box, BREu, BREd around TSS.
-python find_motif_re_TSS.py ~/index/mm10/mm10.fa tc_D44_52_5cap_peak.csvnew.csv.csv tc_D44_52_5cap_peak_final.csv
+python find_motif_re_TSS.py ~/index/mm10/mm10.fa tc_D44_52_5cap_peak.csv.csv.csv.csv tc_D44_52_5cap_peak.csv.csv.csv.csv.csv
 
 #### Find polyA singal around TES.
-python find_motif_re_TES.py ~/index/mm10/mm10.fa tc_D44_52_3tail_peak.csvnew.csv.csv tc_D44_52_3tail_peak_final.csv
+python find_motif_re_TES.py ~/index/mm10/mm10.fa tc_D44_52_3tail_peak.csv.csv.csv.csv tc_D44_52_3tail_peak.csv.csv.csv.csv.csv
 ```
-In this step, `tc_D44_52_5cap_peak_final.csv` and `tc_D44_52_3tail_peak_final.csv` are generated. We search motif form upstream 40 bp to 0 bp, relatived to dominant TSS/TES position. `NA` represents there is no motif in this region. `Number` means motif is in this position. `;` means more than 1 motif in this position. 
+In this step, `tc_D44_52_3tail_peak.csv.csv.csv.csv` and `tc_D44_52_3tail_peak.csv.csv.csv.csv.csv` are generated. We search motif form upstream 40 bp to 0 bp, relatived to dominant TSS/TES position. `NA` represents there is no motif in this region. `Number` means motif is in this position. `;` means more than 1 motif in this position. 
 
 
-## 6. Prediction and correction
+## 7. Unfold motif and change gene length to mean transcript length
+
+```
+
+```
+
+## 8. Prediction and correction
+
+To be added
 
 We run:
 
