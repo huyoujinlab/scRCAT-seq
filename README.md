@@ -69,10 +69,11 @@ On R 3.5.0:
 On python 2.7.15:
  
 1) pandas 0.25.1  
-2) numpy 1.17.2  
-3) matplotlib 3.1.1  
-4) seaborn 0.9.0
-5) sklearn 0.21.3  
-6) scikit-plot 0.3.7  
+2) regex 2020.1.8
+3) numpy 1.17.2  
+4) matplotlib 3.1.1  
+5) seaborn 0.9.0
+6) sklearn 0.21.3  
+7) scikit-plot 0.3.7  
 
 
