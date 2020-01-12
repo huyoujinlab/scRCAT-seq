@@ -2,7 +2,7 @@
 
 Code in this directory is used to generate results that shows in our publication.
 
-* Code and data can download at: https://drive.google.com/open?id=1BJay22Poju0ah-JUxEQBxQg0sa7zurpc
+* Code and data can download at: https://drive.google.com/open?id=1msMtbISPL5PLSs_ADkz-brcMqF2FX8Ia
 
 BS.genome packages were needed for CAGEr. However, BS.genome packages for ERCC and crab-eating monkey are no available. We have built the packages. User can download and install for reproducting out results.
 
