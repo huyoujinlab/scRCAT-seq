@@ -1,46 +1,246 @@
-------------------------------------------------------------------------------------------------------------
-sufig3 c
+### fig1 h; sufig3
 options(stringsAsFactors = FALSE)
 options(scipen = 100)
+
+
+library(basicTrendline)
+library(broom)
+library(BuenColors)
 library(CAGEr)
-
-
-P42_51_dominant_tss_in_gene <- cbind(read.csv("C:/Users/zhong/Desktop/20190831peak_outputs-20190908T082631Z-001/20190831peak_outputs/20190831P42_51_5cap_peak_with_prediction.csv"),
-                                     read.csv("C:/Users/zhong/Desktop/20190831peak_outputs-20190908T082631Z-001/20190831peak_outputs/tc_P42_51_5cap_peak.csvnew.csv")[,7])
-
-P44_51_dominant_tss_in_gene <- cbind(read.csv("C:/Users/zhong/Desktop/20190831peak_outputs-20190908T082631Z-001/20190831peak_outputs/20190831P44_51_5cap_peak_with_prediction.csv"),
-                                     read.csv("C:/Users/zhong/Desktop/20190831peak_outputs-20190908T082631Z-001/20190831peak_outputs/tc_P44_51_5cap_peak.csvnew.csv")[,7])
-
-P44_71_dominant_tss_in_gene <- cbind(read.csv("C:/Users/zhong/Desktop/20190831peak_outputs-20190908T082631Z-001/20190831peak_outputs/20190831P44_71_5cap_peak_with_prediction.csv"),
-                                     read.csv("C:/Users/zhong/Desktop/20190831peak_outputs-20190908T082631Z-001/20190831peak_outputs/tc_P44_71_5cap_peak.csvnew.csv")[,7])
-
-
-P42_51_dominant_tes_in_gene <- cbind(read.csv("C:/Users/zhong/Desktop/20190831peak_outputs-20190908T082631Z-001/20190831peak_outputs/20190831P42_51_3tail_peak_with_prediction.csv"),
-                                     read.csv("C:/Users/zhong/Desktop/20190831peak_outputs-20190908T082631Z-001/20190831peak_outputs/tc_P42_51_3tail_peak.csvnew.csv")[,7])
-
-P44_51_dominant_tes_in_gene <- cbind(read.csv("C:/Users/zhong/Desktop/20190831peak_outputs-20190908T082631Z-001/20190831peak_outputs/20190831P44_51_3tail_peak_with_prediction.csv"),
-                                     read.csv("C:/Users/zhong/Desktop/20190831peak_outputs-20190908T082631Z-001/20190831peak_outputs/tc_P44_51_3tail_peak.csvnew.csv")[,7])
-
-P44_71_dominant_tes_in_gene <- cbind(read.csv("C:/Users/zhong/Desktop/20190831peak_outputs-20190908T082631Z-001/20190831peak_outputs/20190831P44_71_3tail_peak_with_prediction.csv"),
-                                     read.csv("C:/Users/zhong/Desktop/20190831peak_outputs-20190908T082631Z-001/20190831peak_outputs/tc_P44_71_3tail_peak.csvnew.csv")[,7])
-
-P42_51_dominant_tss_in_gene <- P42_51_dominant_tss_in_gene[P42_51_dominant_tss_in_gene[,16]==1,]
-P44_51_dominant_tss_in_gene <- P44_51_dominant_tss_in_gene[P44_51_dominant_tss_in_gene[,16]==1,]
-P44_71_dominant_tss_in_gene <- P44_71_dominant_tss_in_gene[P44_71_dominant_tss_in_gene[,16]==1,]
-
-P42_51_dominant_tes_in_gene <- P42_51_dominant_tes_in_gene[P42_51_dominant_tes_in_gene[,16]==1,]
-P44_51_dominant_tes_in_gene <- P44_51_dominant_tes_in_gene[P44_51_dominant_tes_in_gene[,16]==1,]
-P44_71_dominant_tes_in_gene <- P44_71_dominant_tes_in_gene[P44_71_dominant_tes_in_gene[,16]==1,]
+library(data.table)
+library(DESeq2)
+library(dplyr)
+library(genefilter)
+library(ggalt)
+library(ggplot2)
+library(ggpubr)
+library(ggsignif)
+library(gplots)
+library(gridExtra)
+library(heatmap.plus)
+library(nlstools)
+library(pheatmap)
+library(purrr)
+library(RColorBrewer)
+library(reshape)
+library(rlist)
+library(Rmisc)
+library(rsample)
+library(rstatix)
+library(scales)
+library(splines)
+library(statmod)
+library(stringr)
 
 
 
-P42_51_dominant_tss_in_gene <- P42_51_dominant_tss_in_gene[,c(3,17,2,7,6)]
-P44_51_dominant_tss_in_gene <- P44_51_dominant_tss_in_gene[,c(3,17,2,7,6)]
-P44_71_dominant_tss_in_gene <- P44_71_dominant_tss_in_gene[,c(3,17,2,7,6)]
+setwd("~/zjw/scCAT-seq-master/Analysing/")
+load("sufig3.RData")
 
-P42_51_dominant_tes_in_gene <- P42_51_dominant_tes_in_gene[,c(3,17,2,7,6)]
-P44_51_dominant_tes_in_gene <- P44_51_dominant_tes_in_gene[,c(3,17,2,7,6)]
-P44_71_dominant_tes_in_gene <- P44_71_dominant_tes_in_gene[,c(3,17,2,7,6)]
+
+
+
+#OC_1_in_gene <- read.table("iso_seq_OC_1_1_in_gene.bed")
+#OC_2_in_gene <- read.table("iso_seq_OC_1_2_in_gene.bed")
+#OC_3_in_gene <- read.table("iso_seq_OC_1_3_in_gene.bed")
+
+
+
+
+#P42_51_5cap_in_gene <- read.table("P42_51_5cap_dominant_tes_ustream2k_and_genebody.bed")
+#P44_51_5cap_in_gene <- read.table("P44_51_5cap_dominant_tes_ustream2k_and_genebody.bed")
+#P44_71_5cap_in_gene <- read.table("P44_71_5cap_dominant_tes_ustream2k_and_genebody.bed")
+#P42_51_3tail_in_gene <- read.table("P42_51_3tail_dominant_tes_genebody_and_downstream2k.bed")
+#P44_51_3tail_in_gene <- read.table("P44_51_3tail_dominant_tes_genebody_and_downstream2k.bed")
+#P44_71_3tail_in_gene <- read.table("P44_71_3tail_dominant_tes_genebody_and_downstream2k.bed")
+
+
+
+
+
+
+P42_51_5cap_in_gene <- P42_51_5cap_in_gene[,c(1,2,3,10,5,6)]
+P44_51_5cap_in_gene <- P44_51_5cap_in_gene[,c(1,2,3,10,5,6)]
+P44_71_5cap_in_gene <- P44_71_5cap_in_gene[,c(1,2,3,10,5,6)]
+P42_51_3tail_in_gene <- P42_51_3tail_in_gene[,c(1,2,3,10,5,6)]
+P44_51_3tail_in_gene <- P44_51_3tail_in_gene[,c(1,2,3,10,5,6)]
+P44_71_3tail_in_gene <- P44_71_3tail_in_gene[,c(1,2,3,10,5,6)]
+
+
+
+
+P42_51_5cap <- P42_51_5cap_in_gene
+P44_51_5cap <- P44_51_5cap_in_gene
+P44_71_5cap <- P44_71_5cap_in_gene
+
+P42_51_3tail <- P42_51_3tail_in_gene
+P44_51_3tail <- P44_51_3tail_in_gene
+P44_71_3tail <- P44_71_3tail_in_gene
+
+
+
+
+P42_51 <- merge(P42_51_5cap,P42_51_3tail,by = "V10")
+P44_51 <- merge(P44_51_5cap,P44_51_3tail,by = "V10")
+P44_71 <- merge(P44_71_5cap,P44_71_3tail,by = "V10")
+
+for(i in 1:nrow(P42_51)) {
+  if(P42_51[i,6]=="+" & P42_51[i,3]>P42_51[i,9]) P42_51[i,11] <- "."
+  if(P42_51[i,6]=="-" & P42_51[i,3]<P42_51[i,9]) P42_51[i,11] <- "."
+  if(length(grep("inter",P42_51[i,1]))==1 & abs(P42_51[i,4]-P42_51[i,9])>100000) P42_51[i,11] <- "."
+}
+P42_51 <- P42_51[!P42_51[,11]==".",]
+
+for(i in 1:nrow(P44_51)) {
+  if(P44_51[i,6]=="+" & P44_51[i,4]>P44_51[i,9]) P44_51[i,11] <- "."
+  if(P44_51[i,6]=="-" & P44_51[i,4]<P44_51[i,9]) P44_51[i,11] <- "."
+  if(length(grep("inter",P44_51[i,1]))==1 & abs(P44_51[i,4]-P44_51[i,9])>100000) P44_51[i,11] <- "."
+}
+P44_51 <- P44_51[!P44_51[,11]==".",]
+
+for(i in 1:nrow(P44_71)) {
+  if(P44_71[i,6]=="+" & P44_71[i,3]>P44_71[i,9]) P44_71[i,11] <- "."
+  if(P44_71[i,6]=="-" & P44_71[i,3]<P44_71[i,9]) P44_71[i,11] <- "."
+  if(length(grep("inter",P44_71[i,1]))==1 & abs(P44_71[i,4]-P44_71[i,9])>100000) P44_71[i,11] <- "."
+}
+P44_71 <- P44_71[!P44_71[,11]==".",]
+
+
+
+
+P42_51_new <- data.frame()
+for(i in 1:nrow(P42_51)) {
+  if(P42_51[i,6]=="+") {
+    P42_51_new <- rbind(P42_51_new,
+                        data.frame(V1=P42_51[i,2],
+                                   V2=P42_51[i,3],
+                                   V3=P42_51[i,9],
+                                   P42_51[i,c(1,1,6)]))}
+  if(P42_51[i,6]=="-") {
+    P42_51_new <- rbind(P42_51_new,
+                        data.frame(V1=P42_51[i,2],
+                                   V2=P42_51[i,8],
+                                   V3=P42_51[i,4],
+                                   P42_51[i,c(1,1,6)]))}
+}
+
+
+
+P44_51_new <- data.frame()
+for(i in 1:nrow(P44_51)) {
+  if(P44_51[i,6]=="+") {
+    P44_51_new <- rbind(P44_51_new,
+                        data.frame(V1=P44_51[i,2],
+                                   V2=P44_51[i,3],
+                                   V3=P44_51[i,9],
+                                   P44_51[i,c(1,1,6)]))}
+  if(P44_51[i,6]=="-") {
+    P44_51_new <- rbind(P44_51_new,
+                        data.frame(V1=P44_51[i,2],
+                                   V2=P44_51[i,8],
+                                   V3=P44_51[i,4],
+                                   P44_51[i,c(1,1,6)]))}
+}
+
+
+P44_71_new <- data.frame()
+for(i in 1:nrow(P44_71)) {
+  if(P44_71[i,6]=="+") {
+    P44_71_new <- rbind(P44_71_new,
+                        data.frame(V1=P44_71[i,2],
+                                   V2=P44_71[i,3],
+                                   V3=P44_71[i,9],
+                                   P44_71[i,c(1,1,6)]))}
+  if(P44_71[i,6]=="-") {
+    P44_71_new <- rbind(P44_71_new,
+                        data.frame(V1=P44_71[i,2],
+                                   V2=P44_71[i,8],
+                                   V3=P44_71[i,4],
+                                   P44_71[i,c(1,1,6)]))}
+}
+
+
+
+
+
+
+df <- rbind(data.frame(V1=c(length(intersect(P42_51[,1],P44_51[,1]))/length(union(P42_51[,1],P44_51[,1])),
+                            length(intersect(P42_51[,1],P44_71[,1]))/length(union(P42_51[,1],P44_71[,1])),
+                            length(intersect(P44_51[,1],P44_71[,1]))/length(union(P44_51[,1],P44_71[,1]))),
+                       V2="cat"),
+            data.frame(V1=c(length(intersect(OC_1_in_gene[,10],OC_2_in_gene[,10]))/length(union(OC_1_in_gene[,10],OC_2_in_gene[,10])),
+                            length(intersect(OC_1_in_gene[,10],OC_3_in_gene[,10]))/length(union(OC_1_in_gene[,10],OC_3_in_gene[,10])),
+                            length(intersect(OC_2_in_gene[,10],OC_3_in_gene[,10]))/length(union(OC_2_in_gene[,10],OC_3_in_gene[,10]))),
+                       V2="iso")
+            
+)
+
+
+df[,2] <- as.character(df[,2])
+
+my_comparisons <- list(c("iso", "cat"))
+
+ggbarplot(df, x="V2", y="V1", add = "mean_se", fill = "V2",color = "V2",add.params = list(color = "black"),
+          palette = "jco", position = position_dodge(0.8),ylab = "overlap rate")+ 
+  stat_compare_means(comparisons=my_comparisons, label = "p-value",method = "t.test") +
+  scale_y_continuous(limits = c(0,0.8),expand=c(0,0),breaks = seq(0,0.8,0.2),labels = c("0","0.2","0.4","0.6","0.8")) +
+  scale_fill_manual(values=c("#E69F00", "#999999"))+
+  scale_color_manual(values=c("#E69F00", "#999999"))
+
+
+
+
+
+
+
+
+
+
+
+
+### sufig3 c
+
+rm(list=ls())
+
+load("sufig3.RData")
+
+
+#P42_51_dominant_tss_in_gene <- cbind(read.csv("C:/Users/zhong/Desktop/20190831peak_outputs-20190908T082631Z-001/20190831peak_outputs/20190831P42_51_5cap_peak_with_prediction.csv"),
+#                                     read.csv("C:/Users/zhong/Desktop/20190831peak_outputs-20190908T082631Z-001/20190831peak_outputs/tc_P42_51_5cap_peak.csvnew.csv")[,7])
+
+#P44_51_dominant_tss_in_gene <- cbind(read.csv("C:/Users/zhong/Desktop/20190831peak_outputs-20190908T082631Z-001/20190831peak_outputs/20190831P44_51_5cap_peak_with_prediction.csv"),
+#                                     read.csv("C:/Users/zhong/Desktop/20190831peak_outputs-20190908T082631Z-001/20190831peak_outputs/tc_P44_51_5cap_peak.csvnew.csv")[,7])
+
+#P44_71_dominant_tss_in_gene <- cbind(read.csv("C:/Users/zhong/Desktop/20190831peak_outputs-20190908T082631Z-001/20190831peak_outputs/20190831P44_71_5cap_peak_with_prediction.csv"),
+#                                     read.csv("C:/Users/zhong/Desktop/20190831peak_outputs-20190908T082631Z-001/20190831peak_outputs/tc_P44_71_5cap_peak.csvnew.csv")[,7])
+
+
+#P42_51_dominant_tes_in_gene <- cbind(read.csv("C:/Users/zhong/Desktop/20190831peak_outputs-20190908T082631Z-001/20190831peak_outputs/20190831P42_51_3tail_peak_with_prediction.csv"),
+#                                     read.csv("C:/Users/zhong/Desktop/20190831peak_outputs-20190908T082631Z-001/20190831peak_outputs/tc_P42_51_3tail_peak.csvnew.csv")[,7])
+
+#P44_51_dominant_tes_in_gene <- cbind(read.csv("C:/Users/zhong/Desktop/20190831peak_outputs-20190908T082631Z-001/20190831peak_outputs/20190831P44_51_3tail_peak_with_prediction.csv"),
+#                                     read.csv("C:/Users/zhong/Desktop/20190831peak_outputs-20190908T082631Z-001/20190831peak_outputs/tc_P44_51_3tail_peak.csvnew.csv")[,7])
+
+#P44_71_dominant_tes_in_gene <- cbind(read.csv("C:/Users/zhong/Desktop/20190831peak_outputs-20190908T082631Z-001/20190831peak_outputs/20190831P44_71_3tail_peak_with_prediction.csv"),
+#                                     read.csv("C:/Users/zhong/Desktop/20190831peak_outputs-20190908T082631Z-001/20190831peak_outputs/tc_P44_71_3tail_peak.csvnew.csv")[,7])
+
+#P42_51_dominant_tss_in_gene <- P42_51_dominant_tss_in_gene[P42_51_dominant_tss_in_gene[,16]==1,]
+#P44_51_dominant_tss_in_gene <- P44_51_dominant_tss_in_gene[P44_51_dominant_tss_in_gene[,16]==1,]
+#P44_71_dominant_tss_in_gene <- P44_71_dominant_tss_in_gene[P44_71_dominant_tss_in_gene[,16]==1,]
+
+#P42_51_dominant_tes_in_gene <- P42_51_dominant_tes_in_gene[P42_51_dominant_tes_in_gene[,16]==1,]
+#P44_51_dominant_tes_in_gene <- P44_51_dominant_tes_in_gene[P44_51_dominant_tes_in_gene[,16]==1,]
+#P44_71_dominant_tes_in_gene <- P44_71_dominant_tes_in_gene[P44_71_dominant_tes_in_gene[,16]==1,]
+
+
+
+#P42_51_dominant_tss_in_gene <- P42_51_dominant_tss_in_gene[,c(3,17,2,7,6)]
+#P44_51_dominant_tss_in_gene <- P44_51_dominant_tss_in_gene[,c(3,17,2,7,6)]
+#P44_71_dominant_tss_in_gene <- P44_71_dominant_tss_in_gene[,c(3,17,2,7,6)]
+
+#P42_51_dominant_tes_in_gene <- P42_51_dominant_tes_in_gene[,c(3,17,2,7,6)]
+#P44_51_dominant_tes_in_gene <- P44_51_dominant_tes_in_gene[,c(3,17,2,7,6)]
+#P44_71_dominant_tes_in_gene <- P44_71_dominant_tes_in_gene[,c(3,17,2,7,6)]
 
 P42_51_dominant_tss_in_gene <- data.frame(chr=P42_51_dominant_tss_in_gene[,1],
                                           start=P42_51_dominant_tss_in_gene[,2]-1,
@@ -104,7 +304,7 @@ P44_71 <- P44_71[!P44_71[,11]==".",]
 
 
 
-####基因数
+#### gene number
 length(unique(P42_51[,1]))
 length(unique(P44_51[,1]))
 length(unique(P44_71[,1]))
@@ -140,9 +340,7 @@ for(i in unique(P44_71[,1])) {
 
 
 
-OC_1_in_gene <- read.table("G:/CAGEr/CAGEr20190731compare/iso_seq_OC_1_1_in_gene.bed")
-OC_2_in_gene <- read.table("G:/CAGEr/CAGEr20190731compare/iso_seq_OC_1_2_in_gene.bed")
-OC_3_in_gene <- read.table("G:/CAGEr/CAGEr20190731compare/iso_seq_OC_1_3_in_gene.bed")
+
 
 
 OC_1_in_gene <- unique(OC_1_in_gene)
@@ -175,24 +373,8 @@ df <- df[df[,1] %in% as.data.frame(table(df[,1]),stringsAsFactors = F)[as.data.f
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-df <- rbind(data.frame(type="gene",group=c("scCAT-seq","scCAT-seq","scCAT-seq","Iso-seq","Iso-seq","Iso-seq"),number=c(2888,2656,3113,1066,479,1211)),
-            data.frame(type="transcript",group=c("scCAT-seq","scCAT-seq","scCAT-seq","Iso-seq","Iso-seq","Iso-seq"),number=c(8462,5994,7416,1656,577,1785)))
+df <- rbind(data.frame(type="gene",group=c("scCAT-seq","scCAT-seq","scCAT-seq","Iso-seq","Iso-seq","Iso-seq"),number=c(length(unique(P42_51[,1])),length(unique(P44_51[,1])),length(unique(P44_71[,1])),length(unique(OC_1_in_gene[,10])),length(unique(OC_2_in_gene[,10])),length(unique(OC_3_in_gene[,10])))),
+            data.frame(type="transcript",group=c("scCAT-seq","scCAT-seq","scCAT-seq","Iso-seq","Iso-seq","Iso-seq"),number=c(nrow(P42_51),nrow(P44_51),nrow(P44_71),length(OC_1_in_gene[,10]),length(OC_2_in_gene[,10]),length(OC_3_in_gene[,10]))))
 df[,2] <- factor(df[,2],levels = c("scCAT-seq","Iso-seq"))
 
 ggbarplot(df, x="type", y="number", add = "mean_se", fill = "group",color = "group",add.params = list(color = "black"),
@@ -219,8 +401,10 @@ ggbarplot(df, x="type", y="number", add = "mean_se", fill = "group",color = "gro
 
 
 
-----------------------------------------------------------------------------------------------------------------
-sufig3e
+### sufig3 e; sufig3 d
+rm(list=ls())
+
+load("sufig3.RData")
 
 D3_tss <- cbind(read.csv("C:/Users/zhong/Desktop/201907211815/20190711D3tss_peak_new.csv"),
                 read.csv("C:/Users/zhong/Desktop/201907211815/majority_vote_tss_test_D3.csv")[,c(12,13)])
@@ -232,9 +416,11 @@ D3_tes <- cbind(read.csv("C:/Users/zhong/Desktop/201907211815/20190711D3tes_peak
 D3_tes <- D3_tes[D3_tes[,17]==1,]
 D3_tes <- D3_tes[,c(2,3,4,1,6,5)]
 
+######## OC 1 gene list 
+OC_in_gene <- read.table("iso_seq_OC_1_in_gene.bed")    
+iso_seq_OC_gene_list <- unique(OC_in_gene[,10])
 
-
-####取总和峰
+####combine all peak
 
 
 for(i in grep("D3_tss|D3_tes",objects(),value = T)) {
@@ -310,10 +496,9 @@ ggboxplot(df[df[,9]=="scCAT_TSS_quantification",], x="V8", y="peak_RPM", color =
   
   
   
-  --------------------------------------------------------------------------------------------------------------
-  sufig3 d
+
   
-  #TES做定量
+  #TES  quantification
 df <- data.frame()
 
 df <- rbind(df,data.frame(RPM="1-10",type="not_detected",number=nrow(D3_tes_major[D3_tes_major[,5]>1 & D3_tes_major[,5]<10 & D3_tes_major[,8]=="not_detected_by_isoseq",])))
