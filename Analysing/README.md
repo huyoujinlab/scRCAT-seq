@@ -8,7 +8,7 @@ BS.genome packages were needed for CAGEr. However, BS.genome packages for ERCC a
 
 * BS.genome package for ERCC is provide [here](https://drive.google.com/open?id=1cwJSUWcZ8PkYAs7vmUGDYpI_fW3jE3nK)
 
-* BS.genome package for crab-eating monkey [here](https://drive.google.com/open?id=1ZvdSOCV5AbwcqYPZ_SYX42egSRKUGBrC)
+* BS.genome package for crab-eating monkey is provided [here](https://drive.google.com/open?id=1ZvdSOCV5AbwcqYPZ_SYX42egSRKUGBrC)
 
 
 
