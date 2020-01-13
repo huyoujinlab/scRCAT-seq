@@ -10,10 +10,12 @@ Then `BED` file as input is needed to call peak using `CAGEr` R package.
 
 The workflows of data of scCAT-seq 5', C1 CAGE, C1 STRT and Arguel et al. are similar. Here is the scCAT-seq 5' data processing workflow. To see detail imformation of other data processing, please see `C1_CAGE_5_data_processing.sh`, `C1_STRT_5_data_processing.sh` and `Arguel_et_al_5_data_processing.sh`.
 
+We have uploaded test data. Reader can be downloaded at [here](https://drive.google.com/open?id=1t8oLqAIWWy32yf5g3NOfKm10-i0pBITy) and [here](https://drive.google.com/open?id=1Z4xEVmkip3aq56Jp5k-0qBLmZ9oR-Lyk).
+
 ## 0. Preparation
 
-We have uploaded test data. Reader can be downloaded at here.
-Before process the data, we bulid some directory and move the script to `script_and_log` directory: 
+
+Before process the data, we bulid some directory and move the script to `script_and_log` and `fastq_5cap_2018ab` directory: 
 
 ```
 #### Create directory
@@ -29,7 +31,7 @@ mkdir ~/zjw/20190109/extract_mismatch
 mkdir ~/zjw/20190109/final_out
 mkdir ~/zjw/20190109/script_and_log
 
-#### Move scripts to direct position
+#### Move data and scripts to direct position
 mv O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_1.fq.gz ~/zjw/fastq_5cap_2018ab
 mv O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_2.fq.gz ~/zjw/fastq_5cap_2018ab
 cd ~/zjw/fastq_5cap_2018ab
