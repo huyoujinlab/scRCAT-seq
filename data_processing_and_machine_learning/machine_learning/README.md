@@ -19,7 +19,7 @@
 * Prediction:  
 1) Predicted each individual peaks in the input file. The value `1` indicates a true TSS/TES peak while value `0` indicates a false TSS/TES peak
 
-### Demo file are available at: https://drive.google.com/open?id=1vXAFUSlVFCeW4cfpwAySRDBi2JLPXC8c. Directory `bin`, `call_peak` and `result` are in this demo file.
+### Demo file are provide [here](https://drive.google.com/open?id=1vXAFUSlVFCeW4cfpwAySRDBi2JLPXC8c). Directory `bin`, `call_peak` and `result` are in this demo file.
 ---
 ## 1. Call peak
 
