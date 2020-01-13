@@ -136,9 +136,9 @@ cd ../
 python ./bin/Demo_DRG.py
 ```
 
-The new folder named "output" will be built after completion of the pipeline, which contains all the output files, including the "\*.csv" file. 
+The new folder named `output` will be built after completion of the pipeline, which contains all the output files, including the `\*.csv` file. 
 
-The last column in the .CSV files shows the predicted classification corresponding to each individual peaks in the input file. The value `1` indicates a true TSS/TES peak while value `0` indicates a false TSS/TES peak.
+The last column in the `CSV` files shows the predicted classification corresponding to each individual peaks in the input file. The value `1` indicates a true TSS/TES peak while value `0` indicates a false TSS/TES peak.
 
 
 
