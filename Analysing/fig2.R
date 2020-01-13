@@ -379,8 +379,8 @@ oocyte_minus_novel_gene <- oocyte_minus_novel_gene[abs(oocyte_minus_novel_gene[,
 
 
 
-a <- data.frame(V1=c(2031,4693,71),V2=c("Novel TSS","Novel TES","Novel gene"))
-a <- data.frame(V1=c(3102,5746,125),V2=c("Novel TSS","Novel TES","Novel gene"))
+a <- data.frame(V1=c(2031,4693,76),V2=c("Novel TSS","Novel TES","Novel gene"))
+a <- data.frame(V1=c(3102,5746,119),V2=c("Novel TSS","Novel TES","Novel gene"))
 
 
 a[,2] <- factor(a[,2],levels = c("Novel TSS","Novel TES","Novel gene"),ordered = T)
@@ -402,5 +402,5 @@ ggplot(a,aes(x=V2,y=V1,fill=V2)) +
         legend.position="none") + 
   labs(x=element_blank(),y="Number")+
   #scale_y_continuous(breaks = seq(0,3000,1000),limits = c(0,3500),expand=c(0,0)) 
-  scale_y_continuous(breaks = seq(0,5000,1000),limits = c(0,5000),expand=c(0,0),labels = c("0","1,000","2,000","3,000","4,000","5,000"))
+  scale_y_continuous(breaks = seq(0,5000,1000),limits = c(0,6000),expand=c(0,0),labels = c("0","1,000","2,000","3,000","4,000","5,000"))
 

@@ -267,7 +267,7 @@ for(i in 1:nrow(cor_tes_df)) {
 }
 
 
-pdf(file=paste("heat_cor_5cap.pdf", sep=""), height = 10, width = 10)
+#pdf(file=paste("heat_cor_5cap.pdf", sep=""), height = 10, width = 10)
 
 heatmap.2(cor_tss_df, 
           Rowv=TRUE, Colv="Rowv", dendrogram='row',
@@ -284,13 +284,13 @@ heatmap.2(cor_tss_df,
           labCol = "",
           labRow = "",
           density.info="none") 
-legend("topright",      # location of the legend on the heatmap plot
-       legend = c("DRG", "Oocyte D3", "Oocyte D4"), # category labels
-       fill = c("#0000CD", "#1C1C1C", "#A52A2A"),  # color key
-       border = c("#0000CD", "#1C1C1C", "#A52A2A"))
+#legend("topright",      # location of the legend on the heatmap plot
+#       legend = c("DRG", "Oocyte D3", "Oocyte D4"), # category labels
+#       fill = c("#0000CD", "#1C1C1C", "#A52A2A"),  # color key
+#       border = c("#0000CD", "#1C1C1C", "#A52A2A"))
 dev.off() 
 
-pdf(file=paste("heat_cor_3tail.pdf", sep=""), height = 10, width = 10)
+#pdf(file=paste("heat_cor_3tail.pdf", sep=""), height = 10, width = 10)
 heatmap.2(cor_tes_df, 
           Rowv=TRUE, Colv="Rowv", dendrogram='row',
           trace='none',

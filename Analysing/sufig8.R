@@ -148,7 +148,7 @@ load("sufig8.RData")
 # 0 2 CEC TAC
 
 ##### CEC and TAC
-load("compare_cornea.RData")
+load("sufig8.RData")
 rm(CTRL_1_3tail_dominant_tes_in_gene)
 
 
@@ -338,7 +338,7 @@ ggplot(a,aes(x=TES_long_iso_later_devide_former,y=TES_short_iso_later_devide_for
 
 
 
-load("compare_cornea.RData")
+load("sufig8.RData")
 rm(CTRL_1_3tail_dominant_tes_in_gene)
 
 
@@ -411,7 +411,7 @@ ggboxplot(temp_2,x="group",y="V5",fill = "group",palette = "jco",  line.size = 0
 
 ##### LEC and TAC
 
-load("compare_cornea.RData")
+load("sufig8.RData")
 rm(CTRL_0_3tail_dominant_tes_in_gene)
 
 
@@ -618,7 +618,7 @@ ggplot(a,aes(x=TES_long_iso_later_devide_former,y=TES_short_iso_later_devide_for
 
 
 
-load("compare_cornea.RData")
+load("sufig8.RData")
 
 
 
