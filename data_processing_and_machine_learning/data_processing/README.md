@@ -84,7 +84,7 @@ do
 done
 ```
 
-Output files are stored in `~/zjw/20190109/mapping_output/`
+Output files are stored in `~/zjw/20190109/mapping_output/`.
 
 ## 4. Extract uniquely mapped reads
 
@@ -97,7 +97,7 @@ do
 done
 ```
 
-Output files are stored in `~/zjw/20190109/extract_uniquely_map/`
+Output files are stored in `~/zjw/20190109/extract_uniquely_map/`.
 
 ## 5. Split reads aligned to plus stand and minus strand
 
@@ -114,7 +114,7 @@ do
 done
 ```
 
-Output files are stored in `~/zjw/20190109/split_plus_minus/`
+Output files are stored in `~/zjw/20190109/split_plus_minus/`.
 
 ## 6. Extract reads with mismatch at 5'
 
@@ -136,11 +136,11 @@ done
 
 The template-switching (TS) oligonucleotide may hybridize to the first strand cDNA due to sequence complementarity before the RT has finished polymerizing. Artifact that introduced by incomplete reverse transcription process is called strand invasion. We suppose that if "GGG" aligned, reads are strand invasion drivern artifacts. If "GGG" don't aligned, reads are derived from complete reverse transcription.
 
-Output files are stored in `~/zjw/20190109/extract_mismatch/`
+Output files are stored in `~/zjw/20190109/extract_mismatch/`.
 
 ## 7. Convert SAM to BED
 
-As BED format file can be used as input for `CAGEr` R package, we convert SAM to BED:
+As `BED` format file can be used as input for `CAGEr` R package, we convert `SAM` to `BED`:
 
 ```
 for i in `ls ~/zjw/20190109/extract_mismatch | grep "sam_extractmismatch"`
@@ -159,7 +159,7 @@ do
 done
 ```
 
-Output files are stored in `~/zjw/20190109/final_out/`
+Output files are stored in `~/zjw/20190109/final_out/`.
 
 
 ## 8. Remove useless reads
@@ -255,7 +255,7 @@ Output files are stored in `~/zjw/20190105/3tail_read_with_tag/`.
 
 ## 2. Find R2 reads
 
-Perl script cmpfastq_pe.pl is used to find R2 reads which its corresponding R1 reads with oligo(dT) primes:
+Perl script `cmpfastq_pe.pl` is used to find R2 reads which its corresponding R1 reads with oligo(dT) primes:
 
 ```
 #### Compare R1_with_tag to R2
@@ -361,7 +361,7 @@ Output files are stored in `~/zjw/20190105/extract_mismatch/`.
 
 ## 8. Convert SAM to BED
 
-As BED format file can be used as input for `CAGEr` R package, we generate SAM to BED:
+As `BED` format file can be used as input for `CAGEr` R package, we generate `SAM` to `BED`:
 
 ```
 for i in `ls ~/zjw/20190105/extract_mismatch | grep "sam_extractmismatch"`
