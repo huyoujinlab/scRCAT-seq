@@ -6,10 +6,10 @@
 
 
 * Features:
-1) TPM_of_peak: The total Tags per Million(TPM) value of the peak called by CAGEr.
+1) TPM_of_peak: The total Tags per Million(TPM) value of the peak called by `CAGEr`.
 2) TPM_of_Dominant_Site: The highest TPM value of all sites within a peak.
 3) Gene_length: The length of the transcript annotated.
-4) Peak_width: The width of the peak called by CAGEr.
+4) Peak_width: The width of the peak called by `CAGEr`.
 5) Dominant_TPM_to_Smart2: The ratio of Dominant_TPM to the RPM value of the corresponding gene revealed by Smart-seq2.
 6) Slope_smart2_curve: The slope of Smart-seq2 coverage curve around the peaks.
 7) Trend_of_smart2_reads: Calculated by dividing the number of reads increased/decreased within 50bp distance by 50.
