@@ -13,7 +13,7 @@ Here is the code for our scCAT-seq project as described in the paper [scCAT-seq:
 You can switch to the subfolder to get detailed information.
 
 ---
-### Here are some softwares and packages used in this publication.
+### Some softwares and packages used in this publication are listed below.
 
 On linux:
 
