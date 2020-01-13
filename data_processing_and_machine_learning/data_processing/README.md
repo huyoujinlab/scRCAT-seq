@@ -12,7 +12,7 @@ The workflows of data of scCAT-seq 5', C1 CAGE, C1 STRT and Arguel et al. are si
 
 ## 0. Preparation
 
-Before process the data, we bulid some directory and move the script to "script_and_log" directory: 
+Before process the data, we bulid some directory and move the script to `script_and_log` directory: 
 
 ```
 #### Create directory
@@ -208,7 +208,7 @@ The workflows of data of scCAT-seq 3' and BAT-seq are similar. Here is the scCAT
 
 ## 0. Preparation
 
-Before process the data, we bulid some directory and move the script to "script_and_log" directory:
+Before process the data, we bulid some directory and move the script to `script_and_log` directory:
 
 ```
 #### Create directory
