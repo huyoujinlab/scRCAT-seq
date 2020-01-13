@@ -8,7 +8,7 @@ Then `BED` file as input is needed to call peak using `CAGEr` R package.
 
 # Data processing for 5' data
 
-The workflows of data of scCAT-seq 5', C1 CAGE, C1 STRT and Arguel et al. are similar. Here is the scCAT-seq 5' data processing workflow. To see detail imformation of other data processing, please see C1_CAGE_5_data_processing.sh, C1_STRT_5_data_processing.sh and Arguel_et_al_5_data_processing.sh.
+The workflows of data of scCAT-seq 5', C1 CAGE, C1 STRT and Arguel et al. are similar. Here is the scCAT-seq 5' data processing workflow. To see detail imformation of other data processing, please see `C1_CAGE_5_data_processing.sh`, `C1_STRT_5_data_processing.sh` and `Arguel_et_al_5_data_processing.sh`.
 
 ## 0. Preparation
 
@@ -204,7 +204,7 @@ done
 
 # Data processing for 3' data
 
-The workflows of data of scCAT-seq 3' and BAT-seq are similar. Here is the scCAT-seq 5' data processing workflow. To see detail imformation of BAT-seq data processing, please see BAT-seq_3_data_processing.sh.
+The workflows of data of scCAT-seq 3' and BAT-seq are similar. Here is the scCAT-seq 5' data processing workflow. To see detail imformation of BAT-seq data processing, please see `BAT-seq_3_data_processing.sh`.
 
 ## 0. Preparation
 
