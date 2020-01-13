@@ -12,10 +12,13 @@ The workflows of data of scCAT-seq 5', C1 CAGE, C1 STRT and Arguel et al. are si
 
 ## 0. Preparation
 
+We have uploaded test data. Reader can be downloaded at here.
 Before process the data, we bulid some directory and move the script to `script_and_log` directory: 
 
 ```
 #### Create directory
+mkdir ~/zjw
+mkdir ~/zjw/fastq_5cap_2018ab
 mkdir ~/zjw/20190109
 mkdir ~/zjw/20190109/5cap_read_with_tag
 mkdir ~/zjw/20190109/trim_GTGGTATCAACGCAGAGTACAT
@@ -27,6 +30,11 @@ mkdir ~/zjw/20190109/final_out
 mkdir ~/zjw/20190109/script_and_log
 
 #### Move scripts to direct position
+mv O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_1.fq.gz ~/zjw/fastq_5cap_2018ab
+mv O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_2.fq.gz ~/zjw/fastq_5cap_2018ab
+cd ~/zjw/fastq_5cap_2018ab
+gzip -d O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_1.fq.gz
+gzip -d O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_2.fq.gz
 mv extractmismatch_plus_5'.py ~/zjw/20190109/script_and_log
 mv extractmismatch_plus_3'.py ~/zjw/20190109/script_and_log
 mv gencode_mm10_tRNA_rRNA_gene.bed ~/zjw/20190109/script_and_log
@@ -40,8 +48,8 @@ Please make sure that original fastq files are list in `~/zjw/fastq_5cap_2018ab`
 ```
 STAR --runThreadN 24 --runMode genomeGenerate \
 --genomeDir ~/index/mm10_STAR/ \
---genomeFastaFiles ~/index/mm10_chr/mm10.fa \
---sjdbGTFfile ~/index/mm10_chr/gencode.vM18.annotation.gtf \
+--genomeFastaFiles ~/index/mm10_chr/mm10.fa \  ##you can change here
+--sjdbGTFfile ~/index/mm10_chr/gencode.vM18.annotation.gtf \  ## you can change here
 --sjdbOverhang 150
 ```
 
@@ -80,7 +88,7 @@ For mapping, we run:
 ```
 for i in `ls ~/zjw/20190109/trim_GTGGTATCAACGCAGAGTACAT/`
 do
-        STAR --runThreadN 24 --genomeDir ~/index/mm10_ERCC92trimpolyA_STAR/ --genomeLoad LoadAndKeep --readFilesIn ~/zjw/20190109/trim_GTGGTATCAACGCAGAGTACAT/${i} --outFileNamePrefix ~/zjw/20190109/mapping_output/${i}_ --outSAMtype SAM --outFilterMultimapNmax 1 --outFilterScoreMinOverLread 0.6 --outFilterMatchNminOverLread 0.6
+        STAR --runThreadN 24 --genomeDir ~/index/mm10_STAR/ --genomeLoad LoadAndKeep --readFilesIn ~/zjw/20190109/trim_GTGGTATCAACGCAGAGTACAT/${i} --outFileNamePrefix ~/zjw/20190109/mapping_output/${i}_ --outSAMtype SAM --outFilterMultimapNmax 1 --outFilterScoreMinOverLread 0.6 --outFilterMatchNminOverLread 0.6
 done
 ```
 
@@ -146,7 +154,7 @@ As `BED` format file can be used as input for `CAGEr` R package, we convert `SAM
 for i in `ls ~/zjw/20190109/extract_mismatch | grep "sam_extractmismatch"`
 do
 #### Add header and convert to bam
-        samtools view -b -T ~/index/mm10_ERCC92/mm10_ERCC92trimpolyA.fa ~/zjw/20190109/extract_mismatch/${i} | samtools view -b >  ~/zjw/20190109/final_out/${i}_add_header.bam
+        samtools view -b -T ~/index/mm10/mm10.fa ~/zjw/20190109/extract_mismatch/${i} | samtools view -b >  ~/zjw/20190109/final_out/${i}_add_header.bam  ## you can change fa file path
         
 #### Sort
         samtools sort ~/zjw/20190109/final_out/${i}_add_header.bam -o ~/zjw/20190109/final_out/${i}_add_header_sorted.bam
@@ -298,7 +306,7 @@ For Mapping, we run:
 ```
 for i in `ls ~/zjw/20190105/3tail_read_with_tag_other_strand_withA10_remain_A5/`
 do
-        STAR --runThreadN 24 --genomeDir ~/index/mm10_ERCC92trimpolyA_STAR/ --genomeLoad LoadAndKeep --readFilesIn ~/zjw/20190105/3tail_read_with_tag_other_strand_withA10_remain_A5/${i} --outFileNamePrefix ~/zjw/20190105/mapping_output/${i}_ --outSAMtype SAM --outFilterMultimapNmax 1 --outFilterScoreMinOverLread 0.6 --outFilterMatchNminOverLread 0.6
+        STAR --runThreadN 24 --genomeDir ~/index/mm10_STAR/ --genomeLoad LoadAndKeep --readFilesIn ~/zjw/20190105/3tail_read_with_tag_other_strand_withA10_remain_A5/${i} --outFileNamePrefix ~/zjw/20190105/mapping_output/${i}_ --outSAMtype SAM --outFilterMultimapNmax 1 --outFilterScoreMinOverLread 0.6 --outFilterMatchNminOverLread 0.6
 done
 ```
 
@@ -367,7 +375,7 @@ As `BED` format file can be used as input for `CAGEr` R package, we generate `SA
 for i in `ls ~/zjw/20190105/extract_mismatch | grep "sam_extractmismatch"`
 do
 #### Add header and convert to bam
-        samtools view -b -T ~/index/mm10_ERCC92/mm10_ERCC92trimpolyA.fa ~/zjw/20190105/extract_mismatch/${i} | samtools view -b >  ~/zjw/20190105/add_header/${i}.bam
+        samtools view -b -T ~/index/mm10/mm10.fa ~/zjw/20190105/extract_mismatch/${i} | samtools view -b >  ~/zjw/20190105/add_header/${i}.bam  ## you can change fa file path
 
 #### Sort
         samtools sort ~/zjw/20190105/add_header/${i}.bam -o ~/zjw/20190105/add_header/${i}_sorted.bam
