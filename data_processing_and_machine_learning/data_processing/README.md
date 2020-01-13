@@ -50,8 +50,8 @@ Please make sure that original fastq files are list in `~/zjw/fastq_5cap_2018ab`
 ```
 STAR --runThreadN 24 --runMode genomeGenerate \
 --genomeDir ~/index/mm10_STAR/ \
---genomeFastaFiles ~/index/mm10_chr/mm10.fa \  ##you can change here
---sjdbGTFfile ~/index/mm10_chr/gencode.vM18.annotation.gtf \  ## you can change here
+--genomeFastaFiles ~/index/mm10/mm10.fa \  ## you can change fa file path
+--sjdbGTFfile ~/index/mm10_chr/gencode.vM18.annotation.gtf \  ## you can change gtf file path
 --sjdbOverhang 150
 ```
 
