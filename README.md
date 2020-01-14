@@ -109,6 +109,7 @@ conda install -c bioconda STAR=2.6.1a
 conda install -c bioconda samtools=1.3.1
 conda install -c bioconda bedtools=2.27.1
 conda install -c bioconda cutadapt=1.18
+conda install -c conda-forge r-base 
 
 conda install -c conda-forge pandas=0.24.1
 conda install -c conda-forge regex=2019.6.5
