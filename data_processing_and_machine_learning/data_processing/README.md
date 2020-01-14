@@ -37,9 +37,9 @@ mv O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_2.fq.gz ~/zjw/fastq_5cap_2018ab
 cd ~/zjw/fastq_5cap_2018ab
 gzip -d O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_1.fq.gz
 gzip -d O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_2.fq.gz
-mv extractmismatch_plus_5'.py ~/zjw/20190109/script_and_log
-mv extractmismatch_plus_3'.py ~/zjw/20190109/script_and_log
-mv gencode_mm10_tRNA_rRNA_gene.bed ~/zjw/20190109/script_and_log
+mv extractmismatch_plus_5.py ~/zjw/20190109/script_and_log
+mv extractmismatch_minus_5.py ~/zjw/20190109/script_and_log
+cp gencode_mm10_tRNA_rRNA_gene.bed ~/zjw/20190109/script_and_log
 
 #### Change directory
 cd ~/zjw/20190109/script_and_log
@@ -48,10 +48,11 @@ cd ~/zjw/20190109/script_and_log
 Please make sure that original fastq files are list in `~/zjw/fastq_5cap_2018ab`. STAR index must be prepared before running this workflow. For build index, you can run:
 
 ```
+## you can change fa and gtf file path
 STAR --runThreadN 24 --runMode genomeGenerate \
 --genomeDir ~/index/mm10_STAR/ \
---genomeFastaFiles ~/index/mm10/mm10.fa \  ## you can change fa file path
---sjdbGTFfile ~/index/mm10_chr/gencode.vM18.annotation.gtf \  ## you can change gtf file path
+--genomeFastaFiles ~/index/mm10/mm10.fa \  
+--sjdbGTFfile ~/index/mm10/gencode.vM18.annotation.gtf \  
 --sjdbOverhang 150
 ```
 
@@ -234,9 +235,9 @@ mkdir ~/zjw/20190105/add_header
 mkdir ~/zjw/20190105/script_and_log
 
 #### Move scripts to direct position
-mv extractmismatch_plus_3'.py ~/zjw/20190105/script_and_log
-mv extractmismatch_minus_3'.py ~/zjw/20190105/script_and_log
-mv gencode_mm10_tRNA_rRNA_gene.bed ~/zjw/20190105/script_and_log
+mv extractmismatch_plus_3.py ~/zjw/20190105/script_and_log
+mv extractmismatch_minus_3.py ~/zjw/20190105/script_and_log
+cp gencode_mm10_tRNA_rRNA_gene.bed ~/zjw/20190105/script_and_log
 mv sample_list_tag.txt ~/zjw/20190105/script_and_log
 mv cmpfastq_pe.pl ~/zjw/20190105/script_and_log
 
