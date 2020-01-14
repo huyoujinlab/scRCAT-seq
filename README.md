@@ -85,3 +85,30 @@ On python 2.7.15:
 7) scikit-plot 0.3.7  
 
 
+---
+Reader can install softwares and packages by conda
+
+```
+### Download anaconda
+wget https://repo.anaconda.com/archive/Anaconda2-2019.10-Linux-x86_64.sh
+
+### Install anaconda
+sh Anaconda2-2019.10-Linux-x86_64.sh
+
+### Bulid environment
+conda create -n scCAT_seq python=2.7.15
+conda activate scCAT_seq
+
+### Install softwares and packages
+conda install -c bioconda STAR=2.6.1a
+conda install -c bioconda samtools=1.3.1
+conda install -c bioconda bedtools=2.27.1
+conda install -c bioconda cutadapt=1.18
+
+conda install -c conda-forge pandas=0.24.1
+conda install -c conda-forge regex=2019.6.5
+conda install -c conda-forge numpy=1.16.5
+conda install -c conda-forge matplotlib=2.2.3
+conda install -c conda-forge seaborn=0.8.1
+conda install -c conda-forge scikit-plot=0.3.7
+```
