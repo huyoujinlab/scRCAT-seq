@@ -31,14 +31,14 @@ mkdir ~/zjw/20190109/extract_mismatch
 mkdir ~/zjw/20190109/final_out
 mkdir ~/zjw/20190109/script_and_log
 
-#### Move data and scripts to direct position
+#### Copy data and scripts to direct position
 mv O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_1.fq.gz ~/zjw/fastq_5cap_2018ab
 mv O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_2.fq.gz ~/zjw/fastq_5cap_2018ab
 cd ~/zjw/fastq_5cap_2018ab
 gzip -d O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_1.fq.gz
 gzip -d O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_2.fq.gz
-mv extractmismatch_plus_5.py ~/zjw/20190109/script_and_log
-mv extractmismatch_minus_5.py ~/zjw/20190109/script_and_log
+cp extractmismatch_plus_5.py ~/zjw/20190109/script_and_log
+cp extractmismatch_minus_5.py ~/zjw/20190109/script_and_log
 cp gencode_mm10_tRNA_rRNA_gene.bed ~/zjw/20190109/script_and_log
 
 #### Change directory
@@ -234,12 +234,12 @@ mkdir ~/zjw/20190105/extract_mismatch
 mkdir ~/zjw/20190105/add_header
 mkdir ~/zjw/20190105/script_and_log
 
-#### Move scripts to direct position
-mv extractmismatch_plus_3.py ~/zjw/20190105/script_and_log
-mv extractmismatch_minus_3.py ~/zjw/20190105/script_and_log
+#### Copy scripts to direct position
+cp extractmismatch_plus_3.py ~/zjw/20190105/script_and_log
+cp extractmismatch_minus_3.py ~/zjw/20190105/script_and_log
 cp gencode_mm10_tRNA_rRNA_gene.bed ~/zjw/20190105/script_and_log
-mv sample_list_tag.txt ~/zjw/20190105/script_and_log
-mv cmpfastq_pe.pl ~/zjw/20190105/script_and_log
+cp sample_list_tag.txt ~/zjw/20190105/script_and_log
+cp cmpfastq_pe.pl ~/zjw/20190105/script_and_log
 
 #### Change directory
 cd ~/zjw/20190105/script_and_log
