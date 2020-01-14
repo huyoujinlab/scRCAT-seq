@@ -77,10 +77,10 @@ BS.genome packages were needed for `CAGEr`. However, BS.genome packages for ERCC
 On python 2.7.15:
  
 1) pandas 0.24.1  
-2) regex 2020.1.8
-3) numpy 1.17.2  
-4) matplotlib 3.1.1  
-5) seaborn 0.9.0
+2) regex 2019.6.5
+3) numpy 1.16.5  
+4) matplotlib 2.2.3  
+5) seaborn 0.8.1
 6) sklearn 0.21.3  
 7) scikit-plot 0.3.7  
 
