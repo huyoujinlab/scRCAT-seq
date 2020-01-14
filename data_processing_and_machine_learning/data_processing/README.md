@@ -240,6 +240,7 @@ cp extractmismatch_minus_3.py ~/zjw/20190105/script_and_log
 cp gencode_mm10_tRNA_rRNA_gene.bed ~/zjw/20190105/script_and_log
 cp sample_list_tag.txt ~/zjw/20190105/script_and_log
 cp cmpfastq_pe.pl ~/zjw/20190105/script_and_log
+cp find_A10_and_remain_A5.py ~/zjw/20190105/script_and_log
 
 #### Change directory
 cd ~/zjw/20190105/script_and_log
