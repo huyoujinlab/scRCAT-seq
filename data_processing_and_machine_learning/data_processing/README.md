@@ -12,8 +12,8 @@ We have uploaded test data. Reader can download at [here](https://drive.google.c
 
 # 1. Preparation
 
-We assume that:
-        the genome fa file is located in `~/index/mm10/mm10.fa`
+We assume that the genome fa file is located in `~/index/mm10/mm10.fa`. STAR index is located in `~/index/mm10_STAR/`. fastq files from scCAT-seq are located in `~/fastq/`
+
 Before process the data, we bulid some directory and move the script to `script_and_log` and `fastq` directory: 
 
 ```
