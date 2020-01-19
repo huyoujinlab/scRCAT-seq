@@ -12,58 +12,9 @@ We have uploaded test data. Reader can download at [here](https://drive.google.c
 
 # 1. Preparation
 
-We assume that the genome fa file is located in `~/index/mm10/mm10.fa`. STAR index is located in `~/index/mm10_STAR/`. fastq files from scCAT-seq are located in `~/fastq/`
+In this workflow, we assume that the genome fa file is located in `~/index/mm10/mm10.fa`. STAR index is located in `~/index/mm10_STAR/`. fastq files from scCAT-seq are located in `~/fastq/`.
 
-Before process the data, we bulid some directory and move the script to `script_and_log` and `fastq` directory: 
-
-```
-#### Create directory
-mkdir ~/scCAT_seq
-mkdir ~/scCAT_seq/fastq
-mkdir ~/scCAT_seq/five_pirme
-mkdir ~/scCAT_seq/five_pirme/5cap_read_with_tag
-mkdir ~/scCAT_seq/five_pirme/trim_GTGGTATCAACGCAGAGTACAT
-mkdir ~/scCAT_seq/five_pirme/mapping_output
-mkdir ~/scCAT_seq/five_pirme/extract_uniquely_map
-mkdir ~/scCAT_seq/five_pirme/split_plus_minus
-mkdir ~/scCAT_seq/five_pirme/extract_mismatch
-mkdir ~/scCAT_seq/five_pirme/final_out
-mkdir ~/scCAT_seq/five_pirme/script_and_log
-
-mkdir ~/scCAT_seq/three_pirme
-mkdir ~/scCAT_seq/three_pirme/3tail_read_with_tag
-mkdir ~/scCAT_seq/three_pirme/3tail_read_with_tag_other_strand
-mkdir ~/scCAT_seq/three_pirme/3tail_read_with_tag_other_strand_withA10_remain_A5
-mkdir ~/scCAT_seq/three_pirme/mapping_output
-mkdir ~/scCAT_seq/three_pirme/extract_uniquely_map
-mkdir ~/scCAT_seq/three_pirme/split_plus_minus
-mkdir ~/scCAT_seq/three_pirme/extract_mismatch
-mkdir ~/scCAT_seq/three_pirme/final_out
-mkdir ~/scCAT_seq/three_pirme/script_and_log
-
-#### Copy data and scripts to direct position
-mv O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_1.fq.gz ~/scCAT_seq/fastq
-mv O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_2.fq.gz ~/scCAT_seq/fastq
-cd ~/scCAT_seq/fastq
-gzip -d O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_1.fq.gz
-gzip -d O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_2.fq.gz
-cp extractmismatch_plus_5.py ~/scCAT_seq/five_pirme/script_and_log
-cp extractmismatch_minus_5.py ~/scCAT_seq/five_pirme/script_and_log
-cp gencode_mm10_tRNA_rRNA_gene.bed ~/scCAT_seq/five_pirme/script_and_log
-
-cp extractmismatch_plus_3.py ~/scCAT_seq/three_pirme/script_and_log
-cp extractmismatch_minus_3.py ~/scCAT_seq/three_pirme/script_and_log
-cp gencode_mm10_tRNA_rRNA_gene.bed ~/scCAT_seq/three_pirme/script_and_log
-cp sample_list_tag.txt ~/scCAT_seq/three_pirme/script_and_log
-cp cmpfastq_pe.pl ~/scCAT_seq/three_pirme/script_and_log
-cp find_A10_and_remain_A5.py ~/scCAT_seq/three_pirme/script_and_log
-
-
-#### Change directory
-cd ~/scCAT_seq/five_pirme/script_and_log
-```
-
-Please make sure that original fastq files are list in `~/zjw/fastq_5cap_2018ab`. STAR index must be prepared before running this workflow. For build index, you can run:
+STAR index must be prepared before running this workflow. For build index, you can run:
 
 ```
 ## you can change fa and gtf file path
@@ -73,6 +24,20 @@ STAR --runThreadN 24 --runMode genomeGenerate \
 --sjdbGTFfile ~/index/mm10/gencode.vM18.annotation.gtf \
 --sjdbOverhang 150
 ```
+
+# 2. Convert to bed
+
+We use `convert_to_bed.sh` to process the data. The script usage is:
+
+```
+sh convert_to_bed.sh <genome fa file> <STAR index> <fastq file dir> <output dir>
+```
+
+For example:
+```
+sh convert_to_bed.sh ~/index/mm10/mm10.fa ~/index/mm10_STAR/ ~/fastq/ ~/scCAT_seq/
+```
+
 
 ## 1. Find reads with TSO primer
 
