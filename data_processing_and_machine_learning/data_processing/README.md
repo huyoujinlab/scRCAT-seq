@@ -41,7 +41,7 @@ For example:
 sh convert_to_bed.sh ~/index/mm10/mm10.fa ~/index/mm10_STAR/ ~/fastq/ ~/scCAT_seq/
 ```
 
-Output files are stored in `~/scCAT_seq/five_pirme/final_out` and `~/scCAT_seq/three_pirme/final_out`. `*remove_trRNA.bed` are needed for upstream analysis. Its format is:
+Output files are stored in `~/scCAT_seq/five_pirme/final_out` and `~/scCAT_seq/three_pirme/final_out`. `*remove_trRNA.bed` are needed for downstream analysis. Its format is:
 
 ```
 chr1    3214161 3214286 ST-E00126:647:HL57HCCXY:1:2107:20354:17377      255     -
