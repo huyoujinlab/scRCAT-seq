@@ -81,8 +81,15 @@ grep "chr3" ~/scCAT_seq/three_pirme/final_out/O41_72_TKD180302275-N704-AK417_AHL
 1) Predicted each individual peaks in the input file. The value `1` indicates a true TSS/TES peak while value `0` indicates a false TSS/TES peak
 
 
+---
 
-
+```
+mkdir ~/scCAT_seq/final_bed/
+mv ~/scCAT_seq/five_pirme/final_out/*chr3*bed ~/scCAT_seq/final_bed/
+mv ~/scCAT_seq/three_pirme/final_out/*chr3*bed ~/scCAT_seq/final_bed/
+sh callpeak_correaction_5.sh
+sh callpeak_correaction_3.sh
+```
 
 ---
 
