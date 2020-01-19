@@ -53,10 +53,26 @@ This is a tab-delimited file. Each row represents a read.
 
 
 
-# 3. Correction
+# 3. Call peak and correction
 
 
 
+```
+* Features:
+1) TPM_of_peak: The total Tags per Million(TPM) value of the peak called by `CAGEr`.
+2) TPM_of_Dominant_Site: The highest TPM value of all sites within a peak.
+3) Gene_length: The length of the transcript annotated.
+4) Peak_width: The width of the peak called by `CAGEr`.
+5) Dominant_TPM_to_Smart2: The ratio of Dominant_TPM to the RPM value of the corresponding gene revealed by Smart-seq2.
+6) Slope_smart2_curve: The slope of Smart-seq2 coverage curve around the peaks.
+7) Trend_of_smart2_reads: Calculated by dividing the number of reads increased/decreased within 50bp distance by 50.
+8) Percentage: The percentage of read counts of a peak to the total counts of a transcript.
+9) Motif: Motif information around TSS/TES peak
+
+* Prediction:  
+1) Predicted each individual peaks in the input file. The value `1` indicates a true TSS/TES peak while value `0` indicates a false TSS/TES peak
+
+```
 
 
 
