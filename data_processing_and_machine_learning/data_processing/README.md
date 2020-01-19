@@ -51,6 +51,7 @@ chr1    3540150 3540274 ST-E00126:647:HL57HCCXY:1:2105:32177:70592      255     
 chr1    3540150 3540274 ST-E00126:647:HL57HCCXY:1:1217:19380:22018      255     -
 chr1    3612996 3613077 ST-E00126:647:HL57HCCXY:1:1117:10389:26484      255     -
 ```
+
 This is a tab-delimited file. Each row represents a read.
 
 
@@ -61,9 +62,11 @@ This is a tab-delimited file. Each row represents a read.
 We extract the reads on chr 3 for simplification:
 
 ```
-grep "chr3" ~/scCAT_seq/five_pirme/final_out/O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_2.fq_with_tag.fq.trimed.remainGGG_Aligned.out.sam_extract_uniquely_map.sam_extractmismatch_add_header_sorted_remove_trRNA.bed > ~/scCAT_seq/five_pirme/final_out/O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_2.fq_with_tag.fq.trimed.remainGGG_Aligned.out.sam_extract_uniquely_map.sam_extractmismatch_add_header_sorted_remove_trRNA_chr3.bed
+mkdir ~/scCAT_seq/final_bed/
 
-grep "chr3" ~/scCAT_seq/three_pirme/final_out/O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_2.fq-common.out_withA10_remain_A5_Aligned.out.sam_extract_uniquely_map.sam_extractmismatch_add_header_sotred_remove_trRNA.bed > ~/scCAT_seq/five_pirme/final_out/O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_2.fq_with_tag.fq.trimed.remainGGG_Aligned.out.sam_extract_uniquely_map.sam_extractmismatch_add_header_sorted_remove_trRNA_chr3.bed
+grep "chr3" ~/scCAT_seq/five_pirme/final_out/O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_2.fq_with_tag.fq.trimed.remainGGG_Aligned.out.sam_extract_uniquely_map.sam_extractmismatch_add_header_sorted_remove_trRNA.bed > ~/scCAT_seq/final_bed/O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_2.fq_with_tag.fq.trimed.remainGGG_Aligned.out.sam_extract_uniquely_map.sam_extractmismatch_add_header_sorted_remove_trRNA_chr3.bed
+
+grep "chr3" ~/scCAT_seq/three_pirme/final_out/O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_2.fq-common.out_withA10_remain_A5_Aligned.out.sam_extract_uniquely_map.sam_extractmismatch_add_header_sotred_remove_trRNA.bed > ~/scCAT_seq/final_bed/O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_2.fq_with_tag.fq.trimed.remainGGG_Aligned.out.sam_extract_uniquely_map.sam_extractmismatch_add_header_sorted_remove_trRNA_chr3.bed
 ```
 
 * Features for peak correction:
@@ -84,7 +87,7 @@ grep "chr3" ~/scCAT_seq/three_pirme/final_out/O41_72_TKD180302275-N704-AK417_AHL
 ---
 
 ```
-mkdir ~/scCAT_seq/final_bed/
+
 mv ~/scCAT_seq/five_pirme/final_out/*chr3*bed ~/scCAT_seq/final_bed/
 mv ~/scCAT_seq/three_pirme/final_out/*chr3*bed ~/scCAT_seq/final_bed/
 sh callpeak_correaction_5.sh
