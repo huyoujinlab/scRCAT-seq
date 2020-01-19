@@ -38,7 +38,17 @@ For example:
 sh convert_to_bed.sh ~/index/mm10/mm10.fa ~/index/mm10_STAR/ ~/fastq/ ~/scCAT_seq/
 ```
 
-Output files are stored in `~/scCAT_seq/five_pirme/final_out` and `~/scCAT_seq/three_pirme/final_out`
+Output files are stored in `~/scCAT_seq/five_pirme/final_out` and `~/scCAT_seq/three_pirme/final_out`. `*remove_trRNA.bed` are needed for upstream analysis. Its format is:
+
+```
+chr1    3214161 3214286 ST-E00126:647:HL57HCCXY:1:2107:20354:17377      255     -
+chr1    3539203 3539327 ST-E00126:647:HL57HCCXY:1:1202:30188:47562      255     -
+chr1    3539203 3539328 ST-E00126:647:HL57HCCXY:1:2202:9820:48142       255     -
+chr1    3540150 3540274 ST-E00126:647:HL57HCCXY:1:2105:32177:70592      255     -
+chr1    3540150 3540274 ST-E00126:647:HL57HCCXY:1:1217:19380:22018      255     -
+chr1    3612996 3613077 ST-E00126:647:HL57HCCXY:1:1117:10389:26484      255     -
+```
+This is a tab-delimited file. Each row represents a read.
 
 
 ## 1. Find reads with TSO primer
