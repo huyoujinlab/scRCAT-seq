@@ -51,6 +51,17 @@ chr1    3612996 3613077 ST-E00126:647:HL57HCCXY:1:1117:10389:26484      255     
 This is a tab-delimited file. Each row represents a read.
 
 
+
+
+# 3. Correction
+
+
+
+
+
+
+
+
 ## 1. Find reads with TSO primer
 
 Reads with TSO primer sequence at 5' are considered to further processing. TSO primer in scCAT-seq data is `GTGGTATCAACGCAGAGTACATGGG`.
