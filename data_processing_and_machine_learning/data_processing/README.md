@@ -38,6 +38,8 @@ For example:
 sh convert_to_bed.sh ~/index/mm10/mm10.fa ~/index/mm10_STAR/ ~/fastq/ ~/scCAT_seq/
 ```
 
+Output files are stored in `~/scCAT_seq/five_pirme/final_out` and `~/scCAT_seq/three_pirme/final_out`
+
 
 ## 1. Find reads with TSO primer
 
