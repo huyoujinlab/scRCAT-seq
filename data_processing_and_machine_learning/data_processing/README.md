@@ -58,10 +58,15 @@ This is a tab-delimited file. Each row represents a read.
 
 # 3. Call peak and correction
 
+We extract the reads on chr 3 for simplification:
 
+```
+grep "chr3" ~/scCAT_seq/five_pirme/final_out/O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_2.fq_with_tag.fq.trimed.remainGGG_Aligned.out.sam_extract_uniquely_map.sam_extractmismatch_add_header_sorted_remove_trRNA.bed > ~/scCAT_seq/five_pirme/final_out/O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_2.fq_with_tag.fq.trimed.remainGGG_Aligned.out.sam_extract_uniquely_map.sam_extractmismatch_add_header_sorted_remove_trRNA_chr3.bed
 
+grep "chr3" ~/scCAT_seq/three_pirme/final_out/O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_2.fq-common.out_withA10_remain_A5_Aligned.out.sam_extract_uniquely_map.sam_extractmismatch_add_header_sotred_remove_trRNA.bed > ~/scCAT_seq/five_pirme/final_out/O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_2.fq_with_tag.fq.trimed.remainGGG_Aligned.out.sam_extract_uniquely_map.sam_extractmismatch_add_header_sorted_remove_trRNA_chr3.bed
+```
 
-* Features:
+* Features for peak correction:
 1) TPM_of_peak: The total Tags per Million(TPM) value of the peak called by `CAGEr`.
 2) TPM_of_Dominant_Site: The highest TPM value of all sites within a peak.
 3) Gene_length: The length of the transcript annotated.
