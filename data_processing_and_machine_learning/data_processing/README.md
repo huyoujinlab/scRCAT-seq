@@ -57,7 +57,7 @@ This is a tab-delimited file. Each row represents a read.
 
 
 
-```
+
 * Features:
 1) TPM_of_peak: The total Tags per Million(TPM) value of the peak called by `CAGEr`.
 2) TPM_of_Dominant_Site: The highest TPM value of all sites within a peak.
@@ -72,7 +72,6 @@ This is a tab-delimited file. Each row represents a read.
 * Prediction:  
 1) Predicted each individual peaks in the input file. The value `1` indicates a true TSS/TES peak while value `0` indicates a false TSS/TES peak
 
-```
 
 
 
