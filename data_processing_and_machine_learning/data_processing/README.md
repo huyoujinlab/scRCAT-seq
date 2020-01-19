@@ -72,7 +72,7 @@ This is a tab-delimited file. Each row represents a read.
 8) Percentage: The percentage of read counts of a peak to the total counts of a transcript.
 9) Motif: Motif information around TSS/TES peak
 
-* Prediction:  
+* Correction:  
 1) Predicted each individual peaks in the input file. The value `1` indicates a true TSS/TES peak while value `0` indicates a false TSS/TES peak
 
 
