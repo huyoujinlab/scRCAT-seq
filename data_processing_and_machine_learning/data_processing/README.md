@@ -19,30 +19,30 @@ Before process the data, we bulid some directory and move the script to `script_
 
 ```
 #### Create directory
-mkdir ~/zjw
-mkdir ~/zjw/fastq_5cap_2018ab
-mkdir ~/zjw/20190109
-mkdir ~/zjw/20190109/5cap_read_with_tag
-mkdir ~/zjw/20190109/trim_GTGGTATCAACGCAGAGTACAT
-mkdir ~/zjw/20190109/mapping_output
-mkdir ~/zjw/20190109/extract_uniquely_map
-mkdir ~/zjw/20190109/split_plus_minus
-mkdir ~/zjw/20190109/extract_mismatch
-mkdir ~/zjw/20190109/final_out
-mkdir ~/zjw/20190109/script_and_log
+mkdir ~/scCAT_seq
+mkdir ~/scCAT_seq/fastq
+mkdir ~/scCAT_seq/five_pirme
+mkdir ~/scCAT_seq/five_pirme/5cap_read_with_tag
+mkdir ~/scCAT_seq/five_pirme/trim_GTGGTATCAACGCAGAGTACAT
+mkdir ~/scCAT_seq/five_pirme/mapping_output
+mkdir ~/scCAT_seq/five_pirme/extract_uniquely_map
+mkdir ~/scCAT_seq/five_pirme/split_plus_minus
+mkdir ~/scCAT_seq/five_pirme/extract_mismatch
+mkdir ~/scCAT_seq/five_pirme/final_out
+mkdir ~/scCAT_seq/five_pirme/script_and_log
 
 #### Copy data and scripts to direct position
-mv O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_1.fq.gz ~/zjw/fastq_5cap_2018ab
-mv O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_2.fq.gz ~/zjw/fastq_5cap_2018ab
-cd ~/zjw/fastq_5cap_2018ab
+mv O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_1.fq.gz ~/scCAT_seq/fastq
+mv O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_2.fq.gz ~/scCAT_seq/fastq
+cd ~/scCAT_seq/fastq
 gzip -d O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_1.fq.gz
 gzip -d O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_2.fq.gz
-cp extractmismatch_plus_5.py ~/zjw/20190109/script_and_log
-cp extractmismatch_minus_5.py ~/zjw/20190109/script_and_log
-cp gencode_mm10_tRNA_rRNA_gene.bed ~/zjw/20190109/script_and_log
+cp extractmismatch_plus_5.py ~/scCAT_seq/five_pirme/script_and_log
+cp extractmismatch_minus_5.py ~/scCAT_seq/five_pirme/script_and_log
+cp gencode_mm10_tRNA_rRNA_gene.bed ~/scCAT_seq/five_pirme/script_and_log
 
 #### Change directory
-cd ~/zjw/20190109/script_and_log
+cd ~/scCAT_seq/five_pirme/script_and_log
 ```
 
 Please make sure that original fastq files are list in `~/zjw/fastq_5cap_2018ab`. STAR index must be prepared before running this workflow. For build index, you can run:
