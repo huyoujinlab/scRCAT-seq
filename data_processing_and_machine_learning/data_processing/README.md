@@ -8,6 +8,7 @@ Here is the scCAT-seq 5' data and 3' data processing workflow. To see detail imf
 
 We have uploaded test data. Reader can download at [here](https://drive.google.com/open?id=1t8oLqAIWWy32yf5g3NOfKm10-i0pBITy) and [here](https://drive.google.com/open?id=1Z4xEVmkip3aq56Jp5k-0qBLmZ9oR-Lyk).
 
+data processing and peak correction
 ---
 
 # 1. Preparation
