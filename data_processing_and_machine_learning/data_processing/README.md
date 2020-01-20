@@ -58,9 +58,10 @@ This is a tab-delimited file. Each row represents a read.
 
 # 3. Call peak and feature generation
 
-We extract the reads on chr 3 for simplification:
+In this step, we extract the reads on chr 3 for simplification.
 
-* Features for peak correction:
+Features for peak correction are listed below:
+
 1) TPM_of_peak: The total Tags per Million(TPM) value of the peak called by `CAGEr`.
 2) TPM_of_Dominant_Site: The highest TPM value of all sites within a peak.
 3) Gene_length: The length of the transcript annotated.
@@ -72,7 +73,7 @@ We extract the reads on chr 3 for simplification:
 9) Motif: Motif information around TSS/TES peak
 
 
-We use `callpeak_correction_TSS.sh` and `callpeak_correction_TES.sh` to generate features and compare peaks to gencode annotation, FANTOM5 and PolyA_DB. The script usage is:
+We use `callpeak_correction_TSS.sh` and `callpeak_correction_TES.sh` to generate features and compare peaks to `Gencode`, `FANTOM5` and `PolyA_DB` databases. The script usage is:
 
 ```
 sh callpeak_correction_TSS.sh <bed file> <Smart-seq2 readcount> <Smart-seq2 wig file> <FANTOM5 file>
