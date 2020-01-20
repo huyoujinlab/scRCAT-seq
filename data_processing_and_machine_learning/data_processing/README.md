@@ -56,17 +56,9 @@ This is a tab-delimited file. Each row represents a read.
 
 
 
-# 3. Call peak and correction
+# 3. Call peak and feature generation
 
 We extract the reads on chr 3 for simplification:
-
-```
-mkdir ~/scCAT_seq/final_bed/
-
-grep "chr3" ~/scCAT_seq/five_pirme/final_out/O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_2.fq_with_tag.fq.trimed.remainGGG_Aligned.out.sam_extract_uniquely_map.sam_extractmismatch_add_header_sorted_remove_trRNA.bed > ~/scCAT_seq/final_bed/O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_2.fq_with_tag.fq.trimed.remainGGG_Aligned.out.sam_extract_uniquely_map.sam_extractmismatch_add_header_sorted_remove_trRNA_chr3.bed
-
-grep "chr3" ~/scCAT_seq/three_pirme/final_out/O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_2.fq-common.out_withA10_remain_A5_Aligned.out.sam_extract_uniquely_map.sam_extractmismatch_add_header_sotred_remove_trRNA.bed > ~/scCAT_seq/final_bed/O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_2.fq_with_tag.fq.trimed.remainGGG_Aligned.out.sam_extract_uniquely_map.sam_extractmismatch_add_header_sorted_remove_trRNA_chr3.bed
-```
 
 * Features for peak correction:
 1) TPM_of_peak: The total Tags per Million(TPM) value of the peak called by `CAGEr`.
@@ -79,146 +71,27 @@ grep "chr3" ~/scCAT_seq/three_pirme/final_out/O41_72_TKD180302275-N704-AK417_AHL
 8) Percentage: The percentage of read counts of a peak to the total counts of a transcript.
 9) Motif: Motif information around TSS/TES peak
 
-* Correction:  
-1) Predicted each individual peaks in the input file. The value `1` indicates a true TSS/TES peak while value `0` indicates a false TSS/TES peak
 
-
-
+We use `callpeak_correction_TSS.sh` and `callpeak_correction_TES.sh` to generate features and compare peaks to gencode annotation, FANTOM5 and PolyA_DB. The script usage is:
 
 ```
+sh callpeak_correction_TSS.sh <bed file> <Smart-seq2 readcount> <Smart-seq2 wig file> <FANTOM5 file>
+sh callpeak_correction_TES.sh <bed file> <Smart-seq2 readcount> <Smart-seq2 wig file> <PolyA_db file>
+```
 
-sh callpeak_correaction_5.sh
-sh callpeak_correaction_3.sh
+For example:
+
+```
+sh callpeak_correction_TSS.sh O41_72_final_5cap.bed O_merge_standard_smart_seq2.count O_merge_standard_smart_seq2_sorted_chr3.wig tc_ovary.bed
+sh callpeak_correction_TES.sh O41_72_final_3tail.bed O_merge_standard_smart_seq2.count O_merge_standard_smart_seq2_sorted_chr3.wig mouse.PAS100_mm10.bed
 ```
 
 
-
-## 1. Call peak
-
-We run:
-
-```
-cd call_peak
-Rscript CAGE_dominant.R
-
-for i in `ls|grep "_dominant_tes.bed"`
-do
-        bedtools intersect -s -a ${i} -b gencode_mm10_all_gene_genebody_and_downstream2k.bed -wa -wb > ${i%%.*}_genebody_downstream2k.bed
-done
-
-for i in `ls|grep "_dominant_tss.bed"`
-do 
-        bedtools intersect -s -a ${i} -b gencode_mm10_all_gene_ustream2k_and_genebody.bed -wa -wb > ${i%%.*}_upstream2k_and_genebody.bed
-done 
-```
-
-`D44_52_3tail_dominant_tes.bed` and `D44_52_5cap_dominant_tss.bed` are generated. These file is peak calling output. `temp.RData` is used for next step.
-
-
-
-## 2. Calculate TPM_of_peak, TPM_of_Dominant_Site, Peak_width and Gene_length
-
-We run:
-
-```
-Rscript cal_slope_cattss.R D44_52_5cap_dominant_tss_upstream2k_and_genebody.bed D_merge_standard_smart_seq2.count
-Rscript cal_slope_cattes.R D44_52_3tail_dominant_tes_genebody_downstream2k.bed D_merge_standard_smart_seq2.count
-```
-
-`tc_D44_52_5cap_peak.csv` and `tc_D44_52_3tail_peak.csv` are generated. In this step, we added some features for machine learning.
-
-
-
-## 3. Calculate TPM_of_peak, TPM_of_Dominant_Site and Peak_width
-
-We run:
-
-```
-Rscript cal_slope_cattss2.R tc_D44_52_5cap_peak.csv D_merge_standard_smart_seq2_sorted_chr3.wig
-Rscript cal_slope_cattes2.R tc_D44_52_3tail_peak.csv  D_merge_standard_smart_seq2_sorted_chr3.wig
-```
-
-`tc_D44_52_5cap_peak.csv.csv` and `tc_D44_52_3tail_peak.csv.csv` are generated. In this step, we calculate the slope of Smart-seq2 coverage curve around the peaks and correlation.
-
-
-
-## 4. Calculate percentage and Dominant_TPM_to_Smart2
-
-We run:
-
-```
-Rscript cal_slope_cattss3.R tc_D44_52_5cap_peak.csv.csv
-Rscript cal_slope_cattes3.R tc_D44_52_3tail_peak.csv.csv
-```
-
-`tc_D44_52_5cap_peak.csv.csv.csv` and `tc_D44_52_3tail_peak.csv.csv.csv` are generated. In this step, Percentage and Dominant_TPM_to_Smart2 are added.
-
-## 5. Add Fantom5 and poly_DB
-
-We run:
-
-```
-#### TSS
-bedtools intersect -s -a temp_tss.bed -b tc_dsc.bed -wa -wb > temp_tss_in_FANTOM.bed
-Rscript FANTOM.R tc_D44_52_5cap_peak.csv.csv.csv
-
-#### TES
-bedtools intersect -s -a temp_tes.bed -b mouse.PAS100_mm10.bed -wa -wb > temp_tes_in_polydb.bed
-Rscript polydb.R tc_D44_52_3tail_peak.csv.csv.csv
-```
-
-`tc_D44_52_5cap_peak.csv.csv.csv.csv` and `tc_D44_52_3tail_peak.csv.csv.csv.csv` are generated. In this step, comparison to Fantom5 and poly_DB are added.
-
-## 6. Add motif information
-
-In this step, mm10.fa genome file is needed. 
-
-We run:
-
-```
-#### Find TATA-box, BREu, BREd around TSS.
-python find_motif_re_TSS.py ~/index/mm10/mm10.fa tc_D44_52_5cap_peak.csv.csv.csv.csv tc_D44_52_5cap_peak.csv.csv.csv.csv.csv
-
-#### Find polyA singal around TES.
-python find_motif_re_TES.py ~/index/mm10/mm10.fa tc_D44_52_3tail_peak.csv.csv.csv.csv tc_D44_52_3tail_peak.csv.csv.csv.csv.csv
-```
-
-In this step, `tc_D44_52_5cap_peak.csv.csv.csv.csv.csv` and `tc_D44_52_3tail_peak.csv.csv.csv.csv.csv` are generated. We search motif form upstream 40 bp to 0 bp, relatived to dominant TSS/TES position. `NA` represents there is no motif in this region. `Number` means motif is in this position. `;` means more than 1 motif in this area. 
-
-
-## 7. Unfold motif and change gene length to mean transcript length
-
-```
-Rscript unfold_tss.R tc_D44_52_5cap_peak.csv.csv.csv.csv.csv
-Rscript unfold_tes.R tc_D44_52_3tail_peak.csv.csv.csv.csv.csv
-```
-
-In this step, `tc_D44_52_5cap_peak.csv.csv.csv.csv.csv.csv` and `tc_D44_52_3tail_peak.csv.csv.csv.csv.csv.csv` are generated. The value `1` indicates that there is motif in this position while value `0` indicates no motif enrichment.
-
-## 8. Prediction and correction
+# 4. Call peak and feature generation
 
 To be added
 
-We run:
-
-```
-mv tc_D44_52_5cap_peak.csv.csv.csv.csv.csv.csv ../data/
-mv tc_D44_52_3tail_peak.csv.csv.csv.csv.csv.csv ../data/
-cd ../
-python ./bin/Demo_DRG.py
-```
-
-The new folder named `output` will be built after completion of the pipeline, which contains all the output files, including the `\*.csv` file. 
-
-The last column in the `CSV` files shows the predicted classification corresponding to each individual peaks in the input file. The value `1` indicates a true TSS/TES peak while value `0` indicates a false TSS/TES peak.
-
-
-
-
-
-
-
-
-
+* Correction:  
+1) Predicted each individual peaks in the input file. The value `1` indicates a true TSS/TES peak while value `0` indicates a false TSS/TES peak
 
 
