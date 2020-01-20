@@ -60,7 +60,7 @@ This is a tab-delimited file. Each row represents a read.
 
 In this step, we extract the reads on chr 3 for simplification.
 
-* Features for peak correction are listed below:
+Features for peak correction are listed below:
 
 1) TPM_of_peak: The total Tags per Million(TPM) value of the peak called by `CAGEr`.
 2) TPM_of_Dominant_Site: The highest TPM value of all sites within a peak.
