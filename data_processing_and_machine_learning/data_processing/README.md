@@ -87,6 +87,13 @@ sh callpeak_correction_TSS.sh O41_72_final_5cap.bed O_merge_standard_smart_seq2.
 sh callpeak_correction_TES.sh O41_72_final_3tail.bed O_merge_standard_smart_seq2.count O_merge_standard_smart_seq2_sorted_chr3.wig mouse.PAS100_mm10.bed
 ```
 
+`*final.csv` are ouput files. Its format is: 
+
+```
+a
+```
+
+This is a comma-delimited file. Each row represents a peak.
 
 # 4. Peaks correction
 
