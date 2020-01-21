@@ -83,8 +83,8 @@ sh callpeak_correction_TES.sh <bed file> <Smart-seq2 readcount> <Smart-seq2 wig 
 For example:
 
 ```
-sh callpeak_correction_TSS.sh O41_72_final_5cap.bed O_merge_standard_smart_seq2.count O_merge_standard_smart_seq2_sorted_chr3.wig tc_ovary.bed
-sh callpeak_correction_TES.sh O41_72_final_3tail.bed O_merge_standard_smart_seq2.count O_merge_standard_smart_seq2_sorted_chr3.wig mouse.PAS100_mm10.bed
+sh callpeak_correction_TSS.sh ~/scCAT_seq/five_pirme/final_out/O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_2.fq_with_tag.fq.trimed.remainGGG_Aligned.out.sam_extract_uniquely_map.sam_extractmismatch_add_header_sorted_remove_trRNA.bed O_merge_standard_smart_seq2.count O_merge_standard_smart_seq2_sorted_chr3.wig tc_ovary.bed
+sh callpeak_correction_TES.sh ~/scCAT_seq/three_pirme/final_out/O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_1.fq-common.out_withA10_remain_A5_Aligned.out.sam_extract_uniquely_map.sam_extractmismatch_add_header_sorted_remove_trRNA.bed O_merge_standard_smart_seq2.count O_merge_standard_smart_seq2_sorted_chr3.wig mouse.PAS100_mm10.bed
 ```
 
 `*final.csv` are ouput files. Its format is: 
