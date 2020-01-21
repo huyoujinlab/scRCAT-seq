@@ -10,7 +10,7 @@ Second, peaks are called by `CAGEr` R package and corrected by our algorithm. Ea
 Here is the scCAT-seq 5' data and 3' data processing workflow. To see detail imformation of other data processing, please see `C1_CAGE_5_data_processing.sh`, `C1_STRT_5_data_processing.sh`, `Arguel_et_al_5_data_processing.sh` and `BAT-seq_3_data_processing.sh`.
 
 
-We have uploaded test data and script . Reader can download at [here](https://drive.google.com/open?id=1l0Lg33OWHjVmQ38Z6UL_jmI0vEHgJ9_w).
+We have uploaded test data and scripts . Reader can download at [here](https://drive.google.com/open?id=1ycaGaMpVfE6LxUJRoySOfr2Gd50J2Qen).
 
 
 
