@@ -61,7 +61,7 @@ This is a tab-delimited file. Each row represents a read.
 
 # 3. Call peak and features generation
 
-In this step, we extract the reads on chr 3 for simplification.
+In this step, we only consider peaks on chr 3 for simplification.
 
 Features for peak correction are listed below:
 
