@@ -59,7 +59,7 @@ This is a tab-delimited file. Each row represents a read.
 
 
 
-# 3. Call peak and feature generation
+# 3. Call peak and features generation
 
 In this step, we extract the reads on chr 3 for simplification.
 
