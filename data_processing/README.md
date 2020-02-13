@@ -114,11 +114,50 @@ chr3,7573181,7573182,Il7,-,25.9211737107456,7573182,25.9211737107456,2481.8,1,0.
 
 This is a comma-delimited file. Each row represents a peak.
 
+
+
 # 4. Peaks correction
 
-To be added
+
 
 * Correction:  
-1) Predicted each individual peaks in the input file. The value `1` indicates a true TSS/TES peak while value `0` indicates a false TSS/TES peak
+
+`*final.csv` are input files.
 
 
+1) 
+
+
+We use `ml.py` to process the data. The script usage is:
+
+```
+For ERCC data:
+python ml.py -t /path/to/train_data -e /path/to/test_data 
+For genome data:
+python ml.py -e /path/to/test_data 
+```
+
+For example:
+
+```
+python ml.py -e tc_O41_72_5cap_final.csv
+python ml.py -e tc_O41_72_3tail_final.csv
+```
+
+Output files are stored in `./output/` folder.  The 5' output file format is: 
+
+```
+
+```
+
+The 3' output file format is: 
+
+```
+
+```
+
+
+
+This is a comma-delimited file. Each row represents a peak.
+
+Predicted each individual peaks in the input file. The value `1` indicates a true TSS/TES peak while value `0` indicates a false TSS/TES peak
