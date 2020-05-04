@@ -74,41 +74,41 @@ Features for peak correction are listed below:
 | X6 |  TES and TSS |  Slope_smart2_curve |  The slope of Smart-seq2 coverage curve around the peaks. |
 | X7 |  TES and TSS |  Trend_of_smart2_reads |  Calculated by dividing the number of reads increased/decreased within 50bp distance by 50. |
 | X8 |  TES and TSS |  Percentage |  The percentage of read counts of a peak to the total counts of a transcript. |
-| X9 |  TSS |  BREu_motif_x |  Whether there is BREu motif in x-nt upstream of TSS site |
-| X10 |  TSS |  BREd_motif_x |  Whether there is BREd motif in x-nt upstream of TSS site |
-| X11 |  TSS |  TATA_motif_x |  Whether there is TATA motif in x-nt upstream of TSS site |
-| X12 |  TES |  AATAAA_x |  Whether there is AATAAA motif in x-nt downstream of TSS site |
-| X13 |  TES |  ATTAAA_x |  Whether there is ATTAAA motif in x-nt downstream of TSS site |
-| X14 |  TES |  AAGAAA_x |  Whether there is AAGAAA motif in x-nt downstream of TSS site |
-| X15 |  TES |  AATAGA_x |  Whether there is AATAGA motif in x-nt downstream of TSS site |
-| X16 |  TES |  AATACA_x |  Whether there is AATACA motif in x-nt downstream of TSS site |
-| X17 |  TES |  AATATA_x |  Whether there is AATATA motif in x-nt downstream of TSS site |
-| X18 |  TES |  AATGAA_x |  Whether there is AATGAA motif in x-nt downstream of TSS site |
-| X19 |  TES |  AGTAAA_x |  Whether there is AGTAAA motif in x-nt downstream of TSS site |
-| X20 |  TES |  ACTAAA_x |  Whether there is ACTAAA motif in x-nt downstream of TSS site |
-| X21 |  TES |  GATAAA_x |  Whether there is GATAAA motif in x-nt downstream of TSS site |
-| X22 |  TES |  CATAAA_x |  Whether there is CATAAA motif in x-nt downstream of TSS site |
-| X23 |  TES |  TATAAA_x |  Whether there is TATAAA motif in x-nt downstream of TSS site |
-| X24 |  TES |  TTTAAA_x |  Whether there is TTTAAA motif in x-nt downstream of TSS site |
+| X9 |  TSS |  BREu_motif_x |  Whether there is BREu motif in x-nt upstream of TSS site. |
+| X10 |  TSS |  BREd_motif_x |  Whether there is BREd motif in x-nt upstream of TSS site. |
+| X11 |  TSS |  TATA_motif_x |  Whether there is TATA motif in x-nt upstream of TSS site. |
+| X12 |  TES |  AATAAA_x |  Whether there is AATAAA motif in x-nt downstream of TSS site. |
+| X13 |  TES |  ATTAAA_x |  Whether there is ATTAAA motif in x-nt downstream of TSS site. |
+| X14 |  TES |  AAGAAA_x |  Whether there is AAGAAA motif in x-nt downstream of TSS site. |
+| X15 |  TES |  AATAGA_x |  Whether there is AATAGA motif in x-nt downstream of TSS site. |
+| X16 |  TES |  AATACA_x |  Whether there is AATACA motif in x-nt downstream of TSS site. |
+| X17 |  TES |  AATATA_x |  Whether there is AATATA motif in x-nt downstream of TSS site. |
+| X18 |  TES |  AATGAA_x |  Whether there is AATGAA motif in x-nt downstream of TSS site. |
+| X19 |  TES |  AGTAAA_x |  Whether there is AGTAAA motif in x-nt downstream of TSS site. |
+| X20 |  TES |  ACTAAA_x |  Whether there is ACTAAA motif in x-nt downstream of TSS site. |
+| X21 |  TES |  GATAAA_x |  Whether there is GATAAA motif in x-nt downstream of TSS site. |
+| X22 |  TES |  CATAAA_x |  Whether there is CATAAA motif in x-nt downstream of TSS site. |
+| X23 |  TES |  TATAAA_x |  Whether there is TATAAA motif in x-nt downstream of TSS site. |
+| X24 |  TES |  TTTAAA_x |  Whether there is TTTAAA motif in x-nt downstream of TSS site. |
 | X25 |  TSS |  3_G_3 |  3 Gs in 3-nt window upstream the TSS peaks. |
-| X26 |  TSS |  3_G_2 |  ≥ 2 Gs in 3-nt window upstream the TSS peaks |
-| X27 |  TSS |  5_G_3 |  ≥ 3 Gs in 5-nt window upstream the TSS peaks |
-| X28 |  TSS |  5_G_4 |  ≥ 4 Gs in 5-nt window upstream the TSS peaks |
-| X29 |  TSS |  G_percentage_3 |  The percentage of Gs in 3-nt window upstream the TSS peaks |
-| X30 |  TES |  5A_in_5 |  5 As in 5-nt window downstream the TES peaks |
-| X31 |  TES |  6consecutiveA_in_10 |  ≥ 6 consecutive As in 10-nt window downstream the TES peaks |
-| X32 |  TES |  7A_in_10 |  ≥ 7 As in 10-nt window downstream the TES peaks |
-| X33 |  TES |  8A_in_10 |  ≥ 8 As in 10-nt window downstream the TES peaks |
-| X34 |  TES |  12A_in_15 |  ≥ 12 As in 15-nt window downstream the TES peaks |
-| X35 |  TES |  15A_in_20 |  ≥ 15 As in 20-nt window downstream the TES peaks |
-| X36 |  TES |  27AT_in_30 |  ≥ 27 A/Ts in 30-nt window downstream the TES peaks |
-| X37 |  TES |  33A_in_50 |  ≥ 33 As in 50-nt window downstream the TES peaks |
-| X38 |  TES |  A_percentage_5 |  The percentage of As in 5-nt window downstream the TES peaks |
-| X39 |  TES |  A_percentage_10 |  The percentage of As in 10-nt window downstream the TES peaks |
-| X40 |  TES |  A_percentage_15 |  The percentage of As in 15-nt window downstream the TES peaks |
-| X41 |  TES |  A_percentage_20 |  The percentage of As in 20-nt window downstream the TES peaks |
-| X42 |  TES |  A_percentage_30 |  The percentage of As in 30-nt window downstream the TES peaks |
-| X43 |  TES |  A_percentage_50 |  The percentage of As in 50-nt window downstream the TES peaks |
+| X26 |  TSS |  3_G_2 |  ≥ 2 Gs in 3-nt window upstream the TSS peaks. |
+| X27 |  TSS |  5_G_3 |  ≥ 3 Gs in 5-nt window upstream the TSS peaks. |
+| X28 |  TSS |  5_G_4 |  ≥ 4 Gs in 5-nt window upstream the TSS peaks. |
+| X29 |  TSS |  G_percentage_3 |  The percentage of Gs in 3-nt window upstream the TSS peaks. |
+| X30 |  TES |  5A_in_5 |  5 As in 5-nt window downstream the TES peaks. |
+| X31 |  TES |  6consecutiveA_in_10 |  ≥ 6 consecutive As in 10-nt window downstream the TES peaks. |
+| X32 |  TES |  7A_in_10 |  ≥ 7 As in 10-nt window downstream the TES peaks. |
+| X33 |  TES |  8A_in_10 |  ≥ 8 As in 10-nt window downstream the TES peaks. |
+| X34 |  TES |  12A_in_15 |  ≥ 12 As in 15-nt window downstream the TES peaks. |
+| X35 |  TES |  15A_in_20 |  ≥ 15 As in 20-nt window downstream the TES peaks. |
+| X36 |  TES |  27AT_in_30 |  ≥ 27 A/Ts in 30-nt window downstream the TES peaks. |
+| X37 |  TES |  33A_in_50 |  ≥ 33 As in 50-nt window downstream the TES peaks. |
+| X38 |  TES |  A_percentage_5 |  The percentage of As in 5-nt window downstream the TES peaks. |
+| X39 |  TES |  A_percentage_10 |  The percentage of As in 10-nt window downstream the TES peaks. |
+| X40 |  TES |  A_percentage_15 |  The percentage of As in 15-nt window downstream the TES peaks. |
+| X41 |  TES |  A_percentage_20 |  The percentage of As in 20-nt window downstream the TES peaks. |
+| X42 |  TES |  A_percentage_30 |  The percentage of As in 30-nt window downstream the TES peaks. |
+| X43 |  TES |  A_percentage_50 |  The percentage of As in 50-nt window downstream the TES peaks. |
 
 
 We use `callpeak_correction_TSS.sh` and `callpeak_correction_TES.sh` to generate features and compare peaks to `Gencode`, `FANTOM5` and `PolyA_DB` databases. The script usage is:
