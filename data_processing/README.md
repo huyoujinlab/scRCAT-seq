@@ -64,13 +64,13 @@ This is a tab-delimited file. Each row represents a read.
 Features for peak correction are listed below:
 
 
-| X |  | peak |  Features |  Description of the features |
+| X | peak | Features |  Description of the features |
 | ------ | ------ | ------ | ------ |
-| X1 |  TES and TSS |  TPM_of_peak |  The total TPM value of the peak called by CAGEr. |
-| X2 |  TES and TSS |  TPM_of_Dominant_Site |  The highest TPM value of all sites within a peak. |
-| X3 |  TES and TSS |  Gene_length |  The length of the transcript annotated. |
-| X4 |  TES and TSS |  Peak_width |  The width of the peak called by CAGEr. |
-| X5 |  TES and TSS |  Dominant_TPM_to_Smart2 |  The ratio of Dominant_TPM to the RPM value of the corresponding gene revealed by Smart-seq2. |
+| X1 |  TES and TSS | TPM_of_peak |  The total TPM value of the peak called by CAGEr. |
+| X2 |  TES and TSS | TPM_of_Dominant_Site |  The highest TPM value of all sites within a peak. |
+| X3 |  TES and TSS | Gene_length |  The length of the transcript annotated. |
+| X4 |  TES and TSS | Peak_width |  The width of the peak called by CAGEr. |
+| X5 |  TES and TSS | Dominant_TPM_to_Smart2 |  The ratio of Dominant_TPM to the RPM value of the corresponding gene revealed by Smart-seq2. |
 | X6 |  TES and TSS |  Slope_smart2_curve |  The slope of Smart-seq2 coverage curve around the peaks. |
 | X7 |  TES and TSS |  Trend_of_smart2_reads |  Calculated by dividing the number of reads increased/decreased within 50bp distance by 50. |
 | X8 |  TES and TSS |  Percentage |  The percentage of read counts of a peak to the total counts of a transcript. |
