@@ -16,7 +16,7 @@ We have uploaded test data and scripts . Reader can download at [here](https://d
 
 # 1. Preparation
 
-In this workflow, we assume that the genome fa file is located in `~/index/mm10/mm10.fa`. Genome annotation file is located in `~/index/hg38/gencode.v30.annotation.sorted.gtf`. STAR index is located in `~/index/hg38_STAR/`. fastq files from scCAT-seq are located in `~/fastq/`.
+In this workflow, we assume that the genome fa file is located in `~/index/hg38/hg38.fa`. Genome annotation file is located in `~/index/hg38/gencode.v30.annotation.sorted.gtf`. STAR index is located in `~/index/hg38_STAR/`. fastq files from scCAT-seq are located in `~/fastq/`.
 
 STAR index must be prepared before running this workflow. For build index, you can run:
 
