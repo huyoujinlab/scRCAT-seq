@@ -45,12 +45,12 @@ sh convert_to_bed.sh ~/index/hg38/hg38.fa ~/index/hg38_STAR/ ~/fastq/ ~/scCAT_se
 Output files are stored in `~/scCAT_seq/five_pirme/final_out` and `~/scCAT_seq/three_pirme/final_out`. `*remove_trRNA.bed` are needed for downstream analysis. Its format is:
 
 ```
-chr1    3214161 3214286 ST-E00126:647:HL57HCCXY:1:2107:20354:17377      255     -
-chr1    3539203 3539327 ST-E00126:647:HL57HCCXY:1:1202:30188:47562      255     -
-chr1    3539203 3539328 ST-E00126:647:HL57HCCXY:1:2202:9820:48142       255     -
-chr1    3540150 3540274 ST-E00126:647:HL57HCCXY:1:2105:32177:70592      255     -
-chr1    3540150 3540274 ST-E00126:647:HL57HCCXY:1:1217:19380:22018      255     -
-chr1    3612996 3613077 ST-E00126:647:HL57HCCXY:1:1117:10389:26484      255     -
+chr1    134922  135028  A00268:456:H3MJ7DSXY:3:1655:9100:16282  255     -
+chr1    634012  634080  A00268:456:H3MJ7DSXY:3:2154:12301:18912 255     +
+chr1    634025  634080  A00268:456:H3MJ7DSXY:3:2472:6849:16548  255     +
+chr1    634257  634372  A00268:456:H3MJ7DSXY:3:1546:10357:24158 255     +
+chr1    634277  634372  A00268:456:H3MJ7DSXY:3:2242:27606:2300  255     +
+chr1    634277  634372  A00268:456:H3MJ7DSXY:3:2473:4047:20243  255     +
 ```
 
 This is a tab-delimited file. Each row represents a read.
