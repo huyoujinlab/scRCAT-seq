@@ -126,11 +126,7 @@ sh callpeak_correction_TSS.sh ~/scCAT_seq/five_pirme/collapse/hESC_8N_11_5cap_TK
 sh callpeak_correction_TES.sh ~/scCAT_seq/three_pirme/collapse/hESC_8N_11_3tail_TKD.bed  human.PAS100_hg38.bed 3
 ```
 
-output_threshold3/
-├── tes
-│   ├── all
-│   │   ├── tc_hESC_8N_11_3_3tail_final_gene_rf_model.m
-│   │   ├── tc_hESC_8N_11_3_3tail_final_gene_rf_prediction.csv
+
 
 
 `*final.csv_final.csv` are ouput files. The 5' output file format is: 
