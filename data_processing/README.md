@@ -64,7 +64,7 @@ This is a tab-delimited file. Each row represents a read.
 At this step, we cluster TSS/TES singals and generate fretures for peak correction. Features can be distributed into three classes. 
 * basic features: including `RPM_of_peak`, `RPM_of_Dominant_Site` and `Peak_width`. These features are peaks assoicate feature, which characterize the abundance and shape of the peaks.
 * motif fratures: including `BREu_motif_x`, `BREd_motif_x`, `TATA_motif_x`, `AATAAA_x`, `ATTAAA_x`, `AAGAAA_x`, `AATAGA_x`, `AATACA_x`, `AATATA_x`, `AATGAA_x`, `AGTAAA_x`, `ACTAAA_x`, `GATAAA_x`, `CATAAA_x`, `TATAAA_x` and `TTTAAA_x`. These features are some motifs that usually located around TSS or TES.
-* internal features: including `3_G_3`, `3_G_2`, `5_G_3`, `5_G_4`, `G_percentage_3`, `5A_in_5`, `6consecutiveA_in_10`, `7A_in_10`, `8A_in_10`, `12A_in_15`, `15A_in_20`, `27AT_in_30`, `33A_in_50`, `A_percentage_5`, `A_percentage_10`, `A_percentage_15`, `A_percentage_20`, `A_percentage_30` and `A_percentage_50`. Some false singal can generate during reverse transcription. Oligo(dT) not only binds to poly A tail downstream the TES, but also binds to A-rich genome region. Similarly, TSO primer can also bind to G-rich genome region. We generates these features that attempt to characterize the G content upstream TSS peaks and A content downstream TES peaks.
+* internal features: including `3_G_3`, `3_G_2`, `5_G_3`, `5_G_4`, `G_percentage_3`, `G_percentage_5`, `5A_in_5`, `6consecutiveA_in_10`, `7A_in_10`, `8A_in_10`, `12A_in_15`, `15A_in_20`, `27AT_in_30`, `33A_in_50`, `A_percentage_5`, `A_percentage_10`, `A_percentage_15`, `A_percentage_20`, `A_percentage_30` and `A_percentage_50`. Some false singal can generate during reverse transcription. Oligo(dT) not only binds to poly A tail downstream the TES, but also binds to A-rich genome region. Similarly, TSO primer can also bind to G-rich genome region. We generates these features that attempt to characterize the G content upstream TSS peaks and A content downstream TES peaks.
 
 Features for peak correction are listed below:
 
@@ -95,20 +95,21 @@ Features for peak correction are listed below:
 | X22 |  TSS |  5_G_3 |  ≥ 3 Gs in 5-nt window upstream the TSS peaks. | internal |
 | X23 |  TSS |  5_G_4 |  ≥ 4 Gs in 5-nt window upstream the TSS peaks. | internal |
 | X24 |  TSS |  G_percentage_3 |  The percentage of Gs in 3-nt window upstream the TSS peaks. | internal |
-| X25 |  TES |  5A_in_5 |  5 As in 5-nt window downstream the TES peaks. | internal |
-| X26 |  TES |  6consecutiveA_in_10 |  ≥ 6 consecutive As in 10-nt window downstream the TES peaks. | internal |
-| X27 |  TES |  7A_in_10 |  ≥ 7 As in 10-nt window downstream the TES peaks. | internal |
-| X28 |  TES |  8A_in_10 |  ≥ 8 As in 10-nt window downstream the TES peaks. | internal |
-| X29 |  TES |  12A_in_15 |  ≥ 12 As in 15-nt window downstream the TES peaks. | internal |
-| X30 |  TES |  15A_in_20 |  ≥ 15 As in 20-nt window downstream the TES peaks. | internal |
-| X31 |  TES |  27AT_in_30 |  ≥ 27 A/Ts in 30-nt window downstream the TES peaks. | internal |
-| X32 |  TES |  33A_in_50 |  ≥ 33 As in 50-nt window downstream the TES peaks. | internal |
-| X33 |  TES |  A_percentage_5 |  The percentage of As in 5-nt window downstream the TES peaks. | internal |
-| X34 |  TES |  A_percentage_10 |  The percentage of As in 10-nt window downstream the TES peaks. | internal |
-| X35 |  TES |  A_percentage_15 |  The percentage of As in 15-nt window downstream the TES peaks. | internal |
-| X36 |  TES |  A_percentage_20 |  The percentage of As in 20-nt window downstream the TES peaks. | internal |
-| X37 |  TES |  A_percentage_30 |  The percentage of As in 30-nt window downstream the TES peaks. | internal |
-| X38 |  TES |  A_percentage_50 |  The percentage of As in 50-nt window downstream the TES peaks. | internal |
+| X25 |  TSS |  G_percentage_5 |  The percentage of Gs in 5-nt window upstream the TSS peaks. | internal |
+| X26 |  TES |  5A_in_5 |  5 As in 5-nt window downstream the TES peaks. | internal |
+| X27 |  TES |  6consecutiveA_in_10 |  ≥ 6 consecutive As in 10-nt window downstream the TES peaks. | internal |
+| X28 |  TES |  7A_in_10 |  ≥ 7 As in 10-nt window downstream the TES peaks. | internal |
+| X29 |  TES |  8A_in_10 |  ≥ 8 As in 10-nt window downstream the TES peaks. | internal |
+| X30 |  TES |  12A_in_15 |  ≥ 12 As in 15-nt window downstream the TES peaks. | internal |
+| X31 |  TES |  15A_in_20 |  ≥ 15 As in 20-nt window downstream the TES peaks. | internal |
+| X32 |  TES |  27AT_in_30 |  ≥ 27 A/Ts in 30-nt window downstream the TES peaks. | internal |
+| X33 |  TES |  33A_in_50 |  ≥ 33 As in 50-nt window downstream the TES peaks. | internal |
+| X34 |  TES |  A_percentage_5 |  The percentage of As in 5-nt window downstream the TES peaks. | internal |
+| X35 |  TES |  A_percentage_10 |  The percentage of As in 10-nt window downstream the TES peaks. | internal |
+| X36 |  TES |  A_percentage_15 |  The percentage of As in 15-nt window downstream the TES peaks. | internal |
+| X37 |  TES |  A_percentage_20 |  The percentage of As in 20-nt window downstream the TES peaks. | internal |
+| X38 |  TES |  A_percentage_30 |  The percentage of As in 30-nt window downstream the TES peaks. | internal |
+| X39 |  TES |  A_percentage_50 |  The percentage of As in 50-nt window downstream the TES peaks. | internal |
 
 
 We use `callpeak_correction_TSS.sh` and `callpeak_correction_TES.sh` to generate features and compare peaks to `Gencode`, `FANTOM5` and `PolyA_DB` databases. The script usage is:
