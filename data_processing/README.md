@@ -62,9 +62,9 @@ This is a tab-delimited file. Each row represents a read.
 
 
 At this step, we cluster TSS/TES singals and generate fretures for peak correction. Features can be distributed into three classes. 
-* basic features: including RPM_of_peak, RPM_of_Dominant_Site and Peak_width. These features are peaks assoicate feature, which characterize the abundance and shape of the peaks.
-* motif fratures: including BREu_motif_x, BREd_motif_x, TATA_motif_x, AATAAA_x, ATTAAA_x, AAGAAA_x, AATAGA_x, AATACA_x, AATATA_x, AATGAA_x, AGTAAA_x, ACTAAA_x, GATAAA_x, CATAAA_x, TATAAA_x and TTTAAA_x. These features are some motifs that usually located around TSS or TES.
-* internal features: including 3_G_3, 3_G_2, 5_G_3, 5_G_4, G_percentage_3, 5A_in_5, 6consecutiveA_in_10, 7A_in_10, 8A_in_10, 12A_in_15 ,15A_in_20, 27AT_in_30, 33A_in_50, A_percentage_5, A_percentage_10, A_percentage_15, A_percentage_20, A_percentage_30 and A_percentage_50. Some false singal can generate during reverse transcription. Oligo(dT) not only binds to poly A tail downstream the TES, but also binds to A-rich genome region. Similarly, TSO primer can also bind to G-rich genome region. We generates these features that attempt to characterize the G content upstream TSS peaks and A content downstream TES peaks.
+* basic features: including `RPM_of_peak`, `RPM_of_Dominant_Site` and `Peak_width`. These features are peaks assoicate feature, which characterize the abundance and shape of the peaks.
+* motif fratures: including `BREu_motif_x`, `BREd_motif_x`, `TATA_motif_x`, `AATAAA_x`, `ATTAAA_x`, `AAGAAA_x`, `AATAGA_x`, `AATACA_x`, `AATATA_x`, `AATGAA_x`, `AGTAAA_x`, `ACTAAA_x`, `GATAAA_x`, `CATAAA_x`, `TATAAA_x` and `TTTAAA_x`. These features are some motifs that usually located around TSS or TES.
+* internal features: including `3_G_3`, `3_G_2`, `5_G_3`, `5_G_4`, `G_percentage_3`, `5A_in_5`, `6consecutiveA_in_10`, `7A_in_10`, `8A_in_10`, `12A_in_15`, `15A_in_20`, `27AT_in_30`, `33A_in_50`, `A_percentage_5`, `A_percentage_10`, `A_percentage_15`, `A_percentage_20`, `A_percentage_30` and `A_percentage_50`. Some false singal can generate during reverse transcription. Oligo(dT) not only binds to poly A tail downstream the TES, but also binds to A-rich genome region. Similarly, TSO primer can also bind to G-rich genome region. We generates these features that attempt to characterize the G content upstream TSS peaks and A content downstream TES peaks.
 
 Features for peak correction are listed below:
 
