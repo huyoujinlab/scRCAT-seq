@@ -8,7 +8,7 @@ Here is the code for our scCAT-seq project as described in the paper [scCAT-seq:
 
 ### This project consists of two parts.
 
-* The [first part](https://github.com/huyoujinlab/scCAT-seq/tree/master/data_processing) is code used to data processing and peak correction.
+* The [first part](https://github.com/huyoujinlab/scCAT-seq/tree/master/data_processing) is code used to data pre-processing and peak correction.
 
 * The [second part](https://github.com/huyoujinlab/scCAT-seq/tree/master/Analysing) is code used to analyse the data from scCAT-seq.
 
