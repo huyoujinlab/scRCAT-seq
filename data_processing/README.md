@@ -69,47 +69,46 @@ At this step, we cluster TSS/TES singals and generate fretures for peak correcti
 Features for peak correction are listed below:
 
 
-| X | peak | Features |  Description of the features |
-| ------ | ------ | ------ | ------ |
-| X1 |  TES and TSS | RPM_of_peak |  The total TPM value of the peak called by CAGEr. |
-| X2 |  TES and TSS | RPM_of_Dominant_Site |  The highest RPM value of all sites within a peak. |
-| X3 |  TES and TSS | Gene_length |  The length of the transcript annotated. |
-| X4 |  TES and TSS | Peak_width |  The width of the peak called by CAGEr. |
-| X5 |  TSS |  BREu_motif_x |  Whether there is BREu motif in x-nt upstream of TSS site. |
-| X6 |  TSS |  BREd_motif_x |  Whether there is BREd motif in x-nt upstream of TSS site. |
-| X7 |  TSS |  TATA_motif_x |  Whether there is TATA motif in x-nt upstream of TSS site. |
-| X8 |  TES |  AATAAA_x |  Whether there is AATAAA motif in x-nt downstream of TSS site. |
-| X9 |  TES |  ATTAAA_x |  Whether there is ATTAAA motif in x-nt downstream of TSS site. |
-| X10 |  TES |  AAGAAA_x |  Whether there is AAGAAA motif in x-nt downstream of TSS site. |
-| X11 |  TES |  AATAGA_x |  Whether there is AATAGA motif in x-nt downstream of TSS site. |
-| X12 |  TES |  AATACA_x |  Whether there is AATACA motif in x-nt downstream of TSS site. |
-| X13 |  TES |  AATATA_x |  Whether there is AATATA motif in x-nt downstream of TSS site. |
-| X14 |  TES |  AATGAA_x |  Whether there is AATGAA motif in x-nt downstream of TSS site. |
-| X15 |  TES |  AGTAAA_x |  Whether there is AGTAAA motif in x-nt downstream of TSS site. |
-| X16 |  TES |  ACTAAA_x |  Whether there is ACTAAA motif in x-nt downstream of TSS site. |
-| X17 |  TES |  GATAAA_x |  Whether there is GATAAA motif in x-nt downstream of TSS site. |
-| X18 |  TES |  CATAAA_x |  Whether there is CATAAA motif in x-nt downstream of TSS site. |
-| X19 |  TES |  TATAAA_x |  Whether there is TATAAA motif in x-nt downstream of TSS site. |
-| X20 |  TES |  TTTAAA_x |  Whether there is TTTAAA motif in x-nt downstream of TSS site. |
-| X21 |  TSS |  3_G_3 |  3 Gs in 3-nt window upstream the TSS peaks. |
-| X22 |  TSS |  3_G_2 |  ≥ 2 Gs in 3-nt window upstream the TSS peaks. |
-| X23 |  TSS |  5_G_3 |  ≥ 3 Gs in 5-nt window upstream the TSS peaks. |
-| X24 |  TSS |  5_G_4 |  ≥ 4 Gs in 5-nt window upstream the TSS peaks. |
-| X25 |  TSS |  G_percentage_3 |  The percentage of Gs in 3-nt window upstream the TSS peaks. |
-| X26 |  TES |  5A_in_5 |  5 As in 5-nt window downstream the TES peaks. |
-| X27 |  TES |  6consecutiveA_in_10 |  ≥ 6 consecutive As in 10-nt window downstream the TES peaks. |
-| X28 |  TES |  7A_in_10 |  ≥ 7 As in 10-nt window downstream the TES peaks. |
-| X29 |  TES |  8A_in_10 |  ≥ 8 As in 10-nt window downstream the TES peaks. |
-| X30 |  TES |  12A_in_15 |  ≥ 12 As in 15-nt window downstream the TES peaks. |
-| X31 |  TES |  15A_in_20 |  ≥ 15 As in 20-nt window downstream the TES peaks. |
-| X32 |  TES |  27AT_in_30 |  ≥ 27 A/Ts in 30-nt window downstream the TES peaks. |
-| X33 |  TES |  33A_in_50 |  ≥ 33 As in 50-nt window downstream the TES peaks. |
-| X34 |  TES |  A_percentage_5 |  The percentage of As in 5-nt window downstream the TES peaks. |
-| X35 |  TES |  A_percentage_10 |  The percentage of As in 10-nt window downstream the TES peaks. |
-| X36 |  TES |  A_percentage_15 |  The percentage of As in 15-nt window downstream the TES peaks. |
-| X37 |  TES |  A_percentage_20 |  The percentage of As in 20-nt window downstream the TES peaks. |
-| X38 |  TES |  A_percentage_30 |  The percentage of As in 30-nt window downstream the TES peaks. |
-| X39 |  TES |  A_percentage_50 |  The percentage of As in 50-nt window downstream the TES peaks. |
+| X | peak | Features |  Description of the features | type |
+| ------ | ------ | ------ | ------ | ------ |
+| X1 |  TES and TSS | RPM_of_peak |  The total TPM value of the peak called by CAGEr. | main |
+| X2 |  TES and TSS | RPM_of_Dominant_Site |  The highest RPM value of all sites within a peak. | main |
+| X3 |  TES and TSS | Peak_width |  The width of the peak called by CAGEr. | main |
+| X4 |  TSS |  BREu_motif_x |  Whether there is BREu motif in x-nt upstream of TSS site. | motif |
+| X5 |  TSS |  BREd_motif_x |  Whether there is BREd motif in x-nt upstream of TSS site. | motif |
+| X6 |  TSS |  TATA_motif_x |  Whether there is TATA motif in x-nt upstream of TSS site. | motif |
+| X7 |  TES |  AATAAA_x |  Whether there is AATAAA motif in x-nt downstream of TSS site. | motif |
+| X8 |  TES |  ATTAAA_x |  Whether there is ATTAAA motif in x-nt downstream of TSS site. | motif |
+| X9 |  TES |  AAGAAA_x |  Whether there is AAGAAA motif in x-nt downstream of TSS site. | motif |
+| X10 |  TES |  AATAGA_x |  Whether there is AATAGA motif in x-nt downstream of TSS site. | motif |
+| X11 |  TES |  AATACA_x |  Whether there is AATACA motif in x-nt downstream of TSS site. | motif |
+| X12 |  TES |  AATATA_x |  Whether there is AATATA motif in x-nt downstream of TSS site. | motif |
+| X13 |  TES |  AATGAA_x |  Whether there is AATGAA motif in x-nt downstream of TSS site. | motif |
+| X14 |  TES |  AGTAAA_x |  Whether there is AGTAAA motif in x-nt downstream of TSS site. | motif |
+| X15 |  TES |  ACTAAA_x |  Whether there is ACTAAA motif in x-nt downstream of TSS site. | motif |
+| X16 |  TES |  GATAAA_x |  Whether there is GATAAA motif in x-nt downstream of TSS site. | motif |
+| X17 |  TES |  CATAAA_x |  Whether there is CATAAA motif in x-nt downstream of TSS site. | motif |
+| X18 |  TES |  TATAAA_x |  Whether there is TATAAA motif in x-nt downstream of TSS site. | motif |
+| X19 |  TES |  TTTAAA_x |  Whether there is TTTAAA motif in x-nt downstream of TSS site. | motif |
+| X20 |  TSS |  3_G_3 |  3 Gs in 3-nt window upstream the TSS peaks. | internal |
+| X21 |  TSS |  3_G_2 |  ≥ 2 Gs in 3-nt window upstream the TSS peaks. | internal |
+| X22 |  TSS |  5_G_3 |  ≥ 3 Gs in 5-nt window upstream the TSS peaks. | internal |
+| X23 |  TSS |  5_G_4 |  ≥ 4 Gs in 5-nt window upstream the TSS peaks. | internal |
+| X24 |  TSS |  G_percentage_3 |  The percentage of Gs in 3-nt window upstream the TSS peaks. | internal |
+| X25 |  TES |  5A_in_5 |  5 As in 5-nt window downstream the TES peaks. | internal |
+| X26 |  TES |  6consecutiveA_in_10 |  ≥ 6 consecutive As in 10-nt window downstream the TES peaks. | internal |
+| X27 |  TES |  7A_in_10 |  ≥ 7 As in 10-nt window downstream the TES peaks. | internal |
+| X28 |  TES |  8A_in_10 |  ≥ 8 As in 10-nt window downstream the TES peaks. | internal |
+| X29 |  TES |  12A_in_15 |  ≥ 12 As in 15-nt window downstream the TES peaks. | internal |
+| X30 |  TES |  15A_in_20 |  ≥ 15 As in 20-nt window downstream the TES peaks. | internal |
+| X31 |  TES |  27AT_in_30 |  ≥ 27 A/Ts in 30-nt window downstream the TES peaks. | internal |
+| X32 |  TES |  33A_in_50 |  ≥ 33 As in 50-nt window downstream the TES peaks. | internal |
+| X33 |  TES |  A_percentage_5 |  The percentage of As in 5-nt window downstream the TES peaks. | internal |
+| X34 |  TES |  A_percentage_10 |  The percentage of As in 10-nt window downstream the TES peaks. | internal |
+| X35 |  TES |  A_percentage_15 |  The percentage of As in 15-nt window downstream the TES peaks. | internal |
+| X36 |  TES |  A_percentage_20 |  The percentage of As in 20-nt window downstream the TES peaks. | internal |
+| X37 |  TES |  A_percentage_30 |  The percentage of As in 30-nt window downstream the TES peaks. | internal |
+| X38 |  TES |  A_percentage_50 |  The percentage of As in 50-nt window downstream the TES peaks. | internal |
 
 
 We use `callpeak_correction_TSS.sh` and `callpeak_correction_TES.sh` to generate features and compare peaks to `Gencode`, `FANTOM5` and `PolyA_DB` databases. The script usage is:
