@@ -110,18 +110,18 @@ Features for peak correction are listed below:
 We use `callpeak_correction_TSS.sh` and `callpeak_correction_TES.sh` to generate features and compare peaks to `Gencode`, `FANTOM5` and `PolyA_DB` databases. The script usage is:
 
 ```
-sh callpeak_correction_TSS.sh <bed file> <FANTOM5 file>
-sh callpeak_correction_TES.sh <bed file> <PolyA_db file>
+sh callpeak_correction_TSS.sh <bed file> <FANTOM5 file> threshold
+sh callpeak_correction_TES.sh <bed file> <PolyA_db file> threshold
 ```
 
 For example:
 
 ```
-sh callpeak_correction_TSS.sh ~/scCAT_seq/five_pirme/final_out/O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_2.fq_with_tag.fq.trimed.remainGGG_Aligned.out.sam_extract_uniquely_map.sam_extractmismatch_add_header_sorted_remove_trRNA.bed tc_ovary.bed
-sh callpeak_correction_TES.sh ~/scCAT_seq/three_pirme/final_out/O41_72_TKD180302275-N704-AK417_AHL57HCCXY_L1_1.fq-common.out_withA10_remain_A5_Aligned.out.sam_extract_uniquely_map.sam_extractmismatch_add_header_sorted_remove_trRNA.bed  mouse.PAS100_mm10.bed
+sh callpeak_correction_TSS.sh ~/scCAT_seq/five_pirme/collapse/hESC_8N_11_5cap_TKD.bed tc_hESC.bed 3
+sh callpeak_correction_TES.sh ~/scCAT_seq/three_pirme/collapse/hESC_8N_11_3tail_TKD.bed  human.PAS100_hg38.bed 3
 ```
 
-`*final.csv` are ouput files. The 5' output file format is: 
+`*final.csv_final.csv` are ouput files. The 5' output file format is: 
 
 
 | chr | peak_start | peak_end | gene | strand | peak_RPM | dominant_tss_position | dominant_tss_RPM | gene_length | peak_length | percentage | annotated_peak | isindsc | BREu_motif_minus_49 | BREu_motif_minus_48 | BREu_motif_minus_47 | BREu_motif_minus_46 | BREu_motif_minus_45 | BREu_motif_minus_44 | BREu_motif_minus_43 | BREu_motif_minus_42 | BREu_motif_minus_41 | BREu_motif_minus_40 | BREu_motif_minus_39 | BREu_motif_minus_38 | BREu_motif_minus_37 | BREu_motif_minus_36 | BREu_motif_minus_35 | BREu_motif_minus_34 | BREu_motif_minus_33 | BREu_motif_minus_32 | BREu_motif_minus_31 | BREu_motif_minus_30 | BREu_motif_minus_29 | BREu_motif_minus_28 | BREu_motif_minus_27 | BREu_motif_minus_26 | BREu_motif_minus_25 | BREu_motif_minus_24 | BREu_motif_minus_23 | BREu_motif_minus_22 | BREu_motif_minus_21 | BREu_motif_minus_20 | BREu_motif_minus_19 | BREu_motif_minus_18 | BREu_motif_minus_17 | BREu_motif_minus_16 | BREu_motif_minus_15 | BREu_motif_minus_14 | BREu_motif_minus_13 | BREu_motif_minus_12 | BREu_motif_minus_11 | BREu_motif_minus_10 | BREu_motif_minus_9 | BREu_motif_minus_8 | BREu_motif_minus_7 | BREu_motif_minus_6 | BREu_motif_minus_5 | BREu_motif_minus_4 | BREu_motif_minus_3 | BREu_motif_minus_2 | BREu_motif_minus_1 | BREu_motif_minus_0 | BREd_motif_minus_49 | BREd_motif_minus_48 | BREd_motif_minus_47 | BREd_motif_minus_46 | BREd_motif_minus_45 | BREd_motif_minus_44 | BREd_motif_minus_43 | BREd_motif_minus_42 | BREd_motif_minus_41 | BREd_motif_minus_40 | BREd_motif_minus_39 | BREd_motif_minus_38 | BREd_motif_minus_37 | BREd_motif_minus_36 | BREd_motif_minus_35 | BREd_motif_minus_34 | BREd_motif_minus_33 | BREd_motif_minus_32 | BREd_motif_minus_31 | BREd_motif_minus_30 | BREd_motif_minus_29 | BREd_motif_minus_28 | BREd_motif_minus_27 | BREd_motif_minus_26 | BREd_motif_minus_25 | BREd_motif_minus_24 | BREd_motif_minus_23 | BREd_motif_minus_22 | BREd_motif_minus_21 | BREd_motif_minus_20 | BREd_motif_minus_19 | BREd_motif_minus_18 | BREd_motif_minus_17 | BREd_motif_minus_16 | BREd_motif_minus_15 | BREd_motif_minus_14 | BREd_motif_minus_13 | BREd_motif_minus_12 | BREd_motif_minus_11 | BREd_motif_minus_10 | BREd_motif_minus_9 | BREd_motif_minus_8 | BREd_motif_minus_7 | BREd_motif_minus_6 | BREd_motif_minus_5 | BREd_motif_minus_4 | BREd_motif_minus_3 | BREd_motif_minus_2 | BREd_motif_minus_1 | BREd_motif_minus_0 | TATA_motif_minus_49 | TATA_motif_minus_48 | TATA_motif_minus_47 | TATA_motif_minus_46 | TATA_motif_minus_45 | TATA_motif_minus_44 | TATA_motif_minus_43 | TATA_motif_minus_42 | TATA_motif_minus_41 | TATA_motif_minus_40 | TATA_motif_minus_39 | TATA_motif_minus_38 | TATA_motif_minus_37 | TATA_motif_minus_36 | TATA_motif_minus_35 | TATA_motif_minus_34 | TATA_motif_minus_33 | TATA_motif_minus_32 | TATA_motif_minus_31 | TATA_motif_minus_30 | TATA_motif_minus_29 | TATA_motif_minus_28 | TATA_motif_minus_27 | TATA_motif_minus_26 | TATA_motif_minus_25 | TATA_motif_minus_24 | TATA_motif_minus_23 | TATA_motif_minus_22 | TATA_motif_minus_21 | TATA_motif_minus_20 | TATA_motif_minus_19 | TATA_motif_minus_18 | TATA_motif_minus_17 | TATA_motif_minus_16 | TATA_motif_minus_15 | TATA_motif_minus_14 | TATA_motif_minus_13 | TATA_motif_minus_12 | TATA_motif_minus_11 | TATA_motif_minus_10 | TATA_motif_minus_9 | TATA_motif_minus_8 | TATA_motif_minus_7 | TATA_motif_minus_6 | TATA_motif_minus_5 | TATA_motif_minus_4 | TATA_motif_minus_3 | TATA_motif_minus_2 | TATA_motif_minus_1 | TATA_motif_minus_0 |
@@ -153,26 +153,27 @@ This is a comma-delimited file. Each row represents a peak.
 
 
 
-`*final.csv` generated in step 3 are input files.
+`*fianl.csv_final.csv` generated in step 3 are input files.
 
 
 
 
-We use `ml.py` to process the data. The script usage is:
+We use `feature_improtance.py` to generate the model. The script usage is:
 
 ```
-For ERCC data:
-python ml.py -t /path/to/train_data -e /path/to/test_data 
-For genome data:
-python ml.py -e /path/to/test_data 
+python feature_improtance.py -e <peak_file>
 ```
+
 
 For example:
 
 ```
-python ml.py -e tc_O41_72_5cap_final.csv
-python ml.py -e tc_O41_72_3tail_final.csv
+python feature_improtance.py -e tc_hESC_8N_11_5cap_5cap_final.csv_final.csv
+python feature_improtance.py -e tc_hESC_8N_11_3tail_3tail_final.csv_final.csv
+
 ```
+
+`*m` are ouput files. 
 
 Output files are stored in `./output/` folder.  The 5' output file format is: 
 
