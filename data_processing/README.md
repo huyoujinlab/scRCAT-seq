@@ -20,7 +20,7 @@ In this workflow, we assume that the genome fa file is located in `~/index/hg38/
 
 STAR index must be prepared before running this workflow. For build index, you can run:
 
-```
+```javascript
 ## you can change fa and gtf file path
 STAR --runThreadN 24 --runMode genomeGenerate \
 --genomeDir ~/index/hg38_STAR/ \
