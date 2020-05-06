@@ -173,7 +173,7 @@ python feature_improtance.py -h
 When the -t parameter is specified, the script will use the file1 as the training set and file2 as the test set. Otherwise, 70% of the data will be used as the training set and 30% of the data will be used as the test set:
 
 ```
-python feature_improtance.py -t /path/to/file1 -e /path/to/filw2
+python feature_improtance.py -t /path/to/file1 -e /path/to/file2
 python feature_improtance.py -e /path/to/file
 ```
 
@@ -181,9 +181,8 @@ python feature_improtance.py -e /path/to/file
 For example:
 
 ```
-python feature_improtance.py -e tc_hESC_8N_11_5cap_5cap_final.csv_final.csv
-python feature_improtance.py -e tc_hESC_8N_11_3tail_3tail_final.csv_final.csv
-
+python feature_improtance.py -e tc_hESC_8N_11_5_5cap_final.csv_final.csv
+python feature_improtance.py -e tc_hESC_8N_11_3_3tail_final.csv_final.csv
 ```
 
 Three types of files will be generated, the trained model is stored in the * .m file, the intra-gene peak prediction result is stored in * gene_method_prediction.csv and the inter-gene peak prediction result is stored in * intergenic_method_prediction.csv.
