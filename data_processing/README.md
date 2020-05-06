@@ -71,7 +71,7 @@ Features for peak correction are listed below:
 
 | X | peak | Features |  Description of the features | type |
 | ------ | ------ | ------ | ------ | ------ |
-| X1 |  TES and TSS | RPM_of_peak |  The total TPM value of the peak called by CAGEr. | main |
+| X1 |  TES and TSS | RPM_of_peak |  The total RPM value of the peak called by CAGEr. | main |
 | X2 |  TES and TSS | RPM_of_Dominant_Site |  The highest RPM value of all sites within a peak. | main |
 | X3 |  TES and TSS | Peak_width |  The width of the peak called by CAGEr. | main |
 | X4 |  TSS |  BREu_motif_x |  Whether there is BREu motif in x-nt upstream of TSS site. | motif |
