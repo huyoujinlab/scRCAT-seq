@@ -1,4 +1,4 @@
-# fig2
+# fig2 
 options(stringsAsFactors = FALSE)
 options(scipen = 100)
 
