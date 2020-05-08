@@ -14,73 +14,31 @@ We have uploaded test data and scripts . Reader can download at [here](https://d
 
 
 
-# 1. Preparation
-
-In this workflow, we assume that the genome fa file is located in `~/index/hg38/hg38.fa`. Genome annotation file is located in `~/index/hg38/gencode.v30.annotation.sorted.gtf`. STAR index is located in `~/index/hg38_STAR/`. fastq files from scCAT-seq are located in `~/fastq/`.
-
-STAR index must be prepared before running this workflow. For build index, you can run:
-
-```linux
-## you can change fa and gtf file path
-STAR --runThreadN 24 --runMode genomeGenerate \
---genomeDir ~/index/hg38_STAR/ \
---genomeFastaFiles ~/index/hg38/hg38.fa \
---sjdbGTFfile ~/index/hg38/gencode.v30.annotation.sorted.gtf \
---sjdbOverhang 150
-```
-
-# 2. Convert to bed
-
-We use `convert_to_bed.sh` to process the data. The script usage is:
-
-```
-sh convert_to_bed.sh <genome fa file> <STAR index> <fastq file dir> <output dir>
-```
-
-For example:
-```
-sh convert_to_bed.sh ~/index/hg38/hg38.fa ~/index/hg38_STAR/ ~/fastq/ ~/scCAT_seq/
-```
-
-Output files are stored in `~/scCAT_seq/five_pirme/final_out` and `~/scCAT_seq/three_pirme/final_out`. `*remove_trRNA.bed` are needed for downstream analysis. Its format is:
-
-```
-chr1    134922  135028  A00268:456:H3MJ7DSXY:3:1655:9100:16282  255     -
-chr1    634012  634080  A00268:456:H3MJ7DSXY:3:2154:12301:18912 255     +
-chr1    634025  634080  A00268:456:H3MJ7DSXY:3:2472:6849:16548  255     +
-chr1    634257  634372  A00268:456:H3MJ7DSXY:3:1546:10357:24158 255     +
-chr1    634277  634372  A00268:456:H3MJ7DSXY:3:2242:27606:2300  255     +
-chr1    634277  634372  A00268:456:H3MJ7DSXY:3:2473:4047:20243  255     +
-```
-
-This is a tab-delimited file. Each row represents a read.
 
 
-
-
-# 3. Call peak and features generation
-
+# 1. Call peak and features generation
 
 At this step, we cluster TSS/TES singals and generate fretures for peak correction. Features can be distributed into three classes. 
 * basic features
 * motif fratures
 * internal features
 
-
-
-We use `callpeak_correction_TSS.sh` and `callpeak_correction_TES.sh` to generate features and compare peaks to `Gencode`, `FANTOM5` and `PolyA_DB` databases. The script usage is:
+We use `convert_to_bed.sh`, `callpeak_correction_TSS.sh` and `callpeak_correction_TES.sh` to process the data. The script usage is:
 
 ```
+sh convert_to_bed.sh <genome fa file> <STAR index> <fastq file dir> <output dir>
 sh callpeak_correction_TSS.sh <bed file> <FANTOM5 file> threshold
 sh callpeak_correction_TES.sh <bed file> <PolyA_db file> threshold
 ```
 
 For example:
-
 ```
+sh convert_to_bed.sh ~/index/hg38/hg38.fa ~/index/hg38_STAR/ ~/fastq/ ~/scCAT_seq/
 sh callpeak_correction_TSS.sh ~/scCAT_seq/five_pirme/collapse/hESC_8N_11_5cap_TKD.bed tc_hESC.bed 3
 sh callpeak_correction_TES.sh ~/scCAT_seq/three_pirme/collapse/hESC_8N_11_3tail_TKD.bed  human.PAS100_hg38.bed 3
 ```
+
+
 
 
 
