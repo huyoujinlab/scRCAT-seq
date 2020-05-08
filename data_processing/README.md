@@ -23,19 +23,17 @@ At this step, we cluster TSS/TES singals and generate fretures for peak correcti
 * motif fratures
 * internal features
 
-We use `convert_to_bed.sh`, `callpeak_correction_TSS.sh` and `callpeak_correction_TES.sh` to process the data. The script usage is:
+We use `callpeak_correction_TSS.sh` and `callpeak_correction_TES.sh` to process the data. The script usage is:
 
 ```
-sh convert_to_bed.sh <genome fa file> <STAR index> <fastq file dir> <output dir>
-sh callpeak_correction_TSS.sh <bed file> <FANTOM5 file> threshold
-sh callpeak_correction_TES.sh <bed file> <PolyA_db file> threshold
+sh callpeak_correction_TSS.sh <genome fa file> <fastq file dir> <STAR index> <FANTOM5 file> threshold
+sh callpeak_correction_TES.sh <genome fa file> <fastq file dir> <STAR index> <polyAdb file> threshold
 ```
 
 For example:
 ```
-sh convert_to_bed.sh ~/index/hg38/hg38.fa ~/index/hg38_STAR/ ~/fastq/ ~/scCAT_seq/
-sh callpeak_correction_TSS.sh ~/scCAT_seq/five_pirme/collapse/hESC_8N_11_5cap_TKD.bed tc_hESC.bed 3
-sh callpeak_correction_TES.sh ~/scCAT_seq/three_pirme/collapse/hESC_8N_11_3tail_TKD.bed  human.PAS100_hg38.bed 3
+sh callpeak_correction_TSS.sh ~/index/hg38/hg38.fa ~/scCAT_seq/ ~/index/hg38_STAR/ tc_hESC.bed 3
+sh callpeak_correction_TES.sh ~/index/hg38/hg38.fa ~/scCAT_seq/ ~/index/hg38_STAR/ human.PAS100_hg38.bed 3
 ```
 
 
