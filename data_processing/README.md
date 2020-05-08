@@ -71,7 +71,7 @@ This is a comma-delimited file. Each row represents a peak.
 
 
 
-# 4. Peaks correction
+# 2. Peaks correction
 
 
 
