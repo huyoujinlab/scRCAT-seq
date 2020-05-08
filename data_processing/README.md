@@ -81,7 +81,7 @@ This is a comma-delimited file. Each row represents a peak.
 
 
 
-We generate model and prediction results using python script `feature_improtance.py`, which utilize scikit-learn. We used `svm`, `rf`, `lr` and  `knn` to determine the authenticity of each peak. 
+We generate model and prediction results using python script `feature_improtance.py`, which utilize scikit-learn.
 
 Use the -h parameter to view usage information:
 
