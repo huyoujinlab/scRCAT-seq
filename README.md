@@ -101,7 +101,7 @@ wget https://repo.anaconda.com/archive/Anaconda2-2019.10-Linux-x86_64.sh
 sh Anaconda2-2019.10-Linux-x86_64.sh
 
 ### Bulid environment
-conda create -n scCAT_seq python=2.7.15
+conda create -n scCAT_seq python=3.7
 conda activate scCAT_seq
 
 ### Install softwares and packages
