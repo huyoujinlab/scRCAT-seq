@@ -105,7 +105,7 @@ conda create -n scCAT_seq python=3.7
 conda activate scCAT_seq
 
 ### Install softwares and packages
-conda install -c bioconda STAR=2.6.1a
+conda install -c bioconda STAR=2.7.3a
 conda install -c bioconda samtools=1.3.1
 conda install -c bioconda bedtools=2.27.1
 conda install -c bioconda cutadapt=1.18
