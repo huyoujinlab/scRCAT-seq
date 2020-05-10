@@ -33,7 +33,7 @@ sh callpeak_correction_TES.sh <genome fa file> <STAR index> <fastq file dir> <po
 For example:
 ```
 sh callpeak_correction_TSS.sh ~/index/hg38/hg38.fa ~/index/hg38_STAR2.7.3a_index/ ./fastq tc_hESC.bed 3
-sh callpeak_correction_TSS.sh ~/index/hg38/hg38.fa ~/index/hg38_STAR2.7.3a_index/ ./fastq human.PAS100_hg38.bed 3
+sh callpeak_correction_TES.sh ~/index/hg38/hg38.fa ~/index/hg38_STAR2.7.3a_index/ ./fastq human.PAS100_hg38.bed 3
 ```
 
 
