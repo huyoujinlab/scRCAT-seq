@@ -26,8 +26,8 @@ At this step, we cluster TSS/TES singals and generate fretures for peak correcti
 We use `callpeak_correction_TSS.sh` and `callpeak_correction_TES.sh` to process the data. The script usage is:
 
 ```
-sh callpeak_correction_TSS.sh <genome fa file> <fastq file dir> <STAR index> <FANTOM5 file> threshold
-sh callpeak_correction_TES.sh <genome fa file> <fastq file dir> <STAR index> <polyAdb file> threshold
+sh callpeak_correction_TSS.sh <genome fa file> <STAR index> <fastq file dir> <FANTOM5 file> threshold
+sh callpeak_correction_TES.sh <genome fa file> <STAR index> <fastq file dir> <polyAdb file> threshold
 ```
 
 For example:
