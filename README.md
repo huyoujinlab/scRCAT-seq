@@ -118,4 +118,6 @@ conda install -c conda-forge matplotlib=2.2.3
 conda install -c conda-forge seaborn=0.8.1
 conda install -c conda-forge plotnine
 conda install -c conda-forge python-levenshtein
+
+Rscript install_R_packages.R
 ```
