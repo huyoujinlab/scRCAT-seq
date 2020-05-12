@@ -39,8 +39,8 @@ On R 3.5.0:
 2) broom 0.5.2
 3) BSgenome 1.54.0
 4) BSgenome.Ercc92.ZJW.1 1.0
-5) BSgenome.Macfas.ZJW.1 1.0
-6) BSgenome.Mmusculus.UCSC.mm10 1.4.0
+5) BSgenome.Mmusculus.UCSC.mm10 1.4.0
+6) BSgenome.Hsapiens.UCSC.hg38 1.4.1
 7) BuenColors 0.5.5   
 8) CAGEr 1.24.0   
 9) data.table 1.12.4   
@@ -70,13 +70,13 @@ On R 3.5.0:
 33) stringr 1.4.3   
 34) Seurat 3.0.2   
  
-BS.genome packages were needed for `CAGEr`. However, BS.genome packages for ERCC and crab-eating monkey are no available. We have built the packages. User can download and install for reproducting out results.
+BS.genome packages were needed for `CAGEr`. However, BS.genome packages for ERCC are no available. We have built the packages. User can download and install for reproducting out results.
 
 * BS.genome package for ERCC is provided [here](https://drive.google.com/open?id=1cwJSUWcZ8PkYAs7vmUGDYpI_fW3jE3nK).
 
-* BS.genome package for crab-eating monkey is provided [here](https://drive.google.com/open?id=1ZvdSOCV5AbwcqYPZ_SYX42egSRKUGBrC).
+
 ---
-On python 2.7.15:
+On python 3.7:
  
 1) pandas 0.24.1  
 2) regex 2019.6.5
@@ -112,9 +112,10 @@ conda install -c bioconda cutadapt=1.18
 conda install -c conda-forge r-base 
 
 conda install -c conda-forge pandas=0.24.1
-conda install -c conda-forge regex=2019.6.5
+conda install -c conda-forge regex
 conda install -c conda-forge numpy=1.16.5
 conda install -c conda-forge matplotlib=2.2.3
 conda install -c conda-forge seaborn=0.8.1
-conda install -c conda-forge scikit-plot=0.3.7
+conda install -c conda-forge plotnine
+conda install -c conda-forge python-levenshtein
 ```
