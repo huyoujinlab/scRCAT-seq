@@ -22,7 +22,7 @@ On linux:
 
 1) Python 2.7.15   
 2) R 3.5.0   
-3) STAR 2.6.1a   
+3) STAR 2.7.3a   
 4) Samtools 1.3.1   
 5) Bedtools 2.27.1   
 6) cDNA_cupcake 8.0   
