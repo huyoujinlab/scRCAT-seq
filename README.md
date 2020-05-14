@@ -21,19 +21,19 @@ On linux:
 
 
 1) Python 2.7.15   
-2) R 3.5.0   
+2) R 3.6.1   
 3) STAR 2.7.3a   
 4) Samtools 1.3.1   
 5) Bedtools 2.27.1   
 6) cDNA_cupcake 8.0   
 7) Cutadapt 1.18   
 8) Minimap2 2.17   
-9) Cell ranger 2.1.1   
+9) Cell ranger 3.1.0   
  
  
 ---
 
-On R 3.5.0:
+On R 3.6.1:
  
 1) basicTrendline 2.0.3   
 2) broom 0.5.2
