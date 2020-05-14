@@ -163,7 +163,7 @@ lines(x,df_new[df_new[,1]=="smart",5],type='l',col=icolor[9])
 
 ### fig 1e
 
-#gencode <- read.table("~/zjw/annotation/gencode_mm10_all_gene_all_transcript.bed",header = FALSE,sep = "\t")
+#gencode <- read.table("~/zjw/annotation/gencode_hg38_all_gene_all_transcript.bed",header = FALSE,sep = "\t")
 gencode_plus <- gencode[gencode[,6]=="+",]
 gencode_minus <- gencode[gencode[,6]=="-",]
 
@@ -177,45 +177,46 @@ tes_refer <- rbind(data.frame(V1=gencode_plus[,1],V2=gencode_plus[,3]-1,gencode_
 
 
 
-#阈值2
-#DRG_tss <- read.csv("~/zjw/nc/novel20200428/results/hESC_as_model/model_3/result/DRG_tss_threshold2/tc_DRGtssthreshold2_5cap_final_gene_rf_prediction.csv")
-DRG_tss <- DRG_tss[DRG_tss$model.prediction==1,]
-DRG_tss <- data.frame(DRG_tss[,2],DRG_tss[,7]-1,DRG_tss[,c(7,1,6,5)])
+#hESC_tss_gene <- read.csv("~/zjw/nc/novel20200428/results/hESC_as_model/model_3/result/hESC_tss_threshold3/tc_hESCnofiltersccatUMI5threshold3_5cap_final_gene_rf_prediction.csv")
+hESC_tss_gene <- hESC_tss_gene[hESC_tss_gene$model.prediction==1,]
+hESC_tss_gene <- data.frame(hESC_tss_gene[,2],hESC_tss_gene[,7]-1,hESC_tss_gene[,c(7,1,6,5)])
 
 
-#DRG_tes <- read.csv("~/zjw/nc/novel20200428/results/hESC_as_model/model_3/result/DRG_tes_threshold2/tc_DRGtesthreshold2_3tail_final_gene_rf_prediction.csv")
-DRG_tes <- DRG_tes[DRG_tes$model.prediction==1,]
-DRG_tes <- data.frame(DRG_tes[,2],DRG_tes[,7]-1,DRG_tes[,c(7,1,6,5)])
+#hESC_tes_gene <- read.csv("~/zjw/nc/novel20200428/results/hESC_as_model/model_3/result/hESC_tes_threshold3/tc_hESCnofiltersccatUMI3threshold3_3tail_final_gene_rf_prediction.csv")
+hESC_tes_gene <- hESC_tes_gene[hESC_tes_gene$model.prediction==1,]
+hESC_tes_gene <- data.frame(hESC_tes_gene[,2],hESC_tes_gene[,7]-1,hESC_tes_gene[,c(7,1,6,5)])
 
-DRG_tss_ref <- c()
-for(i in 1:nrow(DRG_tss)) {
-  b <- tss_refer[tss_refer[,1]==DRG_tss[i,1] & tss_refer[,6]==DRG_tss[i,6],]
-  if(DRG_tss[i,6]=="+") {
-    DRG_tss_ref <- c(DRG_tss_ref,(DRG_tss[i,3]-b[,3])[order(abs(DRG_tss[i,3]-b[,3]),decreasing = FALSE)][1])
+
+
+hESC_tss_gene_ref <- c()
+for(i in 1:nrow(hESC_tss_gene)) {
+  b <- tss_refer[tss_refer[,1]==hESC_tss_gene[i,1] & tss_refer[,6]==hESC_tss_gene[i,6],]
+  if(hESC_tss_gene[i,6]=="+") {
+    hESC_tss_gene_ref <- c(hESC_tss_gene_ref,(hESC_tss_gene[i,3]-b[,3])[order(abs(hESC_tss_gene[i,3]-b[,3]),decreasing = FALSE)][1])
   }else {
-    DRG_tss_ref <- c(DRG_tss_ref,(b[,3]-DRG_tss[i,3])[order(abs(b[,3]-DRG_tss[i,3]),decreasing = FALSE)][1])
+    hESC_tss_gene_ref <- c(hESC_tss_gene_ref,(b[,3]-hESC_tss_gene[i,3])[order(abs(b[,3]-hESC_tss_gene[i,3]),decreasing = FALSE)][1])
   }
 }
 
 
-tss_df <- data.frame(V1=as.data.frame(table(DRG_tss_ref))[,1],V2=as.data.frame(table(DRG_tss_ref))[,2],V3=rep("test",nrow(as.data.frame(table(DRG_tss_ref)))))
+tss_df <- data.frame(V1=as.data.frame(table(hESC_tss_gene_ref))[,1],V2=as.data.frame(table(hESC_tss_gene_ref))[,2],V3=rep("test",nrow(as.data.frame(table(hESC_tss_gene_ref)))))
 
 tss_df[,1] <- as.numeric(as.character(tss_df[,1]))
 tss_df <- tss_df[tss_df[,1]<201 & tss_df[,1]>-201,] 
 
 
 
-DRG_tes_ref <- c()
-for(i in 1:nrow(DRG_tes)) {
-  b <- tes_refer[tes_refer[,1]==DRG_tes[i,1] & tes_refer[,6]==DRG_tes[i,6],]
-  if(DRG_tes[i,6]=="+") {
-    DRG_tes_ref <- c(DRG_tes_ref,(DRG_tes[i,3]-b[,3])[order(abs(DRG_tes[i,3]-b[,3]),decreasing = FALSE)][1])
+hESC_tes_gene_ref <- c()
+for(i in 1:nrow(hESC_tes_gene)) {
+  b <- tes_refer[tes_refer[,1]==hESC_tes_gene[i,1] & tes_refer[,6]==hESC_tes_gene[i,6],]
+  if(hESC_tes_gene[i,6]=="+") {
+    hESC_tes_gene_ref <- c(hESC_tes_gene_ref,(hESC_tes_gene[i,3]-b[,3])[order(abs(hESC_tes_gene[i,3]-b[,3]),decreasing = FALSE)][1])
   }else {
-    DRG_tes_ref <- c(DRG_tes_ref,(b[,3]-DRG_tes[i,3])[order(abs(b[,3]-DRG_tes[i,3]),decreasing = FALSE)][1])
+    hESC_tes_gene_ref <- c(hESC_tes_gene_ref,(b[,3]-hESC_tes_gene[i,3])[order(abs(b[,3]-hESC_tes_gene[i,3]),decreasing = FALSE)][1])
   }
 }
 
-tes_df <- data.frame(V1=as.data.frame(table(DRG_tes_ref))[,1],V2=as.data.frame(table(DRG_tes_ref))[,2],V3=rep("test",nrow(as.data.frame(table(DRG_tes_ref)))))
+tes_df <- data.frame(V1=as.data.frame(table(hESC_tes_gene_ref))[,1],V2=as.data.frame(table(hESC_tes_gene_ref))[,2],V3=rep("test",nrow(as.data.frame(table(hESC_tes_gene_ref)))))
 
 tes_df[,1] <- as.numeric(as.character(tes_df[,1]))
 tes_df <- tes_df[tes_df[,1]<201 & tes_df[,1]>-201,]   

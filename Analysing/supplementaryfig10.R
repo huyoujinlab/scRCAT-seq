@@ -37,7 +37,7 @@ library(stringr)
 load("supplementaryfig10.RData")
 
 
-####supplementaryfig7 h 10x tss
+####supplementaryfig7 g 10x tss
 
 cell <- c("ARPE","organoid","HEK293T","hESC","mESC")
 

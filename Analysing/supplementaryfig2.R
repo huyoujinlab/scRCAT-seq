@@ -38,7 +38,7 @@ library(stringr)
 
 ## supplementary2a supplementary2b
 
-load("supplementary2.RData")
+load("supplementaryfig2.RData")
 
 for(i in grep("tss|tes",objects(),value = T)) {
   a <- paste(i,' <- ',i,'[,c(2,1,1)]',sep = "")

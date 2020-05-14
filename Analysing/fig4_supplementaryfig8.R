@@ -36,85 +36,97 @@ library(stringr)
 load("fig4_supplementaryfig8.RData")
 
 
-D80_5_0005 <- D80_5_0005[D80_5_0005$model.prediction==1,]
-D80_5_0510 <- D80_5_0510[D80_5_0510$model.prediction==1,]
-D80_5_1015 <- D80_5_1015[D80_5_1015$model.prediction==1,]
-D80_5_1520 <- D80_5_1520[D80_5_1520$model.prediction==1,]
-D80_5_2025 <- D80_5_2025[D80_5_2025$model.prediction==1,]
-D80_5_2530 <- D80_5_2530[D80_5_2530$model.prediction==1,]
-D80_5_3035 <- D80_5_3035[D80_5_3035$model.prediction==1,]
-
-
-D80_5_0005 <- data.frame(D80_5_0005[,2],D80_5_0005[,7]-1,D80_5_0005[,c(7,1,6,5)])
-D80_5_0510 <- data.frame(D80_5_0510[,2],D80_5_0510[,7]-1,D80_5_0510[,c(7,1,6,5)])
-D80_5_1015 <- data.frame(D80_5_1015[,2],D80_5_1015[,7]-1,D80_5_1015[,c(7,1,6,5)])
-D80_5_1520 <- data.frame(D80_5_1520[,2],D80_5_1520[,7]-1,D80_5_1520[,c(7,1,6,5)])
-D80_5_2025 <- data.frame(D80_5_2025[,2],D80_5_2025[,7]-1,D80_5_2025[,c(7,1,6,5)])
-D80_5_2530 <- data.frame(D80_5_2530[,2],D80_5_2530[,7]-1,D80_5_2530[,c(7,1,6,5)])
-D80_5_3035 <- data.frame(D80_5_3035[,2],D80_5_3035[,7]-1,D80_5_3035[,c(7,1,6,5)])
 
 
 
-D80_3_0005 <- D80_3_0005[D80_3_0005$model.prediction==1,]
-D80_3_0510 <- D80_3_0510[D80_3_0510$model.prediction==1,]
-D80_3_1015 <- D80_3_1015[D80_3_1015$model.prediction==1,]
-D80_3_1520 <- D80_3_1520[D80_3_1520$model.prediction==1,]
-D80_3_2025 <- D80_3_2025[D80_3_2025$model.prediction==1,]
-D80_3_2530 <- D80_3_2530[D80_3_2530$model.prediction==1,]
-D80_3_3035 <- D80_3_3035[D80_3_3035$model.prediction==1,]
+
+D80_5_01 <- D80_5_01[D80_5_01$model.prediction==1,]
+D80_5_02 <- D80_5_02[D80_5_02$model.prediction==1,]
+D80_5_03 <- D80_5_03[D80_5_03$model.prediction==1,]
+D80_5_04 <- D80_5_04[D80_5_04$model.prediction==1,]
+D80_5_05 <- D80_5_05[D80_5_05$model.prediction==1,]
+D80_5_06 <- D80_5_06[D80_5_06$model.prediction==1,]
 
 
-D80_3_0005 <- data.frame(D80_3_0005[,2],D80_3_0005[,7]-1,D80_3_0005[,c(7,1,6,5)])
-D80_3_0510 <- data.frame(D80_3_0510[,2],D80_3_0510[,7]-1,D80_3_0510[,c(7,1,6,5)])
-D80_3_1015 <- data.frame(D80_3_1015[,2],D80_3_1015[,7]-1,D80_3_1015[,c(7,1,6,5)])
-D80_3_1520 <- data.frame(D80_3_1520[,2],D80_3_1520[,7]-1,D80_3_1520[,c(7,1,6,5)])
-D80_3_2025 <- data.frame(D80_3_2025[,2],D80_3_2025[,7]-1,D80_3_2025[,c(7,1,6,5)])
-D80_3_2530 <- data.frame(D80_3_2530[,2],D80_3_2530[,7]-1,D80_3_2530[,c(7,1,6,5)])
-D80_3_3035 <- data.frame(D80_3_3035[,2],D80_3_3035[,7]-1,D80_3_3035[,c(7,1,6,5)])
+
+
+D80_5_01 <- data.frame(D80_5_01[,2],D80_5_01[,7]-1,D80_5_01[,c(7,1,6,5)])
+D80_5_02 <- data.frame(D80_5_02[,2],D80_5_02[,7]-1,D80_5_02[,c(7,1,6,5)])
+D80_5_03 <- data.frame(D80_5_03[,2],D80_5_03[,7]-1,D80_5_03[,c(7,1,6,5)])
+D80_5_04 <- data.frame(D80_5_04[,2],D80_5_04[,7]-1,D80_5_04[,c(7,1,6,5)])
+D80_5_05 <- data.frame(D80_5_05[,2],D80_5_05[,7]-1,D80_5_05[,c(7,1,6,5)])
+D80_5_06 <- data.frame(D80_5_06[,2],D80_5_06[,7]-1,D80_5_06[,c(7,1,6,5)])
+
+
+
+
+
+
+
+
+
+
+
+D80_3_01 <- D80_3_01[D80_3_01$model.prediction==1,]
+D80_3_02 <- D80_3_02[D80_3_02$model.prediction==1,]
+D80_3_03 <- D80_3_03[D80_3_03$model.prediction==1,]
+D80_3_04 <- D80_3_04[D80_3_04$model.prediction==1,]
+D80_3_05 <- D80_3_05[D80_3_05$model.prediction==1,]
+D80_3_06 <- D80_3_06[D80_3_06$model.prediction==1,]
+
+
+
+
+D80_3_01 <- data.frame(D80_3_01[,2],D80_3_01[,7]-1,D80_3_01[,c(7,1,6,5)])
+D80_3_02 <- data.frame(D80_3_02[,2],D80_3_02[,7]-1,D80_3_02[,c(7,1,6,5)])
+D80_3_03 <- data.frame(D80_3_03[,2],D80_3_03[,7]-1,D80_3_03[,c(7,1,6,5)])
+D80_3_04 <- data.frame(D80_3_04[,2],D80_3_04[,7]-1,D80_3_04[,c(7,1,6,5)])
+D80_3_05 <- data.frame(D80_3_05[,2],D80_3_05[,7]-1,D80_3_05[,c(7,1,6,5)])
+D80_3_06 <- data.frame(D80_3_06[,2],D80_3_06[,7]-1,D80_3_06[,c(7,1,6,5)])
 
 
 ####################################################################
-D80_5_0005_new <- data.frame()
-for (i in unique(D80_5_0005[,4])) {
-  temp <- D80_5_0005[D80_5_0005[,4]==i,]
+D80_5_01_new <- data.frame()
+for (i in unique(D80_5_01[,4])) {
+  temp <- D80_5_01[D80_5_01[,4]==i,]
   temp <- temp[order(temp[,5],decreasing = T),][1,]
-  D80_5_0005_new <- rbind(D80_5_0005_new,temp)
+  D80_5_01_new <- rbind(D80_5_01_new,temp)
 }
 
 
 
-D80_3_0005_new <- data.frame()
-for (i in unique(D80_3_0005[,4])) {
-  temp <- D80_3_0005[D80_3_0005[,4]==i,]
+D80_3_01_new <- data.frame()
+for (i in unique(D80_3_01[,4])) {
+  temp <- D80_3_01[D80_3_01[,4]==i,]
   temp <- temp[order(temp[,5],decreasing = T),][1,]
-  D80_3_0005_new <- rbind(D80_3_0005_new,temp)
+  D80_3_01_new <- rbind(D80_3_01_new,temp)
 }
 
 
 
-D80_5_3035_new <- data.frame()
-for (i in unique(D80_5_3035[,4])) {
-  temp <- D80_5_3035[D80_5_3035[,4]==i,]
+D80_5_06_new <- data.frame()
+for (i in unique(D80_5_06[,4])) {
+  temp <- D80_5_06[D80_5_06[,4]==i,]
   temp <- temp[order(temp[,5],decreasing = T),][1,]
-  D80_5_3035_new <- rbind(D80_5_3035_new,temp)
+  D80_5_06_new <- rbind(D80_5_06_new,temp)
 }
 
 
-D80_3_3035_new <- data.frame()
-for (i in unique(D80_3_3035[,4])) {
-  temp <- D80_3_3035[D80_3_3035[,4]==i,]
+D80_3_06_new <- data.frame()
+for (i in unique(D80_3_06[,4])) {
+  temp <- D80_3_06[D80_3_06[,4]==i,]
   temp <- temp[order(temp[,5],decreasing = T),][1,]
-  D80_3_3035_new <- rbind(D80_3_3035_new,temp)
+  D80_3_06_new <- rbind(D80_3_06_new,temp)
 }
 
-colnames(D80_5_0005_new) <- c("V1","V2","V3","V4","V5","V6")
-colnames(D80_5_3035_new) <- c("V1","V2","V3","V4","V5","V6")
-colnames(D80_3_0005_new) <- c("V1","V2","V3","V4","V5","V6")
-colnames(D80_3_3035_new) <- c("V1","V2","V3","V4","V5","V6")
+colnames(D80_5_01_new) <- c("V1","V2","V3","V4","V5","V6")
+colnames(D80_5_06_new) <- c("V1","V2","V3","V4","V5","V6")
+colnames(D80_3_01_new) <- c("V1","V2","V3","V4","V5","V6")
+colnames(D80_3_06_new) <- c("V1","V2","V3","V4","V5","V6")
 
 
-D80_5_all <- rbind(D80_5_0005_new,D80_5_3035_new)
-D80_3_all <- rbind(D80_3_0005_new,D80_3_3035_new)
+D80_5_all <- rbind(D80_5_01_new,D80_5_06_new)
+D80_3_all <- rbind(D80_3_01_new,D80_3_06_new)
 
 D80_5_all[,5] <- 1
 D80_3_all[,5] <- 1
@@ -143,44 +155,43 @@ for (i in unique(D80_3_all[,4])) {
   }
 }
 
-rm(D80_5_0005_new)
-rm(D80_3_0005_new)
-rm(D80_5_3035_new)
-rm(D80_3_3035_new)
+rm(D80_5_01_new)
+rm(D80_3_01_new)
+rm(D80_5_06_new)
+rm(D80_3_06_new)
+###############
 
 
 
 
-## fig4c
+D80_5_01_new <- D80_5_01
+D80_3_01_new <- D80_3_01
+D80_5_06_new <- D80_5_06
+D80_3_06_new <- D80_3_06
+
+D80_5_01_new[,5] <- D80_5_01_new[,5]/1234930*1000000
+D80_3_01_new[,5] <- D80_3_01_new[,5]/1928470*1000000
+D80_5_06_new[,5] <- D80_5_06_new[,5]/1308374*1000000
+D80_3_06_new[,5] <- D80_3_06_new[,5]/1463590*1000000
 
 
 
-D80_5_0005_new <- D80_5_0005
-D80_3_0005_new <- D80_3_0005
-D80_5_3035_new <- D80_5_3035
-D80_3_3035_new <- D80_3_3035
-
-D80_5_0005_new[,5] <- D80_5_0005_new[,5]/1995811*1000000
-D80_3_0005_new[,5] <- D80_3_0005_new[,5]/1072883*1000000
-D80_5_3035_new[,5] <- D80_5_3035_new[,5]/1476652*1000000
-D80_3_3035_new[,5] <- D80_3_3035_new[,5]/2544000*1000000
+###
 
 
 
+O_dominant_tss_in_gene_1 <- D80_5_06_new
+
+O_dominant_tes_in_gene_1 <- D80_3_06_new
+
+P_dominant_tss_in_gene_1 <- D80_5_01_new
+
+P_dominant_tes_in_gene_1 <- D80_3_01_new
 
 
 
-###改
 
 
-
-O_dominant_tss_in_gene_1 <- D80_5_3035_new
-
-O_dominant_tes_in_gene_1 <- D80_3_3035_new
-
-P_dominant_tss_in_gene_1 <- D80_5_0005_new
-
-P_dominant_tes_in_gene_1 <- D80_3_0005_new
 
 
 
@@ -516,11 +527,15 @@ for(i in 1:(nrow(union_2_diff_0515true)/4)) {
   }
 }
 
-union_2_diff_0515true <- union_2_diff_0515true[-grep("^AC",union_2_diff_0515true[,1]),]
+union_2_diff_0515true <- union_2_diff_0515true[-grep("^AC[0-9]",union_2_diff_0515true[,1]),]
 
-union_2_diff_0515true <- union_2_diff_0515true[-grep("^AP",union_2_diff_0515true[,1]),]
+union_2_diff_0515true <- union_2_diff_0515true[-grep("^AP[0-9]",union_2_diff_0515true[,1]),]
+
+union_2_diff_0515true <- union_2_diff_0515true[-grep("^AL[0-9]",union_2_diff_0515true[,1]),]
 
 union_2_diff_0515true <- union_2_diff_0515true[-grep("-",union_2_diff_0515true[,1]),]
+
+
 
 for(i in 1:(nrow(union_2_diff_0515true)/4)) {
   a <- union_2_diff_0515true[(4*i-3):(4*i),]
@@ -695,18 +710,16 @@ ggplot(a_temp,aes(x=TES_long_iso_O_devide_P,y=TES_short_iso_O_devide_P,color=TES
 
 
 
-
-sevenone <- a[,c(1,14,18,19,23)]
-
-rm(D80_3_0005_new)
-rm(D80_5_0005_new)
-
-rm(D80_3_3035_new)
-rm(D80_5_3035_new)
+sixone <- a[,c(1,14,18,19,23)]
 
 
 
 
+
+rm(D80_5_01_new)
+rm(D80_3_01_new)
+rm(D80_5_06_new)
+rm(D80_3_06_new)
 
 
 
@@ -715,11 +728,9 @@ rm(D80_5_3035_new)
 
 
 
-### fig4f
 
 
-
-##distal proximal 热图
+##distal proximal 
 
 #####################################################################################################
 cor_df <- data.frame()
@@ -727,7 +738,6 @@ hm_5cap <- data.frame()
 hm_5cap_percentage <- data.frame()
 for (gene in unique(D80_5_all_new[,4])) {
   
-  #gene="NDUFC1"
   
   D80_5_all_new_new <- D80_5_all_new[D80_5_all_new[,4]==gene,]
   
@@ -775,41 +785,45 @@ for (gene in unique(D80_5_all_new[,4])) {
     
     
   }
-  temp_df_df <- t(temp_df_df)[-1,]
-  temp_df_df <- data.frame(temp_df_df)
-  temp_df_df[,1] <- as.numeric(temp_df_df[,1])
-  temp_df_df[,2] <- as.numeric(temp_df_df[,2])
-  temp_df_df[,3] <- log10(temp_df_df[,1]/temp_df_df[,2])
-  temp_df_df[,4] <- 1:7
+  if (!1 %in% as.numeric(temp_df_df[1,-1]*temp_df_df[2,-1])) {
+    temp_df_df <- t(temp_df_df)[-1,]
+    print(temp_df_df)
+    temp_df_df <- data.frame(temp_df_df)
+    temp_df_df[,1] <- as.numeric(temp_df_df[,1])
+    temp_df_df[,2] <- as.numeric(temp_df_df[,2])
+    temp_df_df[,3] <- log10(temp_df_df[,1]/temp_df_df[,2])
+    temp_df_df[,4] <- 1:6
+    
+    colnames(temp_df_df) <- c("distal","proximal","distaldevideproximal","value")
+    
+    
+    
+    
+    
+    cor_df <- rbind(cor_df,
+                    data.frame(gene,
+                               cor=cor(temp_df_df[,4],temp_df_df[,3]),
+                               nozeronum=length(as.numeric(c(temp_df_df[,1],temp_df_df[,2]))[!as.numeric(c(temp_df_df[,1],temp_df_df[,2]))==1])))
+    
+    hm_5cap_temp <- t(data.frame(c(temp_df_df[,3])))
+    colnames(hm_5cap_temp) <- c("1","2","3","4","5","6")
+    rownames(hm_5cap_temp) <- gene
+    hm_5cap <- rbind(hm_5cap,hm_5cap_temp)
+    
+    
+    
+    temp_df_df[temp_df_df[,2]==1,2]=0
+    temp_df_df[,3] <- temp_df_df[,1]/(temp_df_df[,1]+temp_df_df[,2])
+    hm_5cap_percentage_temp <- t(data.frame(c(temp_df_df[,3])))
+    colnames(hm_5cap_percentage_temp) <- c("1","2","3","4","5","6")
+    rownames(hm_5cap_percentage_temp) <- gene
+    hm_5cap_percentage <- rbind(hm_5cap_percentage,hm_5cap_percentage_temp)
+  }
   
-  colnames(temp_df_df) <- c("distal","proximal","distaldevideproximal","value")
-  
-  
-  
-  
-  
-  cor_df <- rbind(cor_df,
-                  data.frame(gene,
-                             cor=cor(temp_df_df[,4],temp_df_df[,3]),
-                             nozeronum=length(as.numeric(c(temp_df_df[,1],temp_df_df[,2]))[!as.numeric(c(temp_df_df[,1],temp_df_df[,2]))==1])))
-  
-  hm_5cap_temp <- t(data.frame(c(temp_df_df[,3])))
-  colnames(hm_5cap_temp) <- c("1","2","3","4","5","6","7")
-  rownames(hm_5cap_temp) <- gene
-  hm_5cap <- rbind(hm_5cap,hm_5cap_temp)
-  
-  
-  
-  temp_df_df[temp_df_df[,2]==1,2]=0
-  temp_df_df[,3] <- temp_df_df[,1]/(temp_df_df[,1]+temp_df_df[,2])
-  hm_5cap_percentage_temp <- t(data.frame(c(temp_df_df[,3])))
-  colnames(hm_5cap_percentage_temp) <- c("1","2","3","4","5","6","7")
-  rownames(hm_5cap_percentage_temp) <- gene
-  hm_5cap_percentage <- rbind(hm_5cap_percentage,hm_5cap_percentage_temp)
 }
 #####################################################################################################
 
-cor_cor <- cor_df #单独用
+cor_cor <- cor_df 
 
 cor_cor[is.na(cor_cor)] <- 0
 
@@ -817,44 +831,49 @@ cor_cor <- cor_cor[order(cor_cor[,2],decreasing = T),]
 
 
 
-#hm_5cap_new <- hm_5cap[rownames(hm_5cap) %in% cor_cor[cor_cor[,3]>=12 & abs(cor_cor[,2])>=0.7,1],]
-#hm_5cap_new <- hm_5cap_new[rank(cor_cor[cor_cor[,3]>=12 & abs(cor_cor[,2])>=0.7,1]),]
 
-
-hm_5cap_new <- hm_5cap[rownames(hm_5cap) %in% c(sevenone[!sevenone[,3]=="no significance",1]),]
+hm_5cap_new <- hm_5cap[rownames(hm_5cap) %in% c(sixone[!sixone[,3]=="no significance",1]),]
 hm_5cap_new <- hm_5cap_new[rownames(hm_5cap_new) %in% cor_cor[,1],]
-#hm_5cap_new <- hm_5cap_new[-grep('-',rownames(hm_5cap_new)),]
 
-#hm_5cap_new <- hm_5cap_new[-grep('^AC',rownames(hm_5cap_new)),]
 
-#hm_5cap_new <- hm_5cap_new[-grep('^AL',rownames(hm_5cap_new)),]
+hm_5cap_new <- hm_5cap_new[!rownames(hm_5cap_new) %in% c("NDUFC1","AC010616.2","EGLN3","ATP6V1G2-DDX39B","AC093512.2","CERKL","IFITM1","IFITM2","AL365205.1","TOMM6","CST3","ATP6V1G1"),]
 
-hm_5cap_new <- hm_5cap_new[!rownames(hm_5cap_new) %in% c("NDUFC1","AC010616.2","EGLN3","ATP6V1G2-DDX39B","AC093512.2","CERKL"),]
 
-#hm_5cap_new <- hm_5cap[rownames(hm_5cap) %in% c(CR[!CR[,3]=="no significance",1],"GPM6A"),]
-
-#hm_5cap_new <- hm_5cap_new[rownames(hm_5cap_new) %in% cor_cor[cor_cor[,3]>=7,1],]  #dorpout
 for (i in 1:nrow(hm_5cap_new)) {
-  hm_5cap_new[i,8] <- cor_cor[cor_cor[,1]==rownames(hm_5cap_new)[i],2]
+  hm_5cap_new[i,7] <- cor_cor[cor_cor[,1]==rownames(hm_5cap_new)[i],2]
 }
-hm_5cap_new <- hm_5cap_new[abs(hm_5cap_new[,8])>=0.894,] #相关性大于才输出
-hm_5cap_new <- hm_5cap_new[order(hm_5cap_new[,8],decreasing = T),1:7]
+
+hm_5cap_new[,8] <- abs(hm_5cap_new[,7])
+
+
+hm_5cap_new <- hm_5cap_new[order(hm_5cap_new[,7],decreasing = T),]
+top10gene <- rownames(hm_5cap_new[1:5,])
+hm_5cap_new <- hm_5cap_new[order(hm_5cap_new[,7],decreasing = F),]
+top10gene <- c(top10gene,rownames(hm_5cap_new[1:5,]))
+
+
+hm_5cap_new <- hm_5cap_new[rownames(hm_5cap_new) %in% top10gene,] #
+
+hm_5cap_new <- hm_5cap_new[order(hm_5cap_new[,7],decreasing = T),1:6]
 
 
 
-
+bk <- seq(-2,2,by=0.04)
 
 pheatmap(hm_5cap_new,
          scale="row",
          #col=rev(colorRampPalette(brewer.pal(11, "RdYlGn"))(200)),
          cluster_rows = F,
          cluster_cols = F,
+         legend_breaks=seq(-2,2,1),
+         breaks=bk,
          #fontsize_row = 5,
          show_rownames = T,
          show_colnames = T,
          border_color = F)
 
 
+1
 
 
 
@@ -866,7 +885,19 @@ pheatmap(hm_5cap_new,
 
 
 
-### fig4g
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 #####################################################################################################
@@ -923,48 +954,53 @@ for (gene in unique(D80_3_all_new[,4])) {
     
     
   }
-  temp_df_df <- t(temp_df_df)[-1,]
-  temp_df_df <- data.frame(temp_df_df)
-  temp_df_df[,1] <- as.numeric(temp_df_df[,1])
-  temp_df_df[,2] <- as.numeric(temp_df_df[,2])
-  temp_df_df[,3] <- log10(temp_df_df[,1]/temp_df_df[,2])
-  temp_df_df[,4] <- 1:7
+  if (!1 %in% as.numeric(temp_df_df[1,-1]*temp_df_df[2,-1])) {
+    temp_df_df <- t(temp_df_df)[-1,]
+    print(temp_df_df)
+    temp_df_df <- data.frame(temp_df_df)
+    temp_df_df[,1] <- as.numeric(temp_df_df[,1])
+    temp_df_df[,2] <- as.numeric(temp_df_df[,2])
+    temp_df_df[,3] <- log10(temp_df_df[,1]/temp_df_df[,2])
+    temp_df_df[,4] <- 1:6
+    
+    colnames(temp_df_df) <- c("distal","proximal","distaldevideproximal","value")
+    
+    
+    
+    
+    ggplot(temp_df_df, aes(x = value, y = distaldevideproximal )) +  
+      geom_point(size=0.8) + 
+      geom_smooth(color="black",method = glm) +
+      theme_classic()+
+      labs(x="pseudotime",y="log10 (distal/proximal)")
+    
+    
+    cor_df_3 <- rbind(cor_df_3,
+                      data.frame(gene,
+                                 cor=cor(temp_df_df[,4],temp_df_df[,3]),
+                                 nozeronum=length(as.numeric(c(temp_df_df[,1],temp_df_df[,2]))[!as.numeric(c(temp_df_df[,1],temp_df_df[,2]))==1])
+                      ))
+    hm_3tail_temp <- t(data.frame(c(temp_df_df[,3])))
+    colnames(hm_3tail_temp) <- c("1","2","3","4","5","6")
+    rownames(hm_3tail_temp) <- gene
+    
+    hm_3tail <- rbind(hm_3tail,hm_3tail_temp)
+    
+    temp_df_df[temp_df_df[,2]==1,2]=0
+    temp_df_df[,3] <- temp_df_df[,1]/(temp_df_df[,1]+temp_df_df[,2])
+    hm_3tail_percentage_temp <- t(data.frame(c(temp_df_df[,3])))
+    colnames(hm_3tail_percentage_temp) <- c("1","2","3","4","5","6")
+    rownames(hm_3tail_percentage_temp) <- gene
+    hm_3tail_percentage <- rbind(hm_3tail_percentage,hm_3tail_percentage_temp)
+  }
   
-  colnames(temp_df_df) <- c("distal","proximal","distaldevideproximal","value")
-  
-  
-  
-  
-  ggplot(temp_df_df, aes(x = value, y = distaldevideproximal )) +  
-    geom_point(size=0.8) + 
-    geom_smooth(color="black",method = glm) +
-    theme_classic()+
-    labs(x="pseudotime",y="log10 (distal/proximal)")
-  
-  
-  cor_df_3 <- rbind(cor_df_3,
-                    data.frame(gene,
-                               cor=cor(temp_df_df[,4],temp_df_df[,3]),
-                               nozeronum=length(as.numeric(c(temp_df_df[,1],temp_df_df[,2]))[!as.numeric(c(temp_df_df[,1],temp_df_df[,2]))==1])
-                    ))
-  hm_3tail_temp <- t(data.frame(c(temp_df_df[,3])))
-  colnames(hm_3tail_temp) <- c("1","2","3","4","5","6","7")
-  rownames(hm_3tail_temp) <- gene
-  
-  hm_3tail <- rbind(hm_3tail,hm_3tail_temp)
-  
-  temp_df_df[temp_df_df[,2]==1,2]=0
-  temp_df_df[,3] <- temp_df_df[,1]/(temp_df_df[,1]+temp_df_df[,2])
-  hm_3tail_percentage_temp <- t(data.frame(c(temp_df_df[,3])))
-  colnames(hm_3tail_percentage_temp) <- c("1","2","3","4","5","6","7")
-  rownames(hm_3tail_percentage_temp) <- gene
-  hm_3tail_percentage <- rbind(hm_3tail_percentage,hm_3tail_percentage_temp)
 }
 #####################################################################################################
 
 cor_cor <- merge(cor_df_3,cor_df_3,by="gene")
 
 
+#cor_cor[,2:4] <- abs(cor_cor[,2:4])
 
 
 cor_cor <- na.omit(cor_cor)
@@ -974,37 +1010,50 @@ cor_cor <- na.omit(cor_cor)
 
 
 
-
-
-cor_cor <- data.frame(cor_df_3[,1],1,1,cor_df_3[,2:3]) #danduyong
-
-cor_cor <- na.omit(cor_cor)
 
 
 cor_cor <- cor_cor[order(cor_cor[,4],decreasing = T),]
 
 
 
-hm_3tail_new <- hm_3tail[rownames(hm_3tail) %in% cor_cor[cor_cor[,5]>=12 & abs(cor_cor[,4])>=0.7,1],]
-hm_3tail_new <- hm_3tail_new[rank(cor_cor[cor_cor[,5]>=12 & abs(cor_cor[,4])>=0.7,1]),]
 
 
 
 
-hm_3tail_new <- hm_3tail[rownames(hm_3tail) %in% c(sevenone[!sevenone[,5]=="no significance",1]),]
+hm_3tail_new <- hm_3tail[rownames(hm_3tail) %in% c(sixone[!sixone[,5]=="no significance",1]),]
 
+#hm_3tail_new <- hm_3tail_new[-grep('-',rownames(hm_3tail_new)),]
 
+#hm_3tail_new <- hm_3tail_new[-grep('^AC',rownames(hm_3tail_new)),]
 
+#hm_3tail_new <- hm_3tail_new[-grep('^AL',rownames(hm_3tail_new)),]
 
+hm_3tail_new <- hm_3tail_new[!rownames(hm_3tail_new) %in% c("NDUFC1","AC010616.2","EGLN3","ATP6V1G2-DDX39B","AC093512.2","CERKL","CERKL","NEUROD1","AL669918.1","TAP2"),]
 
 hm_3tail_new <- hm_3tail_new[rownames(hm_3tail_new) %in% cor_cor[,1],]
+#hm_3tail_new <- hm_3tail_new[rownames(hm_3tail_new) %in% cor_cor[cor_cor[,5]>=6,1],]  #dorpout
 for (i in 1:nrow(hm_3tail_new)) {
-  hm_3tail_new[i,8] <- cor_cor[cor_cor[,1]==rownames(hm_3tail_new)[i],4]
+  hm_3tail_new[i,7] <- cor_cor[cor_cor[,1]==rownames(hm_3tail_new)[i],4]
 }
-hm_3tail_new <- hm_3tail_new[abs(hm_3tail_new[,8])>=0.826,] #相关性大于才输出
-hm_3tail_new <- hm_3tail_new[order(hm_3tail_new[,8],decreasing = T),1:7]
 
 
+
+hm_3tail_new[,8] <- abs(hm_3tail_new[,7])
+
+
+hm_3tail_new <- hm_3tail_new[order(hm_3tail_new[,7],decreasing = T),]
+top10gene <- rownames(hm_3tail_new[1:5,])
+hm_3tail_new <- hm_3tail_new[order(hm_3tail_new[,7],decreasing = F),]
+top10gene <- c(top10gene,rownames(hm_3tail_new[1:5,]))
+
+
+
+hm_3tail_new <- hm_3tail_new[rownames(hm_3tail_new) %in% top10gene,] #
+
+hm_3tail_new <- hm_3tail_new[order(hm_3tail_new[,7],decreasing = T),1:6]
+
+
+bk <- seq(-2,2,by=0.04)
 
 
 pheatmap(hm_3tail_new,
@@ -1013,6 +1062,8 @@ pheatmap(hm_3tail_new,
          cluster_rows = F,
          cluster_cols = F,
          #fontsize_row = 5,
+         legend_breaks=seq(-2,2,1),
+         breaks = bk,
          show_rownames = T,
          show_colnames = T,
          border_color = F)
@@ -1025,12 +1076,11 @@ pheatmap(hm_3tail_new,
 
 
 
+###supplementaryfig8e 
 
 
-###supplementaryfig8a 
 
-
-cor_cor <- cor_df #单独用
+cor_cor <- cor_df 
 
 cor_cor[is.na(cor_cor)] <- 0
 
@@ -1039,18 +1089,29 @@ cor_cor <- cor_cor[order(cor_cor[,2],decreasing = T),]
 
 
 
-hm_5cap_new <- hm_5cap[rownames(hm_5cap) %in% c(sevenone[!sevenone[,3]=="no significance",1]),]
+hm_5cap_new <- hm_5cap[rownames(hm_5cap) %in% c(sixone[!sixone[,3]=="no significance",1]),]
 hm_5cap_new <- hm_5cap_new[rownames(hm_5cap_new) %in% cor_cor[,1],]
 
 
-hm_5cap_new <- hm_5cap_new[!rownames(hm_5cap_new) %in% c("NDUFC1","AC010616.2","EGLN3","ATP6V1G2-DDX39B","AC093512.2","CERKL"),]
+hm_5cap_new <- hm_5cap_new[!rownames(hm_5cap_new) %in% c("NDUFC1","AC010616.2","EGLN3","ATP6V1G2-DDX39B","AC093512.2","CERKL","IFITM1","IFITM2","AL365205.1","TOMM6","CST3","ATP6V1G1"),]
 
 
 for (i in 1:nrow(hm_5cap_new)) {
-  hm_5cap_new[i,8] <- cor_cor[cor_cor[,1]==rownames(hm_5cap_new)[i],2]
+  hm_5cap_new[i,7] <- cor_cor[cor_cor[,1]==rownames(hm_5cap_new)[i],2]
 }
-#hm_5cap_new <- hm_5cap_new[abs(hm_5cap_new[,8])>=0.894,] #相关性大于才输出
-hm_5cap_new <- hm_5cap_new[order(hm_5cap_new[,8],decreasing = T),1:7]
+
+hm_5cap_new[,8] <- abs(hm_5cap_new[,7])
+
+
+hm_5cap_new <- hm_5cap_new[order(hm_5cap_new[,7],decreasing = T),]
+top10gene <- rownames(hm_5cap_new[1:5,])
+hm_5cap_new <- hm_5cap_new[order(hm_5cap_new[,7],decreasing = F),]
+top10gene <- c(top10gene,rownames(hm_5cap_new[1:5,]))
+
+
+#hm_5cap_new <- hm_5cap_new[rownames(hm_5cap_new) %in% top10gene,] #
+
+hm_5cap_new <- hm_5cap_new[order(hm_5cap_new[,7],decreasing = T),1:6]
 
 
 
@@ -1085,7 +1146,7 @@ ggbarplot(df, x="V1", y="V2",color = "V1", fill = "V1",ylab="Number of genes wit
 
 
 
-###supplementaryfig8b
+###supplementaryfig8f
 
 
 
@@ -1093,6 +1154,7 @@ ggbarplot(df, x="V1", y="V2",color = "V1", fill = "V1",ylab="Number of genes wit
 cor_cor <- merge(cor_df_3,cor_df_3,by="gene")
 
 
+#cor_cor[,2:4] <- abs(cor_cor[,2:4])
 
 
 cor_cor <- na.omit(cor_cor)
@@ -1102,35 +1164,41 @@ cor_cor <- na.omit(cor_cor)
 
 
 
-
-
-cor_cor <- data.frame(cor_df_3[,1],1,1,cor_df_3[,2:3]) #danduyong
-
-cor_cor <- na.omit(cor_cor)
 
 
 cor_cor <- cor_cor[order(cor_cor[,4],decreasing = T),]
 
 
 
-hm_3tail_new <- hm_3tail[rownames(hm_3tail) %in% cor_cor[cor_cor[,5]>=12 & abs(cor_cor[,4])>=0.7,1],]
-hm_3tail_new <- hm_3tail_new[rank(cor_cor[cor_cor[,5]>=12 & abs(cor_cor[,4])>=0.7,1]),]
 
 
 
 
-hm_3tail_new <- hm_3tail[rownames(hm_3tail) %in% c(sevenone[!sevenone[,5]=="no significance",1]),]
+hm_3tail_new <- hm_3tail[rownames(hm_3tail) %in% c(sixone[!sixone[,5]=="no significance",1]),]
 
 
-
-
+hm_3tail_new <- hm_3tail_new[!rownames(hm_3tail_new) %in% c("NDUFC1","AC010616.2","EGLN3","ATP6V1G2-DDX39B","AC093512.2","CERKL","CERKL","NEUROD1","AL669918.1","TAP2"),]
 
 hm_3tail_new <- hm_3tail_new[rownames(hm_3tail_new) %in% cor_cor[,1],]
 for (i in 1:nrow(hm_3tail_new)) {
-  hm_3tail_new[i,8] <- cor_cor[cor_cor[,1]==rownames(hm_3tail_new)[i],4]
+  hm_3tail_new[i,7] <- cor_cor[cor_cor[,1]==rownames(hm_3tail_new)[i],4]
 }
-#hm_3tail_new <- hm_3tail_new[abs(hm_3tail_new[,8])>=0.826,] #相关性大于才输出
-hm_3tail_new <- hm_3tail_new[order(hm_3tail_new[,8],decreasing = T),1:7]
+
+
+
+hm_3tail_new[,8] <- abs(hm_3tail_new[,7])
+
+
+hm_3tail_new <- hm_3tail_new[order(hm_3tail_new[,7],decreasing = T),]
+top10gene <- rownames(hm_3tail_new[1:5,])
+hm_3tail_new <- hm_3tail_new[order(hm_3tail_new[,7],decreasing = F),]
+top10gene <- c(top10gene,rownames(hm_3tail_new[1:5,]))
+
+
+
+#hm_3tail_new <- hm_3tail_new[rownames(hm_3tail_new) %in% top10gene,] #
+
+hm_3tail_new <- hm_3tail_new[order(hm_3tail_new[,7],decreasing = T),1:6]
 
 
 
