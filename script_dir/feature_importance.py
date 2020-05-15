@@ -60,11 +60,11 @@ intergenic.to_csv(output_file_intergenic, index=False)
 
 tmp = tmp_df.columns.values
 if types == "tes":
-    features_basic = tmp[[5,7,8]]
+    features_read_distributio = tmp[[5,7,8]]
     features_motif = tmp[11:-15]
     features_internal = tmp[-15:-1]
 elif types == "tss":
-    features_basic = tmp[[5,7,8]]
+    features_read_distributio = tmp[[5,7,8]]
     features_motif = tmp[11:-7]
     features_internal = tmp[-7:-1]
 
@@ -261,7 +261,7 @@ if __name__ == "__main__":
     l = 0
     methods = ["rf", "svm", "lr", "knn"]
 
-    feature = "basic"
+    feature = "read_distributio"
     features = np.append(features_motif, features_internal).tolist()
     for method in methods:
             l += 1
@@ -272,7 +272,7 @@ if __name__ == "__main__":
             dicts[l] = results + [method, feature, types]    
 
     feature = "internal"
-    features = np.append(features_basic, features_motif).tolist()
+    features = np.append(features_read_distributio, features_motif).tolist()
     for method in methods:
         l += 1
         ml = ML(features=features, train =train, test =output_file_gene, method=method, OutputDir=os.path.join(outputdir, feature))
@@ -282,7 +282,7 @@ if __name__ == "__main__":
         dicts[l] = results + [method, feature, types]
     
     feature = "motif"
-    features = np.append(features_basic, features_internal).tolist()
+    features = np.append(features_read_distributio, features_internal).tolist()
     for method in methods:
         l += 1
         ml = ML(features=features, train =train, test =output_file_gene, method=method, OutputDir=os.path.join(outputdir, feature))
@@ -292,7 +292,7 @@ if __name__ == "__main__":
         dicts[l] = results + [method, feature, types] 
         
     feature = "all"
-    features = np.append(features_basic, np.append(features_motif, features_internal)).tolist()
+    features = np.append(features_read_distributio, np.append(features_motif, features_internal)).tolist()
     for method in methods:
             l += 1
             ml = ML(features=features, train =train, test =output_file_gene, method=method, OutputDir=os.path.join(outputdir, feature))
@@ -302,13 +302,6 @@ if __name__ == "__main__":
             dicts[l] = results + [method, feature, types] 
             
     print(os.path.join(outputdir, "f1_score.csv"))
-    df = pd.DataFrame.from_dict(dicts, orient="index", columns=["train_f1_score", "test_f1_score", "train_accuracy", "test_accuracy", "train_recall", "test_recall", "train_precision", "test_precision", "train_roc", "test_roc", "method", "feature", "types"])
-    df = pd.melt(df, id_vars=["train_accuracy", "test_accuracy", "train_recall", "test_recall", "train_precision", "test_precision", "train_roc", "test_roc", "method", "feature", "types"])
-    p = ggplot(df, aes(x="types", y="value", fill = "method")) + geom_bar(stat="identity", position="dodge") + facet_grid([".","variable"]) + theme_light() + coord_cartesian(ylim=[0,1])
-    ggsave(p, filename=os.path.join(outputdir, "all.png"), dpi=300)
-    df = pd.DataFrame.from_dict(dicts, orient="index", columns=["train_f1_score", "test_f1_score", "train_accuracy", "test_accuracy", "train_recall", "test_recall", "train_precision", "test_precision", "train_roc", "test_roc", "method", "feature", "types"])
-    df.sort_values(["method", "feature"])
-
     if not os.path.exists(outputdir):
         os.makedirs(outputdir)
     df = pd.DataFrame.from_dict(dicts, orient="index", columns=["train_f1_score", "test_f1_score", "train_accuracy", "test_accuracy", "train_recall", "test_recall", "train_precision", "test_precision", "train_roc", "test_roc", "method", "feature", "type"])
