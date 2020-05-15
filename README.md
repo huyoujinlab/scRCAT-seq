@@ -100,6 +100,7 @@ wget https://repo.anaconda.com/archive/Anaconda2-2019.10-Linux-x86_64.sh
 ### Install anaconda
 sh Anaconda2-2019.10-Linux-x86_64.sh
 
+1) Creating environment and installing software
 ### Bulid environment
 conda create -n scCAT_seq python=3.7
 conda activate scCAT_seq
@@ -119,8 +120,11 @@ conda install -c conda-forge scikit-learn=0.22.1
 
 conda install -c r r-base=3.6.1
 conda install -c conda-forge r-foreign
-conda install -c conda-forge r-ggalt
+conda install -c conda-forge r-ggal
 Rscript install_R_packages.R
+
+2) Creating environment from an scCAT_seq.yml file
+conda env create -f scCAT_seq.yml
 ```
 
 
