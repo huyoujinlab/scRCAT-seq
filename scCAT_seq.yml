@@ -72,6 +72,7 @@ dependencies:
   - pango=1.42.4=h049681c_0
   - patsy=0.5.1=py_0
   - pcre=8.43=he6710b0_0
+  - perl=5.26.2=h516909a_1006
   - pigz=2.4=h84994c4_0
   - pip=20.0.2=py37_3
   - pixman=0.38.0=h7b6447c_0
