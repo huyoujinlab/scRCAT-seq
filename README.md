@@ -122,10 +122,11 @@ conda install -c conda-forge scikit-learn=0.22.1
 conda install -c r r-base=3.6.1
 conda install -c conda-forge r-foreign
 conda install -c conda-forge r-ggal
-Rscript install_R_packages.R
+
 
 2) Or user can creat environment from scCAT_seq.yml file
 conda env create -f scCAT_seq.yml
+Rscript install_R_packages.R
 ```
 
 
