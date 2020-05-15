@@ -21,7 +21,8 @@ On linux:
 
 
 1) Python 2.7.15   
-2) R 3.6.1   
+2) R 3.6.1  
+3) Perl 5.26.2
 3) STAR 2.7.3a   
 4) Samtools 1.3.1   
 5) Bedtools 2.27.1   
@@ -107,6 +108,7 @@ conda create -n scCAT_seq python=3.7
 conda activate scCAT_seq
 
 ### Install softwares and packages
+conda install -c anaconda perl=5.26.2
 conda install -c bioconda STAR=2.7.3a
 conda install -c bioconda samtools=1.3.1
 conda install -c bioconda bedtools=2.27.1
