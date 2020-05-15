@@ -109,15 +109,22 @@ conda install -c bioconda STAR=2.7.3a
 conda install -c bioconda samtools=1.3.1
 conda install -c bioconda bedtools=2.27.1
 conda install -c bioconda cutadapt=1.18
-conda install -c conda-forge r-base 
 
 conda install -c conda-forge pandas=0.24.1
 conda install -c conda-forge regex
-conda install -c conda-forge numpy=1.16.5
-conda install -c conda-forge matplotlib=2.2.3
-conda install -c conda-forge seaborn=0.8.1
 conda install -c conda-forge plotnine
 conda install -c conda-forge python-levenshtein
+conda install -c conda-forge pandas=0.24.1
+conda install -c conda-forge scikit-learn=0.22.1
 
+conda install -c r r-base=3.6.1
+conda install -c conda-forge r-foreign
+conda install -c conda-forge r-ggalt
 Rscript install_R_packages.R
 ```
+
+
+
+
+
+
