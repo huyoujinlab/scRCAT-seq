@@ -12,7 +12,7 @@ Here is the code for our scCAT-seq project as described in the paper [scCAT-seq:
 
 * The [second part](https://github.com/huyoujinlab/scCAT-seq/tree/master/Analysing) contains the scripts to further analyze the data and generate the relevant figures.
 
-You can switch to the subfolder to get detailed information.
+Readers can switch to the subfolder to get detailed information.
 
 ---
 ### The softwares and packages required:
