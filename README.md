@@ -10,7 +10,7 @@ Here is the code for our scCAT-seq project as described in the paper [scCAT-seq:
 
 * The [first part](https://github.com/huyoujinlab/scCAT-seq/tree/master/data_processing) contains the scripts for data pre-processing, TSS/TES peak calling, and correction.
 
-* The [second part](https://github.com/huyoujinlab/scCAT-seq/tree/master/Analysing) contains the scripts to further analyze the data and generate the relevant figures.
+* The [second part](https://github.com/huyoujinlab/scCAT-seq/tree/master/result) contains the scripts to further analyze the data and generate the relevant figures.
 
 Readers can switch to the subfolder to get detailed information.
 
