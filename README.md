@@ -124,13 +124,8 @@ conda install -c conda-forge r-ggal
 Rscript install_R_packages.R
 
 
-2) Or user can creat environment from scCAT_seq.yml file
+2) Or readers can creat environment from scCAT_seq.yml file
 conda env create -f scCAT_seq.yml
 Rscript install_R_packages.R
 ```
-
-
-
-
-
 
