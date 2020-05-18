@@ -13,7 +13,6 @@ Here is the demo including test data and scripts.
 ```
 sh callpeak_correction_TSS.sh <genome fa file> <STAR index> <fastq file dir> <FANTOM5 file> threshold
 sh callpeak_correction_TES.sh <genome fa file> <STAR index> <fastq file dir> <polyAdb file> threshold
-  
 ```
 #Parameters:
 1) `<genome fa file>`: genome fasta directory;
@@ -26,7 +25,6 @@ For example:
 ```
 sh script/callpeak_correction_TSS.sh ~/index/hg38/hg38.fa ~/index/hg38_STAR2.7.3a_index/ ./fastq reference/tc_hESC.bed 3
 sh script/callpeak_correction_TES.sh ~/index/hg38/hg38.fa ~/index/hg38_STAR2.7.3a_index/ ./fastq reference/human.PAS100_hg38.bed 3
-
 ```
 `*final.csv_final.csv` are output files. The 5' output file format is: 
 
