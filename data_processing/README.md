@@ -53,29 +53,29 @@ The 3' output file format is:
 # 2. Peaks correction
 
 
-`*fianl.csv_final.csv` generated in step 1 are used as input files in this step.
+`outdir/five_prime/peakfile/*fianl.csv_final.csv` and `outdir/three_prime/peakfile/*fianl.csv_final.csv` generated in step 1 are used as input files in this step.
 
-The TSS/TES peaks are classifified as TRUE or FALSE TSSs/TESs by python script `feature_improtance.py`, which is based on scikit-learn.
+The TSS/TES peaks are classifified as TRUE or FALSE TSSs/TESs by python script `run_ml.py`, which is based on scikit-learn.
 
 Use the -h parameter to view the parameters:
 
 ```
-python feature_importance.py -h
+python run_ml.py -h
 ```
 
 When the -t and -e are both specified, the script will use the -t file1 as the training set and -e file2 as the test set. Otherwise, a random 70% of the data will be used as the training set and 30% of the data will be used as the test set:
 
 ```
-python feature_importance.py -t /path/to/file1 -e /path/to/file2
-python feature_importance.py -e /path/to/file
+python run_ml.py -t /path/to/file1 -e /path/to/file2
+python run_ml.py -e /path/to/file
 ```
 
 
 For example:
 
 ```
-python feature_importance.py -e tc_hESC_8N_11_5_5cap_final.csv_final.csv
-python feature_importance.py -e tc_hESC_8N_11_3_3tail_final.csv_final.csv
+python script/run_ml.py -e outdir/five_prime/peakfile/tc_hESC_8N_11_5_5cap_final.csv_final.csv
+python script/run_ml.py -e outdir/three_prime/peakfile/tc_hESC_8N_11_3_3tail_final.csv_final.csv
 ```
 
 
