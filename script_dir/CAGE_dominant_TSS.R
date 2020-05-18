@@ -65,7 +65,7 @@ for(i in grep("5cap",grep("tc_",objects(),value = TRUE),value = TRUE)) {
 
 
 for(i in grep("dominant",objects(),value = TRUE)) {
-  a <- paste('write.table(',i,',"',paste(i,'.bed',sep = ""),'",quote = FALSE,row.names = FALSE,col.names = FALSE,sep = "\t")',sep = "")
+  a <- paste('write.table(',i,',"',paste('outdir/five_prime/peakfile/',i,'.bed',sep = ""),'",quote = FALSE,row.names = FALSE,col.names = FALSE,sep = "\t")',sep = "")
   eval(parse(text=a))
   print(a)
   a <- paste('temp <- ',i,sep = "")
@@ -75,5 +75,5 @@ for(i in grep("dominant",objects(),value = TRUE)) {
 
 colnames(temp) <- c("V1","V2","V3","V4","V5","V6")
 
-save.image(paste("temp_",strsplit(grep("dominant",objects(),value = TRUE),split="_5cap")[[1]][1],".RData",sep=""))
+save.image(paste("outdir/five_prime/peakfile/temp_",strsplit(grep("dominant",objects(),value = TRUE),split="_5cap")[[1]][1],".RData",sep=""))
 

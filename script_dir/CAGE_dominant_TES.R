@@ -26,9 +26,9 @@ tes_plus <- tes_plus[,c(1,3,6)]
 tes_minus <- data.frame(V1=tes_minus[,1],V3=tes_minus[,2]+1,V6=tes_minus[,6])
 tes <- rbind(tes_plus,tes_minus)
 tes <- data.frame(tes[,1],tes[,2]-1,tes[,2],rep(1,nrow(tes)),rep(1,nrow(tes)),tes[,3])
-write.table(tes,file = paste("tes_",strsplit(filename,split = "_TKD")[[1]][1],".bed",sep=""),quote = FALSE,col.names = FALSE,row.names = FALSE,sep = "\t")
+write.table(tes,file = paste("outdir/three_prime/peakfile/tes_",strsplit(filename,split = "_TKD")[[1]][1],".bed",sep=""),quote = FALSE,col.names = FALSE,row.names = FALSE,sep = "\t")
 
-a <- paste('myCAGEset',strsplit(filename,split = "_TKD")[[1]][1],'_3tail <- new("CAGEset", genomeName = "BSgenome.Hsapiens.UCSC.hg38",inputFiles = "',paste("tes_",strsplit(filename,split = "_TKD")[[1]][1],".bed",sep=""),'",inputFilesType = "bed",sampleLabels = "sample")',sep = "")
+a <- paste('myCAGEset',strsplit(filename,split = "_TKD")[[1]][1],'_3tail <- new("CAGEset", genomeName = "BSgenome.Hsapiens.UCSC.hg38",inputFiles = "',paste("outdir/three_prime/peakfile/tes_",strsplit(filename,split = "_TKD")[[1]][1],".bed",sep=""),'",inputFilesType = "bed",sampleLabels = "sample")',sep = "")
 eval(parse(text=a))
 print(a)
 
@@ -78,7 +78,7 @@ for(i in grep("3tail",grep("tc_",objects(),value = TRUE),value = TRUE)) {
 
 
 for(i in grep("dominant",objects(),value = TRUE)) {
-  a <- paste('write.table(',i,',"',paste(i,'.bed',sep = ""),'",quote = FALSE,row.names = FALSE,col.names = FALSE,sep = "\t")',sep = "")
+  a <- paste('write.table(',i,',"',paste('outdir/three_prime/peakfile/',i,'.bed',sep = ""),'",quote = FALSE,row.names = FALSE,col.names = FALSE,sep = "\t")',sep = "")
   eval(parse(text=a))
   print(a)
   a <- paste('temp <- ',i,sep = "")
@@ -88,4 +88,4 @@ for(i in grep("dominant",objects(),value = TRUE)) {
 
 colnames(temp) <- c("V1","V2","V3","V4","V5","V6")
 
-save.image(paste("temp_",strsplit(grep("dominant",objects(),value = TRUE),split="_3tail")[[1]][1],".RData",sep=""))
+save.image(paste("outdir/three_prime/peakfile/temp_",strsplit(grep("dominant",objects(),value = TRUE),split="_3tail")[[1]][1],".RData",sep=""))

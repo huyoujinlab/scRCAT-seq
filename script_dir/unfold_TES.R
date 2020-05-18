@@ -92,6 +92,6 @@ colnames(test29) <- paste(colnames(peak)[29],"minus",seq(49,0),sep = "_")
 peak <- cbind(peak[,c(1:16)],test17,test18,test19,test20,test21,test22,test23,test24,test25,test26,test27,test28,test29)
 
 
+filename <- strsplit(args[1],split = "/")[[1]][length(strsplit(args[1],split = "/")[[1]])]
 
-
-write.csv(peak[,c(-11,-12,-13)],paste(strsplit(args[1],split = "_new")[[1]][1],"_final.csv",sep = ""),quote = F,row.names = F)
+write.csv(peak[,c(-11,-12,-13)],paste("outdir/three_prime/peakfile/",strsplit(filename,split = "_new")[[1]][1],"_final.csv",sep = ""),quote = F,row.names = F)

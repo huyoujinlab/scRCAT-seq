@@ -50,8 +50,8 @@ colnames(test19) <- paste(colnames(peak)[19],"minus",seq(49,0),sep = "_")
 
 peak <- cbind(peak[,c(1:16)],test17,test18,test19)
 
+filename <- strsplit(args[1],split = "/")[[1]][length(strsplit(args[1],split = "/")[[1]])]
 
 
-
-write.csv(peak[,c(-11,-12,-13)],paste(strsplit(args[1],split = "_new")[[1]][1],"_final.csv",sep = ""),quote = F,row.names = F)
+write.csv(peak[,c(-11,-12,-13)],paste("outdir/five_prime/peakfile/",strsplit(filename,split = "_new")[[1]][1],"_final.csv",sep = ""),quote = F,row.names = F)
 
