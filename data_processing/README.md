@@ -1,13 +1,13 @@
 
-```
+
 The code in this directory is used to process the scCAT-seq data to call authentic TSSs/TESs of transcripts. 
 
 Here is the demo including test data and scripts. 
 
 # 1. Call peak and features generation
 
-#First, the `Fastq` files are input and the  `BED` files are output. And `BED` files are needed to call peak using `CAGEr` R package.
-
+#First, the `Fastq` files are input to call peaks using `CAGEr` R package.
+#Then, features related to the peaks were generated for the traning of machine learning models in the following step 2. The features can be catalogied as: (1) Read distribution; (2) Motif related to authentic TSSs/TESs; (3) Interal sites related to false TSSs/TESs;  The output files of this step are .CSV files, in which each row represents a peak with all the features related. 
 #We use `callpeak_correction_TSS.sh` and `callpeak_correction_TES.sh` to process the data. The script is:
 
 ```
@@ -52,23 +52,14 @@ The 3' output file format is:
 
 
 
-This is a comma-delimited file. Each row represents a peak.
-
-
-
 # 2. Peaks correction
 
 
+`*fianl.csv_final.csv` generated in step 1 are used as input files in this step.
 
+The TSS/TES peaks are classifified as TRUE or FALSE TSSs/TESs by python script `feature_improtance.py`, which is based on scikit-learn.
 
-`*fianl.csv_final.csv` generated in step 1 are input files.
-
-
-
-
-We generate model and prediction results using python script `feature_improtance.py`, which utilize scikit-learn.
-
-Use the -h parameter to view usage information:
+Use the -h parameter to view the parameters:
 
 ```
 python feature_importance.py -h
@@ -90,11 +81,11 @@ python feature_importance.py -e tc_hESC_8N_11_3_3tail_final.csv_final.csv
 ```
 
 
-Three types of files will be generated, the trained model is stored in the `*.m` file, the intra-gene peak prediction result is stored in `*gene_method_prediction.cs`v and the inter-gene peak prediction result is stored in `*intergenic_method_prediction.csv`.
+Three types of files will be generated, the trained model is stored in the `*.m` file, the TSS/TES peaks located near the coding region of annotated genes are stored in `*gene_method_prediction.csv` and the peaks located at the intergenic regions are stored in `*intergenic_method_prediction.csv`.
 
 
 
-Output files are stored in ./output_threshold3/ folder, the metrics used to evaluate the performance  of machine learning are stored in "metrics.csv" file and the visualization result of accuacy metric is stored in accuracy_score.png.
+Output files are stored in ./output_threshold3/ folder, the metrics used to evaluate the performance  of machine learning are stored in the "metrics.csv" file and the accuracy can be visualized in accuracy_score.png.
 
 
 The `*5cap_gene_method_prediction.csv` file format is: 
@@ -121,10 +112,9 @@ The `*3tail_gene_method_prediction.csv` file format is:
 
 
 This is a comma-delimited file. Each row represents a peak.
+The last col in the .CSV file is the prediction value of each individual peaks. The value 1 indicates a true TSS/TES peak while value 0 indicates a false TSS/TES peak.
 
-The last col of `*gene_method_prediction.csv` and `*intergenic_method_prediction.csv` is the prediction of each individual peaks in the input file. The value 1 indicates a true TSS/TES peak while value 0 indicates a false TSS/TES peak.
 
-
-To see detail imformation of other data processing, please see `C1_CAGE_5_data_processing.sh`, `C1_STRT_5_data_processing.sh`, `Arguel_et_al_5_data_processing.sh` and `BAT-seq_3_data_processing.sh`.
+###Besides the scCAT-seq demo data, the pipeline can be also used to process the data derived from other TSS or TES datasets, including C1_CAGE, C1_STRT etc. We also inculded the relevant files `C1_CAGE_5_data_processing.sh`, `C1_STRT_5_data_processing.sh`, `Arguel_et_al_5_data_processing.sh` and `BAT-seq_3_data_processing.sh`.
 
 
