@@ -18,7 +18,7 @@ sh callpeak_correction_TES.sh <genome fa file> <STAR index> <fastq file dir> <po
 1) `<genome fa file>`: genome fasta directory;
 2) `<STAR index>`: index directory built by STAR;
 3) `<fastq file dir>`: directory of fastq files;
-4) `<FANTOM5 file>` and <polyAdb file>: reference files from FANTON5 and poly_DB databases;
+4) `<FANTOM5 file>` and `<polyAdb file>`: reference files from FANTON5 and poly_DB databases;
 5) `threshold`: threshold for filtering.
 
 For example:
