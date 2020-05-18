@@ -8,9 +8,9 @@ Here is the code for our scCAT-seq project as described in the paper [scCAT-seq:
 
 ### This project consists of two parts.
 
-* The [first part](https://github.com/huyoujinlab/scCAT-seq/tree/master/data_processing) is code used to data pre-processing and peak correction.
+* The [first part](https://github.com/huyoujinlab/scCAT-seq/tree/master/data_processing) contains the scripts for data pre-processing, TSS/TES peak calling, and correction.
 
-* The [second part](https://github.com/huyoujinlab/scCAT-seq/tree/master/Analysing) is code used to analyse the data from scCAT-seq.
+* The [second part](https://github.com/huyoujinlab/scCAT-seq/tree/master/Analysing) contains the scripts to further analyze the data and generate the relevant figures.
 
 You can switch to the subfolder to get detailed information.
 
@@ -71,10 +71,7 @@ On R 3.6.1:
 33) stringr 1.4.3   
 34) Seurat 3.0.2   
  
-BS.genome packages were needed for `CAGEr`. However, BS.genome packages for ERCC are no available. We have built the packages. User can download and install for reproducting out results.
-
-* BS.genome package for ERCC is provided [here](https://drive.google.com/open?id=1cwJSUWcZ8PkYAs7vmUGDYpI_fW3jE3nK).
-
+BS.genome packages were needed for `CAGEr`. As BS.genome packages for ERCC are not available publicly, we built BS.genome package for ERCC and uploaded at (https://drive.google.com/open?id=1cwJSUWcZ8PkYAs7vmUGDYpI_fW3jE3nK). 
 
 ---
 On python 3.7:
@@ -91,7 +88,7 @@ On python 3.7:
 ---
 
 
-### Reader can install softwares and packages by conda
+### To install the softwares and packages:
 
 
 ```
