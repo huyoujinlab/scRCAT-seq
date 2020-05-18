@@ -10,7 +10,7 @@ Second, peaks are called by `CAGEr` R package and corrected by our model. Each R
 Here is the scCAT-seq 5' data and 3' data processing workflow. To see detail imformation of other data processing, please see `C1_CAGE_5_data_processing.sh`, `C1_STRT_5_data_processing.sh`, `Arguel_et_al_5_data_processing.sh` and `BAT-seq_3_data_processing.sh`.
 
 
-We have uploaded test data and scripts as a demo. Read can unzip `software_checklist.zip` file and follow the instruction as described below. `software_checklist.zip` file can be found at [here](https://drive.google.com/open?id=1TefsaVUQmYAA8CzhLWPQUKUPsUvH6Cjg). 
+We have uploaded test data and scripts as a demo. Readers can unzip `software_checklist.zip` file and follow the instruction as described below. `software_checklist.zip` file can be found at [here](https://drive.google.com/open?id=1TefsaVUQmYAA8CzhLWPQUKUPsUvH6Cjg). 
 
 
 
@@ -80,7 +80,7 @@ This is a comma-delimited file. Each row represents a peak.
 
 
 
-`*fianl.csv_final.csv` generated in step 3 are input files.
+`*fianl.csv_final.csv` generated in step 1 are input files.
 
 
 
