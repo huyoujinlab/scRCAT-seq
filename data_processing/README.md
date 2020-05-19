@@ -4,7 +4,7 @@ The code in this directory is used to process the scCAT-seq data to call authent
 
 Here is the demo including test data and scripts. 
 
-# 1. Call peak and features generation
+# 1. Peak calling and features generation
 
 #First, the `Fastq` files are input to call peaks using `CAGEr` R package.
 #Then, features related to the peaks were generated for the traning of machine learning models in the following step 2. The features can be catalogied as: (1) Read distribution; (2) Motif related to authentic TSSs/TESs; (3) Interal sites related to false TSSs/TESs;  The output files of this step are .CSV files, in which each row represents a peak with all the features related. 
