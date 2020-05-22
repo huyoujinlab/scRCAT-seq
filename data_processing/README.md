@@ -1,6 +1,6 @@
 # Description
 
-The pipeline is used to process the scCAT-seq data to identify TSSs/TESs of transcripts based on random forests (RF) model. With the model trained on  the dataset derived from human embryonic stem cells, for which TSSs and TESs are well annotated in the FANTOM5 database and PolyA_DB respectively, the pipeline can be used to identify authentic transcript boundaries (TSSs and TESs) for cells and species with scCAT-seq data. Alternatively, users can use their own training datasets to train the model, which can then be used to identify TSSs/TESs from their own dataset ().
+The pipeline is used to process the scCAT-seq data to identify TSSs/TESs of transcripts based on random forests (RF) model. With the model trained on  the dataset derived from human embryonic stem cells, for which TSSs and TESs are well annotated in the FANTOM5 database and PolyA_DB respectively, the pipeline can be used to identify authentic transcript boundaries (TSSs and TESs) for cells and species with scCAT-seq data. Alternatively, users can use their own training datasets to train the model, which can then be used to identify TSSs/TESs from their own dataset.
 The pipeline can calculate the accuracy to identify authentic TSSs/TESs, and identify novel TSSs and TESs, novel genes for single cells. The number of alternative TSSs/TESs, and major TSS and major TES of each gene can also be identified.
 
 # System requirements
@@ -25,7 +25,7 @@ sh Anaconda2-2019.10-Linux-x86_64.sh
 ```
 
 
-#The softwares can be installed in two ways:
+The softwares can be installed in two ways:
 
 1) Use the following commands:
    
@@ -52,7 +52,7 @@ conda install -c conda-forge r-ggal
 Rscript install/install_R_packages.R
 ```
 
-2) Or readers can creat environment from scCAT_seq.yml file (recommended)
+2) Or readers can creat environment from `scCAT_seq.yml` file (recommended)
 
 ```
 conda env create -f install/scCAT_seq.yml
@@ -98,13 +98,13 @@ Reference to annotate authentic TESs of the data to be predicted (specified by -
 Threshold for filtering out the peaks of low abundance.
 -o 
 Folder for storing output files.
-Use ‘SCCAT.sh –h’ to get more detailed usage. 
+Use `SCCAT.sh –h` to get more detailed usage. 
 
 This step will take 16min to finish.
 
 ## Output:
 
-In this demo pipeline, output files were deposited in the "output/" directory with default. Including “tc_hESCnofiltersccatUMI3_5cap_prediction.tsv”, “tc_hESCnofiltersccatUMI3_3tail_prediction.tsv”, “combine_result.tsv”, “novelgene.tsv”, “accuracy.pdf”, “distance.pdf”, “pieTSS.pdf”, “pieTES.pdf”, “novel.pdf”.
+In this demo pipeline, output files were deposited in the `output/` directory with default. Including `tc_hESCnofiltersccatUMI3_5cap_prediction.tsv`, `tc_hESCnofiltersccatUMI3_3tail_prediction.tsv`, `combine_result.tsv`, `novelgene.tsv`, `accuracy.pdf`, `distance.pdf`, `pieTSS.pdf`, `pieTES.pdf`, `novel.pdf`.
 
 The first file is “tc_hESCnofiltersccatUMI5_5cap_prediction.tsv”. The predicted authentic TSSs from the candidate peaks. Each row represents a peak. The colnames represent:
 
@@ -115,7 +115,7 @@ The first file is “tc_hESCnofiltersccatUMI5_5cap_prediction.tsv”. The predic
 5)	model_prediction: Predicted value, the value 1 indicates a true TSS peak while value 0 indicates a false TSS peak.
 
 
-The second file is “tc_hESCnofiltersccatUMI3_3tail_prediction.tsv”. The predicted authentic TESs from the candidate peaks. Each row represents a peak. The colnames represent:
+The second file is `tc_hESCnofiltersccatUMI3_3tail_prediction.tsv`. The predicted authentic TESs from the candidate peaks. Each row represents a peak. The colnames represent:
 
 1)	gene: gene symbol of the peak
 2)	chr: chromosome information of the peak
@@ -123,7 +123,7 @@ The second file is “tc_hESCnofiltersccatUMI3_3tail_prediction.tsv”. The pred
 4)	strand: strand information of the peak
 5)	model.prediction: Predicted value, the value 1 indicates a true TES peak while value 0 indicates a false TES peak.
 
-The third file is “combine_result.tsv”. TSS/TES choices and dominant TSSs/TESs of each gene. Each row represents a gene. The colnames represent:
+The third file is `combine_result.tsv`. TSS/TES choices and dominant TSSs/TESs of each gene. Each row represents a gene. The colnames represent:
 
 1)	gene: gene symbol name
 2)	chr: chromosome information of the gene
@@ -134,7 +134,7 @@ The third file is “combine_result.tsv”. TSS/TES choices and dominant TSSs/TE
 7)	TES_pos: Position of the dominant TES.
 
 
-The forth file is “novelgene.tsv”. Each row represents a novel gene. Each column represent:
+The forth file is `novelgene.tsv`. Each row represents a novel gene. Each column represent:
  
 1)	chr: chromosome information of the novel gene
 2)	start: start position of the novel gene
@@ -143,20 +143,20 @@ The forth file is “novelgene.tsv”. Each row represents a novel gene. Each co
 
 Plots:
 
-The fifth file is “accuracy.pdf”. It shows the accuracy in identifying authentic TSSs and TESs with rf machine learning models.
+The fifth file is `accuracy.pdf`. It shows the accuracy in identifying authentic TSSs and TESs with rf machine learning models.
  
-The sixth file is “distance.pdf”. It shows the distance of the identified TSSs/TESs to those annotated in hg38. 
+The sixth file is `distance.pdf`. It shows the distance of the identified TSSs/TESs to those annotated in hg38. 
  
-The seventh file is “pieTSS.pdf”. Pie chart shows the genomic distribution of the identified TSSs in hESC. 
+The seventh file is `pieTSS.pdf`. Pie chart shows the genomic distribution of the identified TSSs in hESC. 
  
-The eighth file is “pieTES.pdf”. Pie chart shows the genomic distribution of the identified TESs in hESC. 
+The eighth file is `pieTES.pdf`. Pie chart shows the genomic distribution of the identified TESs in hESC. 
 
-The ninth file is “novel.pdf”. It shows the number of novel isoforms of annotated genes and novel, unannotated transcripts in hESC.
+The ninth file is `novel.pdf`. It shows the number of novel isoforms of annotated genes and novel, unannotated transcripts in hESC.
 
  
 
 # Training on the model with own data (optional)
-In some cases, users may use their own dataset to train the model, they can use the SCCAT_customized_model.sh, when dataset for training should be deposit in the customized_model_training_threshold3 file. The model will be trained with 70% of the data and tested on the rest 30%. The accuracy for the testing data would be saved in the customized_model_training_threshold3 folder. 
+In some cases, users may use their own dataset to train the model, they can use the `SCCAT_customized_model.sh`, when dataset for training should be deposit in the customized_model_training_threshold3 file. The model will be trained with 70% of the data and tested on the rest 30%. The accuracy for the testing data would be saved in the customized_model_training_threshold3 folder. 
 In the meantime, other dataset need to be processed to identify TSS and TES are input by specifying the directory after the paremeter "-5" and  "-3" respectively. The output files would be found in the output files.
 
 For example, here we train the model with hESC dataset, and use the model to predict the TSS and TES for same dataset. Users can choose different datasets. 
