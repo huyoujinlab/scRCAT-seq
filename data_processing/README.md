@@ -28,6 +28,7 @@ sh Anaconda2-2019.10-Linux-x86_64.sh
 #The softwares can be installed in two ways:
 
 1) Use the following commands:
+   ```
    ### Build environment
    conda create -n scCAT_seq python=3.7
    conda activate scCAT_seq
@@ -47,13 +48,15 @@ sh Anaconda2-2019.10-Linux-x86_64.sh
    conda install -c conda-forge r-foreign
    conda install -c conda-forge r-ggal
    Rscript install/install_R_packages.R
-
+   ```
 
 2) Or readers can creat environment from scCAT_seq.yml file(recommended)
+   ```
    conda env create -f install/scCAT_seq.yml
    conda activate scCAT_seq
    Rscript install/install_R_packages.R
-
+   ```
+   
 This step will spend 18 minutes to install all software and packages.
 
 
