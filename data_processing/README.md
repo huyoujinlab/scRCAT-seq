@@ -1,4 +1,4 @@
-#Description
+# Description
 
 The pipeline is used to process the scCAT-seq data to identify TSSs/TESs of transcripts based on random forests (RF) model. With the model trained on  the dataset derived from human embryonic stem cells, for which TSSs and TESs are well annotated in the FANTOM5 database and PolyA_DB respectively, the pipeline can be used to identify authentic transcript boundaries (TSSs and TESs) for cells and species with scCAT-seq data. Alternatively, users can use their own training datasets to train the model, which can then be used to identify TSSs/TESs from their own dataset ().
 The pipeline can calculate the accuracy to identify authentic TSSs/TESs, and identify novel TSSs and TESs, novel genes for single cells. The number of alternative TSSs/TESs, and major TSS and major TES of each gene can also be identified.
@@ -8,8 +8,10 @@ The pipeline has been tested on centos and Ubuntu operating systems, and the sof
 
 #Installation
 Users can install softwares and packages by conda
+
 ### Download anaconda
 wget https://repo.anaconda.com/archive/Anaconda2-2019.10-Linux-x86_64.sh
+
 ### Install anaconda
 sh Anaconda2-2019.10-Linux-x86_64.sh
 
@@ -52,6 +54,7 @@ This step will spend 18 minutes to install all software and packages.
 sh script/download.sh
 
 #Usage:
+
 sh ./bin/SCCAT.sh -g ~/index/hg38/hg38.fa -5 input/hESCnofiltersccatUMI5_TKD.bed -3 input/hESCnofiltersccatUMI3_TKD.bed -f reference/tc_hESC.bed -p reference/human.PAS100_hg38.bed -t 3 -o output
 
 Parameters in the pipeline are described as follows: 
