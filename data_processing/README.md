@@ -78,6 +78,7 @@ Use ‘SCCAT.sh –h’ to get more detailed usage.
 This step will take 16min to finish.
 
 #Output:
+
 In this demo pipeline, output files were deposited in the "output/" directory with default. Including “tc_hESCnofiltersccatUMI3_5cap_prediction.tsv”, “tc_hESCnofiltersccatUMI3_3tail_prediction.tsv”, “combine_result.tsv”, “novelgene.tsv”, “accuracy.pdf”, “distance.pdf”, “pieTSS.pdf”, “pieTES.pdf”, “novel.pdf”.
 
 The first file is “tc_hESCnofiltersccatUMI5_5cap_prediction.tsv”. The predicted authentic TSSs from the candidate peaks. Each row represents a peak. The colnames represent:
