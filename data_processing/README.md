@@ -7,7 +7,7 @@ The pipeline can calculate the accuracy to identify authentic TSSs/TESs, and ide
 
 The pipeline has been tested on centos and Ubuntu operating systems, and the software required are listed below.
 
-#Installation
+## Installation
 
 
 Users can install softwares and packages by conda
@@ -28,50 +28,53 @@ sh Anaconda2-2019.10-Linux-x86_64.sh
 #The softwares can be installed in two ways:
 
 1) Use the following commands:
-   ```
-   ### Build environment
-   conda create -n scCAT_seq python=3.7
-   conda activate scCAT_seq
-   ### Install the softwares and packages
-   conda install -c anaconda perl=5.26.2
-   conda install -c bioconda STAR=2.7.3a
-   conda install -c bioconda samtools=1.3.1
-   conda install -c bioconda bedtools=2.27.1
-   conda install -c bioconda cutadapt=1.18
-   conda install -c conda-forge pandas=0.24.1
-   conda install -c conda-forge regex
-   conda install -c conda-forge plotnine
-   conda install -c conda-forge python-levenshtein
-   conda install -c conda-forge pandas=0.24.1
-   conda install -c conda-forge scikit-learn=0.22.1
-   conda install -c conda-forge r-base=3.6.1
-   conda install -c conda-forge r-foreign
-   conda install -c conda-forge r-ggal
-   Rscript install/install_R_packages.R
-   ```
+   
+```
+### Build environment
+conda create -n scCAT_seq python=3.7
+conda activate scCAT_seq
 
-2) Or readers can creat environment from scCAT_seq.yml file(recommended)
-   ```
-   conda env create -f install/scCAT_seq.yml
-   conda activate scCAT_seq
-   Rscript install/install_R_packages.R
-   ```
+### Install the softwares and packages
+conda install -c anaconda perl=5.26.2
+conda install -c bioconda STAR=2.7.3a
+conda install -c bioconda samtools=1.3.1
+conda install -c bioconda bedtools=2.27.1
+conda install -c bioconda cutadapt=1.18
+conda install -c conda-forge pandas=0.24.1
+conda install -c conda-forge regex
+conda install -c conda-forge plotnine
+conda install -c conda-forge python-levenshtein
+conda install -c conda-forge pandas=0.24.1
+conda install -c conda-forge scikit-learn=0.22.1
+conda install -c conda-forge r-base=3.6.1
+conda install -c conda-forge r-foreign
+conda install -c conda-forge r-ggal
+Rscript install/install_R_packages.R
+```
+
+2) Or readers can creat environment from scCAT_seq.yml file (recommended)
+
+```
+conda env create -f install/scCAT_seq.yml
+conda activate scCAT_seq
+Rscript install/install_R_packages.R
+```
    
 This step will spend 18 minutes to install all software and packages.
 
 
 
-#Demo
+# Demo
 
 #Here, we demo the pipeline to identify TSSs and TESs for human embryonic stem cells. 
 
-#Demo data download
+## Demo data download
 
 ```
 sh script/download.sh
 ```
 
-#Usage:
+## Usage:
 
 ```
 sh ./bin/SCCAT.sh -g ~/index/hg38/hg38.fa -5 input/hESCnofiltersccatUMI5_TKD.bed -3 input/hESCnofiltersccatUMI3_TKD.bed -f reference/tc_hESC.bed -p reference/human.PAS100_hg38.bed -t 3 -o output
@@ -99,7 +102,7 @@ Use ‘SCCAT.sh –h’ to get more detailed usage.
 
 This step will take 16min to finish.
 
-#Output:
+## Output:
 
 In this demo pipeline, output files were deposited in the "output/" directory with default. Including “tc_hESCnofiltersccatUMI3_5cap_prediction.tsv”, “tc_hESCnofiltersccatUMI3_3tail_prediction.tsv”, “combine_result.tsv”, “novelgene.tsv”, “accuracy.pdf”, “distance.pdf”, “pieTSS.pdf”, “pieTES.pdf”, “novel.pdf”.
 
