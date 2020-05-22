@@ -156,8 +156,8 @@ The ninth file is `novel.pdf`. It shows the number of novel isoforms of annotate
  
 
 # Training on the model with own data (optional)
-In some cases, users may use their own dataset to train the model, they can use the `SCCAT_customized_model.sh`, when dataset for training should be deposit in the customized_model_training_threshold3 file. The model will be trained with 70% of the data and tested on the rest 30%. The accuracy for the testing data would be saved in the customized_model_training_threshold3 folder. 
-In the meantime, other dataset need to be processed to identify TSS and TES are input by specifying the directory after the paremeter "-5" and  "-3" respectively. The output files would be found in the output files.
+In some cases, users may use their own dataset to train the model, they can use the `SCCAT_customized_model.sh`, when dataset for training should be deposit in the customized_model_training_threshold3 file. The model will be trained with 70% of the data and tested on the rest 30%. The accuracy for the testing data would be saved in the `customized_model_training_threshold3/` folder. 
+In the meantime, other dataset need to be processed to identify TSS and TES are input by specifying the directory after the paremeter `-5` and  `-3` respectively. The output files would be found in the output files.
 
 For example, here we train the model with hESC dataset, and use the model to predict the TSS and TES for same dataset. Users can choose different datasets. 
 
@@ -189,5 +189,5 @@ sh ./bin/SCCAT_customized_model.sh -g ~/index/hg38/hg38.fa  -D input/hESCnofilte
 
 Output:
 
-1. Accuracy for the customized models would be found in the customized_model_training_threshold3 folder.
-2. The following results would be saved in the directory "output_customized": the accuracy to identify authentic TSSs/TESs, and novel TSSs and TESs, novel genes for single cells. The number of alternative TSSs/TESs, and major TSS and TES of each gene also be identified.
+1. Accuracy for the customized models would be found in the `customized_model_training_threshold3/` folder.
+2. The following results would be saved in the directory `output_customized/`: the accuracy to identify authentic TSSs/TESs, and novel TSSs and TESs, novel genes for single cells. The number of alternative TSSs/TESs, and major TSS and TES of each gene also be identified.
