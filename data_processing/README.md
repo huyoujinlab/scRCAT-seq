@@ -66,7 +66,7 @@ This step will spend 18 minutes to install all software and packages.
 
 # Demo
 
-#Here, we demo the pipeline to identify TSSs and TESs for human embryonic stem cells. 
+Here, we demo the pipeline to identify TSSs and TESs for human embryonic stem cells. 
 
 ## Demo data download
 
@@ -156,7 +156,7 @@ The ninth file is `novel.pdf`. It shows the number of novel isoforms of annotate
  
 
 # Training on the model with own data (optional)
-In some cases, users may use their own dataset to train the model, they can use the `SCCAT_customized_model.sh`, when dataset for training should be deposit in the customized_model_training_threshold3 file. The model will be trained with 70% of the data and tested on the rest 30%. The accuracy for the testing data would be saved in the `customized_model_training_threshold3/` folder. 
+In some cases, users may use their own dataset to train the model, they can use the `SCCAT_customized_model.sh`, when dataset for training should be deposit in the `customized_model_training_threshold3` file. The model will be trained with 70% of the data and tested on the rest 30%. The accuracy for the testing data would be saved in the `customized_model_training_threshold3/` folder. 
 In the meantime, other dataset need to be processed to identify TSS and TES are input by specifying the directory after the paremeter `-5` and  `-3` respectively. The output files would be found in the output files.
 
 For example, here we train the model with hESC dataset, and use the model to predict the TSS and TES for same dataset. Users can choose different datasets. 
