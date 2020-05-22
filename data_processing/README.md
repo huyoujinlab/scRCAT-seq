@@ -165,27 +165,27 @@ For example, here we train the model with hESC dataset, and use the model to pre
 sh ./bin/SCCAT_customized_model.sh -g ~/index/hg38/hg38.fa  -D input/hESCnofiltersccatUMI5_TKD.bed -d input/hESCnofiltersccatUMI3_TKD.bed -5 input/hESCnofiltersccatUMI5_TKD.bed -3 input/hESCnofiltersccatUMI3_TKD.bed -F reference/tc_hESC.bed -P reference/human.PAS100_hg38.bed -f reference/tc_hESC.bed -p reference/human.PAS100_hg38.bed -t 3 -o output_customized
 ```
 
--g The filename of the reference genome
+`-g` The filename of the reference genome
 
--D Path to the TSS training data.
+`-D` Path to the TSS training data.
 
--d Path to the TES training data.
+`-d` Path to the TES training data.
 
--5 Directory of the TSS data to be predicted.
+`-5` Directory of the TSS data to be predicted.
 
--3 Directory of the TES data to be predicted.
+`-3` Directory of the TES data to be predicted.
 
--F Reference to annotate authentic TSSs of training data.
+`-F` Reference to annotate authentic TSSs of training data.
 
--P Reference to annotate authentic TESs of training data.
+`-P` Reference to annotate authentic TESs of training data.
 
--f Reference to annotate authentic TSSs of the data to be predicted (specified by -5).
+`-f` Reference to annotate authentic TSSs of the data to be predicted (specified by -5).
 
--p Reference to annotate authentic TESs of the data to be predicted (specified by -3).
+`-p` Reference to annotate authentic TESs of the data to be predicted (specified by -3).
 
--t Threshold for filtering out peaks with low abundance.
+`-t` Threshold for filtering out peaks with low abundance.
 
--o  Directory to save output files.
+`-o` Directory to save output files.
 
 Output:
 
