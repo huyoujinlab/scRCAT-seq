@@ -32,7 +32,7 @@ The softwares can be installed in two ways:
 ```
 ### Build environment
 conda create -n scCAT_seq python=3.7
-conda activate scRCAT_seq
+conda activate scCAT_seq
 
 ### Install the softwares and packages
 conda install -c anaconda perl=5.26.2
