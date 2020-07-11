@@ -1,6 +1,6 @@
 # Description
 
-The pipeline is used to process the scCAT-seq data to identify TSSs/TESs of transcripts based on random forests (RF) model. With the model trained on the dataset derived from human embryonic stem cells, for which TSSs and TESs are well annotated in the `FANTOM5` database and `PolyA_DB` respectively, the pipeline can be used to identify authentic transcript boundaries (TSSs and TESs) for cells and species with scCAT-seq data. Alternatively, users can use their own training datasets to train the model, which can then be used to identify TSSs/TESs from their own dataset.
+The pipeline is used to process the scRCAT-seq data to identify TSSs/TESs of transcripts based on random forests (RF) model. With the model trained on the dataset derived from human embryonic stem cells, for which TSSs and TESs are well annotated in the `FANTOM5` database and `PolyA_DB` respectively, the pipeline can be used to identify authentic transcript boundaries (TSSs and TESs) for cells and species with scRCAT-seq data. Alternatively, users can use their own training datasets to train the model, which can then be used to identify TSSs/TESs from their own dataset.
 The pipeline can calculate the accuracy to identify authentic TSSs/TESs, and identify novel TSSs and TESs, novel genes for single cells. The number of alternative TSSs/TESs, and major TSS and major TES of each gene can also be identified.
 
 # System requirements
@@ -32,7 +32,7 @@ The softwares can be installed in two ways:
 ```
 ### Build environment
 conda create -n scCAT_seq python=3.7
-conda activate scCAT_seq
+conda activate scRCAT_seq
 
 ### Install the softwares and packages
 conda install -c anaconda perl=5.26.2
@@ -55,8 +55,8 @@ Rscript install/install_R_packages.R
 2) Or readers can creat environment from `scCAT_seq.yml` file (recommended)
 
 ```
-conda env create -f install/scCAT_seq.yml
-conda activate scCAT_seq
+conda env create -f install/scRCAT_seq.yml
+conda activate scRCAT_seq
 Rscript install/install_R_packages.R
 ```
    
