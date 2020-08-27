@@ -357,7 +357,7 @@ ggbarplot(df, x="type", y="number", add = "mean_se", fill = "group",color = "gro
 ### supplementary2d
 rm(list=ls())
 
-load("supplementary2.RData")
+load("supplementaryfig2.RData")
 
 
 #D3_tss <- cbind(read.csv("C:/Users/zhong/Desktop/201907211815/20190711D3tss_peak_new.csv"),
@@ -471,7 +471,7 @@ ggplot(data=df,aes(x=RPM,y=number,fill=type))+
 
 
 ### supplementary2 g
-#load("supplementary2.RData")
+#load("supplementaryfig2.RData")
 
 
 
