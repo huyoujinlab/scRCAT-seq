@@ -155,7 +155,7 @@ ggplot(dfc, aes(x=size, y=number, colour=methods)) +
 
 rm(list=ls())
 
-load("supplementary2.RData")
+load("supplementaryfig2.RData")
 
 
 #P42_51_dominant_tss_in_gene <- cbind(read.csv("C:/Users/zhong/Desktop/20190831peak_outputs-20190908T082631Z-001/20190831peak_outputs/20190831P42_51_5cap_peak_with_prediction.csv"),
