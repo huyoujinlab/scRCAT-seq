@@ -187,9 +187,24 @@ tss_genelist <- D3_4_5cap_dominant_tss_in_gene_major[,4]
 tes_genelist <- D3_4_3tail_dominant_tss_in_gene_major[,4]
 iso_genelist <- counts[!counts[,2]==0,1]
 
-df3 <- rbind(data.frame(V1=log10(smart[smart[,1] %in% tss_genelist,2]),V2="tss"),
-             data.frame(V1=log10(smart[smart[,1] %in% tes_genelist,2]),V2="tes"),
-             data.frame(V1=log10(smart[smart[,1] %in% iso_genelist,2]),V2="iso"))
+df3 <- rbind(data.frame(smart[smart[,1] %in% tss_genelist,],V3="tss"),
+             data.frame(smart[smart[,1] %in% tes_genelist,],V3="tes"),
+             data.frame(smart[smart[,1] %in% iso_genelist,],V3="iso"))
+
+df3[,2] <- log10(df3[,2])
+
+colnames(df3) <- c("gene","V1","V2")
+
+my_comparisons <- list(c("iso", "tes"),c("iso", "tss"))
+ggviolin(df3, x="V2", y="V1", fill = "V2", palette = "jco",ylab="smart_RPM_logscale",xlab="",legend = "right") +   ###boxplot可改成violin
+  theme(axis.text.x = element_text(face = "plain",size = 11,angle=45,hjust = 1,vjust = 1),
+        axis.ticks.x = element_blank(),
+        legend.title = element_blank(),
+        axis.text.y = element_text(face = "plain",size = 11),
+        axis.title.x = element_text(face = "plain",size = 13),
+        axis.title.y = element_text(face = "plain",size = 13))+
+  stat_compare_means(comparisons=my_comparisons,label = "p-value", method = "wilcox.test") 
+
 
 
 
