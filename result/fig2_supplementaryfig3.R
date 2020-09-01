@@ -118,7 +118,7 @@ ggboxplot(df, x="group", y="value", fill = "group",ylab="Cost($) to cover 1000 t
         axis.text.y = element_text(face = "plain",size = 11),
         axis.title.x = element_text(face = "plain",size = 13),
         axis.title.y = element_text(face = "plain",size = 13)) +
-  stat_compare_means(comparisons=my_comparisons,label = "p-value", method = "t.test",paired = F) +
+  stat_compare_means(comparisons=my_comparisons,label = "p-value", method = "wilcox.test",paired = F) +
   scale_y_continuous(limits = c(0,250),expand = c(0,0))
 
 
