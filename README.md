@@ -3,7 +3,7 @@
 
 
 
-* Here is the code for our scRCAT-seq project as described in the paper [Single-cell RNA cap and tail sequencing (scRCAT-seq) reveals subtype-specific isoforms differing in transcript demarcation](https://www.nature.com/articles/s41587-019-0392-8). scRCAT-seq is designed to simultaneously capture RNA transcript start sites(TSSs) and transcript end sites(TESs) on single-cell level.
+* Here is the code for our scRCAT-seq project as described in the paper [Single-cell RNA cap and tail sequencing (scRCAT-seq) reveals subtype-specific isoforms differing in transcript demarcation](https://www.nature.com/articles/s41467-020-18976-7). scRCAT-seq is designed to simultaneously capture RNA transcript start sites(TSSs) and transcript end sites(TESs) on single-cell level.
 
 ---
 
